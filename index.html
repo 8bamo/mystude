@@ -181,11 +181,11 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .sc-num{font-family:var(--fD);font-size:3.5rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;flex-shrink:0;align-self:center;transition:color .4s}
 .sc:hover .sc-num{color:rgba(218,35,35,.09)}
 
-/* ─── STATS ─── */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-top:100px}
-.stat{padding:56px;position:relative;text-align:center}
-.stat+.stat::before{content:'';position:absolute;left:0;top:15%;height:70%;width:1px;background:rgba(255,255,255,.06)}
-.stat-n{font-family:var(--fD);font-size:clamp(56px,6vw,88px);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--w)}
+/* ─── STATS — inverted white block ─── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:100px;background:var(--w)}
+.stat{padding:64px 56px;position:relative;text-align:center}
+.stat+.stat::before{content:'';position:absolute;left:0;top:15%;height:70%;width:1px;background:rgba(0,0,0,.1)}
+.stat-n{font-family:var(--fD);font-size:clamp(56px,6vw,88px);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--b)}
 .stat-n em{font-style:normal;color:var(--r)}
 .stat-l{font-family:var(--fB);font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
 
@@ -649,7 +649,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
     <div class="founders-bios">
       <div class="fbc rv d1">
         <div class="fbc-img">
-          <img src="yusuf.png" alt="Yusuf — Co-Gründer mystu Stuttgart"/>
+          <img src="yusuf-neu.jpg" alt="Yusuf — Co-Gründer mystu Stuttgart"/>
           <div class="fbc-img-overlay"></div>
         </div>
         <div class="fbc-body">
@@ -918,6 +918,87 @@ pt.addEventListener('mousemove',e=>{
   if(!down)return;
   e.preventDefault();
   pt.scrollLeft=sl-(e.pageX-pt.offsetLeft-sx)*1.4;
+});
+
+// ── Hero mouse parallax
+const heroBg=document.querySelector('.hero-bg-img');
+let hpx=0,hpy=0,thpx=0,thpy=0;
+document.addEventListener('mousemove',e=>{
+  thpx=(e.clientX/window.innerWidth-.5)*22;
+  thpy=(e.clientY/window.innerHeight-.5)*14;
+});
+(function hTick(){
+  hpx+=(thpx-hpx)*.05;
+  hpy+=(thpy-hpy)*.05;
+  if(heroBg)heroBg.style.transform=`translate3d(${hpx}px,${hpy}px,0) scale(1.06)`;
+  requestAnimationFrame(hTick);
+})();
+
+// ── Cursor label
+const clabel=document.createElement('div');
+clabel.id='clabel';
+clabel.style.cssText='position:fixed;pointer-events:none;z-index:10000;font-family:var(--fD);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--r);opacity:0;transform:translate(18px,-24px) scale(.85);transition:opacity .2s,transform .2s;white-space:nowrap;top:0;left:0';
+document.body.appendChild(clabel);
+let clx=0,cly=0;
+document.addEventListener('mousemove',e=>{clx=e.clientX;cly=e.clientY;clabel.style.left=clx+'px';clabel.style.top=cly+'px'});
+const labelMap={
+  '.btn-red':'SHOP →',
+  '.btn-white':'SHOP →',
+  '.btn-outline':'SHOP →',
+  '.nav-cta':'SHOP →',
+  '.fbc':'VIEW →',
+  '.sc':'VIEW →',
+  '.gallery-slide':'VIEW →',
+  '.ft-sl a':'SOCIAL →',
+  'a[href*="instagram"]':'FOLLOW →',
+};
+Object.entries(labelMap).forEach(([sel,txt])=>{
+  document.querySelectorAll(sel).forEach(el=>{
+    el.addEventListener('mouseenter',()=>{clabel.textContent=txt;clabel.style.opacity='1';clabel.style.transform='translate(18px,-24px) scale(1)'});
+    el.addEventListener('mouseleave',()=>{clabel.style.opacity='0';clabel.style.transform='translate(18px,-24px) scale(.85)'});
+  });
+});
+
+// ── Text scramble on reveal
+const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+function scramble(el){
+  const orig=el.textContent;
+  let iter=0;
+  const maxIter=orig.length*2.5;
+  const iv=setInterval(()=>{
+    el.textContent=orig.split('').map((c,i)=>{
+      if(c===' ')return ' ';
+      if(i<iter/2.5)return c;
+      return chars[Math.floor(Math.random()*chars.length)];
+    }).join('');
+    iter++;
+    if(iter>=maxIter){el.textContent=orig;clearInterval(iv)}
+  },28);
+}
+const scrObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      scramble(e.target);
+      scrObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.hero-name-inner,.sec-num,.story-headline').forEach(el=>scrObs.observe(el));
+
+// ── Magnetic buttons
+document.querySelectorAll('.btn-red,.btn-white,.btn-outline').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const dx=(e.clientX-r.left-r.width/2)*.35;
+    const dy=(e.clientY-r.top-r.height/2)*.35;
+    btn.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{
+    btn.style.transform='translate(0,0)';
+    btn.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
+    setTimeout(()=>btn.style.transition='',500);
+  });
+  btn.addEventListener('mouseenter',()=>{btn.style.transition='transform .15s ease'});
 });
 </script>
 </body>
