@@ -1,326 +1,360 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mystu — Premium Fanmode für den Brustring | Stuttgart</title>
-  <meta name="description" content="mystu ist das Stuttgarter Fanmode-Label für den Brustring. Premium Streetwear und Lifestyle für VfB Stuttgart Fans — zeitloses Design, alltagstauglich, Made in Stuttgart."/>
-  <meta name="keywords" content="mystu, VfB Stuttgart, Brustring, Fanmode Stuttgart, Stuttgart Fanshop, Stuttgart Streetwear, VfB Fankleidung, Stuttgart Mode, Brustring Hoodie, Stuttgart Fashion"/>
-  <meta property="og:title" content="mystu — Fanmode für den Brustring aus Stuttgart"/>
-  <meta property="og:description" content="Premium Fanmode für VfB Stuttgart Fans. Zeitloses Design aus Stuttgart — für echte Fans."/>
-  <meta property="og:url" content="https://mystu.shop"/>
-  <link rel="canonical" href="https://mystu.shop"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,700&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --r:#DA2323;
-      --w:#ffffff;
-      --b:#080808;
-      --g1:#111;
-      --g2:#181818;
-      --g3:#222;
-      --mu:#555;
-      --f:'Poppins',sans-serif;
-    }
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{background:var(--b);color:var(--w);font-family:var(--f);overflow-x:hidden;cursor:none}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>mystu — Premium Fanmode für den Brustring | Stuttgart</title>
+<meta name="description" content="mystu ist das Stuttgarter Fanmode-Label für den Brustring. Premium Streetwear für VfB Stuttgart Fans — zeitloses Design, alltagstauglich, Made in Stuttgart."/>
+<meta name="keywords" content="mystu, VfB Stuttgart, Brustring, Fanmode Stuttgart, Stuttgart Streetwear, VfB Fankleidung, Brustring Hoodie, Stuttgart Fashion"/>
+<meta property="og:title" content="mystu — Fanmode für den Brustring aus Stuttgart"/>
+<meta property="og:description" content="Premium Fanmode für VfB Stuttgart Fans. Für echte Fans aus Stuttgart."/>
+<meta property="og:url" content="https://mystu.shop"/>
+<link rel="canonical" href="https://mystu.shop"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;300;400;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --r:#DA2323;
+  --r2:#b01c1c;
+  --w:#ffffff;
+  --b:#080808;
+  --g1:#0f0f0f;
+  --g2:#161616;
+  --g3:#1e1e1e;
+  --mu:rgba(255,255,255,.35);
+  --fD:'Big Shoulders Display',sans-serif;
+  --fB:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--b);color:var(--w);font-family:var(--fB);overflow-x:hidden;cursor:none}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%}
+button{background:none;border:none;cursor:none}
 
-    /* ── CURSOR ── */
-    #c1{position:fixed;top:0;left:0;width:6px;height:6px;background:var(--r);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-    #c2{position:fixed;top:0;left:0;width:28px;height:28px;border:1px solid rgba(218,35,35,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s}
-    @media(hover:none){#c1,#c2{display:none}body{cursor:auto}}
+/* ─── CURSOR ─── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:7px;height:7px;background:var(--r);top:0;left:0;transition:width .15s,height .15s,background .2s}
+#cur2{width:30px;height:30px;border:1.5px solid rgba(218,35,35,.4);top:0;left:0;transition:width .25s,height .25s,border-color .25s}
+body.hovering #cur{width:14px;height:14px}
+body.hovering #cur2{width:48px;height:48px;border-color:rgba(218,35,35,.25)}
+@media(hover:none){#cur,#cur2{display:none}body{cursor:auto}}
 
-    /* ── GRAIN ── */
-    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:8000;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;animation:gr .3s steps(1) infinite}
-    @keyframes gr{0%,100%{background-position:0 0}25%{background-position:-8% -10%}50%{background-position:5% 18%}75%{background-position:-12% 6%}}
+/* ─── GRAIN ─── */
+#grain{position:fixed;inset:0;pointer-events:none;z-index:8900;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;animation:grn .4s steps(1) infinite}
+@keyframes grn{0%,100%{background-position:0 0}20%{background-position:-9% -13%}40%{background-position:7% 22%}60%{background-position:-14% 7%}80%{background-position:11% -6%}}
 
-    /* ── NAV ── */
-    nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:32px 60px;display:flex;align-items:center;justify-content:space-between;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent}
-    nav.s{padding:18px 60px;background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-color:rgba(255,255,255,.05)}
-    .nl{display:flex;align-items:center}
-    .nl svg{height:20px;width:auto}
-    .nr{display:flex;align-items:center;gap:40px}
-    .nr a{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);transition:color .3s}
-    .nr a:hover{color:var(--w)}
-    .nbtn{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--w)!important;background:var(--r);padding:10px 24px;transition:background .3s!important}
-    .nbtn:hover{background:#b01c1c!important}
-    .burger{display:none;flex-direction:column;gap:5px;cursor:none}
-    .burger span{display:block;width:22px;height:2px;background:var(--w)}
+/* ─── LOADER ─── */
+#loader{position:fixed;inset:0;background:var(--b);z-index:9000;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease .1s,visibility .7s ease .1s}
+#loader.out{opacity:0;visibility:hidden}
+.ldr-logo{opacity:0;animation:ldrIn .6s cubic-bezier(.16,1,.3,1) .3s forwards}
+.ldr-logo svg{height:clamp(32px,5vw,52px);width:auto}
+.ldr-line{width:0;height:1px;background:var(--r);margin-top:20px;animation:ldrLine .8s ease .7s forwards}
+@keyframes ldrIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ldrLine{from{width:0}to{width:100%}}
 
-    /* ── HERO ── */
-    #hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:0 60px 80px}
+/* ─── SCROLL PROGRESS ─── */
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--r);z-index:600;width:0%;transition:width .1s linear}
 
-    .hbg{position:absolute;inset:0;background:var(--b)}
-    .hbg-stripe{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 44%,rgba(218,35,35,.07) 44%,rgba(218,35,35,.07) 56%,transparent 56%)}
-    .hbg-glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
-    .hbg-g1{width:800px;height:800px;background:radial-gradient(circle,rgba(218,35,35,.12) 0%,transparent 70%);top:-200px;right:-200px;animation:gp 9s ease-in-out infinite}
-    .hbg-g2{width:600px;height:600px;background:radial-gradient(circle,rgba(218,35,35,.07) 0%,transparent 70%);bottom:-100px;left:-100px;animation:gp 7s ease-in-out infinite reverse}
-    @keyframes gp{0%,100%{opacity:.5}50%{opacity:1}}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:28px 56px;transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.06)}
+.nav-logo svg{height:19px;width:auto;display:block}
+.nav-r{display:flex;align-items:center;gap:36px}
+.nav-r a{font-family:var(--fB);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color .3s}
+.nav-r a:hover{color:var(--w)}
+.nav-shop{color:var(--w)!important;border:1px solid rgba(255,255,255,.15);padding:8px 22px;transition:background .3s,border-color .3s!important}
+.nav-shop:hover{background:var(--r)!important;border-color:var(--r)!important}
+.nav-burger{display:none;flex-direction:column;gap:5px}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--w)}
 
-    /* big bg text */
-    .hbg-word{position:absolute;bottom:-60px;left:-10px;font-size:clamp(200px,30vw,400px);font-weight:900;color:rgba(255,255,255,.025);letter-spacing:-.05em;user-select:none;white-space:nowrap;line-height:1}
+/* ─── HERO ─── */
+#hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 72px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:var(--b)}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none}
+.hero-g1{width:900px;height:600px;background:radial-gradient(ellipse,rgba(218,35,35,.11) 0%,transparent 70%);top:-150px;right:-200px;animation:hgp 10s ease-in-out infinite}
+.hero-g2{width:600px;height:600px;background:radial-gradient(ellipse,rgba(218,35,35,.06) 0%,transparent 70%);bottom:-100px;left:-150px;animation:hgp 8s ease-in-out infinite 2s reverse}
+@keyframes hgp{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 
-    .h-eyebrow{position:absolute;top:50%;left:60px;transform:translateY(-50%);writing-mode:vertical-rl;text-orientation:mixed;font-size:.6rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.2);opacity:0;animation:fu .8s ease 2s forwards}
+/* Horizontal stripe center */
+.hero-stripe{position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(218,35,35,.15),transparent);transform:translateY(-50%)}
 
-    .h-main{position:relative;z-index:2}
-    .h-tag{font-size:.65rem;font-weight:600;letter-spacing:.45em;text-transform:uppercase;color:var(--r);margin-bottom:20px;opacity:0;animation:fu .7s ease .2s forwards;display:flex;align-items:center;gap:10px}
-    .h-tag::before{content:'';display:block;width:24px;height:1px;background:var(--r)}
+/* Big bg word */
+.hero-bgword{position:absolute;bottom:-30px;left:-8px;font-family:var(--fD);font-size:clamp(200px,32vw,440px);font-weight:900;color:rgba(255,255,255,.022);letter-spacing:-.05em;line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
 
-    .h-logo{margin-bottom:28px;opacity:0;animation:fu .9s cubic-bezier(.16,1,.3,1) .5s forwards}
-    .h-logo svg{height:clamp(44px,8vw,96px);width:auto}
+/* Vertical side text */
+.hero-side{position:absolute;right:56px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:var(--fB);font-size:.58rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.18);opacity:0;animation:fadeUp .8s ease 2s forwards}
 
-    .h-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
-    .h-desc{max-width:360px;opacity:0;animation:fu .8s ease 1.2s forwards}
-    .h-desc p{font-size:.9rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.5)}
-    .h-desc p strong{color:var(--w);font-weight:600}
-    .h-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;opacity:0;animation:fu .8s ease 1.5s forwards;flex-shrink:0}
-    .btn-main{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--w);background:var(--r);padding:16px 40px;position:relative;overflow:hidden;transition:transform .3s}
-    .btn-main::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-    .btn-main:hover::before{transform:scaleX(1)}
-    .btn-main:hover{transform:translateY(-2px)}
-    .btn-ghost-sm{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:8px;transition:color .3s}
-    .btn-ghost-sm:hover{color:var(--w)}
+/* Year badge */
+.hero-year{position:absolute;left:56px;top:50%;transform:translateY(-50%);font-family:var(--fD);font-size:clamp(48px,6vw,80px);font-weight:900;color:rgba(255,255,255,.04);letter-spacing:.02em;line-height:1;user-select:none}
 
-    .h-scroll-ind{position:absolute;bottom:80px;right:60px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s ease 2s forwards}
-    .h-scroll-ind span{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);writing-mode:vertical-rl}
-    .h-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--r),transparent);animation:sl 2s ease-in-out infinite}
-    @keyframes sl{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-    @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--fB);font-size:.62rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:var(--r);margin-bottom:16px;opacity:0;animation:fadeUp .7s ease .4s forwards}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--r)}
 
-    /* ── MARQUEE ── */
-    .mq{overflow:hidden;padding:15px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:var(--b)}
-    .mq-t{display:flex;animation:mqs 22s linear infinite;white-space:nowrap}
-    .mq-i{display:inline-flex;align-items:center;gap:24px;padding:0 24px;font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-    .mq-i b{color:var(--r);font-weight:700}
-    .mq-d{width:3px;height:3px;background:var(--r);border-radius:50%;flex-shrink:0;opacity:.5}
-    @keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hero-name{font-family:var(--fD);font-size:clamp(120px,22vw,280px);font-weight:900;line-height:.88;letter-spacing:-.03em;overflow:hidden;margin-bottom:0}
+.hero-name-inner{display:block;opacity:0;animation:slideUp 1.1s cubic-bezier(.16,1,.3,1) .55s forwards}
 
-    /* ── SECTION UTIL ── */
-    .sec-wrap{max-width:1360px;margin:0 auto;padding:0 60px}
-    .sec-num{font-size:clamp(80px,12vw,160px);font-weight:900;color:rgba(255,255,255,.03);line-height:1;letter-spacing:-.04em;user-select:none;pointer-events:none}
-    .sec-label{font-size:.62rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
-    .sec-title{font-weight:900;font-size:clamp(36px,5vw,70px);line-height:1.0;letter-spacing:-.02em}
-    .sec-title em{font-style:italic;font-weight:200;color:rgba(255,255,255,.3)}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:28px}
+.hero-desc{opacity:0;animation:fadeUp .8s ease 1.3s forwards;max-width:380px}
+.hero-desc p{font-size:.92rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.45)}
+.hero-desc strong{color:var(--w);font-weight:600}
+.hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:12px;opacity:0;animation:fadeUp .8s ease 1.6s forwards;flex-shrink:0}
+.btn-red{display:inline-block;font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w);background:var(--r);padding:14px 40px;position:relative;overflow:hidden;transition:transform .3s}
+.btn-red::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.btn-red:hover::before{transform:scaleX(1)}
+.btn-red:hover{transform:translateY(-2px)}
+.btn-ghost{font-family:var(--fB);font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:8px;transition:color .3s}
+.btn-ghost svg{transition:transform .3s}
+.btn-ghost:hover{color:var(--w)}
+.btn-ghost:hover svg{transform:translateX(4px)}
 
-    /* ── SCROLL REVEAL ── */
-    .sr{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-    .sl2{opacity:0;transform:translateX(-50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-    .sr2{opacity:0;transform:translateX(50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-    .v{opacity:1!important;transform:none!important}
-    .d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.3s}.d4{transition-delay:.44s}.d5{transition-delay:.6s}
+/* scroll indicator */
+.hero-scroll{position:absolute;bottom:72px;right:56px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease 2.2s forwards}
+.hero-scroll span{font-family:var(--fB);font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);writing-mode:vertical-rl}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(var(--r),transparent);animation:scrlln 2s ease-in-out infinite}
+@keyframes scrlln{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-    /* ── STORY ── */
-    #story{padding:160px 0 120px;overflow:hidden}
-    .story-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1360px;margin:0 auto;padding:0 60px;margin-bottom:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{transform:translateY(108%);opacity:0}to{transform:none;opacity:1}}
 
-    /* Left */
-    .st-left{}
-    .st-oversize{font-size:clamp(80px,11vw,140px);font-weight:900;line-height:.9;letter-spacing:-.04em;margin-bottom:40px}
-    .st-oversize em{font-style:italic;font-weight:200;color:rgba(255,255,255,.2);display:block}
-    .st-body{font-size:.9rem;font-weight:300;line-height:1.95;color:rgba(255,255,255,.5);max-width:480px}
-    .st-body strong{color:var(--w);font-weight:600}
-    .st-body p+p{margin-top:18px}
-    .st-quote{margin-top:48px;padding:32px 36px;border-left:2px solid var(--r);background:rgba(218,35,35,.04)}
-    .st-quote p{font-size:1.05rem;font-weight:700;font-style:italic;line-height:1.5;color:var(--w)}
-    .st-quote span{display:block;margin-top:12px;font-size:.6rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--r)}
+/* ─── MARQUEE BAND ─── */
+.mq-band{background:var(--w);overflow:hidden;padding:0}
+.mq-row{display:flex;overflow:hidden;padding:13px 0}
+.mq-row-2{border-top:1px solid rgba(0,0,0,.08)}
+.mq-track{display:flex;white-space:nowrap}
+.mq-track-1{animation:mqL 20s linear infinite}
+.mq-track-2{animation:mqR 20s linear infinite}
+.mq-item{display:inline-flex;align-items:center;gap:20px;padding:0 20px;font-family:var(--fD);font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--b);mix-blend-mode:difference;color:var(--b)}
+.mq-item b{color:var(--r)}
+.mq-sep{display:inline-block;width:4px;height:4px;background:var(--r);border-radius:50%;flex-shrink:0;opacity:.6}
+@keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
-    /* Right — stacked cards */
-    .st-right{display:flex;flex-direction:column;gap:2px}
-    .stc{
-      position:relative;overflow:hidden;
-      border:1px solid rgba(255,255,255,.05);
-      background:var(--g1);
-      transition:background .4s,border-color .4s;
-    }
-    .stc:hover{background:#160c0c;border-color:rgba(218,35,35,.3)}
-    /* fill sweep */
-    .stc::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(218,35,35,.07) 0%,transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1);z-index:0}
-    .stc:hover::before{transform:scaleX(1)}
-    /* left bar */
-    .stc::after{content:'';position:absolute;left:0;top:0;width:2px;height:0;background:var(--r);transition:height .6s cubic-bezier(.16,1,.3,1);z-index:1}
-    .stc:hover::after{height:100%}
-    .stc-inner{position:relative;z-index:2;padding:32px 36px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
-    .stc-left{flex:1}
-    .stc-tag{font-size:.58rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--r);margin-bottom:10px}
-    .stc-head{font-size:1.05rem;font-weight:800;margin-bottom:8px;transition:color .3s}
-    .stc:hover .stc-head{color:var(--w)}
-    .stc-text{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.8}
-    .stc-cta{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--r);display:flex;align-items:center;gap:6px;margin-top:14px;opacity:0;transform:translateY(6px);transition:opacity .3s .1s,transform .3s .1s}
-    .stc:hover .stc-cta{opacity:1;transform:none}
-    .stc-num{font-size:4rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;transition:color .4s;flex-shrink:0;align-self:center}
-    .stc:hover .stc-num{color:rgba(218,35,35,.1)}
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rvL{opacity:0;transform:translateX(-50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rvR{opacity:0;transform:translateX(50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.vis{opacity:1!important;transform:none!important}
+.d1{transition-delay:.07s}.d2{transition-delay:.16s}.d3{transition-delay:.27s}.d4{transition-delay:.4s}.d5{transition-delay:.55s}
 
-    /* stats strip */
-    .stats-strip{margin-top:80px;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);display:grid;grid-template-columns:repeat(3,1fr)}
-    .stat-item{padding:48px 60px;position:relative}
-    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.06)}
-    .stat-n{font-size:clamp(40px,5vw,68px);font-weight:900;color:var(--w);line-height:1;letter-spacing:-.03em}
-    .stat-n span{color:var(--r)}
-    .stat-l{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:6px}
+/* ─── SECTION LABELS ─── */
+.slabel{font-family:var(--fB);font-size:.6rem;font-weight:600;letter-spacing:.44em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
 
-    /* ── FOUNDERS ── */
-    #founders{padding:120px 0;overflow:hidden}
-    .founders-wrap{max-width:1360px;margin:0 auto;padding:0 60px}
-    .founders-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:40px}
-    .founders-header .sec-title{flex-shrink:0}
-    .founders-header-desc{font-size:.85rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.8;max-width:360px;text-align:right}
+/* ─── STORY ─── */
+#story{padding:160px 0 0;position:relative;overflow:hidden}
+/* giant ghost section number */
+.sec-ghost{position:absolute;font-family:var(--fD);font-weight:900;font-size:clamp(180px,28vw,360px);color:rgba(255,255,255,.025);line-height:1;letter-spacing:-.05em;user-select:none;pointer-events:none;top:60px;left:-20px}
 
-    .founders-photo-box{position:relative;overflow:hidden}
-    .founders-photo-box img{width:100%;aspect-ratio:21/8;object-fit:cover;object-position:center 30%;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s}
-    .founders-photo-box:hover img{transform:scale(1.03)}
-    /* clip reveal on scroll */
-    .founders-photo-box{clip-path:inset(0 100% 0 0);transition:clip-path 1.2s cubic-bezier(.16,1,.3,1)}
-    .founders-photo-box.v{clip-path:inset(0 0% 0 0)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1340px;margin:0 auto;padding:0 56px}
+.story-headline{font-family:var(--fD);font-size:clamp(72px,10vw,130px);font-weight:900;line-height:.9;letter-spacing:-.02em;margin-bottom:40px}
+.story-headline em{display:block;font-style:italic;font-weight:100;color:rgba(255,255,255,.25);font-size:.75em}
+.story-body{font-size:.9rem;font-weight:300;line-height:2;color:rgba(255,255,255,.45)}
+.story-body strong{color:var(--w);font-weight:600}
+.story-body p+p{margin-top:18px}
+.story-quote{margin-top:44px;padding:28px 32px;background:rgba(218,35,35,.05);border-left:2px solid var(--r)}
+.story-quote p{font-family:var(--fD);font-size:1.4rem;font-weight:700;font-style:italic;line-height:1.3;color:var(--w)}
+.story-quote cite{display:block;margin-top:10px;font-family:var(--fB);font-size:.6rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--r);font-style:normal}
 
-    .founders-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 40%,transparent 70%)}
-    .founders-names{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end;padding:40px 56px}
-    .fn{display:flex;flex-direction:column;gap:2px}
-    .fn-name{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;letter-spacing:-.01em}
-    .fn-role{font-size:.6rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--r)}
-    .fn:last-child{text-align:right}
+/* Story cards right */
+.story-cards{display:flex;flex-direction:column;gap:2px;position:relative;z-index:1}
+.sc{background:var(--g1);border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;transition:background .4s,border-color .4s,transform .4s cubic-bezier(.16,1,.3,1)}
+.sc:hover{background:#140a0a;border-color:rgba(218,35,35,.25);transform:translateX(8px)}
+/* sweep fill */
+.sc::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(218,35,35,.06) 0%,transparent 65%);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1);z-index:0}
+.sc:hover::before{transform:scaleX(1)}
+/* left line */
+.sc::after{content:'';position:absolute;left:0;top:0;width:2px;height:0;background:var(--r);transition:height .55s cubic-bezier(.16,1,.3,1);z-index:1}
+.sc:hover::after{height:100%}
+.sc-in{position:relative;z-index:2;padding:28px 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.sc-l{flex:1}
+.sc-tag{font-family:var(--fB);font-size:.56rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:var(--r);margin-bottom:8px}
+.sc-h{font-family:var(--fD);font-size:1.25rem;font-weight:800;letter-spacing:.01em;margin-bottom:6px;transition:color .3s}
+.sc:hover .sc-h{color:var(--w)}
+.sc-p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.38);line-height:1.75}
+.sc-arr{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--r);margin-top:12px;display:inline-flex;align-items:center;gap:5px;opacity:0;transform:translateX(-6px);transition:opacity .3s .08s,transform .3s .08s}
+.sc:hover .sc-arr{opacity:1;transform:none}
+.sc-num{font-family:var(--fD);font-size:3.5rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;flex-shrink:0;align-self:center;transition:color .4s}
+.sc:hover .sc-num{color:rgba(218,35,35,.09)}
 
-    .founders-bios{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
-    .fbc{padding:36px 44px;background:var(--g1);border:1px solid rgba(255,255,255,.05);transition:background .3s;position:relative;overflow:hidden}
-    .fbc::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-    .fbc:hover::before{transform:scaleX(1)}
-    .fbc:hover{background:#130b0b}
-    .fbc-name{font-size:1rem;font-weight:800;margin-bottom:4px}
-    .fbc-role{font-size:.58rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
-    .fbc-text{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.45);line-height:1.85}
+/* ─── STATS ─── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-top:100px}
+.stat{padding:56px;position:relative;text-align:center}
+.stat+.stat::before{content:'';position:absolute;left:0;top:15%;height:70%;width:1px;background:rgba(255,255,255,.06)}
+.stat-n{font-family:var(--fD);font-size:clamp(56px,6vw,88px);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--w)}
+.stat-n em{font-style:normal;color:var(--r)}
+.stat-l{font-family:var(--fB);font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
 
-    /* ── MISSION ── */
-    #mission{padding:160px 0;position:relative;overflow:hidden}
-    .mission-bg{position:absolute;inset:0;background:var(--g1)}
-    .mission-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.08) 0%,transparent 65%)}
-    /* big ghost word */
-    .mission-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(120px,20vw,260px);font-weight:900;color:rgba(255,255,255,.025);white-space:nowrap;letter-spacing:-.05em;user-select:none;pointer-events:none}
-    .mission-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 60px;text-align:center}
-    .mission-big{font-size:clamp(38px,6vw,80px);font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:40px}
-    .mission-big .out{-webkit-text-stroke:1px rgba(255,255,255,.18);-webkit-text-fill-color:transparent}
-    .mission-text{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.45);line-height:2;max-width:640px;margin:0 auto 56px}
-    .mission-text strong{color:var(--w);font-weight:600}
-    .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-    .pill{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:9px 20px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);transition:border-color .3s,color .3s,background .3s}
-    .pill:hover{border-color:var(--r);color:var(--w);background:rgba(218,35,35,.06)}
+/* ─── FOUNDERS ─── */
+#founders{padding:140px 0;overflow:hidden}
+.founders-inner{max-width:1340px;margin:0 auto;padding:0 56px}
+.founders-top{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:40px}
+.founders-headline{font-family:var(--fD);font-size:clamp(52px,7vw,96px);font-weight:900;line-height:.92;letter-spacing:-.02em}
+.founders-headline em{font-style:italic;font-weight:100;color:rgba(255,255,255,.25)}
+.founders-intro{font-size:.88rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.38);max-width:340px;text-align:right}
 
-    /* ── PRODUKTE ── */
-    #produkte{padding:120px 0;overflow:hidden}
-    .prod-wrap{max-width:1360px;margin:0 auto;padding:0 60px}
-    .prod-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
-    .prod-link{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--r);display:flex;align-items:center;gap:8px;transition:gap .3s}
-    .prod-link:hover{gap:14px}
+/* photo box — clip-path reveal */
+.founders-photo{position:relative;overflow:hidden;clip-path:inset(0 100% 0 0);transition:clip-path 1.3s cubic-bezier(.16,1,.3,1)}
+.founders-photo.vis{clip-path:inset(0 0% 0 0)}
+.founders-photo img{width:100%;aspect-ratio:21/8;object-fit:cover;object-position:center 30%;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s}
+.founders-photo:hover img{transform:scale(1.03);filter:contrast(1.08)}
+.founders-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.1) 45%,transparent 70%)}
+.founders-labels{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end;padding:36px 48px}
+.fl{display:flex;flex-direction:column;gap:3px}
+.fl-name{font-family:var(--fD);font-size:clamp(1.5rem,3.5vw,2.6rem);font-weight:900;line-height:1;letter-spacing:-.01em}
+.fl-role{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:var(--r)}
+.fl:last-child{text-align:right}
 
-    /* Horizontal scroll track */
-    .prod-track{display:flex;gap:16px;overflow-x:auto;padding-bottom:24px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
-    .prod-track:active{cursor:grabbing}
-    .prod-track::-webkit-scrollbar{display:none}
+/* bio cards */
+.founders-bios{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.fbc{background:var(--g1);border:1px solid rgba(255,255,255,.05);padding:32px 40px;position:relative;overflow:hidden;transition:background .3s}
+.fbc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.fbc:hover::after{transform:scaleX(1)}
+.fbc:hover{background:#110808}
+.fbc-n{font-family:var(--fD);font-size:1.5rem;font-weight:900;letter-spacing:.01em;margin-bottom:3px}
+.fbc-r{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
+.fbc-t{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.85}
 
-    .prod-card{flex:0 0 340px;position:relative;overflow:hidden}
-    @media(min-width:1100px){.prod-card{flex:0 0 400px}}
-    .prod-img{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden}
-    .prod-img-bg{position:absolute;inset:0;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-    .prod-card:hover .prod-img-bg{transform:scale(1.06)}
-    .prod-card:nth-child(1) .prod-img-bg{background:linear-gradient(160deg,#1a0808 0%,#2d1010 100%)}
-    .prod-card:nth-child(2) .prod-img-bg{background:linear-gradient(160deg,#080808 0%,#181212 100%)}
-    .prod-card:nth-child(3) .prod-img-bg{background:linear-gradient(160deg,#0c0808 0%,#1f1010 100%)}
-    .prod-card:nth-child(4) .prod-img-bg{background:linear-gradient(160deg,#090808 0%,#1a0f0f 100%)}
-    .prod-img-glow{position:absolute;inset:0;opacity:0;transition:opacity .5s}
-    .prod-card:hover .prod-img-glow{opacity:1}
-    .prod-card:nth-child(odd) .prod-img-glow{background:radial-gradient(ellipse at 60% 30%,rgba(218,35,35,.2) 0%,transparent 60%)}
-    .prod-card:nth-child(even) .prod-img-glow{background:radial-gradient(ellipse at 40% 70%,rgba(218,35,35,.15) 0%,transparent 60%)}
-    .prod-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-    .prod-ph-ico{font-size:2.5rem;opacity:.12}
-    .prod-ph-txt{font-size:.58rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.15)}
-    .prod-real{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+/* ─── MISSION ─── */
+#mission{position:relative;padding:160px 0;overflow:hidden;background:var(--g1)}
+.mission-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fD);font-size:clamp(100px,18vw,240px);font-weight:900;color:rgba(255,255,255,.022);letter-spacing:-.04em;white-space:nowrap;user-select:none;pointer-events:none;line-height:1}
+.mission-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.07) 0%,transparent 60%)}
+.mission-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 56px;text-align:center}
+.mission-big{font-family:var(--fD);font-size:clamp(44px,7vw,92px);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:36px}
+.mission-big .out{-webkit-text-stroke:1px rgba(255,255,255,.16);-webkit-text-fill-color:transparent}
+.mission-text{font-size:.92rem;font-weight:300;line-height:2;color:rgba(255,255,255,.42);max-width:600px;margin:0 auto 48px}
+.mission-text strong{color:var(--w);font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{font-family:var(--fB);font-size:.62rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.35);transition:border-color .3s,color .3s,background .3s}
+.pill:hover{border-color:var(--r);color:var(--w);background:rgba(218,35,35,.05)}
 
-    .prod-info{padding:20px 0 0}
-    .prod-cat{font-size:.58rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:6px}
-    .prod-name{font-size:1rem;font-weight:800;margin-bottom:2px}
-    .prod-sub{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.35)}
+/* ─── PRODUCTS ─── */
+#produkte{padding:140px 0;overflow:hidden}
+.prod-inner{max-width:1340px;margin:0 auto;padding:0 56px}
+.prod-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+.prod-hd-title{font-family:var(--fD);font-size:clamp(48px,7vw,90px);font-weight:900;line-height:.9;letter-spacing:-.02em}
+.prod-all{font-family:var(--fD);font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--r);display:flex;align-items:center;gap:8px;transition:gap .3s}
+.prod-all:hover{gap:14px}
 
-    /* hover state — shop button */
-    .prod-shop{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--w);background:var(--r);padding:8px 18px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
-    .prod-card:hover .prod-shop{opacity:1;transform:none}
+/* drag scroll */
+.prod-track{display:flex;gap:16px;overflow-x:auto;padding-bottom:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.prod-track.dragging{cursor:grabbing}
+.prod-track::-webkit-scrollbar{display:none}
 
-    /* scroll hint */
-    .prod-scroll-hint{display:flex;align-items:center;gap:12px;margin-top:20px;font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-    .prod-scroll-hint::before,.prod-scroll-hint::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07)}
+.pcard{flex:0 0 320px;position:relative}
+@media(min-width:1200px){.pcard{flex:0 0 380px}}
+.pcard-img{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden}
+.pcard-bg{position:absolute;inset:0;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.pcard:hover .pcard-bg{transform:scale(1.07)}
+.pcard:nth-child(1) .pcard-bg{background:linear-gradient(150deg,#1a0808,#2a0f0f)}
+.pcard:nth-child(2) .pcard-bg{background:linear-gradient(150deg,#0c0c0c,#191212)}
+.pcard:nth-child(3) .pcard-bg{background:linear-gradient(150deg,#100808,#200d0d)}
+.pcard:nth-child(4) .pcard-bg{background:linear-gradient(150deg,#080a0c,#111518)}
+.pcard-glow{position:absolute;inset:0;opacity:0;transition:opacity .5s;background:radial-gradient(ellipse at 60% 30%,rgba(218,35,35,.22) 0%,transparent 60%)}
+.pcard:hover .pcard-glow{opacity:1}
+.pcard-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.pcard-ph span:first-child{font-size:2.2rem;opacity:.1}
+.pcard-ph span:last-child{font-family:var(--fB);font-size:.55rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.13)}
+.pcard-real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pcard-info{padding:18px 0 0}
+.pcard-cat{font-family:var(--fB);font-size:.56rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:5px}
+.pcard-name{font-family:var(--fD);font-size:1.4rem;font-weight:800;letter-spacing:.01em;margin-bottom:2px}
+.pcard-sub{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.3)}
+.pcard-btn{display:inline-block;margin-top:12px;font-family:var(--fD);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:var(--r);padding:8px 20px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.pcard:hover .pcard-btn{opacity:1;transform:none}
 
-    /* ── CTA ── */
-    #cta{position:relative;padding:180px 60px;text-align:center;overflow:hidden}
-    .cta-bg{position:absolute;inset:0;background:var(--b)}
-    .cta-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.12) 0%,transparent 60%)}
-    .cta-bg-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(100px,20vw,280px);font-weight:900;-webkit-text-stroke:1px rgba(218,35,35,.07);-webkit-text-fill-color:transparent;white-space:nowrap;letter-spacing:-.05em;user-select:none;pointer-events:none}
-    .cta-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(218,35,35,.25),transparent)}
-    .cta-line-t{top:0}.cta-line-b{bottom:0}
-    .cta-inner{position:relative;z-index:1}
-    .cta-label{font-size:.62rem;font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:var(--r);margin-bottom:24px}
-    .cta-h1{font-size:clamp(44px,8vw,110px);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:10px}
-    .cta-h2{font-size:clamp(44px,8vw,110px);font-weight:900;line-height:.95;letter-spacing:-.03em;-webkit-text-stroke:1px rgba(255,255,255,.15);-webkit-text-fill-color:transparent;margin-bottom:64px}
-    .cta-btns{display:flex;align-items:center;justify-content:center;gap:16px}
-    .btn-wh{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--b);background:var(--w);padding:16px 40px;transition:background .3s,transform .3s}
-    .btn-wh:hover{background:rgba(255,255,255,.88);transform:translateY(-2px)}
+.drag-hint{font-family:var(--fB);font-size:.6rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.15);text-align:center;margin-top:24px;display:flex;align-items:center;gap:16px;justify-content:center}
+.drag-hint::before,.drag-hint::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
 
-    /* ── FOOTER ── */
-    footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80px 60px 40px}
-    .ft{display:flex;justify-content:space-between;align-items:flex-start;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:32px}
-    .ft-brand .ft-logo{display:inline-flex;align-items:center;margin-bottom:12px}
-    .ft-logo svg{height:26px;width:auto}
-    .ft-pron{font-size:.72rem;color:rgba(255,255,255,.18);letter-spacing:.12em;margin-bottom:10px}
-    .ft-desc{font-size:.8rem;font-weight:300;color:var(--mu);line-height:1.8;max-width:220px}
-    .ft-col h4{font-size:.6rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--r);margin-bottom:18px}
-    .ft-col ul{list-style:none}
-    .ft-col li{margin-bottom:10px}
-    .ft-col a{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.35);transition:color .3s}
-    .ft-col a:hover{color:var(--w)}
-    .ft-sl{display:flex;align-items:center;gap:10px;font-size:.8rem;font-weight:300;color:rgba(255,255,255,.35);transition:color .3s;margin-bottom:10px}
-    .ft-sl:hover{color:var(--w)}
-    .ft-bottom{display:flex;justify-content:space-between;align-items:center}
-    .ft-copy{font-size:.7rem;color:rgba(255,255,255,.15);letter-spacing:.05em}
-    .ft-made{font-size:.7rem;color:rgba(255,255,255,.12)}
-    .ft-made span{color:var(--r);opacity:.7}
+/* ─── CTA ─── */
+#cta{position:relative;padding:180px 56px;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:var(--b)}
+.cta-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.11) 0%,transparent 60%)}
+.cta-ghostword{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fD);font-size:clamp(110px,19vw,260px);font-weight:900;-webkit-text-stroke:1px rgba(218,35,35,.08);-webkit-text-fill-color:transparent;white-space:nowrap;letter-spacing:-.04em;user-select:none;pointer-events:none}
+.cta-tline{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(218,35,35,.2),transparent)}
+.cta-bline{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(218,35,35,.2),transparent)}
+.cta-in{position:relative;z-index:1}
+.cta-tag{font-family:var(--fB);font-size:.6rem;font-weight:600;letter-spacing:.44em;text-transform:uppercase;color:var(--r);margin-bottom:20px}
+.cta-h1{font-family:var(--fD);font-size:clamp(52px,9vw,120px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:8px}
+.cta-h2{font-family:var(--fD);font-size:clamp(52px,9vw,120px);font-weight:900;line-height:.92;letter-spacing:-.03em;-webkit-text-stroke:1px rgba(255,255,255,.14);-webkit-text-fill-color:transparent;margin-bottom:60px}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px}
+.btn-white{display:inline-block;font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--b);background:var(--w);padding:14px 40px;transition:background .3s,transform .3s}
+.btn-white:hover{background:rgba(255,255,255,.88);transform:translateY(-2px)}
+.btn-outline{display:inline-block;font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w);border:1px solid rgba(255,255,255,.2);padding:14px 40px;transition:border-color .3s,background .3s,transform .3s}
+.btn-outline:hover{border-color:var(--r);background:rgba(218,35,35,.06);transform:translateY(-2px)}
 
-    /* ── MOBILE ── */
-    @media(max-width:900px){
-      nav{padding:20px 24px}
-      nav.s{padding:14px 24px}
-      .nr .nr-hide,.nbtn{display:none}
-      .burger{display:flex}
-      #hero{padding:0 24px 60px}
-      .h-eyebrow,.h-scroll-ind{display:none}
-      .h-bottom{flex-direction:column;align-items:flex-start;gap:28px}
-      .h-actions{align-items:flex-start}
-      .story-top{grid-template-columns:1fr;padding:0 24px;gap:48px}
-      .stats-strip{grid-template-columns:1fr}
-      .stat-item{padding:36px 24px}
-      .stat-item+.stat-item::before{top:0;left:20%;width:60%;height:1px}
-      .founders-wrap,.prod-wrap,.mission-inner,.sec-wrap{padding:0 24px}
-      .founders-header{flex-direction:column;align-items:flex-start;gap:16px}
-      .founders-header-desc{text-align:left;max-width:100%}
-      .founders-names{padding:24px 28px}
-      .founders-bios{grid-template-columns:1fr}
-      #mission,.#founders,#produkte{padding:80px 0}
-      #cta{padding:120px 24px}
-      .cta-btns{flex-direction:column}
-      footer{padding:60px 24px 32px}
-      .ft{flex-direction:column;gap:40px}
-      .ft-bottom{flex-direction:column;gap:10px;text-align:center}
-    }
-  </style>
+/* ─── FOOTER ─── */
+footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80px 56px 40px}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:32px}
+.ft-brand .ft-logo{display:inline-block;margin-bottom:12px}
+.ft-logo svg{height:24px;width:auto}
+.ft-pron{font-family:var(--fB);font-size:.7rem;color:rgba(255,255,255,.15);letter-spacing:.12em;margin-bottom:10px}
+.ft-desc{font-family:var(--fB);font-size:.78rem;font-weight:300;color:rgba(255,255,255,.28);line-height:1.8;max-width:210px}
+.ft-col h4{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.38em;text-transform:uppercase;color:var(--r);margin-bottom:18px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:10px}
+.ft-col a{font-family:var(--fB);font-size:.78rem;font-weight:300;color:rgba(255,255,255,.3);transition:color .3s}
+.ft-col a:hover{color:var(--w)}
+.ft-sl{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ft-sl a{font-family:var(--fB);font-size:.78rem;font-weight:300;color:rgba(255,255,255,.3);transition:color .3s;display:flex;align-items:center;gap:8px}
+.ft-sl a:hover{color:var(--w)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-family:var(--fB);font-size:.68rem;color:rgba(255,255,255,.14);letter-spacing:.05em}
+.ft-made{font-family:var(--fB);font-size:.68rem;color:rgba(255,255,255,.12)}
+.ft-made span{color:var(--r);opacity:.6}
+
+/* ─── LOGO SVG MACRO ─── */
+.logo-svg{display:block}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  nav{padding:18px 24px}
+  nav.stuck{padding:13px 24px}
+  .nav-r a:not(.nav-shop){display:none}
+  .nav-burger{display:flex}
+  #hero{padding:0 24px 56px}
+  .hero-side,.hero-year,.hero-scroll{display:none}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:24px}
+  .hero-actions{align-items:flex-start}
+  .story-grid{grid-template-columns:1fr;padding:0 24px;gap:40px}
+  .sec-ghost{font-size:clamp(100px,28vw,200px)}
+  .stats{grid-template-columns:1fr;border-left:none;border-right:none}
+  .stat+.stat::before{top:0;left:20%;width:60%;height:1px}
+  .stat{padding:36px 24px}
+  .founders-inner{padding:0 24px}
+  .founders-top{flex-direction:column;align-items:flex-start;gap:16px}
+  .founders-intro{text-align:left;max-width:100%}
+  .founders-labels{padding:20px 24px}
+  .founders-bios{grid-template-columns:1fr}
+  .mission-inner{padding:0 24px}
+  .prod-inner{padding:0 24px}
+  .prod-hd{flex-direction:column;align-items:flex-start;gap:12px}
+  #cta{padding:120px 24px}
+  .cta-btns{flex-direction:column}
+  footer{padding:56px 24px 32px}
+  .ft-top{flex-direction:column;gap:36px}
+  .ft-bot{flex-direction:column;gap:10px;text-align:center}
+}
+</style>
 </head>
 <body>
-<div id="c1"></div>
-<div id="c2"></div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nl">
-    <a href="#" aria-label="mystu home">
+<!-- grain -->
+<div id="grain"></div>
+
+<!-- cursor -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- scroll progress -->
+<div id="prog"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="ldr-logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">
         <path fill="#fff" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
         <path fill="#fff" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
@@ -328,137 +362,165 @@
         <path fill="#fff" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
         <path fill="#fff" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
       </svg>
-    </a>
+    </div>
+    <div class="ldr-line"></div>
   </div>
-  <div class="nr">
-    <a href="#story" class="nr-hide">Story</a>
-    <a href="#founders" class="nr-hide">Team</a>
-    <a href="#produkte" class="nr-hide">Kollektion</a>
-    <a href="https://mystu.shop" class="nbtn">Shop</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" aria-label="mystu">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7" class="logo-svg" style="height:18px;width:auto">
+      <path fill="#fff" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
+      <path fill="#fff" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
+      <path fill="#fff" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
+      <path fill="#fff" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
+      <path fill="#fff" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
+    </svg>
+  </a>
+  <div class="nav-r">
+    <a href="#story">Story</a>
+    <a href="#founders">Team</a>
+    <a href="#produkte">Kollektion</a>
+    <a href="https://mystu.shop" class="nav-shop">Shop</a>
   </div>
-  <div class="burger"><span></span><span></span><span></span></div>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hbg">
-    <div class="hbg-stripe"></div>
-    <div class="hbg-glow hbg-g1"></div>
-    <div class="hbg-glow hbg-g2"></div>
-    <div class="hbg-word">MYSTU</div>
+  <div class="hero-bg">
+    <div class="hero-glow hero-g1"></div>
+    <div class="hero-glow hero-g2"></div>
+    <div class="hero-bgword">MYSTU</div>
+    <div class="hero-stripe"></div>
   </div>
-  <div class="h-eyebrow">Stuttgart · Brustring · seit den 90ern</div>
-  <div class="h-main">
-    <div class="h-tag">Fanmode für den Brustring aus Stuttgart</div>
-    <div class="h-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">
-        <path fill="#fff" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
-        <path fill="#fff" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
-        <path fill="#fff" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
-        <path fill="#fff" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
-        <path fill="#fff" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
-      </svg>
-    </div>
-    <div class="h-bottom">
-      <div class="h-desc">
+  <div class="hero-side">Stuttgart · 1893 · Brustring · VfB · Stuttgart</div>
+  <div class="hero-year">1893</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fanmode für den Brustring aus Stuttgart</div>
+    <h1 class="hero-name"><span class="hero-name-inner">MYSTU</span></h1>
+    <div class="hero-bottom">
+      <div class="hero-desc">
         <p>Stuttgarter Fanmode für <strong>leidenschaftliche VfB-Fans.</strong> Hochwertig. Alltagstauglich. Für den Brustring.</p>
       </div>
-      <div class="h-actions">
-        <a href="https://mystu.shop" class="btn-main">Jetzt Shoppen</a>
-        <a href="#story" class="btn-ghost-sm">Unsere Story →</a>
+      <div class="hero-actions">
+        <a href="https://mystu.shop" class="btn-red">Jetzt Shoppen</a>
+        <a href="#story" class="btn-ghost">
+          Unsere Story
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </div>
-  <div class="h-scroll-ind"><span>Scroll</span><div class="h-scroll-line"></div></div>
+  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
 </section>
 
 <!-- MARQUEE -->
-<div class="mq">
-  <div class="mq-t">
-    <span class="mq-i"><b>Stuttgart</b><span class="mq-d"></span></span>
-    <span class="mq-i">Brustring Fanmode<span class="mq-d"></span></span>
-    <span class="mq-i"><b>VfB Stuttgart</b><span class="mq-d"></span></span>
-    <span class="mq-i">Seit den 90ern<span class="mq-d"></span></span>
-    <span class="mq-i">Weiß &amp; Rot<span class="mq-d"></span></span>
-    <span class="mq-i"><b>mystu</b><span class="mq-d"></span></span>
-    <span class="mq-i">Zwischen Code und Kurve<span class="mq-d"></span></span>
-    <span class="mq-i">Premium Design<span class="mq-d"></span></span>
-    <span class="mq-i"><b>Stuttgart</b><span class="mq-d"></span></span>
-    <span class="mq-i">Brustring Fanmode<span class="mq-d"></span></span>
-    <span class="mq-i"><b>VfB Stuttgart</b><span class="mq-d"></span></span>
-    <span class="mq-i">Seit den 90ern<span class="mq-d"></span></span>
-    <span class="mq-i">Weiß &amp; Rot<span class="mq-d"></span></span>
-    <span class="mq-i"><b>mystu</b><span class="mq-d"></span></span>
-    <span class="mq-i">Zwischen Code und Kurve<span class="mq-d"></span></span>
-    <span class="mq-i">Premium Design<span class="mq-d"></span></span>
+<div class="mq-band">
+  <div class="mq-row">
+    <div class="mq-track mq-track-1">
+      <span class="mq-item"><b>Stuttgart</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Brustring Fanmode<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>VfB Stuttgart</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Seit den 90ern<span class="mq-sep"></span></span>
+      <span class="mq-item">Weiß &amp; Rot<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>mystu</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Premium Design<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>Stuttgart</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Brustring Fanmode<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>VfB Stuttgart</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Seit den 90ern<span class="mq-sep"></span></span>
+      <span class="mq-item">Weiß &amp; Rot<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>mystu</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Premium Design<span class="mq-sep"></span></span>
+    </div>
+  </div>
+  <div class="mq-row mq-row-2">
+    <div class="mq-track mq-track-2">
+      <span class="mq-item">Zwischen Code und Kurve<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>1893</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Für echte Fans<span class="mq-sep"></span></span>
+      <span class="mq-item">Made in Stuttgart<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>Brustring</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Mode &amp; Leidenschaft<span class="mq-sep"></span></span>
+      <span class="mq-item">Zwischen Code und Kurve<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>1893</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Für echte Fans<span class="mq-sep"></span></span>
+      <span class="mq-item">Made in Stuttgart<span class="mq-sep"></span></span>
+      <span class="mq-item"><b>Brustring</b><span class="mq-sep"></span></span>
+      <span class="mq-item">Mode &amp; Leidenschaft<span class="mq-sep"></span></span>
+    </div>
   </div>
 </div>
 
 <!-- STORY -->
 <section id="story">
-  <div class="story-top">
-    <div class="sl2">
-      <p class="sec-label">Wer wir sind</p>
-      <h2 class="st-oversize">Mehr<br/>als nur<br/><em>ein Logo.</em></h2>
-      <div class="st-body">
+  <div class="sec-ghost">01</div>
+  <div class="story-grid">
+    <div class="rvL">
+      <p class="slabel">Wer wir sind</p>
+      <h2 class="story-headline">Mehr<br/>als nur<br/><em>ein Logo.</em></h2>
+      <div class="story-body">
         <p>Wir sind <strong>Yusuf und Michele</strong> — zwei leidenschaftliche weiß-rote Stuttgart Fans, seit unserer Kindheit tief mit dem VfB verbunden. Geboren in den 90ern, haben wir den Brustring durch Höhen und Tiefen begleitet.</p>
-        <p>Wir haben uns nach Fanbekleidung gesehnt, die stärker über <strong>Design</strong> kommt: hochwertig, alltagstauglich, mit Details die echte Fans erkennen. So entstand <strong>mystu [mɪstu]</strong>.</p>
+        <p>Wir suchten nach Fanbekleidung, die stärker über <strong>Design</strong> kommt: hochwertig, alltagstauglich, mit Details die echte Fans erkennen. So entstand <strong>mystu [mɪstu]</strong>.</p>
       </div>
-      <div class="st-quote">
+      <div class="story-quote">
         <p>„Das können wir besser." — und das wollten wir ändern.</p>
-        <span>— Yusuf &amp; Michele, Gründer · Stuttgart</span>
+        <cite>— Yusuf &amp; Michele, Gründer · Stuttgart</cite>
       </div>
     </div>
 
-    <div class="st-right sr2">
-      <div class="stc">
-        <div class="stc-inner">
-          <div class="stc-left">
-            <p class="stc-tag">Zwischen Code und Kurve</p>
-            <h3 class="stc-head">Eine Idee entsteht</h3>
-            <p class="stc-text">Als Designer und Entwickler sahen wir täglich das Potenzial für bessere Stuttgarter Fanmode — und haben es selbst gebaut.</p>
-            <div class="stc-cta">Unsere Story ↗</div>
+    <div class="story-cards rvR">
+      <div class="sc">
+        <div class="sc-in">
+          <div class="sc-l">
+            <p class="sc-tag">Zwischen Code und Kurve</p>
+            <h3 class="sc-h">Eine Idee entsteht</h3>
+            <p class="sc-p">Als Designer und Entwickler sahen wir täglich das Potenzial für bessere Stuttgarter Fanmode — und haben es selbst gebaut.</p>
+            <span class="sc-arr">Story lesen ↗</span>
           </div>
-          <span class="stc-num">01</span>
+          <span class="sc-num">01</span>
         </div>
       </div>
-      <div class="stc">
-        <div class="stc-inner">
-          <div class="stc-left">
-            <p class="stc-tag">Design First</p>
-            <h3 class="stc-head">Mode, die Geschichten erzählt</h3>
-            <p class="stc-text">Jedes Stück erzählt eine Geschichte — von der Saison 23/24, von großen Momenten, von der Leidenschaft für den Brustring Stuttgart.</p>
-            <div class="stc-cta">Kollektion entdecken ↗</div>
+      <div class="sc">
+        <div class="sc-in">
+          <div class="sc-l">
+            <p class="sc-tag">Design First</p>
+            <h3 class="sc-h">Mode, die Geschichten erzählt</h3>
+            <p class="sc-p">Jedes Stück erzählt eine Geschichte — von großen Momenten, von der Leidenschaft für den VfB Stuttgart und den Brustring.</p>
+            <span class="sc-arr">Kollektion ↗</span>
           </div>
-          <span class="stc-num">02</span>
+          <span class="sc-num">02</span>
         </div>
       </div>
-      <div class="stc">
-        <div class="stc-inner">
-          <div class="stc-left">
-            <p class="stc-tag">Für echte Fans</p>
-            <h3 class="stc-head">Stolz sichtbar machen</h3>
-            <p class="stc-text">Fanmode, die die Verbindung zum VfB Stuttgart authentisch widerspiegelt — nicht trotz, sondern wegen des Designs.</p>
-            <div class="stc-cta">Jetzt shoppen ↗</div>
+      <div class="sc">
+        <div class="sc-in">
+          <div class="sc-l">
+            <p class="sc-tag">Für echte Stuttgart Fans</p>
+            <h3 class="sc-h">Stolz sichtbar machen</h3>
+            <p class="sc-p">Fanmode, die die Verbindung zum VfB Stuttgart authentisch widerspiegelt — nicht trotz, sondern wegen des Designs.</p>
+            <span class="sc-arr">Jetzt shoppen ↗</span>
           </div>
-          <span class="stc-num">03</span>
+          <span class="sc-num">03</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Stats -->
-  <div class="stats-strip sr">
-    <div class="stat-item">
-      <div class="stat-n"><span class="count" data-target="90">0</span>er</div>
-      <div class="stat-l">Geboren in Stuttgart</div>
+  <div class="stats rv">
+    <div class="stat">
+      <div class="stat-n"><span class="cnt" data-to="90">0</span><em>er</em></div>
+      <div class="stat-l">In Stuttgart geboren</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-n"><span>100</span><span style="color:var(--r)">%</span></div>
+    <div class="stat">
+      <div class="stat-n">100<em>%</em></div>
       <div class="stat-l">Leidenschaft für den VfB</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-n"><span>∞</span></div>
+    <div class="stat">
+      <div class="stat-n">∞</div>
       <div class="stat-l">Brustring im Herzen</div>
     </div>
   </div>
@@ -466,40 +528,40 @@
 
 <!-- FOUNDERS -->
 <section id="founders">
-  <div class="founders-wrap">
-    <div class="founders-header sr">
+  <div class="founders-inner">
+    <div class="founders-top rv">
       <div>
-        <p class="sec-label">Das Team</p>
-        <h2 class="sec-title">Zwei Fans.<br/><em>Eine Vision.</em></h2>
+        <p class="slabel">Das Team</p>
+        <h2 class="founders-headline">Zwei Fans.<br/><em>Eine Vision.</em></h2>
       </div>
-      <p class="founders-header-desc">Als Designer und Entwickler aus Stuttgart haben wir mystu aus einer echten Leidenschaft für den Brustring heraus gegründet.</p>
+      <p class="founders-intro">Als Designer und Entwickler aus Stuttgart haben wir mystu aus echter Leidenschaft für den Brustring gegründet.</p>
     </div>
 
-    <div class="founders-photo-box sr">
+    <div class="founders-photo">
       <img src="gruender.webp" alt="Yusuf und Michele, Gründer von mystu — VfB Stuttgart Fans aus Stuttgart"/>
-      <div class="founders-overlay"></div>
-      <div class="founders-names">
-        <div class="fn">
-          <span class="fn-name">Yusuf</span>
-          <span class="fn-role">Co-Gründer · Entwickler</span>
+      <div class="founders-photo-overlay"></div>
+      <div class="founders-labels">
+        <div class="fl">
+          <span class="fl-name">Yusuf</span>
+          <span class="fl-role">Co-Gründer · Entwickler</span>
         </div>
-        <div class="fn">
-          <span class="fn-name">Michele</span>
-          <span class="fn-role">Co-Gründer · Designer</span>
+        <div class="fl">
+          <span class="fl-name">Michele</span>
+          <span class="fl-role">Co-Gründer · Designer</span>
         </div>
       </div>
     </div>
 
     <div class="founders-bios">
-      <div class="fbc sr d1">
-        <p class="fbc-name">Yusuf</p>
-        <p class="fbc-role">Co-Gründer · Entwickler</p>
-        <p class="fbc-text">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
+      <div class="fbc rv d1">
+        <p class="fbc-n">Yusuf</p>
+        <p class="fbc-r">Co-Gründer · Entwickler</p>
+        <p class="fbc-t">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
       </div>
-      <div class="fbc sr d2">
-        <p class="fbc-name">Michele</p>
-        <p class="fbc-role">Co-Gründer · Designer</p>
-        <p class="fbc-text">Michele ist der kreative Kopf. Als Designer entwirft er Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen — authentisch, hochwertig, alltagstauglich.</p>
+      <div class="fbc rv d2">
+        <p class="fbc-n">Michele</p>
+        <p class="fbc-r">Co-Gründer · Designer</p>
+        <p class="fbc-t">Michele ist der kreative Kopf. Als Designer entwirft er Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen — authentisch, hochwertig, alltagstauglich.</p>
       </div>
     </div>
   </div>
@@ -507,13 +569,13 @@
 
 <!-- MISSION -->
 <section id="mission">
-  <div class="mission-bg"></div>
   <div class="mission-ghost">STUTTGART</div>
+  <div class="mission-glow"></div>
   <div class="mission-inner">
-    <p class="sec-label sr">Unsere Mission</p>
-    <h2 class="mission-big sr d1">Gemeinsam<br/><span class="out">für den Brustring.</span></h2>
-    <p class="mission-text sr d2">Mit mystu zeigst du deine Verbundenheit zum <strong>geilsten Verein aus Stuttgart</strong> auf eine neue Art. Mode als Ausdruck von Stolz, Identität und Leidenschaft — für Fans, die mehr wollen.</p>
-    <div class="pills sr d3">
+    <p class="slabel rv">Unsere Mission</p>
+    <h2 class="mission-big rv d1">Gemeinsam<br/><span class="out">für den Brustring.</span></h2>
+    <p class="mission-text rv d2">Mit mystu zeigst du deine Verbundenheit zum <strong>geilsten Verein aus Stuttgart</strong> auf eine neue Art. Mode als Ausdruck von Stolz, Identität und Leidenschaft — für Fans, die mehr wollen.</p>
+    <div class="pills rv d3">
       <span class="pill">Premium Qualität</span>
       <span class="pill">Stuttgart Design</span>
       <span class="pill">Alltagstauglich</span>
@@ -526,96 +588,88 @@
 
 <!-- PRODUKTE -->
 <section id="produkte">
-  <div class="prod-wrap">
-    <div class="prod-header sr">
+  <div class="prod-inner">
+    <div class="prod-hd rv">
       <div>
-        <p class="sec-label">Kollektion</p>
-        <h2 class="sec-title">Aktuelle Drops.</h2>
+        <p class="slabel">Kollektion</p>
+        <h2 class="prod-hd-title">Aktuelle<br/>Drops.</h2>
       </div>
-      <a href="https://mystu.shop" class="prod-link">Alle ansehen →</a>
+      <a href="https://mystu.shop" class="prod-all">Alle ansehen →</a>
     </div>
 
-    <div class="prod-track sr d1" id="prodTrack">
-      <div class="prod-card">
-        <div class="prod-img">
-          <div class="prod-img-bg"></div>
-          <div class="prod-img-glow"></div>
-          <div class="prod-ph"><span class="prod-ph-ico">👕</span><span class="prod-ph-txt">Produktfoto einfügen</span></div>
+    <div class="prod-track rv d1" id="pt">
+      <div class="pcard">
+        <div class="pcard-img"><div class="pcard-bg"></div><div class="pcard-glow"></div>
+          <div class="pcard-ph"><span>👕</span><span>Produktfoto einfügen</span></div>
         </div>
-        <div class="prod-info">
-          <p class="prod-cat">Streetwear</p>
-          <p class="prod-name">Brustring Hoodie</p>
-          <p class="prod-sub">Stuttgart Edition</p>
-          <a href="https://mystu.shop" class="prod-shop">Shop →</a>
+        <div class="pcard-info">
+          <p class="pcard-cat">Streetwear</p>
+          <p class="pcard-name">Brustring Hoodie</p>
+          <p class="pcard-sub">Stuttgart Edition</p>
+          <a href="https://mystu.shop" class="pcard-btn">Shop →</a>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img">
-          <div class="prod-img-bg"></div>
-          <div class="prod-img-glow"></div>
-          <div class="prod-ph"><span class="prod-ph-ico">🧢</span><span class="prod-ph-txt">Produktfoto einfügen</span></div>
+      <div class="pcard">
+        <div class="pcard-img"><div class="pcard-bg"></div><div class="pcard-glow"></div>
+          <div class="pcard-ph"><span>🧢</span><span>Produktfoto einfügen</span></div>
         </div>
-        <div class="prod-info">
-          <p class="prod-cat">Accessories</p>
-          <p class="prod-name">Stuttgart Cap</p>
-          <p class="prod-sub">Weiß &amp; Rot</p>
-          <a href="https://mystu.shop" class="prod-shop">Shop →</a>
+        <div class="pcard-info">
+          <p class="pcard-cat">Accessories</p>
+          <p class="pcard-name">Stuttgart Cap</p>
+          <p class="pcard-sub">Weiß &amp; Rot</p>
+          <a href="https://mystu.shop" class="pcard-btn">Shop →</a>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img">
-          <div class="prod-img-bg"></div>
-          <div class="prod-img-glow"></div>
-          <div class="prod-ph"><span class="prod-ph-ico">👟</span><span class="prod-ph-txt">Produktfoto einfügen</span></div>
+      <div class="pcard">
+        <div class="pcard-img"><div class="pcard-bg"></div><div class="pcard-glow"></div>
+          <div class="pcard-ph"><span>👟</span><span>Produktfoto einfügen</span></div>
         </div>
-        <div class="prod-info">
-          <p class="prod-cat">Lifestyle</p>
-          <p class="prod-name">Kurve Edition Tee</p>
-          <p class="prod-sub">VfB Stuttgart</p>
-          <a href="https://mystu.shop" class="prod-shop">Shop →</a>
+        <div class="pcard-info">
+          <p class="pcard-cat">Lifestyle</p>
+          <p class="pcard-name">Kurve Edition Tee</p>
+          <p class="pcard-sub">VfB Stuttgart</p>
+          <a href="https://mystu.shop" class="pcard-btn">Shop →</a>
         </div>
       </div>
-      <div class="prod-card">
-        <div class="prod-img">
-          <div class="prod-img-bg"></div>
-          <div class="prod-img-glow"></div>
-          <div class="prod-ph"><span class="prod-ph-ico">🧣</span><span class="prod-ph-txt">Produktfoto einfügen</span></div>
+      <div class="pcard">
+        <div class="pcard-img"><div class="pcard-bg"></div><div class="pcard-glow"></div>
+          <div class="pcard-ph"><span>🧣</span><span>Produktfoto einfügen</span></div>
         </div>
-        <div class="prod-info">
-          <p class="prod-cat">Accessories</p>
-          <p class="prod-name">Brustring Scarf</p>
-          <p class="prod-sub">Limited Drop</p>
-          <a href="https://mystu.shop" class="prod-shop">Shop →</a>
+        <div class="pcard-info">
+          <p class="pcard-cat">Limited</p>
+          <p class="pcard-name">Brustring Scarf</p>
+          <p class="pcard-sub">Limited Drop</p>
+          <a href="https://mystu.shop" class="pcard-btn">Shop →</a>
         </div>
       </div>
     </div>
-    <p class="prod-scroll-hint sr d2">← Scrollen →</p>
+    <p class="drag-hint rv d2">← Ziehen zum Scrollen →</p>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
   <div class="cta-bg"></div>
-  <div class="cta-bg-ghost">MYSTU</div>
-  <div class="cta-line cta-line-t"></div>
-  <div class="cta-line cta-line-b"></div>
-  <div class="cta-inner">
-    <p class="cta-label sr">Stuttgart · Brustring · mystu</p>
-    <h2 class="cta-h1 sr d1">DEIN STYLE.</h2>
-    <h2 class="cta-h2 sr d2">DEINE STATEMENT.</h2>
-    <div class="cta-btns sr d3">
-      <a href="https://mystu.shop" class="btn-main">Jetzt Shoppen</a>
-      <a href="https://mystu.shop" class="btn-wh">Kollektion ansehen</a>
+  <div class="cta-ghostword">MYSTU</div>
+  <div class="cta-tline"></div>
+  <div class="cta-bline"></div>
+  <div class="cta-in">
+    <p class="cta-tag rv">Stuttgart · Brustring · mystu [mɪstu]</p>
+    <h2 class="cta-h1 rv d1">DEIN STYLE.</h2>
+    <h2 class="cta-h2 rv d2">DEINE STATEMENT.</h2>
+    <div class="cta-btns rv d3">
+      <a href="https://mystu.shop" class="btn-red">Jetzt Shoppen</a>
+      <a href="https://mystu.shop" class="btn-outline">Kollektion ansehen</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft">
+  <div class="ft-top">
     <div class="ft-brand">
       <a href="#" class="ft-logo" aria-label="mystu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7" style="height:24px;width:auto">
           <path fill="#fff" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
           <path fill="#fff" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
           <path fill="#fff" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
@@ -624,7 +678,7 @@
         </svg>
       </a>
       <p class="ft-pron">[mɪstu] — Stuttgart</p>
-      <p class="ft-desc">Premium Fanmode für den Brustring aus Stuttgart. Gegründet von zwei leidenschaftlichen VfB Stuttgart Fans.</p>
+      <p class="ft-desc">Premium Fanmode für den Brustring. Von zwei VfB Stuttgart Fans — für alle echten Fans.</p>
     </div>
     <div class="ft-col">
       <h4>Navigation</h4>
@@ -637,75 +691,99 @@
     </div>
     <div class="ft-col">
       <h4>Folge uns</h4>
-      <a href="https://instagram.com/mystu_shop/" class="ft-sl" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
-        @mystu_shop
-      </a>
-      <a href="https://tiktok.com/@mystu.shop" class="ft-sl" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        @mystu.shop
-      </a>
+      <div class="ft-sl">
+        <a href="https://instagram.com/mystu_shop/" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          @mystu_shop
+        </a>
+      </div>
+      <div class="ft-sl">
+        <a href="https://tiktok.com/@mystu.shop" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          @mystu.shop
+        </a>
+      </div>
     </div>
   </div>
-  <div class="ft-bottom">
+  <div class="ft-bot">
     <p class="ft-copy">&copy; 2026 mystu — Alle Rechte vorbehalten.</p>
     <p class="ft-made">Gegründet von <span>Yusuf &amp; Michele</span> · VfB Stuttgart Fans seit Kindheit</p>
   </div>
 </footer>
 
 <script>
-// Cursor
-const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+// ── Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('out'),1600);
+});
+
+// ── Cursor
+const c1=document.getElementById('cur'),c2=document.getElementById('cur2');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function tick(){
   c1.style.left=mx+'px';c1.style.top=my+'px';
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;
   c2.style.left=rx+'px';c2.style.top=ry+'px';
   requestAnimationFrame(tick);
 })();
 document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{c1.style.width='12px';c1.style.height='12px';c2.style.width='44px';c2.style.height='44px'});
-  el.addEventListener('mouseleave',()=>{c1.style.width='6px';c1.style.height='6px';c2.style.width='28px';c2.style.height='28px'});
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
 });
 
-// Nav
+// ── Nav scroll
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>60));
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('stuck',scrollY>60);
+  const p=(scrollY/(document.body.scrollHeight-innerHeight))*100;
+  prog.style.width=p+'%';
+});
 
-// Scroll reveal
+// ── Scroll reveal
 const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}});
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
 },{threshold:.08});
-document.querySelectorAll('.sr,.sl2,.sr2').forEach(el=>obs.observe(el));
+document.querySelectorAll('.rv,.rvL,.rvR').forEach(el=>obs.observe(el));
 
-// Clip-path reveal for founders photo (special observer)
+// clip-path reveal for founders photo
 const photoObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');photoObs.unobserve(e.target)}});
-},{threshold:.15});
-document.querySelectorAll('.founders-photo-box').forEach(el=>photoObs.observe(el));
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');photoObs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.founders-photo').forEach(el=>photoObs.observe(el));
 
-// Drag scroll for product track
-const track=document.getElementById('prodTrack');
-let isDown=false,startX,scrollLeft;
-track.addEventListener('mousedown',e=>{isDown=true;track.classList.add('active');startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft});
-track.addEventListener('mouseleave',()=>isDown=false);
-track.addEventListener('mouseup',()=>isDown=false);
-track.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-track.offsetLeft;const walk=(x-startX)*1.5;track.scrollLeft=scrollLeft-walk});
+// ── Counter animation
+const cntObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    const to=parseInt(el.dataset.to);
+    let start=null;
+    const dur=1200;
+    function step(ts){
+      if(!start)start=ts;
+      const p=Math.min((ts-start)/dur,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.round(ease*to);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    cntObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>cntObs.observe(el));
 
-// Text scramble on hero logo
-const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-function scramble(el,final,duration=800){
-  let start=null;
-  const og=final;
-  function step(ts){
-    if(!start)start=ts;
-    const p=Math.min((ts-start)/duration,1);
-    el.textContent=og.split('').map((c,i)=>p>(i/og.length)?c:chars[Math.floor(Math.random()*chars.length)]).join('');
-    if(p<1)requestAnimationFrame(step);else el.textContent=og;
-  }
-  requestAnimationFrame(step);
-}
+// ── Drag scroll
+const pt=document.getElementById('pt');
+let down=false,sx,sl;
+pt.addEventListener('mousedown',e=>{down=true;pt.classList.add('dragging');sx=e.pageX-pt.offsetLeft;sl=pt.scrollLeft});
+window.addEventListener('mouseup',()=>{down=false;pt.classList.remove('dragging')});
+pt.addEventListener('mousemove',e=>{
+  if(!down)return;
+  e.preventDefault();
+  pt.scrollLeft=sl-(e.pageX-pt.offsetLeft-sx)*1.4;
+});
 </script>
 </body>
 </html>
