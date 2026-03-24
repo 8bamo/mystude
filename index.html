@@ -159,6 +159,53 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .sec-line{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(218,35,35,.25) 30%,rgba(218,35,35,.25) 70%,transparent);margin:0}
 .sec-line-w{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(0,0,0,.1) 30%,rgba(0,0,0,.1) 70%,transparent);margin:0}
 
+/* ─── MANIFESTO STRIP ─── */
+#manifesto{position:relative;padding:clamp(80px,12vw,160px) 56px;overflow:hidden;background:var(--b);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.mf-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(218,35,35,.09) 0%,transparent 55%);pointer-events:none}
+.mf-line{position:absolute;top:0;left:0;width:0;height:2px;background:var(--r);transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.mf-line.vis{width:100%}
+.mf-inner{position:relative;z-index:1;max-width:1340px;margin:0 auto}
+.mf-tag{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.44em;text-transform:uppercase;color:var(--r);margin-bottom:clamp(24px,4vw,48px);opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease}
+.mf-tag.vis{opacity:1;transform:none}
+.mf-h1{font-family:var(--fD);font-size:clamp(56px,9.5vw,148px);font-weight:900;line-height:.88;letter-spacing:-.03em;margin-bottom:4px}
+.mf-h2{font-family:var(--fD);font-size:clamp(56px,9.5vw,148px);font-weight:900;line-height:.88;letter-spacing:-.03em;-webkit-text-stroke:1.5px rgba(255,255,255,.18);-webkit-text-fill-color:transparent}
+.mf-right{position:absolute;right:56px;bottom:clamp(32px,6vw,80px);text-align:right}
+.mf-cite{font-family:var(--fB);font-size:.68rem;font-weight:300;color:rgba(255,255,255,.2);letter-spacing:.18em}
+@media(max-width:900px){#manifesto{padding:80px 24px}.mf-right{display:none}}
+
+/* ─── PORTRAIT STRIP ─── */
+#portrait{position:relative;overflow:hidden;height:85vh;min-height:500px}
+.portrait-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 8s ease-out}
+#portrait:hover .portrait-img{transform:scale(1.04)}
+.portrait-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.85) 0%,rgba(8,8,8,.3) 50%,rgba(8,8,8,.1) 100%)}
+.portrait-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(32px,6vw,80px) clamp(32px,6vw,80px)}
+.portrait-label{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.44em;text-transform:uppercase;color:var(--r);margin-bottom:16px}
+.portrait-big{font-family:var(--fD);font-size:clamp(64px,11vw,160px);font-weight:900;line-height:.88;letter-spacing:-.03em;max-width:700px}
+.portrait-sub{margin-top:24px;font-family:var(--fB);font-size:.82rem;font-weight:300;color:rgba(255,255,255,.38);max-width:360px;line-height:1.8}
+@media(max-width:900px){#portrait{height:70vw;min-height:340px}.portrait-overlay{background:linear-gradient(to top,rgba(8,8,8,.95) 0%,rgba(8,8,8,.5) 60%,rgba(8,8,8,.2) 100%)}.portrait-content{justify-content:flex-end}}
+
+/* ─── GALLERY height variation ─── */
+.gallery-slide:nth-child(1){width:62vw;height:78vh}
+.gallery-slide:nth-child(2){width:38vw;height:62vh;align-self:flex-end}
+.gallery-slide:nth-child(3){width:52vw;height:72vh}
+.gallery-slide:nth-child(4){width:46vw;height:66vh;align-self:flex-end}
+.gallery-track{align-items:flex-start}
+
+/* ─── STATS upgrade ─── */
+.stat-n{font-size:clamp(72px,8vw,110px)}
+
+/* ─── MISSION ghost bigger ─── */
+.mission-ghost{font-size:clamp(120px,22vw,300px);color:rgba(255,255,255,.038);letter-spacing:-.05em}
+.mission-glow{background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.1) 0%,transparent 65%)}
+
+/* ─── CTA upgrade ─── */
+.cta-h1{font-size:clamp(72px,12vw,160px)}
+.cta-h2{font-size:clamp(72px,12vw,160px)}
+.cta-bg::before{background:radial-gradient(ellipse at 50% 50%,rgba(218,35,35,.16) 0%,transparent 55%);animation:ctaGlow 4s ease-in-out infinite}
+@keyframes ctaGlow{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.cta-ghostword{font-size:clamp(130px,22vw,320px);animation:ghostPulse 6s ease-in-out infinite}
+@keyframes ghostPulse{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.6;transform:translate(-50%,-50%) scale(1.03)}}
+
 /* ─── SECTION LABELS ─── */
 .slabel{font-family:var(--fB);font-size:.6rem;font-weight:600;letter-spacing:.44em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
 
@@ -216,10 +263,7 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .gallery-track::-webkit-scrollbar{display:none}
 .gallery-slide{flex:0 0 auto;position:relative;overflow:hidden;scroll-snap-align:start;border:1px solid rgba(255,255,255,.06);transition:border-color .3s}
 .gallery-slide:hover{border-color:rgba(218,35,35,.2)}
-.gallery-slide:nth-child(1){width:58vw;height:70vh}
-.gallery-slide:nth-child(2){width:40vw;height:70vh}
-.gallery-slide:nth-child(3){width:50vw;height:70vh}
-.gallery-slide:nth-child(4){width:54vw;height:70vh}
+/* gallery heights now set in upgrade block above */
 .gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
 .gallery-slide:hover img{transform:scale(1.04)}
 .gallery-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 55%)}
@@ -588,6 +632,33 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
   </div>
 </section>
 
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="mf-bg"></div>
+  <div class="mf-line rv"></div>
+  <div class="mf-inner">
+    <p class="mf-tag rv">Stuttgart · Brustring · mystu</p>
+    <div class="split-wrap"><span class="split-inner"><h2 class="mf-h1">NICHT NUR</h2></span></div>
+    <div class="split-wrap d1"><span class="split-inner"><h2 class="mf-h1">EIN HOODIE.</h2></span></div>
+    <div class="split-wrap d2"><span class="split-inner"><h2 class="mf-h2">EIN BEKENNTNIS.</h2></span></div>
+  </div>
+  <div class="mf-right">
+    <p class="mf-cite rv">Seit 2024 · Stuttgart · 0711</p>
+  </div>
+</section>
+
+<!-- PORTRAIT STRIP -->
+<section id="portrait">
+  <img class="portrait-img rv" src="1000x1500px-0711-stuttgart.webp" alt="mystu Stuttgart — Premium Fanmode Brustring"/>
+  <div class="portrait-overlay"></div>
+  <div class="portrait-content">
+    <p class="portrait-label rv">Das Label</p>
+    <div class="split-wrap"><span class="split-inner"><h2 class="portrait-big">PREMIUM.</h2></span></div>
+    <div class="split-wrap d1"><span class="split-inner"><h2 class="portrait-big">STUTTGART.</h2></span></div>
+    <p class="portrait-sub rv d2">Mode für den Brustring — entworfen von echten Fans, getragen von echten Fans.</p>
+  </div>
+</section>
+
 <div class="sec-line"></div>
 <!-- GALLERY -->
 <section id="gallery">
@@ -878,6 +949,22 @@ const splitObs=new IntersectionObserver(entries=>{
   });
 },{threshold:.15});
 document.querySelectorAll('.story-headline,.founders-headline,.mission-big,.cta-h1,.cta-h2,.gallery-head h2,.prod-hd-title').forEach(el=>splitObs.observe(el));
+
+// ── Manifesto + Portrait split-wraps (already in DOM, observe parent sections)
+const sectObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.split-wrap').forEach((w,i)=>{
+        setTimeout(()=>w.classList.add('vis'),i*120);
+      });
+      e.target.querySelectorAll('.mf-tag,.mf-line,.portrait-label,.portrait-sub,.portrait-img').forEach((el,i)=>{
+        setTimeout(()=>el.classList.add('vis'),i*80);
+      });
+      sectObs.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('#manifesto,#portrait').forEach(el=>sectObs.observe(el));
 
 // ── Nav scroll
 const nav=document.getElementById('nav');
