@@ -187,6 +187,41 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .stat-n em{font-style:normal;color:var(--r)}
 .stat-l{font-family:var(--fB);font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
 
+/* ─── GALLERY ─── */
+#gallery{position:relative;height:400vh}
+.gallery-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.gallery-header{position:absolute;top:56px;left:56px;z-index:2;pointer-events:none}
+.gallery-header .slabel{margin-bottom:6px}
+.gallery-header h2{font-family:var(--fD);font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.01em;line-height:1}
+.gallery-progress{position:absolute;bottom:40px;left:56px;right:56px;z-index:2;display:flex;align-items:center;gap:16px}
+.gallery-progress-bar{flex:1;height:1px;background:rgba(255,255,255,.08)}
+.gallery-progress-fill{height:1px;background:var(--r);width:0%;transition:width .1s linear}
+.gallery-progress-count{font-family:var(--fD);font-size:.85rem;font-weight:700;color:rgba(255,255,255,.25);white-space:nowrap;letter-spacing:.05em}
+.gallery-track{display:flex;gap:20px;padding:0 56px;will-change:transform;transition:transform .05s linear}
+.gallery-slide{flex:0 0 auto;height:78vh;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.gallery-slide:nth-child(1){width:55vw}
+.gallery-slide:nth-child(2){width:38vw}
+.gallery-slide:nth-child(3){width:45vw}
+.gallery-slide:nth-child(4){width:50vw}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s}
+.gallery-slide:hover img{transform:scale(1.04);filter:contrast(1.06)}
+.gallery-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%);opacity:0;transition:opacity .4s}
+.gallery-slide:hover .gallery-slide-overlay{opacity:1}
+.gallery-slide-caption{position:absolute;bottom:24px;left:24px;font-family:var(--fD);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--w);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.gallery-slide:hover .gallery-slide-caption{opacity:1;transform:none}
+@media(max-width:900px){
+  #gallery{height:300vh}
+  .gallery-sticky{height:100svh}
+  .gallery-header{top:100px;left:24px}
+  .gallery-progress{left:24px;right:24px;bottom:28px}
+  .gallery-track{padding:0 24px;gap:12px}
+  .gallery-slide:nth-child(1){width:80vw}
+  .gallery-slide:nth-child(2){width:70vw}
+  .gallery-slide:nth-child(3){width:75vw}
+  .gallery-slide:nth-child(4){width:78vw}
+  .gallery-slide{height:65vh}
+}
+
 /* ─── FOUNDERS ─── */
 #founders{padding:140px 0;overflow:hidden}
 .founders-inner{max-width:1340px;margin:0 auto;padding:0 56px}
@@ -526,6 +561,42 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-sticky">
+    <div class="gallery-header">
+      <p class="slabel">Behind the Brand</p>
+      <h2>mystu in<br/>Aktion.</h2>
+    </div>
+    <div class="gallery-track" id="gtrack">
+      <div class="gallery-slide">
+        <img src="gruppenbild.png" alt="mystu Team Stuttgart — VfB Stuttgart Fans"/>
+        <div class="gallery-slide-overlay"></div>
+        <span class="gallery-slide-caption">mystu Team · Stuttgart</span>
+      </div>
+      <div class="gallery-slide">
+        <img src="typ shooting.png" alt="mystu Shooting — Brustring Fanmode Stuttgart"/>
+        <div class="gallery-slide-overlay"></div>
+        <span class="gallery-slide-caption">Shooting · Stuttgart</span>
+      </div>
+      <div class="gallery-slide">
+        <img src="gruppe2.png" alt="mystu — VfB Stuttgart Fans in Fanmode"/>
+        <div class="gallery-slide-overlay"></div>
+        <span class="gallery-slide-caption">Brustring · VfB Stuttgart</span>
+      </div>
+      <div class="gallery-slide">
+        <img src="grupp3.png" alt="mystu Kollektion — Premium Fanmode Stuttgart"/>
+        <div class="gallery-slide-overlay"></div>
+        <span class="gallery-slide-caption">Kollektion · mystu</span>
+      </div>
+    </div>
+    <div class="gallery-progress">
+      <div class="gallery-progress-bar"><div class="gallery-progress-fill" id="gfill"></div></div>
+      <span class="gallery-progress-count" id="gcnt">01 / 04</span>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDERS -->
 <section id="founders">
   <div class="founders-inner">
@@ -773,6 +844,39 @@ const cntObs=new IntersectionObserver(entries=>{
   });
 },{threshold:.5});
 document.querySelectorAll('.cnt').forEach(el=>cntObs.observe(el));
+
+// ── Gallery sticky horizontal scroll
+(function(){
+  const section=document.getElementById('gallery');
+  const track=document.getElementById('gtrack');
+  const fill=document.getElementById('gfill');
+  const cnt=document.getElementById('gcnt');
+  const slides=track.querySelectorAll('.gallery-slide');
+  if(!section||!track)return;
+
+  function update(){
+    const rect=section.getBoundingClientRect();
+    const totalScroll=section.offsetHeight-window.innerHeight;
+    const scrolled=Math.max(0,Math.min(-rect.top,totalScroll));
+    const progress=scrolled/totalScroll; // 0 → 1
+
+    // total track width minus viewport
+    const trackW=track.scrollWidth;
+    const maxShift=trackW-window.innerWidth;
+    const shift=progress*maxShift;
+    track.style.transform=`translateX(-${shift}px)`;
+
+    // progress bar
+    fill.style.width=(progress*100)+'%';
+
+    // active slide count
+    const active=Math.min(slides.length,Math.ceil(progress*slides.length+.5));
+    cnt.textContent=String(Math.max(1,active)).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  }
+
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
 
 // ── Drag scroll
 const pt=document.getElementById('pt');
