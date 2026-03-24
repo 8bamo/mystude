@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MYSTU — Fanmode für den Brustring</title>
+  <title>mystu — Fanmode für den Brustring</title>
+  <!-- v2 -->
   <meta name="description" content="mystu — Premium Fanmode für den Brustring. Gegründet von zwei leidenschaftlichen VfB Stuttgart Fans aus Stuttgart." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +21,7 @@
       --gray-2:   #181818;
       --gray-3:   #242424;
       --muted:    #555555;
-      --font-h:   'Urbanist', sans-serif;
+      --font-h:   'Poppins', sans-serif;
       --font-b:   'Poppins', sans-serif;
     }
 
@@ -62,8 +63,8 @@
       padding:16px 64px;
       border-color:rgba(255,255,255,.06);
     }
-    .n-logo { font-family:var(--font-h); font-weight:900; font-size:1.4rem; letter-spacing:.3em; color:var(--white); text-decoration:none; }
-    .n-logo b { color:var(--red); font-weight:900; }
+    .n-logo { text-decoration:none; display:inline-flex; align-items:center; }
+    .n-logo svg { height:22px; width:auto; }
     .n-links { display:flex; gap:40px; list-style:none; }
     .n-links a { font-family:var(--font-h); font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.55); text-decoration:none; transition:color .3s; }
     .n-links a:hover { color:var(--white); }
@@ -115,18 +116,18 @@
     .h-tag-dot { width:6px; height:6px; background:var(--red); border-radius:50%; }
 
     .h-title {
-      font-family:var(--font-h); font-weight:900;
-      font-size:clamp(80px,17vw,210px);
-      line-height:.88; letter-spacing:-.02em;
       overflow:hidden;
+      margin-bottom:0;
     }
     .h-title-inner {
       display:block;
       opacity:0; animation:slideup 1s cubic-bezier(.16,1,.3,1) .55s forwards;
     }
-    /* MY in white, STU in red */
-    .t-white { color:var(--white); }
-    .t-red { color:var(--red); }
+    .h-title svg {
+      width: clamp(280px, 65vw, 820px);
+      height: auto;
+      display:block;
+    }
 
     .h-sub {
       font-family:var(--font-h); font-size:clamp(13px,1.6vw,18px); font-weight:300; font-style:italic;
@@ -226,51 +227,41 @@
       max-width:1380px; margin:0 auto;
     }
     .founders-head { margin-bottom:64px; }
-    .founders-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+    /* Shared photo layout */
+    .founders-photo-wrap {
+      position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.06);
+      margin-bottom:28px;
+    }
+    .founders-photo {
+      width:100%; aspect-ratio:21/9; object-fit:cover; object-position:center top;
+      display:block; filter:grayscale(20%) contrast(1.05);
+      transition:transform .7s cubic-bezier(.16,1,.3,1), filter .5s;
+    }
+    .founders-photo-wrap:hover .founders-photo { transform:scale(1.03); filter:grayscale(0%) contrast(1.05); }
+    .founders-photo-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 50%, transparent 100%);
+    }
+    .founders-labels {
+      position:absolute; bottom:32px; left:0; right:0;
+      display:flex; justify-content:space-between; padding:0 48px;
+    }
+    .founder-label { display:flex; flex-direction:column; gap:4px; }
+    .founder-label-name { font-family:var(--font-h); font-size:1.5rem; font-weight:800; color:var(--white); line-height:1; }
+    .founder-label-role { font-family:var(--font-h); font-size:.6rem; font-weight:700; letter-spacing:.35em; text-transform:uppercase; color:var(--red); }
+    .founder-label:last-child { text-align:right; }
 
-    .founder-card {
-      position:relative; overflow:hidden; background:var(--gray-2);
-      border:1px solid rgba(255,255,255,.06);
-      transition:border-color .4s;
+    /* Bio cards below photo */
+    .founders-bios { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .founder-bio-card {
+      background:var(--gray-2); border:1px solid rgba(255,255,255,.06);
+      padding:28px 32px; border-left:3px solid var(--red);
+      transition:background .3s;
     }
-    .founder-card:hover { border-color:rgba(218,35,35,.3); }
-
-    /* Image placeholder — swap with real photo */
-    .founder-img {
-      width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
-      background:var(--gray-3);
-      position:relative;
-    }
-    .founder-img-placeholder {
-      width:100%; aspect-ratio:3/4;
-      background:linear-gradient(160deg, var(--gray-3) 0%, #1e1e1e 100%);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-      position:relative; overflow:hidden;
-    }
-    .founder-img-placeholder::before {
-      content:''; position:absolute; inset:0;
-      background:radial-gradient(ellipse at 50% 80%, rgba(218,35,35,.15) 0%, transparent 60%);
-    }
-    .founder-img-placeholder .ph-initial {
-      font-family:var(--font-h); font-size:5rem; font-weight:900;
-      color:rgba(218,35,35,.2); line-height:1; position:relative; z-index:1;
-    }
-    .founder-img-placeholder .ph-label {
-      font-family:var(--font-h); font-size:.6rem; font-weight:700; letter-spacing:.4em;
-      text-transform:uppercase; color:rgba(255,255,255,.15); position:relative; z-index:1;
-    }
-
-    /* Red bar that slides up on hover */
-    .founder-bar {
-      position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--red);
-      transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(.16,1,.3,1);
-    }
-    .founder-card:hover .founder-bar { transform:scaleX(1); }
-
-    .founder-info { padding:32px 36px 36px; }
-    .founder-role { font-family:var(--font-h); font-size:.6rem; font-weight:700; letter-spacing:.4em; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
-    .founder-name { font-family:var(--font-h); font-size:1.9rem; font-weight:900; letter-spacing:-.01em; margin-bottom:16px; }
-    .founder-bio { font-size:.84rem; font-weight:300; color:rgba(255,255,255,.5); line-height:1.85; }
+    .founder-bio-card:hover { background:var(--gray-3); }
+    .founder-bio-name { font-family:var(--font-h); font-size:1rem; font-weight:800; margin-bottom:4px; }
+    .founder-bio-role { font-family:var(--font-h); font-size:.58rem; font-weight:700; letter-spacing:.35em; text-transform:uppercase; color:var(--red); margin-bottom:14px; }
+    .founder-bio-text { font-size:.83rem; font-weight:300; color:rgba(255,255,255,.5); line-height:1.85; }
 
     /* ── MISSION ── */
     #mission {
@@ -376,8 +367,8 @@
     }
     .ft { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:60px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.05); gap:60px; }
     .ft-brand {}
-    .ft-logo { font-family:var(--font-h); font-weight:900; font-size:1.8rem; letter-spacing:.3em; color:var(--white); text-decoration:none; display:block; margin-bottom:14px; }
-    .ft-logo b { color:var(--red); }
+    .ft-logo { text-decoration:none; display:inline-flex; align-items:center; margin-bottom:14px; }
+    .ft-logo svg { height:28px; width:auto; }
     .ft-pron { font-family:var(--font-b); font-size:.75rem; color:rgba(255,255,255,.2); letter-spacing:.1em; margin-bottom:12px; }
     .ft-desc { font-size:.82rem; font-weight:300; color:var(--muted); line-height:1.8; max-width:240px; }
     .ft-nav h4 { font-family:var(--font-h); font-size:.62rem; font-weight:700; letter-spacing:.38em; text-transform:uppercase; color:var(--red); margin-bottom:20px; }
@@ -403,7 +394,9 @@
       #story{padding:80px 24px}
       .story-top{grid-template-columns:1fr;gap:48px}
       #founders{padding:0 24px 80px}
-      .founders-grid{grid-template-columns:1fr;gap:20px}
+      .founders-bios{grid-template-columns:1fr;gap:16px}
+      .founders-labels{padding:0 24px}
+      .founder-label-name{font-size:1.1rem}
       #mission{padding:100px 24px}
       #produkte{padding:80px 24px}
       .prod-grid{grid-template-columns:1fr;gap:16px}
@@ -425,7 +418,17 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="n-logo">MY<b>STU</b></a>
+  <a href="#" class="n-logo" aria-label="mystu">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">
+      <!-- MY in white -->
+      <path fill="#FFFFFF" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
+      <path fill="#FFFFFF" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
+      <!-- STU in red -->
+      <path fill="#FFFFFF" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
+      <path fill="#FFFFFF" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
+      <path fill="#FFFFFF" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
+    </svg>
+  </a>
   <ul class="n-links">
     <li><a href="#story">Story</a></li>
     <li><a href="#founders">Team</a></li>
@@ -448,7 +451,13 @@
     <div class="h-tag"><span class="h-tag-dot"></span>Fanmode für den Brustring<span class="h-tag-dot"></span></div>
     <h1 class="h-title">
       <span class="h-title-inner">
-        <span class="t-white">MY</span><span class="t-red">STU</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7" aria-label="MYSTU">
+          <path fill="#FFFFFF" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
+          <path fill="#FFFFFF" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
+          <path fill="#FFFFFF" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
+          <path fill="#FFFFFF" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
+          <path fill="#FFFFFF" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
+        </svg>
       </span>
     </h1>
     <p class="h-pronunciation">[mɪstu]</p>
@@ -537,35 +546,33 @@
     <h2 class="s-title">Zwei Fans.<br/><em>Eine Vision.</em></h2>
   </div>
 
-  <div class="founders-grid">
-    <!-- Yusuf -->
-    <div class="founder-card sr d1">
-      <!-- REPLACE: add real photo as <img class="founder-img" src="foto-yusuf.jpg" alt="Yusuf"> -->
-      <div class="founder-img-placeholder">
-        <span class="ph-initial">Y</span>
-        <span class="ph-label">Foto folgt</span>
+  <!-- Shared founders photo -->
+  <div class="founders-photo-wrap sr">
+    <img class="founders-photo" src="gruender.webp" alt="Yusuf und Michele, Gründer von mystu" />
+    <div class="founders-photo-overlay"></div>
+    <div class="founders-labels">
+      <div class="founder-label">
+        <span class="founder-label-name">Yusuf</span>
+        <span class="founder-label-role">Co-Gründer · Entwickler</span>
       </div>
-      <div class="founder-bar"></div>
-      <div class="founder-info">
-        <p class="founder-role">Co-Gründer · Entwickler</p>
-        <h3 class="founder-name">Yusuf</h3>
-        <p class="founder-bio">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
+      <div class="founder-label">
+        <span class="founder-label-name">Michele</span>
+        <span class="founder-label-role">Co-Gründer · Designer</span>
       </div>
     </div>
+  </div>
 
-    <!-- Michele -->
-    <div class="founder-card sr d2">
-      <!-- REPLACE: add real photo as <img class="founder-img" src="foto-michele.jpg" alt="Michele"> -->
-      <div class="founder-img-placeholder">
-        <span class="ph-initial">M</span>
-        <span class="ph-label">Foto folgt</span>
-      </div>
-      <div class="founder-bar"></div>
-      <div class="founder-info">
-        <p class="founder-role">Co-Gründer · Designer</p>
-        <h3 class="founder-name">Michele</h3>
-        <p class="founder-bio">Michele ist der kreative Kopf. Als Designer hat er ein untrügliches Gespür für Ästhetik — und entwirft Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen.</p>
-      </div>
+  <!-- Bio cards -->
+  <div class="founders-bios">
+    <div class="founder-bio-card sr d1">
+      <p class="founder-bio-name">Yusuf</p>
+      <p class="founder-bio-role">Co-Gründer · Entwickler</p>
+      <p class="founder-bio-text">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
+    </div>
+    <div class="founder-bio-card sr d2">
+      <p class="founder-bio-name">Michele</p>
+      <p class="founder-bio-role">Co-Gründer · Designer</p>
+      <p class="founder-bio-text">Michele ist der kreative Kopf. Als Designer entwirft er Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen — authentisch, hochwertig, alltagstauglich.</p>
     </div>
   </div>
 </section>
@@ -653,7 +660,7 @@
 <!-- CTA -->
 <section id="cta">
   <div class="cta-bg"></div>
-  <div class="cta-ghost">MYSTU</div>
+  <div class="cta-ghost">mystu</div>
   <div class="cta-line cta-line-t"></div>
   <div class="cta-line cta-line-b"></div>
   <div class="cta-inner">
@@ -671,7 +678,15 @@
 <footer>
   <div class="ft">
     <div class="ft-brand">
-      <a href="#" class="ft-logo">MY<b>STU</b></a>
+      <a href="#" class="ft-logo" aria-label="mystu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">
+          <path fill="#FFFFFF" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>
+          <path fill="#FFFFFF" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>
+          <path fill="#FFFFFF" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>
+          <path fill="#FFFFFF" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>
+          <path fill="#FFFFFF" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/>
+        </svg>
+      </a>
       <p class="ft-pron">[mɪstu]</p>
       <p class="ft-desc">Fanmode für den Brustring. Gegründet von zwei leidenschaftlichen VfB Stuttgart Fans. Made in Deutschland.</p>
     </div>
@@ -699,7 +714,7 @@
     </div>
   </div>
   <div class="ft-bottom">
-    <p class="ft-copy">&copy; 2026 MYSTU — Alle Rechte vorbehalten.</p>
+    <p class="ft-copy">&copy; 2026 mystu — Alle Rechte vorbehalten.</p>
     <p class="ft-made">Gegründet von <span>Yusuf &amp; Michele</span> · Stuttgart</p>
   </div>
 </footer>
