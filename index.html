@@ -244,14 +244,20 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .fl:last-child{text-align:right}
 
 /* bio cards */
-.founders-bios{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
-.fbc{background:var(--g1);border:1px solid rgba(255,255,255,.05);padding:32px 40px;position:relative;overflow:hidden;transition:background .3s}
+.founders-bios{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.fbc{background:var(--g1);border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;transition:background .4s,border-color .4s}
+.fbc:hover{background:#110808;border-color:rgba(218,35,35,.2)}
 .fbc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .fbc:hover::after{transform:scaleX(1)}
-.fbc:hover{background:#110808}
-.fbc-n{font-family:var(--fD);font-size:1.5rem;font-weight:900;letter-spacing:.01em;margin-bottom:3px}
-.fbc-r{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:14px}
+.fbc-img{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative}
+.fbc-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.fbc:hover .fbc-img img{transform:scale(1.04)}
+.fbc-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 55%)}
+.fbc-body{padding:24px 28px 28px}
+.fbc-n{font-family:var(--fD);font-size:1.8rem;font-weight:900;letter-spacing:.01em;margin-bottom:2px}
+.fbc-r{font-family:var(--fB);font-size:.58rem;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--r);margin-bottom:12px}
 .fbc-t{font-size:.82rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.85}
+@media(max-width:600px){.founders-bios{grid-template-columns:1fr}.fbc-img{aspect-ratio:4/3}}
 
 /* ─── MISSION ─── */
 #mission{position:relative;padding:160px 0;overflow:hidden;background:var(--g1)}
@@ -642,14 +648,26 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
 
     <div class="founders-bios">
       <div class="fbc rv d1">
-        <p class="fbc-n">Yusuf</p>
-        <p class="fbc-r">Co-Gründer · Entwickler</p>
-        <p class="fbc-t">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
+        <div class="fbc-img">
+          <img src="yusuf.png" alt="Yusuf — Co-Gründer mystu Stuttgart"/>
+          <div class="fbc-img-overlay"></div>
+        </div>
+        <div class="fbc-body">
+          <p class="fbc-n">Yusuf</p>
+          <p class="fbc-r">Co-Gründer · Entwickler</p>
+          <p class="fbc-t">Als Entwickler lebt Yusuf zwischen Code und Kurve. Seit der Kindheit Stuttgart-Fan, bringt er die technische Vision hinter mystu zum Leben — immer mit dem Brustring im Herz.</p>
+        </div>
       </div>
       <div class="fbc rv d2">
-        <p class="fbc-n">Michele</p>
-        <p class="fbc-r">Co-Gründer · Designer</p>
-        <p class="fbc-t">Michele ist der kreative Kopf. Als Designer entwirft er Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen — authentisch, hochwertig, alltagstauglich.</p>
+        <div class="fbc-img">
+          <img src="michele.png" alt="Michele — Co-Gründer mystu Stuttgart"/>
+          <div class="fbc-img-overlay"></div>
+        </div>
+        <div class="fbc-body">
+          <p class="fbc-n">Michele</p>
+          <p class="fbc-r">Co-Gründer · Designer</p>
+          <p class="fbc-t">Michele ist der kreative Kopf. Als Designer entwirft er Stücke, die den Spirit des Brustrings in zeitlose Mode übersetzen — authentisch, hochwertig, alltagstauglich.</p>
+        </div>
       </div>
     </div>
   </div>
