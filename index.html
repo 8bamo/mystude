@@ -190,38 +190,37 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .stat-l{font-family:var(--fB);font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
 
 /* ─── GALLERY ─── */
-#gallery{position:relative;height:400vh}
-.gallery-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.gallery-header{position:absolute;top:56px;left:56px;z-index:2;pointer-events:none}
-.gallery-header .slabel{margin-bottom:6px}
-.gallery-header h2{font-family:var(--fD);font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.01em;line-height:1}
-.gallery-progress{position:absolute;bottom:40px;left:56px;right:56px;z-index:2;display:flex;align-items:center;gap:16px}
-.gallery-progress-bar{flex:1;height:1px;background:rgba(255,255,255,.08)}
-.gallery-progress-fill{height:1px;background:var(--r);width:0%;transition:width .1s linear}
-.gallery-progress-count{font-family:var(--fD);font-size:.85rem;font-weight:700;color:rgba(255,255,255,.25);white-space:nowrap;letter-spacing:.05em}
-.gallery-track{display:flex;gap:20px;padding:0 56px;will-change:transform;transition:transform .05s linear}
-.gallery-slide{flex:0 0 auto;height:78vh;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
-.gallery-slide:nth-child(1){width:55vw}
-.gallery-slide:nth-child(2){width:38vw}
-.gallery-slide:nth-child(3){width:45vw}
-.gallery-slide:nth-child(4){width:50vw}
-.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s}
-.gallery-slide:hover img{transform:scale(1.04);filter:contrast(1.06)}
-.gallery-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%);opacity:0;transition:opacity .4s}
-.gallery-slide:hover .gallery-slide-overlay{opacity:1}
-.gallery-slide-caption{position:absolute;bottom:24px;left:24px;font-family:var(--fD);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--w);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
-.gallery-slide:hover .gallery-slide-caption{opacity:1;transform:none}
+#gallery{padding:120px 0 0}
+.gallery-head{max-width:1340px;margin:0 auto;padding:0 56px;display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
+.gallery-head h2{font-family:var(--fD);font-size:clamp(40px,6vw,80px);font-weight:900;letter-spacing:-.02em;line-height:.95}
+.gallery-meta{font-family:var(--fB);font-size:.72rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.gallery-scroll-wrap{position:relative}
+.gallery-track{display:flex;gap:16px;padding:0 56px 56px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;scroll-snap-type:x mandatory}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-slide{flex:0 0 auto;position:relative;overflow:hidden;scroll-snap-align:start;border:1px solid rgba(255,255,255,.06);transition:border-color .3s}
+.gallery-slide:hover{border-color:rgba(218,35,35,.2)}
+.gallery-slide:nth-child(1){width:58vw;height:70vh}
+.gallery-slide:nth-child(2){width:40vw;height:70vh}
+.gallery-slide:nth-child(3){width:50vw;height:70vh}
+.gallery-slide:nth-child(4){width:54vw;height:70vh}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.gallery-slide:hover img{transform:scale(1.04)}
+.gallery-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 55%)}
+.gallery-slide-caption{position:absolute;bottom:24px;left:24px;right:24px;font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--w)}
+.gallery-slide-num{position:absolute;top:20px;right:20px;font-family:var(--fD);font-size:.75rem;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.1em}
+/* bottom progress + nav */
+.gallery-controls{max-width:1340px;margin:0 auto;padding:0 56px;display:flex;align-items:center;gap:20px;margin-top:-20px;padding-bottom:60px}
+.gallery-bar{flex:1;height:1px;background:rgba(255,255,255,.07);position:relative;overflow:hidden}
+.gallery-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--r);width:0%;transition:width .2s ease}
+.gallery-nav{display:flex;gap:8px}
+.gallery-btn{width:40px;height:40px;border:1px solid rgba(255,255,255,.1);background:none;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);cursor:none;transition:border-color .3s,color .3s,background .3s}
+.gallery-btn:hover{border-color:var(--r);color:var(--w);background:rgba(218,35,35,.08)}
 @media(max-width:900px){
-  #gallery{height:300vh}
-  .gallery-sticky{height:100svh}
-  .gallery-header{top:100px;left:24px}
-  .gallery-progress{left:24px;right:24px;bottom:28px}
-  .gallery-track{padding:0 24px;gap:12px}
-  .gallery-slide:nth-child(1){width:80vw}
-  .gallery-slide:nth-child(2){width:70vw}
-  .gallery-slide:nth-child(3){width:75vw}
-  .gallery-slide:nth-child(4){width:78vw}
-  .gallery-slide{height:65vh}
+  #gallery{padding:80px 0 0}
+  .gallery-head{padding:0 24px;flex-direction:column;align-items:flex-start;gap:8px}
+  .gallery-track{padding:0 24px 40px;gap:10px}
+  .gallery-slide:nth-child(1),.gallery-slide:nth-child(2),.gallery-slide:nth-child(3),.gallery-slide:nth-child(4){width:82vw;height:60vw}
+  .gallery-controls{padding:0 24px 40px}
 }
 
 /* ─── FOUNDERS ─── */
@@ -232,9 +231,9 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 .founders-headline em{font-style:italic;font-weight:100;color:rgba(255,255,255,.25)}
 .founders-intro{font-size:.88rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.38);max-width:340px;text-align:right}
 
-/* photo box — clip-path reveal */
-.founders-photo{position:relative;overflow:hidden;clip-path:inset(0 100% 0 0);transition:clip-path 1.3s cubic-bezier(.16,1,.3,1)}
-.founders-photo.vis{clip-path:inset(0 0% 0 0)}
+/* photo box */
+.founders-photo{position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.founders-photo.vis{opacity:1;transform:none}
 .founders-photo img{width:100%;aspect-ratio:21/8;object-fit:cover;object-position:center 30%;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .5s}
 .founders-photo:hover img{transform:scale(1.03);filter:contrast(1.08)}
 .founders-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.1) 45%,transparent 70%)}
@@ -567,36 +566,50 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
 
 <!-- GALLERY -->
 <section id="gallery">
-  <div class="gallery-sticky">
-    <div class="gallery-header">
+  <div class="gallery-head rv">
+    <div>
       <p class="slabel">Behind the Brand</p>
       <h2>mystu in<br/>Aktion.</h2>
     </div>
+    <span class="gallery-meta">Stuttgart · 2024</span>
+  </div>
+  <div class="gallery-scroll-wrap">
     <div class="gallery-track" id="gtrack">
       <div class="gallery-slide">
         <img src="gruppenbild.png" alt="mystu Team Stuttgart — VfB Stuttgart Fans"/>
         <div class="gallery-slide-overlay"></div>
         <span class="gallery-slide-caption">mystu Team · Stuttgart</span>
+        <span class="gallery-slide-num">01</span>
       </div>
       <div class="gallery-slide">
         <img src="typ shooting.png" alt="mystu Shooting — Brustring Fanmode Stuttgart"/>
         <div class="gallery-slide-overlay"></div>
-        <span class="gallery-slide-caption">Shooting · Stuttgart</span>
+        <span class="gallery-slide-caption">Shooting · Brustring</span>
+        <span class="gallery-slide-num">02</span>
       </div>
       <div class="gallery-slide">
         <img src="gruppe2.png" alt="mystu — VfB Stuttgart Fans in Fanmode"/>
         <div class="gallery-slide-overlay"></div>
-        <span class="gallery-slide-caption">Brustring · VfB Stuttgart</span>
+        <span class="gallery-slide-caption">VfB Stuttgart · Fans</span>
+        <span class="gallery-slide-num">03</span>
       </div>
       <div class="gallery-slide">
         <img src="grupp3.png" alt="mystu Kollektion — Premium Fanmode Stuttgart"/>
         <div class="gallery-slide-overlay"></div>
         <span class="gallery-slide-caption">Kollektion · mystu</span>
+        <span class="gallery-slide-num">04</span>
       </div>
     </div>
-    <div class="gallery-progress">
-      <div class="gallery-progress-bar"><div class="gallery-progress-fill" id="gfill"></div></div>
-      <span class="gallery-progress-count" id="gcnt">01 / 04</span>
+  </div>
+  <div class="gallery-controls">
+    <div class="gallery-bar"><div class="gallery-bar-fill" id="gfill"></div></div>
+    <div class="gallery-nav">
+      <button class="gallery-btn" id="gprev" aria-label="Zurück">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="gallery-btn" id="gnext" aria-label="Weiter">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -849,39 +862,33 @@ const cntObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 document.querySelectorAll('.cnt').forEach(el=>cntObs.observe(el));
 
-// ── Gallery sticky horizontal scroll
+// ── Gallery scroll-snap + nav
 (function(){
-  const section=document.getElementById('gallery');
   const track=document.getElementById('gtrack');
   const fill=document.getElementById('gfill');
-  const cnt=document.getElementById('gcnt');
-  const slides=track?track.querySelectorAll('.gallery-slide'):[];
-  if(!section||!track)return;
+  const prev=document.getElementById('gprev');
+  const next=document.getElementById('gnext');
+  if(!track)return;
 
-  function update(){
-    const sTop=section.offsetTop;
-    const sH=section.offsetHeight;
-    const vH=window.innerHeight;
-    const scrollY=window.scrollY;
-
-    // how far we've scrolled into the section (0 at entry, 1 at exit)
-    const progress=Math.max(0,Math.min(1,(scrollY-sTop)/(sH-vH)));
-
-    // how far the track needs to travel
-    const maxShift=track.scrollWidth-window.innerWidth;
-    track.style.transform=`translateX(${-progress*maxShift}px)`;
-
-    fill.style.width=(progress*100)+'%';
-
-    const idx=Math.min(slides.length,Math.floor(progress*slides.length)+1);
-    if(cnt) cnt.textContent=String(idx).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  function updateBar(){
+    const max=track.scrollWidth-track.clientWidth;
+    const p=max>0?track.scrollLeft/max:0;
+    if(fill)fill.style.width=(p*100)+'%';
   }
 
-  window.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update,{passive:true});
-  // wait for images to load so scrollWidth is correct
-  window.addEventListener('load',update);
-  update();
+  track.addEventListener('scroll',updateBar,{passive:true});
+
+  function scrollBy(dir){
+    const slide=track.querySelector('.gallery-slide');
+    if(!slide)return;
+    const w=slide.offsetWidth+16; // width + gap
+    track.scrollBy({left:dir*w,behavior:'smooth'});
+  }
+
+  if(prev)prev.addEventListener('click',()=>scrollBy(-1));
+  if(next)next.addEventListener('click',()=>scrollBy(1));
+
+  updateBar();
 })();
 
 // ── Drag scroll
