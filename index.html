@@ -73,6 +73,8 @@ nav.stuck{padding:16px 56px;background:rgba(8,8,8,.95);backdrop-filter:blur(16px
 /* ─── HERO ─── */
 #hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 72px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:var(--b)}
+.hero-bg-img{position:absolute;inset:0;background:url('grupp3.png') center/cover no-repeat;opacity:.28;transition:opacity .5s}
+.hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,1) 0%,rgba(8,8,8,.7) 40%,rgba(8,8,8,.45) 100%)}
 .hero-glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none}
 .hero-g1{width:900px;height:600px;background:radial-gradient(ellipse,rgba(218,35,35,.11) 0%,transparent 70%);top:-150px;right:-200px;animation:hgp 10s ease-in-out infinite}
 .hero-g2{width:600px;height:600px;background:radial-gradient(ellipse,rgba(218,35,35,.06) 0%,transparent 70%);bottom:-100px;left:-150px;animation:hgp 8s ease-in-out infinite 2s reverse}
@@ -425,6 +427,8 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.05);padding:80p
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
+    <div class="hero-bg-img"></div>
+    <div class="hero-bg-overlay"></div>
     <div class="hero-glow hero-g1"></div>
     <div class="hero-glow hero-g2"></div>
     <div class="hero-bgword">MYSTU</div>
@@ -851,30 +855,32 @@ document.querySelectorAll('.cnt').forEach(el=>cntObs.observe(el));
   const track=document.getElementById('gtrack');
   const fill=document.getElementById('gfill');
   const cnt=document.getElementById('gcnt');
-  const slides=track.querySelectorAll('.gallery-slide');
+  const slides=track?track.querySelectorAll('.gallery-slide'):[];
   if(!section||!track)return;
 
   function update(){
-    const rect=section.getBoundingClientRect();
-    const totalScroll=section.offsetHeight-window.innerHeight;
-    const scrolled=Math.max(0,Math.min(-rect.top,totalScroll));
-    const progress=scrolled/totalScroll; // 0 → 1
+    const sTop=section.offsetTop;
+    const sH=section.offsetHeight;
+    const vH=window.innerHeight;
+    const scrollY=window.scrollY;
 
-    // total track width minus viewport
-    const trackW=track.scrollWidth;
-    const maxShift=trackW-window.innerWidth;
-    const shift=progress*maxShift;
-    track.style.transform=`translateX(-${shift}px)`;
+    // how far we've scrolled into the section (0 at entry, 1 at exit)
+    const progress=Math.max(0,Math.min(1,(scrollY-sTop)/(sH-vH)));
 
-    // progress bar
+    // how far the track needs to travel
+    const maxShift=track.scrollWidth-window.innerWidth;
+    track.style.transform=`translateX(${-progress*maxShift}px)`;
+
     fill.style.width=(progress*100)+'%';
 
-    // active slide count
-    const active=Math.min(slides.length,Math.ceil(progress*slides.length+.5));
-    cnt.textContent=String(Math.max(1,active)).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    const idx=Math.min(slides.length,Math.floor(progress*slides.length)+1);
+    if(cnt) cnt.textContent=String(idx).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
   }
 
   window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  // wait for images to load so scrollWidth is correct
+  window.addEventListener('load',update);
   update();
 })();
 
