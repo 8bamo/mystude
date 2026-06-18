@@ -31,18 +31,11 @@
   --pad:clamp(20px,5vw,72px);
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--b);color:var(--w);font-family:var(--fB);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+body{background:var(--b);color:var(--w);font-family:var(--fB);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='34'%20height='34'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23C9FF2E'%20stroke='%230A0A0A'%20stroke-width='0.8'%20stroke-linejoin='round'%20d='M9%2011V4.5a1.5%201.5%200%200%201%203%200V10h.5V6a1.5%201.5%200%200%201%203%200v4.5h.5V8a1.5%201.5%200%200%201%203%200v7c0%203-2%205.5-5.5%205.5h-2c-2%200-3-1-4.5-3l-2.5-3.5a1.4%201.4%200%200%201%202.2-1.7L9%2014z'/%3E%3C/svg%3E") 13 4,auto}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%}
-button{background:none;border:none;cursor:none;color:inherit}
+button{background:none;border:none;color:inherit}
 ::selection{background:var(--ac);color:var(--b)}
-
-/* ─── CURSOR ─── */
-#cur{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--ac);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.16,1,.3,1),height .35s cubic-bezier(.16,1,.3,1),background .3s}
-#curR{position:fixed;top:0;left:0;width:40px;height:40px;border-radius:50%;border:1px solid var(--ac);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1),opacity .3s}
-body.hov #cur{width:0;height:0}
-body.hov #curR{width:64px;height:64px;opacity:1;background:rgba(201,255,46,.08)}
-@media(hover:none){#cur,#curR{display:none}body{cursor:auto}}
 
 /* ─── LOADER ─── */
 #loader{position:fixed;inset:0;background:var(--b);z-index:9000;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease}
@@ -150,11 +143,11 @@ nav.stuck{padding:14px var(--pad);background:rgba(10,10,10,.82);backdrop-filter:
 .kt-form{display:flex;flex-direction:column;gap:16px;background:var(--g1);border:1px solid var(--ln);padding:clamp(26px,4vw,40px)}
 .kt-field{display:flex;flex-direction:column;gap:8px}
 .kt-field label{font-size:.6rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--mu)}
-.kt-field input,.kt-field select,.kt-field textarea{font-family:var(--fB);font-size:.95rem;font-weight:300;color:var(--w);background:var(--g2);border:1px solid var(--ln);padding:13px 15px;transition:border-color .3s;cursor:none}
+.kt-field input,.kt-field select,.kt-field textarea{font-family:var(--fB);font-size:.95rem;font-weight:300;color:var(--w);background:var(--g2);border:1px solid var(--ln);padding:13px 15px;transition:border-color .3s}
 .kt-field input:focus,.kt-field select:focus,.kt-field textarea:focus{outline:none;border-color:var(--ac)}
 .kt-field textarea{resize:vertical;min-height:110px}
 .kt-field select{appearance:none;-webkit-appearance:none}
-.kt-form button{font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--b);background:var(--ac);padding:15px;margin-top:4px;transition:background .3s,transform .3s;cursor:none}
+.kt-form button{font-family:var(--fD);font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--b);background:var(--ac);padding:15px;margin-top:4px;transition:background .3s,transform .3s}
 .kt-form button:hover{background:var(--w);transform:translateY(-2px)}
 .kt-note{font-size:.66rem;font-weight:300;color:var(--mu2);line-height:1.6}
 .kt-note a{color:var(--mu);text-decoration:underline;text-underline-offset:2px}
@@ -165,9 +158,6 @@ footer{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,
 .ft-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid var(--ln);margin-bottom:28px}
 .ft-logo svg{height:30px;width:auto;margin-bottom:14px}
 .ft-desc{font-size:.8rem;font-weight:300;color:var(--mu);line-height:1.7;max-width:30ch}
-.ft-soc{display:flex;gap:22px}
-.ft-soc a{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s}
-.ft-soc a:hover{color:var(--ac)}
 .ft-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .ft-copy,.ft-made{font-size:.68rem;color:var(--mu2);letter-spacing:.04em}
 .ft-made span{color:var(--ac)}
@@ -185,10 +175,6 @@ footer{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,
 </style>
 </head>
 <body>
-
-<!-- cursor -->
-<div id="curR"></div>
-<div id="cur"></div>
 
 <!-- scroll progress -->
 <div id="prog"></div>
@@ -334,9 +320,9 @@ footer{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,
       <h2 class="kt-title">Lass uns<br/><span class="ac">reden.</span></h2>
       <p class="kt-text">Erzähl uns kurz von deinem Vorhaben — wir melden uns innerhalb von 48 Stunden mit einer ehrlichen Einschätzung.</p>
       <div class="kt-links">
-        <a class="kt-link" href="mailto:mystushop@gmail.com">
+        <a class="kt-link" href="mailto:hi@mystu.de">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
-          mystushop@gmail.com
+          hi@mystu.de
         </a>
         <a class="kt-link" href="tel:+4915123456789">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -389,10 +375,6 @@ footer{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,
       </a>
       <p class="ft-desc">Webdesign-Agentur aus dem Raum Stuttgart &amp; Ludwigsburg. Websites, die Kunden bringen.</p>
     </div>
-    <div class="ft-soc">
-      <a href="https://instagram.com/mystu_shop/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://tiktok.com/@mystu.shop" target="_blank" rel="noopener">TikTok</a>
-    </div>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">&copy; 2026 mystu — Alle Rechte vorbehalten. <a href="https://mystu.shop/policies/legal-notice" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Impressum</a></p>
@@ -403,16 +385,6 @@ footer{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,
 <script>
 // Loader
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('out'),1200));
-
-// Cursor
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function t(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(t)})();
-document.querySelectorAll('a,button,input,select,textarea').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-});
 
 // Nav + progress
 const nav=document.getElementById('nav'),prog=document.getElementById('prog');
