@@ -42,9 +42,30 @@ function mystu_favicon() {
 add_action('wp_head', 'mystu_favicon', 1);
 add_action('admin_head', 'mystu_favicon', 1);
 
-// Short URLs: mystu.de/mockups/{name}/ -> actual mockup path
+// Serve the standalone portfolio mockups at their public WordPress page URLs.
+// Keeping the routing here means the demos remain available even if the page
+// content in WordPress is empty or the permalink rules are regenerated.
 add_action('template_redirect', function(){
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+
+    $standalone_mockups = [
+        'mockup-anwalt'      => 'mockup-anwalt.html',
+        'mockup-fahrschule'  => 'mockup-fahrschule.html',
+        'mockup-zahnarzt'    => 'mockup-zahnarzt.html',
+    ];
+
+    if (isset($standalone_mockups[$uri])) {
+        $mockup_file = MYSTU_DIR . '/mockups/' . $standalone_mockups[$uri];
+        if (is_readable($mockup_file)) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Length: ' . filesize($mockup_file));
+            readfile($mockup_file);
+            exit;
+        }
+    }
+
+    // Legacy short URLs: mystu.de/mockups/{name}/ -> actual mockup path.
     if(strpos($uri, 'mockups/') === 0){
         $parts = explode('/', $uri);
         $name = $parts[1] ?? '';
