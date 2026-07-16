@@ -470,7 +470,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
   <div class="ref-mockups">
     <div class="ref-mock rv">
       <div class="ref-mock-frame">
-        <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/img/reference-heroes/handwerk-hero-1280.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/img/reference-heroes/handwerk-hero.png" alt="Handwerker-Webseite Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/handwerk-preview.png" alt="Vorschau der Handwerker-Webseite" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
         <p class="ref-mock-tag">WordPress · Handwerk</p>
@@ -482,7 +482,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
     </div>
     <div class="ref-mock rv">
       <div class="ref-mock-frame">
-        <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/handwerk.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/handwerk.jpg" alt="Fahrschul-Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/fahrschule-preview.png" alt="Vorschau des Fahrschul-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
         <p class="ref-mock-tag">Landingpage · Fahrschule</p>
@@ -494,7 +494,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
     </div>
     <div class="ref-mock rv d1">
       <div class="ref-mock-frame">
-        <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/beauty.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/beauty.jpg" alt="Kanzlei-Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/anwalt-preview.png" alt="Vorschau des Kanzlei-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
         <p class="ref-mock-tag">Landingpage · Kanzlei</p>
@@ -506,7 +506,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
     </div>
     <div class="ref-mock rv">
       <div class="ref-mock-frame">
-        <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/zahnarzt.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/zahnarzt.jpg" alt="Zahnarzt Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/zahnarzt-preview.png" alt="Vorschau des Zahnarzt-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
         <p class="ref-mock-tag">WordPress · Zahnarzt</p>
