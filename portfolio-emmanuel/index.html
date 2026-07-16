@@ -142,7 +142,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
   font-weight:800;font-stretch:72%;text-transform:uppercase;
   font-size:clamp(38px,6vw,84px);line-height:.95;letter-spacing:-.01em;
 }
-.shead h2 em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;
+.shead h2 .headline-accent{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;
   color:var(--gold2);letter-spacing:0;font-stretch:100%;font-size:.82em}
 .shead .count{font-family:var(--serif);font-style:italic;color:var(--mut);font-size:20px}
 
@@ -265,7 +265,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 #booking{background:var(--bg2);border-top:1px solid var(--line)}
 .booking-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.55fr);gap:clamp(32px,7vw,110px);align-items:end;margin-bottom:clamp(40px,7vw,80px)}
 .booking-head h2{font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(48px,8vw,116px);line-height:.88;letter-spacing:-.015em}
-.booking-head h2 em{display:block;font-family:var(--serif);font-size:.72em;font-weight:400;font-style:italic;text-transform:none;color:var(--gold2);letter-spacing:0}
+.booking-head h2 .headline-accent{display:block;font-family:var(--serif);font-size:.72em;font-weight:400;font-style:italic;text-transform:none;color:var(--gold2);letter-spacing:0}
 .booking-intro{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);line-height:1.35;color:var(--mut)}
 .booking-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(20px,4vw,56px);row-gap:26px}
 .field{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -427,7 +427,7 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 #arbeiten{background:var(--editorial-paper);color:var(--editorial-ink)}
 .shead{margin-bottom:clamp(42px,7vw,92px);border-bottom:1px solid rgba(23,19,17,.32);padding-bottom:18px}
 .shead h2{font-size:clamp(58px,10vw,152px);line-height:.76;letter-spacing:-.035em;font-stretch:66%}
-.shead h2 em{display:inline;color:var(--editorial-red);-webkit-text-stroke:0}
+.shead h2 .headline-accent{display:inline;color:var(--editorial-red);-webkit-text-stroke:0}
 .shead .count{color:#5f5852;font-size:16px}
 .filters{gap:0;margin-bottom:28px;border-bottom:1px solid rgba(23,19,17,.22);overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
@@ -454,7 +454,7 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 
 #fotografie{background:var(--editorial-dark)}
 #fotografie .shead{border-color:rgba(255,255,255,.25)}
-#fotografie .shead h2 em{color:var(--editorial-red)}
+#fotografie .shead h2 .headline-accent{color:var(--editorial-red)}
 #fotografie .shead .count{color:var(--editorial-muted)}
 .masonry{columns:3;column-gap:clamp(10px,1.5vw,22px)}
 .masonry a{margin-bottom:clamp(10px,1.5vw,22px);border-radius:0}
@@ -484,7 +484,7 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 #booking{background:var(--editorial-red);color:var(--editorial-ink);border:0}
 .booking-head{grid-template-columns:minmax(0,1.2fr) minmax(280px,.45fr);align-items:end}
 .booking-head h2{font-size:clamp(66px,11vw,170px);line-height:.74;letter-spacing:-.04em;font-stretch:66%}
-.booking-head h2 em{color:var(--editorial-ink)}
+.booking-head h2 .headline-accent{color:var(--editorial-ink)}
 .booking-intro{color:var(--editorial-ink);font-family:var(--sans);font-size:clamp(18px,1.8vw,26px)}
 .field label{color:var(--editorial-ink);font-size:12px;letter-spacing:.1em}
 .field input,.field select,.field textarea{color:var(--editorial-ink);border-color:rgba(23,19,17,.5)}
@@ -595,7 +595,7 @@ html.portfolio-v2 .hero .scroll,html.portfolio-v2 .marquee{display:none}
 html.portfolio-v2 section{padding:clamp(90px,10vw,150px) 28px}
 html.portfolio-v2 .shead{margin-bottom:28px;padding-bottom:10px;border-color:var(--v2-line);align-items:center}
 html.portfolio-v2 .shead h2{font-size:12px;line-height:1;font-stretch:100%;font-weight:650;letter-spacing:.12em}
-html.portfolio-v2 .shead h2 em{font-family:var(--sans);font-style:normal;font-size:1em;font-weight:650;color:inherit;text-transform:uppercase}
+html.portfolio-v2 .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;font-size:1em;font-weight:650;color:inherit;text-transform:uppercase}
 html.portfolio-v2 .shead .count{font-family:var(--sans);font-size:10px;font-style:normal;letter-spacing:.08em;color:inherit;opacity:.62}
 
 html.portfolio-v2 #arbeiten{position:relative;padding:76px 28px 28px;background:var(--v2-night);color:var(--v2-ink)}
@@ -622,7 +622,7 @@ html.portfolio-v2 .slider-count{display:none}
 
 html.portfolio-v2 #fotografie{background:#d6e1e5;color:#0b1b26}
 html.portfolio-v2 #fotografie .shead{border-color:rgba(11,27,38,.3)}
-html.portfolio-v2 #fotografie .shead h2 em,html.portfolio-v2 #fotografie .shead .count{color:inherit}
+html.portfolio-v2 #fotografie .shead h2 .headline-accent,html.portfolio-v2 #fotografie .shead .count{color:inherit}
 html.portfolio-v2 .masonry{columns:3;column-gap:12px}
 html.portfolio-v2 .masonry a{margin-bottom:12px}
 html.portfolio-v2 .masonry img{filter:saturate(.72)}
@@ -642,7 +642,7 @@ html.portfolio-v2 .about .facts div b{color:var(--v2-blue);font-size:clamp(38px,
 
 html.portfolio-v2 #booking{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
 html.portfolio-v2 .booking-head h2{font-size:clamp(60px,9vw,140px);line-height:.76}
-html.portfolio-v2 .booking-head h2 em{display:block;color:#0b1b26}
+html.portfolio-v2 .booking-head h2 .headline-accent{display:block;color:#0b1b26}
 html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label{color:#0b1b26}
 html.portfolio-v2 .field input,html.portfolio-v2 .field select,html.portfolio-v2 .field textarea{color:#0b1b26;border-color:rgba(11,27,38,.48)}
 html.portfolio-v2 .booking-submit{background:#0b1b26;border-color:#0b1b26}
@@ -733,7 +733,7 @@ html.portfolio-v3 .v3-scroll-stage::after{content:"";position:absolute;inset:0;z
 html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(760px,80vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
 html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#777}
 html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em}
-html.portfolio-v3 .v3-scroll-copy h2 em{display:block;font-style:normal;color:#4e504f}
+html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#4e504f}
 html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
 html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
 html.portfolio-v3 .v3-scroll-row.two{bottom:4vh;left:-8vw}
@@ -748,7 +748,7 @@ html.portfolio-v3 #arbeiten{background:#fff;color:var(--v3-ink);overflow:hidden}
 html.portfolio-v3 #arbeiten .shead{margin-bottom:42px;padding:0;border:0;align-items:end}
 html.portfolio-v3 #arbeiten .shead h2{font-size:clamp(38px,4vw,64px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:none}
 html.portfolio-v3 #arbeiten .shead h2::before{content:"Neueste Arbeiten";display:block;margin-bottom:18px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#aaa}
-html.portfolio-v3 #arbeiten .shead h2 em{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
+html.portfolio-v3 #arbeiten .shead h2 .headline-accent{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
 html.portfolio-v3 #arbeiten .shead .count{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
 html.portfolio-v3 .filters{margin-bottom:30px;border-bottom:1px solid var(--v3-line);gap:0}
 html.portfolio-v3 .filters button{min-height:46px;padding:0 18px;border:0;border-radius:0;color:#888;font-size:10px;letter-spacing:.08em}
@@ -776,7 +776,7 @@ html.portfolio-v3 .slider-count .current{font-family:inherit;font-size:inherit;f
 html.portfolio-v3 #fotografie{background:#171918;color:#fff;border:0}
 html.portfolio-v3 #fotografie .shead{border:0;margin-bottom:50px}
 html.portfolio-v3 #fotografie .shead h2{font-size:clamp(54px,8vw,128px);font-weight:480;font-stretch:100%;letter-spacing:-.05em;text-transform:none}
-html.portfolio-v3 #fotografie .shead h2 em{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
+html.portfolio-v3 #fotografie .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
 html.portfolio-v3 #fotografie .shead .count{color:#888;font-family:var(--sans);font-style:normal}
 html.portfolio-v3 .masonry{columns:3;column-gap:14px}
 html.portfolio-v3 .masonry a{margin-bottom:14px;border-radius:18px}
@@ -785,7 +785,7 @@ html.portfolio-v3 .masonry img{filter:saturate(.7)}
 html.portfolio-v3 #auszeichnungen{background:var(--v3-paper);color:var(--v3-ink)}
 html.portfolio-v3 #auszeichnungen .shead{border-color:var(--v3-line)}
 html.portfolio-v3 #auszeichnungen .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
-html.portfolio-v3 #auszeichnungen .shead h2 em{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
+html.portfolio-v3 #auszeichnungen .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 .awards .item{border-color:var(--v3-line)}
 html.portfolio-v3 .awards .item .n{font-size:clamp(17px,1.7vw,25px);font-weight:540;color:#111}
 html.portfolio-v3 .awards .item .d{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
@@ -803,7 +803,7 @@ html.portfolio-v3 .about .facts div s{color:#666}
 
 html.portfolio-v3 #booking{background:#1b1d1c;color:#fff;border:0}
 html.portfolio-v3 .booking-head h2{font-size:clamp(64px,9vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
-html.portfolio-v3 .booking-head h2 em{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
+html.portfolio-v3 .booking-head h2 .headline-accent{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
 html.portfolio-v3 .booking-intro{font-family:var(--sans);font-size:18px;color:#aaa}
 html.portfolio-v3 .field label{color:#bbb}
 html.portfolio-v3 .field input,html.portfolio-v3 .field select,html.portfolio-v3 .field textarea{color:#fff;border-color:#555}
@@ -911,7 +911,7 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Ausgewählte Arbeiten in Bewegung">
   <div class="v3-scroll-stage">
-    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Momente werden<em>zu Geschichten.</em></h2></div>
+    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Momente werden<span class="headline-accent">zu Geschichten.</span></h2></div>
     <div class="v3-scroll-row one" id="v3-scroll-row-one"></div>
     <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
   </div>
@@ -930,7 +930,7 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 
 <section id="arbeiten">
   <div class="shead reveal">
-    <h2>Video<em>produktion</em></h2>
+    <h2>Video<span class="headline-accent">produktion</span></h2>
     <span class="count" id="vidcount"></span>
   </div>
   <div class="filters reveal" id="filters">
@@ -956,7 +956,7 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 
 <section id="fotografie">
   <div class="shead reveal">
-    <h2>Foto<em>grafie</em></h2>
+    <h2>Foto<span class="headline-accent">grafie</span></h2>
     <span class="count">Portraits &amp; Kampagnen</span>
   </div>
   <div class="masonry" id="masonry"></div>
@@ -964,7 +964,7 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 
 <section id="auszeichnungen">
   <div class="shead reveal">
-    <h2>Aus<em>zeichnungen</em></h2>
+    <h2>Aus<span class="headline-accent">zeichnungen</span></h2>
   </div>
   <div class="awards reveal">
     <div class="list">
@@ -998,7 +998,7 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 
 <section id="booking">
   <div class="booking-head reveal">
-    <h2>Start the<em>conversation.</em></h2>
+    <h2>Start the<span class="headline-accent">conversation.</span></h2>
     <p class="booking-intro">Erzähl kurz, was du vorhast. Je konkreter das Briefing, desto schneller kann Emmanuel Verfügbarkeit und nächsten Schritt einschätzen.</p>
   </div>
   <form class="booking-form reveal" action="/wp-admin/admin-post.php" method="post" id="booking-form">
