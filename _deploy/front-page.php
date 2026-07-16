@@ -235,6 +235,7 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .team-card{position:relative;overflow:hidden;height:600px}
 .team-card picture{position:absolute;inset:0;display:block}
 .team-img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .6s,transform .6s cubic-bezier(.16,1,.3,1);display:block}
+.team-img-yusuf{object-position:center 62%}
 .team-card:hover .team-img{filter:grayscale(0%);transform:scale(1.03)}
 .team-card-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.2) 45%,transparent 70%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,36px)}
 .team-card-role{font-family:var(--fD);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
@@ -581,7 +582,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
       </div>
     </div>
     <div class="team-card rv d1">
-      <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/yusuf.webp" type="image/webp"/><img class="team-img" src="<?php echo get_template_directory_uri(); ?>/assets/yusuf.jpg" alt="Yusuf – Entwickler bei mystu" width="1200" height="1800" loading="lazy"/></picture>
+      <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/yusuf.webp" type="image/webp"/><img class="team-img team-img-yusuf" src="<?php echo get_template_directory_uri(); ?>/assets/yusuf.jpg" alt="Yusuf – Entwickler bei mystu" width="1200" height="1800" loading="lazy"/></picture>
       <div class="team-card-over">
         <p class="team-card-role">Entwickler</p>
         <h3 class="team-card-name">Yusuf</h3>
