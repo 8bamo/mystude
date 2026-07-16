@@ -7,7 +7,7 @@
 <meta name="description" content="Emmanuel Whajah — Multi-award-winning Director & Photographer. Aftermovies, Werbekampagnen und Portraits für Chris Brown, Lauryn Hill, Burna Boy, Nike, Hennessy u.v.m.">
 <meta name="robots" content="noindex">
 <base href="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/">
-<script>if(/^\/(?:emmanuelwhajah|emmanuel-whajah)-v2\/?$/.test(location.pathname)){document.documentElement.classList.add('portfolio-v2')}</script>
+<script>{const m=location.pathname.match(/^\/(?:emmanuelwhajah|emmanuel-whajah)-(v[23])\/?$/);if(m)document.documentElement.classList.add(`portfolio-${m[1]}`)}</script>
 <link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="shortcut icon" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -683,6 +683,146 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
   html.portfolio-v2 .booking-head h2{font-size:clamp(58px,18vw,82px)}
   html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label,html.portfolio-v2 .privacy{font-size:16px}
 }
+
+/* ---------- V3: bright studio portfolio ---------- */
+html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#16bd68;--v3-line:#d9d9d4;background:var(--v3-paper)}
+html.portfolio-v3 body{background:var(--v3-paper);color:var(--v3-ink);font-family:var(--sans);font-size:16px}
+html.portfolio-v3 body::before{display:none}
+html.portfolio-v3 #progress{height:2px;background:var(--v3-green)}
+html.portfolio-v3 :focus-visible{outline-color:var(--v3-green)}
+html.portfolio-v3 .gate{background:var(--v3-paper);color:var(--v3-ink)}
+html.portfolio-v3 .gate-box{background:#fff;border-color:var(--v3-line);border-radius:18px}
+html.portfolio-v3 .gate-name em{color:var(--v3-ink);-webkit-text-stroke:0}
+html.portfolio-v3 .gate-hint,html.portfolio-v3 .gate-note{color:#6d6d68}
+html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line)}
+html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
+
+html.portfolio-v3 nav{position:relative;height:104px;padding:22px 28px;mix-blend-mode:normal;background:var(--v3-paper);color:var(--v3-ink)}
+html.portfolio-v3 nav .logo{width:148px;font-family:var(--sans);font-size:15px;font-weight:750;line-height:1;text-transform:lowercase;letter-spacing:-.03em}
+html.portfolio-v3 nav .logo::before{content:"EW";display:inline-grid;place-items:center;width:48px;height:48px;margin-right:9px;border:2px solid var(--v3-ink);border-top:0;border-radius:0 0 22px 22px;font-size:14px;vertical-align:middle}
+html.portfolio-v3 nav .logo em{color:var(--v3-ink);font-style:normal}
+html.portfolio-v3 nav ul{gap:34px;align-items:center}
+html.portfolio-v3 nav ul a{font-size:14px;font-weight:450;letter-spacing:0;text-transform:none;opacity:.78}
+html.portfolio-v3 nav ul li:last-child a{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;opacity:1}
+html.portfolio-v3 nav ul li:last-child a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green)}
+
+html.portfolio-v3 .hero{height:calc(100svh - 114px);min-height:620px;margin:0 10px 10px;padding:42px 50px;border-radius:42px;justify-content:flex-end;overflow:hidden;background:#202624}
+html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),transparent 58%)}
+html.portfolio-v3 .hero-media::after{background:linear-gradient(0deg,rgba(5,8,7,.62),transparent 58%)}
+html.portfolio-v3 .hero-poster{opacity:.96;filter:saturate(.72);object-position:center}
+html.portfolio-v3 .hero-media video{opacity:.88;filter:saturate(.72) contrast(1.02);object-position:center}
+html.portfolio-v3 .hero>.kicker,html.portfolio-v3 .hero>h1:not(.v3-headline),html.portfolio-v3 .hero>.sub,html.portfolio-v3 .hero>.scroll{display:none}
+html.portfolio-v3 .v3-headline{display:block;max-width:980px;margin:0;font-size:clamp(64px,7.2vw,126px);font-weight:620;font-stretch:100%;line-height:.88;letter-spacing:-.055em;text-transform:none;color:#fff}
+html.portfolio-v3 .v3-headline .v3-word{display:block;color:rgba(255,255,255,.38);transition:opacity .35s ease}
+html.portfolio-v3 .hero-showreel{left:auto!important;right:42px!important;top:38px!important;transform:none;width:112px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:9px;background:rgba(0,0,0,.15);font-size:9px;color:#fff}
+html.portfolio-v3 .hero-showreel:hover{background:#fff;color:#111}
+html.portfolio-v3 .hero-slide-status{left:50%!important;right:auto!important;top:auto!important;bottom:29px;width:auto;height:auto;transform:translateX(-50%);font-size:10px;color:#fff}
+html.portfolio-v3 .v3-sound{display:grid;place-items:center;position:absolute;z-index:4;right:42px;bottom:32px;width:42px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(0,0,0,.14);color:#fff;cursor:pointer}
+html.portfolio-v3 .marquee{display:none}
+
+.v3-intro{display:none}
+html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:var(--v3-paper)}
+html.portfolio-v3 .v3-intro p{max-width:220px;font-size:15px;color:#666;line-height:1.5}
+html.portfolio-v3 .v3-intro h2{font-size:clamp(50px,6.5vw,106px);font-weight:520;line-height:.94;letter-spacing:-.045em}
+html.portfolio-v3 .v3-intro h2 span{display:block;color:#aaa}
+
+html.portfolio-v3 section{padding:clamp(90px,10vw,160px) clamp(26px,4vw,64px)}
+html.portfolio-v3 #arbeiten{background:#fff;color:var(--v3-ink);overflow:hidden}
+html.portfolio-v3 #arbeiten .shead{margin-bottom:42px;padding:0;border:0;align-items:end}
+html.portfolio-v3 #arbeiten .shead h2{font-size:clamp(38px,4vw,64px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:none}
+html.portfolio-v3 #arbeiten .shead h2::before{content:"Neueste Arbeiten";display:block;margin-bottom:18px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#aaa}
+html.portfolio-v3 #arbeiten .shead h2 em{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
+html.portfolio-v3 #arbeiten .shead .count{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
+html.portfolio-v3 .filters{margin-bottom:30px;border-bottom:1px solid var(--v3-line);gap:0}
+html.portfolio-v3 .filters button{min-height:46px;padding:0 18px;border:0;border-radius:0;color:#888;font-size:10px;letter-spacing:.08em}
+html.portfolio-v3 .filters button:first-child{padding-left:0}
+html.portfolio-v3 .filters button.on{background:transparent;color:#111;box-shadow:inset 0 -2px #111}
+html.portfolio-v3 .project-slider{border:0;position:relative}
+html.portfolio-v3 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+html.portfolio-v3 .card,html.portfolio-v3 .card.active{display:none;grid-template-columns:1fr;gap:0;padding:0;background:transparent;animation:none}
+html.portfolio-v3 .card.v3-visible{display:grid}
+html.portfolio-v3 .card .frame{grid-column:1;grid-row:1;aspect-ratio:4/5;border-radius:24px;background:#ddd}
+html.portfolio-v3 .card img.poster{filter:saturate(.8)}
+html.portfolio-v3 .card .meta{grid-column:1;grid-row:2;display:grid;grid-template-columns:auto 1fr;gap:7px 13px;padding:17px 4px;color:#111}
+html.portfolio-v3 .card .meta .num{grid-row:1/4;margin:3px 0 0;font-family:var(--sans);font-size:10px;font-style:normal;color:#888}
+html.portfolio-v3 .card .meta .t{font-size:clamp(21px,2vw,31px);font-stretch:100%;font-weight:570;line-height:1;letter-spacing:-.025em;color:#111}
+html.portfolio-v3 .card .meta .c{font-size:9px;color:#888}
+html.portfolio-v3 .card .meta .watch{margin-top:5px;font-size:9px;color:#111}
+html.portfolio-v3 .card .meta .watch::before{background:#111}
+html.portfolio-v3 .card .play{opacity:1;transform:none;width:48px;height:48px;border-color:rgba(255,255,255,.8);background:rgba(0,0,0,.16)}
+html.portfolio-v3 .slider-controls{justify-content:flex-end;padding-top:20px}
+html.portfolio-v3 .slider-button{width:46px;height:46px;border-color:#d5d5d0;color:#111}
+html.portfolio-v3 .slider-count{font-family:var(--sans);font-size:12px;font-style:normal;color:#888}
+html.portfolio-v3 .slider-count .current{font-family:inherit;font-size:inherit;font-style:normal;color:#111}
+
+html.portfolio-v3 #fotografie{background:#171918;color:#fff;border:0}
+html.portfolio-v3 #fotografie .shead{border:0;margin-bottom:50px}
+html.portfolio-v3 #fotografie .shead h2{font-size:clamp(54px,8vw,128px);font-weight:480;font-stretch:100%;letter-spacing:-.05em;text-transform:none}
+html.portfolio-v3 #fotografie .shead h2 em{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
+html.portfolio-v3 #fotografie .shead .count{color:#888;font-family:var(--sans);font-style:normal}
+html.portfolio-v3 .masonry{columns:3;column-gap:14px}
+html.portfolio-v3 .masonry a{margin-bottom:14px;border-radius:18px}
+html.portfolio-v3 .masonry img{filter:saturate(.7)}
+
+html.portfolio-v3 #auszeichnungen{background:var(--v3-paper);color:var(--v3-ink)}
+html.portfolio-v3 #auszeichnungen .shead{border-color:var(--v3-line)}
+html.portfolio-v3 #auszeichnungen .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
+html.portfolio-v3 #auszeichnungen .shead h2 em{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
+html.portfolio-v3 .awards .item{border-color:var(--v3-line)}
+html.portfolio-v3 .awards .item .n{font-size:clamp(17px,1.7vw,25px);font-weight:540;color:#111}
+html.portfolio-v3 .awards .item .d{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
+html.portfolio-v3 .awards .pics img{border:0;border-radius:18px}
+
+html.portfolio-v3 #kontakt{background:#fff;color:#111;padding:10px}
+html.portfolio-v3 .about{min-height:calc(100svh - 20px);grid-template-columns:1fr 1fr;gap:0;background:#e9e9e5;border-radius:38px;overflow:hidden}
+html.portfolio-v3 .about .pic{min-height:100%;border-radius:0}
+html.portfolio-v3 .about .pic img{width:100%;height:100%;object-fit:cover;filter:none}
+html.portfolio-v3 .about>div:last-child{display:flex;flex-direction:column;justify-content:center;padding:clamp(44px,7vw,110px)}
+html.portfolio-v3 .about p{font-size:clamp(28px,3vw,48px);font-weight:430;line-height:1.15}
+html.portfolio-v3 .about p em{font-family:var(--sans);font-style:normal;color:#888}
+html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38px,4vw,66px);color:#111}
+html.portfolio-v3 .about .facts div s{color:#666}
+
+html.portfolio-v3 #booking{background:#1b1d1c;color:#fff;border:0}
+html.portfolio-v3 .booking-head h2{font-size:clamp(64px,9vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
+html.portfolio-v3 .booking-head h2 em{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
+html.portfolio-v3 .booking-intro{font-family:var(--sans);font-size:18px;color:#aaa}
+html.portfolio-v3 .field label{color:#bbb}
+html.portfolio-v3 .field input,html.portfolio-v3 .field select,html.portfolio-v3 .field textarea{color:#fff;border-color:#555}
+html.portfolio-v3 .booking-submit{background:#fff;border-color:#fff;color:#111;border-radius:9px}
+html.portfolio-v3 footer{background:#1b1d1c}
+html.portfolio-v3 footer .big a{color:#fff;-webkit-text-stroke:0}
+html.portfolio-v3 footer .big a:hover{color:#aaa}
+
+@media(max-width:760px){
+  html.portfolio-v3 nav{height:86px;padding:14px 18px}
+  html.portfolio-v3 nav .logo{font-size:0;width:58px}
+  html.portfolio-v3 nav .logo::before{width:43px;height:43px;margin:0;font-size:12px}
+  html.portfolio-v3 .menu-toggle{display:grid;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
+  html.portfolio-v3 nav ul{background:var(--v3-paper)}
+  html.portfolio-v3 nav ul a{font-size:30px;color:#111}
+  html.portfolio-v3 .hero{height:calc(100svh - 96px);min-height:590px;margin:0 16px 10px;padding:28px 22px;border-radius:34px}
+  html.portfolio-v3 .v3-headline{font-size:clamp(48px,15vw,72px);line-height:.92}
+  html.portfolio-v3 .hero-showreel{right:20px!important;top:20px!important;width:92px;height:38px}
+  html.portfolio-v3 .hero-slide-status{bottom:22px}
+  html.portfolio-v3 .v3-sound{right:20px;bottom:18px;width:38px;height:38px}
+  html.portfolio-v3 .v3-intro{grid-template-columns:1fr;gap:44px;padding:100px 22px}
+  html.portfolio-v3 .v3-intro h2{font-size:clamp(48px,14vw,68px)}
+  html.portfolio-v3 section{padding:84px 18px}
+  html.portfolio-v3 #arbeiten .shead h2{font-size:40px}
+  html.portfolio-v3 .filters{flex-wrap:nowrap;overflow-x:auto}
+  html.portfolio-v3 .grid{grid-template-columns:1fr}
+  html.portfolio-v3 .card .frame{aspect-ratio:4/5;border-radius:22px}
+  html.portfolio-v3 .card .meta .t{font-size:30px}
+  html.portfolio-v3 .masonry{columns:2;column-gap:8px}
+  html.portfolio-v3 .masonry a{margin-bottom:8px;border-radius:12px}
+  html.portfolio-v3 .about{grid-template-columns:1fr;min-height:0;border-radius:28px}
+  html.portfolio-v3 .about .pic{aspect-ratio:4/5}
+  html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
+  html.portfolio-v3 .about p{font-size:27px}
+  html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
+  html.portfolio-v3 .booking-head h2{font-size:clamp(58px,18vw,82px)}
+}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
@@ -732,12 +872,14 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
     <span class="row"><span>Emmanuel</span></span>
     <span class="row"><span>Whajah</span></span>
   </h1>
+  <h1 class="v3-headline" hidden>Getrieben von <span class="v3-word">Vision.</span></h1>
   <div class="sub">
     <span class="role">Bewegtbild, das Gänsehaut macht.</span>
     <span class="facts">Multi-Award-Winning&ensp;·&ensp;Forbes 30 under 30&ensp;·&ensp;Founder @playthegame</span>
   </div>
   <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Showreel von Emmanuel Whajah abspielen">Showreel<br>ansehen</button>
   <span class="hero-slide-status" id="hero-slide-status" aria-hidden="true">01 / 04</span>
+  <button class="v3-sound" id="v3-sound" type="button" aria-label="Ton einschalten" hidden>♪</button>
   <span class="scroll">Scroll ↓</span>
 </header>
 
@@ -746,6 +888,11 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
     <span>Chris Brown</span><b>✦</b><span>Lauryn Hill</span><b>✦</b><span>Burna Boy</span><b>✦</b><span>Asake</span><b>✦</b><span>Jason Derulo</span><b>✦</b><span>Les Twins</span><b>✦</b><span>Nike</span><b>✦</b><span>Hennessy</span><b>✦</b><span>NAS</span><b>✦</b><span>NBA All-Star</span><b>✦</b><span>Cupra</span><b>✦</b><span>Miss Germany</span><b>✦</b><span>Little Simz</span><b>✦</b><span>Tory Lanez</span><b>✦</b><span>Keke Palmer</span><b>✦</b>
   </div>
 </div>
+
+<section class="v3-intro" aria-label="Profil-Einleitung">
+  <p>Director, Photographer und Creative Director für internationale Artists, Brands und Kulturprojekte.</p>
+  <h2>Content, der bewegt.<span>Bilder, die bleiben.</span></h2>
+</section>
 
 <section id="arbeiten">
   <div class="shead reveal">
@@ -823,6 +970,7 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
   <form class="booking-form reveal" action="/wp-admin/admin-post.php" method="post" id="booking-form">
     <input type="hidden" name="action" value="emmanuel_booking">
     <input type="hidden" name="emmanuel_booking_nonce" value="{{EMMANUEL_BOOKING_NONCE}}">
+    <input type="hidden" name="portfolio_version" id="portfolio-version" value="">
     <div class="booking-hp" aria-hidden="true">
       <label for="company-website">Website</label>
       <input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -923,6 +1071,13 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
   });
 })();
 
+const isPortfolioV2=document.documentElement.classList.contains('portfolio-v2');
+const isPortfolioV3=document.documentElement.classList.contains('portfolio-v3');
+if(isPortfolioV3){
+  document.querySelector('.v3-headline').hidden=false;
+  document.getElementById('v3-sound').hidden=false;
+}
+document.getElementById('portfolio-version').value=isPortfolioV3?'v3':isPortfolioV2?'v2':'';
 const VIDEOS=[
  {s:"chris-brown",t:"Chris Brown",c:"aftermovie",cl:"Aftermovie",layout:"wide"},
  {s:"lauryn-hill",t:"Lauryn Hill",c:"aftermovie",cl:"Aftermovie",layout:"sq"},
@@ -971,9 +1126,22 @@ function updateSlider(){
   if(slideIndex>=slides.length)slideIndex=0;
   if(slideIndex<0)slideIndex=Math.max(0,slides.length-1);
   allCards.forEach(card=>{
-    card.hidden=true;card.classList.remove('active','playing');card.tabIndex=-1;
+    card.hidden=true;card.classList.remove('active','playing','v3-visible','v3-primary');card.tabIndex=-1;
     const preview=card.querySelector('video.prev');preview.pause();
   });
+  if(isPortfolioV3&&slides.length){
+    const shown=innerWidth<=760?1:Math.min(3,slides.length);
+    for(let offset=0;offset<shown;offset++){
+      const card=slides[(slideIndex+offset)%slides.length];
+      card.hidden=false;card.classList.add('active','v3-visible');
+      if(offset===0){card.classList.add('v3-primary');card.tabIndex=0}
+    }
+    slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
+    slideTotal.textContent=String(slides.length).padStart(2,'0');
+    document.getElementById('vidcount').textContent=`${slides.length} Projekte`;
+    prevButton.disabled=nextButton.disabled=slides.length<2;
+    return;
+  }
   const active=slides[slideIndex];
   if(active){active.hidden=false;active.classList.add('active');active.tabIndex=0}
   slideCurrent.textContent=String(slides.length?slideIndex+1:0).padStart(2,'0');
@@ -1028,22 +1196,35 @@ document.getElementById('hero-showreel').addEventListener('click',()=>{
 });
 
 /* editorial hero reel — pauses when the first viewport is out of view */
-const isPortfolioV2=document.documentElement.classList.contains('portfolio-v2');
 const heroProjects=isPortfolioV2
   ? ['people-of-deutschland','nike','cupra-miss-germany','lauryn-hill']
-  : ['chris-brown','lauryn-hill','nike','cupra-miss-germany'];
+  : isPortfolioV3
+    ? ['85-racing','nike','cupra-miss-germany','people-of-deutschland']
+    : ['chris-brown','lauryn-hill','nike','cupra-miss-germany'];
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
 const heroSource=heroVideo.querySelector('source');
 const heroSlideStatus=document.getElementById('hero-slide-status');
 let heroProjectIndex=0;
-if(isPortfolioV2){
+if(isPortfolioV2||isPortfolioV3){
   const firstHero=heroProjects[0];
   heroMedia.querySelector('.hero-poster').src=`assets/poster/${firstHero}.jpg`;
   heroVideo.poster=`assets/poster/${firstHero}.jpg`;
   heroSource.src=`assets/video/${firstHero}-preview.mp4`;
   heroVideo.load();heroVideo.play().catch(()=>{});
   heroSlideStatus.style.setProperty('--hero-index','1');
+}
+if(isPortfolioV3){
+  const words=['Vision.','Energie.','Bewegung.','Kultur.'];
+  const word=document.querySelector('.v3-word');
+  let wordIndex=0;
+  setInterval(()=>{word.style.opacity='0';setTimeout(()=>{wordIndex=(wordIndex+1)%words.length;word.textContent=words[wordIndex];word.style.opacity='1'},260)},3000);
+  document.getElementById('v3-sound').addEventListener('click',e=>{
+    heroVideo.muted=!heroVideo.muted;
+    e.currentTarget.textContent=heroVideo.muted?'♪':'♫';
+    e.currentTarget.setAttribute('aria-label',heroVideo.muted?'Ton einschalten':'Ton ausschalten');
+  });
+  addEventListener('resize',()=>updateSlider(),{passive:true});
 }
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   setInterval(()=>{

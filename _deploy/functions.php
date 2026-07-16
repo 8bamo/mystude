@@ -49,7 +49,7 @@ add_action('template_redirect', function(){
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
     // Clean public URL for the standalone Emmanuel Whajah portfolio.
-    if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah', 'emmanuelwhajah-v2', 'emmanuel-whajah-v2'], true)) {
+    if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah', 'emmanuelwhajah-v2', 'emmanuel-whajah-v2', 'emmanuelwhajah-v3', 'emmanuel-whajah-v3'], true)) {
         $portfolio_file = MYSTU_DIR . '/mockups/emmanuel-whajah/index.html';
         if (is_readable($portfolio_file)) {
             status_header(200);
@@ -97,7 +97,13 @@ add_action('template_redirect', function(){
  * Public booking form on the Emmanuel Whajah portfolio.
  */
 function mystu_handle_emmanuel_booking() {
-    $redirect_url = home_url('/emmanuelwhajah');
+    $portfolio_version = isset($_POST['portfolio_version'])
+        ? sanitize_key(wp_unslash($_POST['portfolio_version']))
+        : '';
+    $redirect_slug = in_array($portfolio_version, ['v2', 'v3'], true)
+        ? '/emmanuelwhajah-' . $portfolio_version
+        : '/emmanuelwhajah';
+    $redirect_url = home_url($redirect_slug);
 
     if (
         empty($_POST['emmanuel_booking_nonce']) ||
