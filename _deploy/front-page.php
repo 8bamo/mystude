@@ -470,6 +470,18 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
   <div class="ref-mockups">
     <div class="ref-mock rv">
       <div class="ref-mock-frame">
+        <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/img/reference-heroes/handwerk-hero-1280.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/img/reference-heroes/handwerk-hero.png" alt="Handwerker-Webseite Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
+      </div>
+      <div class="ref-mock-info">
+        <p class="ref-mock-tag">WordPress · Handwerk</p>
+        <div class="ref-mock-name">Müller Bau</div>
+      </div>
+      <div class="ref-mock-over">
+        <a href="<?php echo esc_url(home_url('/handwerker-webseite/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="Handwerker-Webseite in neuem Tab ansehen">Live ansehen →</a>
+      </div>
+    </div>
+    <div class="ref-mock rv">
+      <div class="ref-mock-frame">
         <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/handwerk.webp" type="image/webp"/><img src="<?php echo get_template_directory_uri(); ?>/assets/handwerk.jpg" alt="Fahrschul-Mockup" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/></picture>
       </div>
       <div class="ref-mock-info">
