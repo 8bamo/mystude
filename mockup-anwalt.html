@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanzlei Hartmann & Söhne — Stuttgart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1410;
+    --wine: #8b2635;
+    --border: #e8dfd0;
+    --dark: #1a1410;
+    --mid: #6b5c4e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 6vw;
+    height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-size: 1.15rem; letter-spacing: 0.04em; color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    color: var(--cream) !important; background: var(--wine);
+    padding: 0.6rem 1.4rem; transition: opacity 0.2s; font-size: 0.78rem !important; font-weight: 500 !important;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    margin-top: 70px; min-height: calc(100vh - 70px);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 6vw; gap: 4rem;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--wine);
+    margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--wine); }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(2.8rem, 5vw, 4.8rem); line-height: 1.1;
+    letter-spacing: -0.01em; color: var(--ink); margin-bottom: 1.8rem;
+  }
+  h1 em { font-style: italic; color: var(--wine); font-weight: 300; }
+
+  .hero-sub { font-size: 1rem; color: var(--mid); line-height: 1.7; margin-bottom: 2.5rem; max-width: 420px; }
+
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--wine); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 2rem;
+    text-decoration: none; display: inline-block; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+    text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+  }
+
+  .hero-right { position: relative; height: 560px; }
+  .hero-img-wrap { position: absolute; right: 0; top: 0; width: 90%; height: 100%; overflow: hidden; }
+  .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: sepia(15%) contrast(1.05); }
+  .hero-caption {
+    position: absolute; bottom: -1.5rem; left: -2rem;
+    font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; font-style: italic;
+    color: var(--mid); writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 0.05em;
+  }
+
+  /* TRUST */
+  .trust-strip { background: var(--dark); color: var(--cream); padding: 4rem 6vw; }
+  .trust-inner {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem;
+  }
+  .trust-stat { border-left: 1px solid rgba(255,255,255,0.12); padding-left: 1.5rem; }
+  .trust-number {
+    font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300;
+    line-height: 1; color: var(--cream); display: block; margin-bottom: 0.4rem;
+  }
+  .trust-number em { font-style: italic; color: #c4a882; }
+  .trust-label { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+
+  /* RECHTSGEBIETE */
+  .rechtsgebiete {
+    padding: 7rem 6vw; display: grid; grid-template-columns: 200px 1fr;
+    gap: 4rem; align-items: start; border-bottom: 1px solid var(--border);
+  }
+  .section-label { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--wine); padding-top: 0.5rem; }
+  .rg-right h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.2; margin-bottom: 3rem; }
+  .rg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .rg-item { display: flex; gap: 1.2rem; align-items: baseline; padding: 1.4rem 0; border-top: 1px solid var(--border); }
+  .rg-item:nth-child(odd) { padding-right: 3rem; border-right: 1px solid var(--border); }
+  .rg-item:nth-child(even) { padding-left: 3rem; }
+  .rg-num { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-weight: 400; color: var(--wine); flex-shrink: 0; }
+  .rg-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.2rem; color: var(--ink); line-height: 1.3; }
+
+  /* ÜBER UNS */
+  .ueber-uns { padding: 7rem 6vw; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 300; font-style: italic; line-height: 1.35; color: var(--ink);
+    padding-left: 2rem; border-left: 2px solid var(--wine); margin-bottom: 2rem;
+  }
+  .uu-text { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
+  .uu-signature { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--ink); }
+  .portrait-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+  .portrait-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: sepia(10%) contrast(1.05); }
+  .portrait-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(26,20,16,0.5), transparent); padding: 2rem; }
+  .portrait-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--cream); }
+  .portrait-title { font-size: 0.72rem; color: rgba(245,240,232,0.65); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+
+  /* TESTIMONIAL */
+  .testimonial-full { background: var(--wine); padding: 6rem 12vw; text-align: center; }
+  .test-quote {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.4;
+    margin-bottom: 2rem; position: relative;
+  }
+  .test-quote::before {
+    content: '\201C'; font-size: 8rem; color: rgba(245,240,232,0.12);
+    position: absolute; top: -2rem; left: -4rem; font-style: normal; line-height: 1;
+  }
+  .test-attr { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.55); }
+
+  /* KONTAKT */
+  .kontakt { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .kontakt-map { position: relative; min-height: 500px; }
+  .kontakt-map iframe { width: 100%; height: 100%; display: block; filter: sepia(20%) contrast(1.1); }
+  .kontakt-right { padding: 5rem 5vw; background: var(--cream); border-left: 1px solid var(--border); }
+  .kontakt-right h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; margin-bottom: 0.5rem; }
+  .kontakt-sub { font-size: 0.85rem; color: var(--mid); margin-bottom: 2.5rem; }
+  .contact-details { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .contact-line { font-size: 0.85rem; color: var(--ink); display: flex; gap: 0.6rem; }
+  .contact-line span:first-child { color: var(--mid); min-width: 80px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 0.15rem; }
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  form input, form textarea, form select {
+    width: 100%; padding: 0.85rem 1rem; background: transparent;
+    border: 1px solid var(--border); border-radius: 0;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--ink);
+    outline: none; transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  form input:focus, form textarea:focus, form select:focus { border-color: var(--wine); }
+  form input::placeholder, form textarea::placeholder { color: rgba(107,92,78,0.5); }
+  form textarea { height: 100px; resize: vertical; }
+  form button {
+    background: var(--ink); color: var(--cream); border: none;
+    padding: 0.9rem 2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s; align-self: flex-start;
+  }
+  form button:hover { background: var(--wine); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: rgba(245,240,232,0.45);
+    padding: 3rem 6vw; display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(245,240,232,0.7); font-weight: 400; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(245,240,232,0.7); }
+
+  /* BADGE */
+  .mockup-badge {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+    background: var(--wine); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 0.9rem; opacity: 0.9;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 4vw; }
+    .nav-links li:not(:last-child) { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 4rem 6vw 5rem; min-height: auto; gap: 3rem; }
+    .hero-right { height: 380px; }
+    .hero-img-wrap { width: 100%; }
+    .hero-caption { display: none; }
+    .trust-inner { grid-template-columns: repeat(2, 1fr); }
+    .rechtsgebiete { grid-template-columns: 1fr; gap: 2rem; }
+    .rg-grid { grid-template-columns: 1fr; }
+    .rg-item:nth-child(odd) { border-right: none; padding-right: 0; }
+    .rg-item:nth-child(even) { padding-left: 0; }
+    .ueber-uns { grid-template-columns: 1fr; gap: 3rem; }
+    .testimonial-full { padding: 4rem 8vw; }
+    .test-quote::before { display: none; }
+    .kontakt { grid-template-columns: 1fr; }
+    .kontakt-map { min-height: 300px; }
+    .kontakt-right { border-left: none; border-top: 1px solid var(--border); padding: 3rem 5vw; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 1.5rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2.6rem; }
+    .trust-number { font-size: 2.4rem; }
+    .pull-quote { font-size: 1.4rem; }
+    .hero { padding: 3rem 5vw 4rem; }
+    .rechtsgebiete, .ueber-uns { padding: 4rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Hartmann & Söhne</a>
+  <ul class="nav-links">
+    <li><a href="#rechtsgebiete">Rechtsgebiete</a></li>
+    <li><a href="#ueber-uns">Kanzlei</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#kontakt" class="nav-cta">Erstgespräch</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Seit 1987 · Stuttgart</p>
+    <h1>Recht, das<br><em>Haltung</em><br>beweist.</h1>
+    <p class="hero-sub">Kanzlei Hartmann & Söhne steht für klare juristische Analyse, diskrete Mandatsführung und nachhaltige Ergebnisse. Wir vertreten Unternehmen und Privatpersonen im Wirtschaftsrecht, Erbrecht und Familienrecht.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Erstgespräch vereinbaren</a>
+      <a href="#rechtsgebiete" class="btn-ghost">Rechtsgebiete ansehen</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=85&fit=crop&crop=center" alt="Kanzlei Innenraum">
+    </div>
+    <span class="hero-caption">Stuttgart, Königstraße 12a</span>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-stat">
+      <span class="trust-number">37<em>+</em></span>
+      <span class="trust-label">Jahre Erfahrung</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">2.<em>400</em></span>
+      <span class="trust-label">Mandate geführt</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">94<em>%</em></span>
+      <span class="trust-label">Erstinstanzliche Erfolge</span>
+    </div>
+    <div class="trust-stat">
+      <span class="trust-number">6</span>
+      <span class="trust-label">Spezialisierte Anwälte</span>
+    </div>
+  </div>
+</section>
+
+<section class="rechtsgebiete" id="rechtsgebiete">
+  <p class="section-label">Rechtsgebiete</p>
+  <div class="rg-right">
+    <h2>Juristisches Know-how<br>wo es zählt.</h2>
+    <div class="rg-grid">
+      <div class="rg-item"><span class="rg-num">01.</span><span class="rg-name">Wirtschaftsrecht & Vertragsrecht</span></div>
+      <div class="rg-item"><span class="rg-num">02.</span><span class="rg-name">Erbrecht & Vermögensnachfolge</span></div>
+      <div class="rg-item"><span class="rg-num">03.</span><span class="rg-name">Familienrecht & Scheidung</span></div>
+      <div class="rg-item"><span class="rg-num">04.</span><span class="rg-name">Immobilienrecht & Baurecht</span></div>
+      <div class="rg-item"><span class="rg-num">05.</span><span class="rg-name">Arbeitsrecht & Kündigungsschutz</span></div>
+      <div class="rg-item"><span class="rg-num">06.</span><span class="rg-name">Gesellschaftsrecht & M&amp;A</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ueber-uns" id="ueber-uns">
+  <div class="uu-left">
+    <p class="section-label" style="margin-bottom:2rem;">Über die Kanzlei</p>
+    <blockquote class="pull-quote">„Rechtssicherheit entsteht nicht durch Paragraphen allein — sondern durch den Menschen, der sie versteht."</blockquote>
+    <p class="uu-text">Dr. Friedrich Hartmann gründete die Kanzlei 1987 in Stuttgart-Mitte. Heute führen seine Söhne Maximilian und Johannes Hartmann das Haus in zweiter Generation — mit derselben Überzeugung: Jeder Mandant verdient vollständige Aufmerksamkeit, keine halbe Antwort.</p>
+    <p class="uu-text">Unsere Kanzlei verbindet klassisch-handwerkliche Rechtsberatung mit moderner Prozessführung. Keine Massenabfertigung — jedes Mandat trägt unseren Namen.</p>
+    <p class="uu-signature">— Dr. Friedrich Hartmann, Gründungspartner</p>
+  </div>
+  <div class="uu-right">
+    <div class="portrait-wrap">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=85&fit=crop&crop=top" alt="Dr. Friedrich Hartmann">
+      <div class="portrait-overlay">
+        <p class="portrait-name">Dr. Friedrich Hartmann</p>
+        <p class="portrait-title">Gründungspartner · Rechtsanwalt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-full">
+  <blockquote class="test-quote">„Kanzlei Hartmann & Söhne hat uns in einer existenziell schwierigen Phase nicht nur juristisch, sondern menschlich begleitet. Das Ergebnis hat unsere Erwartungen bei Weitem übertroffen."</blockquote>
+  <p class="test-attr">Dipl.-Ing. Sabine Moritz, Geschäftsführerin · Moritz Ingenieurbau GmbH, Stuttgart</p>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="kontakt-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2628.549037087525!2d9.174148315867385!3d48.77841627918832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db343b89ca1b%3A0xa9e44f19f21bf6a7!2sK%C3%B6nigstra%C3%9Fe%2C%2070173%20Stuttgart!5e0!3m2!1sde!2sde!4v1718000000000!5m2!1sde!2sde" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Kanzlei Standort Stuttgart"></iframe>
+  </div>
+  <div class="kontakt-right">
+    <h2>Erstgespräch<br>vereinbaren</h2>
+    <p class="kontakt-sub">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+    <div class="contact-details">
+      <div class="contact-line"><span>Adresse</span><span>Königstraße 12a, 70173 Stuttgart</span></div>
+      <div class="contact-line"><span>Telefon</span><span>+49 711 / 226 580</span></div>
+      <div class="contact-line"><span>E-Mail</span><span>kontakt@hartmann-soehne.de</span></div>
+      <div class="contact-line"><span>Öffnung</span><span>Mo–Fr 9:00–18:00 Uhr</span></div>
+    </div>
+    <form>
+      <div class="form-row">
+        <input type="text" placeholder="Vorname">
+        <input type="text" placeholder="Nachname">
+      </div>
+      <input type="email" placeholder="E-Mail-Adresse">
+      <input type="tel" placeholder="Telefonnummer (optional)">
+      <select>
+        <option value="" disabled selected>Rechtsgebiet auswählen</option>
+        <option>Wirtschaftsrecht</option>
+        <option>Erbrecht</option>
+        <option>Familienrecht</option>
+        <option>Immobilienrecht</option>
+        <option>Arbeitsrecht</option>
+        <option>Gesellschaftsrecht</option>
+      </select>
+      <textarea placeholder="Kurze Schilderung Ihres Anliegens"></textarea>
+      <button type="submit">Anfrage senden</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <p class="footer-logo">Kanzlei Hartmann & Söhne</p>
+    <p style="font-size:0.72rem;margin-top:0.3rem;color:rgba(245,240,232,0.25);">Königstraße 12a · 70173 Stuttgart · Seit 1987</p>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#">Impressum</a></li>
+    <li><a href="#">Datenschutz</a></li>
+    <li><a href="#">AGB</a></li>
+  </ul>
+</footer>
+
+<div class="mockup-badge">Mockup · mystu.de</div>
+</body>
+</html>
