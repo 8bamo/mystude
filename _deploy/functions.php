@@ -48,6 +48,18 @@ add_action('admin_head', 'mystu_favicon', 1);
 add_action('template_redirect', function(){
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
+    // Clean public URL for the standalone Emmanuel Whajah portfolio.
+    if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah'], true)) {
+        $portfolio_file = MYSTU_DIR . '/mockups/emmanuel-whajah/index.html';
+        if (is_readable($portfolio_file)) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Length: ' . filesize($portfolio_file));
+            readfile($portfolio_file);
+            exit;
+        }
+    }
+
     $standalone_mockups = [
         'mockup-anwalt'      => 'mockup-anwalt.html',
         'mockup-fahrschule'  => 'mockup-fahrschule.html',
