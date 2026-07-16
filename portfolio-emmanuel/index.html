@@ -721,10 +721,27 @@ html.portfolio-v3 .v3-sound{display:grid;place-items:center;position:absolute;z-
 html.portfolio-v3 .marquee{display:none}
 
 .v3-intro{display:none}
-html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:var(--v3-paper)}
-html.portfolio-v3 .v3-intro p{max-width:220px;font-size:15px;color:#666;line-height:1.5}
+html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:#0b0c0b;color:#fff}
+html.portfolio-v3 .v3-intro p{max-width:220px;font-size:15px;color:#888;line-height:1.5}
 html.portfolio-v3 .v3-intro h2{font-size:clamp(50px,6.5vw,106px);font-weight:520;line-height:.94;letter-spacing:-.045em}
-html.portfolio-v3 .v3-intro h2 span{display:block;color:#aaa}
+html.portfolio-v3 .v3-intro h2 span{display:block;color:#4c4d4c}
+
+.v3-scroll-gallery{display:none}
+html.portfolio-v3 .v3-scroll-gallery{display:block;position:relative;height:260svh;padding:0;background:#0b0c0b;color:#fff}
+html.portfolio-v3 .v3-scroll-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate}
+html.portfolio-v3 .v3-scroll-stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.48) 100%)}
+html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(760px,80vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#777}
+html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em}
+html.portfolio-v3 .v3-scroll-copy h2 em{display:block;font-style:normal;color:#4e504f}
+html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
+html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
+html.portfolio-v3 .v3-scroll-row.two{bottom:4vh;left:-8vw}
+html.portfolio-v3 .v3-scroll-tile{flex:0 0 auto;width:clamp(180px,20vw,330px);height:clamp(230px,35vh,400px);overflow:hidden;border-radius:20px;background:#222;will-change:transform}
+html.portfolio-v3 .v3-scroll-tile.wide{width:clamp(260px,30vw,480px);height:clamp(170px,25vh,290px)}
+html.portfolio-v3 .v3-scroll-tile.tall{width:clamp(170px,17vw,275px);height:clamp(280px,43vh,480px)}
+html.portfolio-v3 .v3-scroll-tile img{width:100%;height:100%;object-fit:cover;filter:saturate(.72);transition:filter .25s}
+html.portfolio-v3 .v3-scroll-tile:hover img{filter:saturate(1)}
 
 html.portfolio-v3 section{padding:clamp(90px,10vw,160px) clamp(26px,4vw,64px)}
 html.portfolio-v3 #arbeiten{background:#fff;color:var(--v3-ink);overflow:hidden}
@@ -738,9 +755,10 @@ html.portfolio-v3 .filters button{min-height:46px;padding:0 18px;border:0;border
 html.portfolio-v3 .filters button:first-child{padding-left:0}
 html.portfolio-v3 .filters button.on{background:transparent;color:#111;box-shadow:inset 0 -2px #111}
 html.portfolio-v3 .project-slider{border:0;position:relative}
-html.portfolio-v3 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+html.portfolio-v3 .grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain;padding-bottom:4px}
+html.portfolio-v3 .grid::-webkit-scrollbar{display:none}
 html.portfolio-v3 .card,html.portfolio-v3 .card.active{display:none;grid-template-columns:1fr;gap:0;padding:0;background:transparent;animation:none}
-html.portfolio-v3 .card.v3-visible{display:grid}
+html.portfolio-v3 .card.v3-visible{display:grid;flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start}
 html.portfolio-v3 .card .frame{grid-column:1;grid-row:1;aspect-ratio:4/5;border-radius:24px;background:#ddd}
 html.portfolio-v3 .card img.poster{filter:saturate(.8)}
 html.portfolio-v3 .card .meta{grid-column:1;grid-row:2;display:grid;grid-template-columns:auto 1fr;gap:7px 13px;padding:17px 4px;color:#111}
@@ -810,7 +828,8 @@ html.portfolio-v3 footer .big a:hover{color:#aaa}
   html.portfolio-v3 section{padding:84px 18px}
   html.portfolio-v3 #arbeiten .shead h2{font-size:40px}
   html.portfolio-v3 .filters{flex-wrap:nowrap;overflow-x:auto}
-  html.portfolio-v3 .grid{grid-template-columns:1fr}
+  html.portfolio-v3 .grid{display:flex;gap:12px;margin-right:-18px;padding-right:18px}
+  html.portfolio-v3 .card.v3-visible{flex-basis:86%}
   html.portfolio-v3 .card .frame{aspect-ratio:4/5;border-radius:22px}
   html.portfolio-v3 .card .meta .t{font-size:30px}
   html.portfolio-v3 .masonry{columns:2;column-gap:8px}
@@ -821,6 +840,12 @@ html.portfolio-v3 footer .big a:hover{color:#aaa}
   html.portfolio-v3 .about p{font-size:27px}
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
   html.portfolio-v3 .booking-head h2{font-size:clamp(58px,18vw,82px)}
+  html.portfolio-v3 .v3-scroll-gallery{height:220svh}
+  html.portfolio-v3 .v3-scroll-copy{width:88vw}
+  html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(46px,14vw,66px)}
+  html.portfolio-v3 .v3-scroll-tile{width:48vw;height:34vh;border-radius:14px}
+  html.portfolio-v3 .v3-scroll-tile.wide{width:68vw;height:24vh}
+  html.portfolio-v3 .v3-scroll-tile.tall{width:43vw;height:42vh}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -881,6 +906,14 @@ html.portfolio-v3 footer .big a:hover{color:#aaa}
   <button class="v3-sound" id="v3-sound" type="button" aria-label="Ton einschalten" hidden>♪</button>
   <span class="scroll">Scroll ↓</span>
 </header>
+
+<section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Ausgewählte Arbeiten in Bewegung">
+  <div class="v3-scroll-stage">
+    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Momente werden<em>zu Geschichten.</em></h2></div>
+    <div class="v3-scroll-row one" id="v3-scroll-row-one"></div>
+    <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
+  </div>
+</section>
 
 <div class="marquee" aria-hidden="true">
   <div class="track" id="mq">
@@ -1129,12 +1162,7 @@ function updateSlider(){
     const preview=card.querySelector('video.prev');preview.pause();
   });
   if(isPortfolioV3&&slides.length){
-    const shown=innerWidth<=760?1:Math.min(3,slides.length);
-    for(let offset=0;offset<shown;offset++){
-      const card=slides[(slideIndex+offset)%slides.length];
-      card.hidden=false;card.classList.add('active','v3-visible');
-      if(offset===0){card.classList.add('v3-primary');card.tabIndex=0}
-    }
+    slides.forEach((card,offset)=>{card.hidden=false;card.classList.add('active','v3-visible');if(offset===slideIndex){card.classList.add('v3-primary');card.tabIndex=0}});
     slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
     slideTotal.textContent=String(slides.length).padStart(2,'0');
     document.getElementById('vidcount').textContent=`${slides.length} Projekte`;
@@ -1148,7 +1176,14 @@ function updateSlider(){
   document.getElementById('vidcount').textContent=`${slides.length} Projekte`;
   prevButton.disabled=nextButton.disabled=slides.length<2;
 }
-function moveSlide(direction){slideIndex+=direction;updateSlider()}
+function moveSlide(direction){
+  slideIndex+=direction;updateSlider();
+  if(isPortfolioV3){
+    const slides=visibleSlides();
+    const target=slides[slideIndex];
+    if(target)grid.scrollTo({left:target.offsetLeft-grid.offsetLeft,behavior:'smooth'});
+  }
+}
 
 /* hover previews */
 allCards.forEach(card=>{
@@ -1224,6 +1259,35 @@ if(isPortfolioV3){
     e.currentTarget.setAttribute('aria-label',heroVideo.muted?'Ton einschalten':'Ton ausschalten');
   });
   addEventListener('resize',()=>updateSlider(),{passive:true});
+  const gallery=document.getElementById('v3-scroll-gallery');
+  const rowOne=document.getElementById('v3-scroll-row-one');
+  const rowTwo=document.getElementById('v3-scroll-row-two');
+  const galleryProjects=['lauryn-hill','nike','people-of-deutschland','cupra-miss-germany','hennessy-nas','nba-allstar','chris-brown','miss-germany','les-twins-frankfurt','85-racing','asake','jason-derulo'];
+  const tileMarkup=(slug,index)=>`<figure class="v3-scroll-tile ${index%4===1?'wide':index%4===3?'tall':''}"><img src="assets/poster/${slug}.jpg" alt="${VIDEOS.find(v=>v.s===slug)?.t||'Projekt von Emmanuel Whajah'}" loading="lazy"></figure>`;
+  rowOne.innerHTML=galleryProjects.slice(0,6).map(tileMarkup).join('');
+  rowTwo.innerHTML=galleryProjects.slice(6).map((slug,index)=>tileMarkup(slug,index+2)).join('');
+  let galleryTicking=false;
+  const updateGallery=()=>{
+    const rect=gallery.getBoundingClientRect();
+    const distance=Math.max(1,rect.height-innerHeight);
+    const progress=Math.max(0,Math.min(1,-rect.top/distance));
+    rowOne.style.transform=`translate3d(${42-progress*88}vw,0,0)`;
+    rowTwo.style.transform=`translate3d(${-48+progress*88}vw,0,0)`;
+    rowOne.querySelectorAll('.v3-scroll-tile').forEach((tile,index)=>tile.style.transform=`scale(${.86+Math.max(0,1-Math.abs(progress-(index+1)/7)*4)*.14})`);
+    rowTwo.querySelectorAll('.v3-scroll-tile').forEach((tile,index)=>tile.style.transform=`scale(${.86+Math.max(0,1-Math.abs(progress-(index+1)/7)*4)*.14})`);
+    galleryTicking=false;
+  };
+  addEventListener('scroll',()=>{if(!galleryTicking){galleryTicking=true;requestAnimationFrame(updateGallery)}},{passive:true});
+  updateGallery();
+  grid.addEventListener('scroll',()=>{
+    const cards=visibleSlides();
+    if(!cards.length)return;
+    const nearest=cards.reduce((best,card,index)=>{
+      const distance=Math.abs((card.offsetLeft-grid.offsetLeft)-grid.scrollLeft);
+      return distance<best.distance?{index,distance}:best;
+    },{index:0,distance:Infinity});
+    slideIndex=nearest.index;slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
+  },{passive:true});
 }
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   setInterval(()=>{
