@@ -218,7 +218,7 @@ add_action('wp_enqueue_scripts', 'mystu_enqueue');
  * so they cannot clash. Other pages keep them untouched.
  */
 function mystu_frontpage_assets() {
-    if (is_front_page() || is_page('impressum') || is_page_template('page-impressum.php') || is_page('datenschutz') || is_page('agb')) {
+    if (is_front_page() || is_page('preise') || is_page_template('page-preise.php') || is_page('impressum') || is_page_template('page-impressum.php') || is_page('datenschutz') || is_page('agb')) {
         wp_dequeue_style('mystu-main');
         wp_dequeue_style('mystu-fonts');
         wp_dequeue_script('mystu-tailwind');
