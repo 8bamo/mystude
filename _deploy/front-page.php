@@ -568,7 +568,7 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
       </div>
     </div>
     <div class="team-card rv d1">
-      <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/yusuf.webp" type="image/webp"/><img class="team-img" src="<?php echo get_template_directory_uri(); ?>/assets/yusuf.jpg" alt="Yusuf – Entwickler bei mystu" width="600" height="800" loading="lazy"/></picture>
+      <img class="team-img" src="<?php echo get_template_directory_uri(); ?>/assets/yusuf.png" alt="Yusuf – Entwickler bei mystu" width="3480" height="1184" loading="lazy"/>
       <div class="team-card-over">
         <p class="team-card-role">Entwickler</p>
         <h3 class="team-card-name">Yusuf</h3>
