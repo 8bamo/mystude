@@ -54,8 +54,13 @@ add_action('template_redirect', function(){
         if (is_readable($portfolio_file)) {
             status_header(200);
             header('Content-Type: text/html; charset=UTF-8');
-            header('Content-Length: ' . filesize($portfolio_file));
-            readfile($portfolio_file);
+            $portfolio_html = file_get_contents($portfolio_file);
+            $portfolio_html = str_replace(
+                '{{EMMANUEL_BOOKING_NONCE}}',
+                esc_attr(wp_create_nonce('emmanuel_booking_request')),
+                $portfolio_html
+            );
+            echo $portfolio_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted local HTML template.
             exit;
         }
     }
@@ -87,6 +92,61 @@ add_action('template_redirect', function(){
         }
     }
 });
+
+/**
+ * Public booking form on the Emmanuel Whajah portfolio.
+ */
+function mystu_handle_emmanuel_booking() {
+    $redirect_url = home_url('/emmanuelwhajah');
+
+    if (
+        empty($_POST['emmanuel_booking_nonce']) ||
+        !wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_POST['emmanuel_booking_nonce'])),
+            'emmanuel_booking_request'
+        ) ||
+        !empty($_POST['company_website'])
+    ) {
+        wp_safe_redirect(add_query_arg('booking', 'error', $redirect_url) . '#booking');
+        exit;
+    }
+
+    $name     = isset($_POST['name']) ? sanitize_text_field(wp_unslash($_POST['name'])) : '';
+    $email    = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+    $phone    = isset($_POST['phone']) ? sanitize_text_field(wp_unslash($_POST['phone'])) : '';
+    $type     = isset($_POST['project_type']) ? sanitize_text_field(wp_unslash($_POST['project_type'])) : '';
+    $date     = isset($_POST['project_date']) ? sanitize_text_field(wp_unslash($_POST['project_date'])) : '';
+    $location = isset($_POST['location']) ? sanitize_text_field(wp_unslash($_POST['location'])) : '';
+    $budget   = isset($_POST['budget']) ? sanitize_text_field(wp_unslash($_POST['budget'])) : '';
+    $message  = isset($_POST['message']) ? sanitize_textarea_field(wp_unslash($_POST['message'])) : '';
+
+    if (!$name || !$email || !$type || !$message || !is_email($email) || empty($_POST['privacy'])) {
+        wp_safe_redirect(add_query_arg('booking', 'error', $redirect_url) . '#booking');
+        exit;
+    }
+
+    $body  = "Neue Booking-Anfrage über emmanuelwhajah.com\n\n";
+    $body .= "Name: {$name}\n";
+    $body .= "E-Mail: {$email}\n";
+    $body .= "Telefon: {$phone}\n";
+    $body .= "Projekt: {$type}\n";
+    $body .= "Wunschtermin: {$date}\n";
+    $body .= "Ort: {$location}\n";
+    $body .= "Budget: {$budget}\n\n";
+    $body .= "Briefing:\n{$message}\n";
+
+    $sent = wp_mail(
+        'info@emmanuelwhajah.com',
+        'Neue Booking-Anfrage von ' . $name,
+        $body,
+        ['Reply-To: ' . $name . ' <' . $email . '>']
+    );
+
+    wp_safe_redirect(add_query_arg('booking', $sent ? 'success' : 'error', $redirect_url) . '#booking');
+    exit;
+}
+add_action('admin_post_emmanuel_booking', 'mystu_handle_emmanuel_booking');
+add_action('admin_post_nopriv_emmanuel_booking', 'mystu_handle_emmanuel_booking');
 
 define('MYSTU_GA_ID', 'G-TYTYZM3434');
 
