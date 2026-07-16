@@ -698,9 +698,9 @@ html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line
 html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
 
 html.portfolio-v3 nav{position:relative;height:104px;padding:22px 28px;mix-blend-mode:normal;background:var(--v3-paper);color:var(--v3-ink)}
-html.portfolio-v3 nav .logo{width:148px;font-family:var(--sans);font-size:15px;font-weight:750;line-height:1;text-transform:lowercase;letter-spacing:-.03em}
-html.portfolio-v3 nav .logo::before{content:"EW";display:inline-grid;place-items:center;width:48px;height:48px;margin-right:9px;border:2px solid var(--v3-ink);border-top:0;border-radius:0 0 22px 22px;font-size:14px;vertical-align:middle}
-html.portfolio-v3 nav .logo em{color:var(--v3-ink);font-style:normal}
+html.portfolio-v3 nav .logo{width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat}
+html.portfolio-v3 nav .logo::before{display:none}
+html.portfolio-v3 nav .logo em{display:none}
 html.portfolio-v3 nav ul{gap:34px;align-items:center}
 html.portfolio-v3 nav ul a{font-size:14px;font-weight:450;letter-spacing:0;text-transform:none;opacity:.78}
 html.portfolio-v3 nav ul li:last-child a{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;opacity:1}
@@ -796,8 +796,7 @@ html.portfolio-v3 footer .big a:hover{color:#aaa}
 
 @media(max-width:760px){
   html.portfolio-v3 nav{height:86px;padding:14px 18px}
-  html.portfolio-v3 nav .logo{font-size:0;width:58px}
-  html.portfolio-v3 nav .logo::before{width:43px;height:43px;margin:0;font-size:12px}
+  html.portfolio-v3 nav .logo{width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px}
   html.portfolio-v3 .menu-toggle{display:grid;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
   html.portfolio-v3 nav ul{background:var(--v3-paper)}
   html.portfolio-v3 nav ul a{font-size:30px;color:#111}
