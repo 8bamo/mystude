@@ -232,8 +232,9 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .team-intro-text{font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:300;line-height:1.7;color:var(--mu)}
 .team-intro-text b{color:var(--w);font-weight:600}
 .team-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,32px)}
-.team-card{position:relative;overflow:hidden}
-.team-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .6s,transform .6s cubic-bezier(.16,1,.3,1);display:block}
+.team-card{position:relative;overflow:hidden;aspect-ratio:3/4}
+.team-card picture{position:absolute;inset:0;display:block}
+.team-img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .6s,transform .6s cubic-bezier(.16,1,.3,1);display:block}
 .team-card:hover .team-img{filter:grayscale(0%);transform:scale(1.03)}
 .team-card-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.2) 45%,transparent 70%);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,3vw,36px)}
 .team-card-role{font-family:var(--fD);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
