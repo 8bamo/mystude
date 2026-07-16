@@ -49,7 +49,7 @@ add_action('template_redirect', function(){
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
     // Clean public URL for the standalone Emmanuel Whajah portfolio.
-    if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah'], true)) {
+    if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah', 'emmanuelwhajah-v2', 'emmanuel-whajah-v2'], true)) {
         $portfolio_file = MYSTU_DIR . '/mockups/emmanuel-whajah/index.html';
         if (is_readable($portfolio_file)) {
             status_header(200);

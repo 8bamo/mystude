@@ -7,6 +7,7 @@
 <meta name="description" content="Emmanuel Whajah — Multi-award-winning Director & Photographer. Aftermovies, Werbekampagnen und Portraits für Chris Brown, Lauryn Hill, Burna Boy, Nike, Hennessy u.v.m.">
 <meta name="robots" content="noindex">
 <base href="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/">
+<script>if(/^\/(?:emmanuelwhajah|emmanuel-whajah)-v2\/?$/.test(location.pathname)){document.documentElement.classList.add('portfolio-v2')}</script>
 <link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="shortcut icon" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,12 +127,12 @@ h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-st
   border-block:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;
   background:var(--bg2);
 }
-.marquee .track{display:inline-block;animation:mq 36s linear infinite}
+.marquee .track{display:flex;align-items:center;width:max-content;animation:mq 36s linear infinite}
 .marquee span{
-  font-family:var(--serif);font-style:italic;font-size:26px;color:var(--mut);
+  flex:0 0 auto;font-family:var(--serif);font-style:italic;font-size:26px;color:#fff;
   margin:0 28px;
 }
-.marquee b{color:var(--gold);font-weight:400;font-family:var(--sans);font-size:12px;vertical-align:middle;letter-spacing:.2em}
+.marquee b{flex:0 0 auto;display:grid;place-items:center;align-self:center;color:var(--gold);font-weight:400;font-family:var(--sans);font-size:12px;line-height:1;letter-spacing:.2em}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
@@ -551,6 +552,137 @@ footer .row a[style]{color:var(--editorial-red)!important}
   .privacy{font-size:15px}
   footer .big{font-size:clamp(42px,13vw,66px)}
 }
+
+/* ---------- V2: restrained full-screen portfolio ---------- */
+html.portfolio-v2{
+  --v2-night:#07131f;
+  --v2-ink:#f6f2e9;
+  --v2-peach:#f2a98d;
+  --v2-blue:#8db7d2;
+  --v2-line:rgba(246,242,233,.28);
+  background:var(--v2-night)
+}
+html.portfolio-v2 body{background:var(--v2-night);color:var(--v2-ink);font-size:16px}
+html.portfolio-v2 body::before{opacity:.22}
+html.portfolio-v2 #progress{height:1px;background:var(--v2-peach)}
+html.portfolio-v2 ::selection{background:var(--v2-peach);color:var(--v2-night)}
+html.portfolio-v2 :focus-visible{outline-color:var(--v2-peach)}
+
+html.portfolio-v2 nav{padding:22px 28px;align-items:flex-start;mix-blend-mode:normal;background:linear-gradient(180deg,rgba(3,10,16,.35),transparent)}
+html.portfolio-v2 nav .logo{position:relative;width:112px;height:44px;font-size:0;line-height:.92;color:#fff;letter-spacing:-.03em}
+html.portfolio-v2 nav .logo::before{content:"Emmanuel\A Whajah";white-space:pre;font-family:var(--sans);font-size:18px;font-weight:730;font-stretch:72%;text-transform:uppercase}
+html.portfolio-v2 nav ul{gap:24px;padding-top:3px}
+html.portfolio-v2 nav ul a{font-size:10px;letter-spacing:.08em;color:#fff;opacity:.82}
+html.portfolio-v2 nav ul a:hover{opacity:1;color:var(--v2-peach)}
+
+html.portfolio-v2 .hero{height:100svh;min-height:620px;padding:22px 28px 28px;justify-content:flex-end;background:#10293b}
+html.portfolio-v2 .hero::after{background:linear-gradient(180deg,rgba(3,11,18,.08) 30%,rgba(3,11,18,.72) 100%)}
+html.portfolio-v2 .hero-media::after{background:linear-gradient(90deg,rgba(4,14,23,.18),transparent 58%),linear-gradient(0deg,rgba(4,14,23,.72),transparent 52%)}
+html.portfolio-v2 .hero-poster{opacity:1;filter:saturate(.78) contrast(1.05);object-position:center 34%}
+html.portfolio-v2 .hero-media video{opacity:.9;filter:saturate(.72) contrast(1.05);object-position:center 34%}
+html.portfolio-v2 .hero .kicker{left:28px;top:auto;bottom:31px;margin:0;max-width:210px;font-size:10px;line-height:1.45;letter-spacing:.12em;color:var(--v2-ink)}
+html.portfolio-v2 .hero h1{display:none}
+html.portfolio-v2 .hero .sub{position:absolute;left:50%;bottom:28px;width:auto;display:block;border:0;padding:0;margin:0;transform:translateX(-50%);text-align:center;animation:none;opacity:1}
+html.portfolio-v2 .hero .sub .role{font-family:var(--sans);font-size:11px;font-style:normal;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+html.portfolio-v2 .hero .sub .facts{display:none}
+html.portfolio-v2 .hero-showreel{right:28px!important;top:auto!important;bottom:24px;width:auto;height:auto;transform:none;border:0;border-radius:0;background:none;padding:8px 0;color:#fff;font-size:10px;text-align:right;line-height:1.35}
+html.portfolio-v2 .hero-showreel::after{content:"  ↗";color:var(--v2-peach)}
+html.portfolio-v2 .hero-showreel:hover{background:none;color:var(--v2-peach)}
+html.portfolio-v2 .hero-slide-status{--hero-index:1;left:50%!important;right:auto!important;top:25px!important;width:min(23vw,280px);height:3px;transform:translateX(-50%);font-size:0;letter-spacing:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0,rgba(255,255,255,.28) calc(25% - 4px),transparent calc(25% - 4px),transparent 25%)}
+html.portfolio-v2 .hero-slide-status::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--hero-index) * 25% - 4px);background:repeating-linear-gradient(90deg,var(--v2-peach) 0,var(--v2-peach) calc(25% - 4px),transparent calc(25% - 4px),transparent 25%);transition:width .4s ease}
+html.portfolio-v2 .hero .scroll,html.portfolio-v2 .marquee{display:none}
+
+html.portfolio-v2 section{padding:clamp(90px,10vw,150px) 28px}
+html.portfolio-v2 .shead{margin-bottom:28px;padding-bottom:10px;border-color:var(--v2-line);align-items:center}
+html.portfolio-v2 .shead h2{font-size:12px;line-height:1;font-stretch:100%;font-weight:650;letter-spacing:.12em}
+html.portfolio-v2 .shead h2 em{font-family:var(--sans);font-style:normal;font-size:1em;font-weight:650;color:inherit;text-transform:uppercase}
+html.portfolio-v2 .shead .count{font-family:var(--sans);font-size:10px;font-style:normal;letter-spacing:.08em;color:inherit;opacity:.62}
+
+html.portfolio-v2 #arbeiten{position:relative;padding:76px 28px 28px;background:var(--v2-night);color:var(--v2-ink)}
+html.portfolio-v2 #arbeiten .shead{display:none}
+html.portfolio-v2 .filters{position:relative;z-index:5;margin:0 0 14px;border:0;justify-content:flex-end}
+html.portfolio-v2 .filters button{min-height:34px;padding:0 12px;color:rgba(246,242,233,.58);font-size:9px;letter-spacing:.08em}
+html.portfolio-v2 .filters button:first-child{padding-left:12px}
+html.portfolio-v2 .filters button:hover,html.portfolio-v2 .filters button.on{color:var(--v2-peach);box-shadow:none}
+html.portfolio-v2 .card{height:calc(100svh - 158px);min-height:540px;background:#10283a}
+html.portfolio-v2 .card .frame{height:100%;aspect-ratio:auto}
+html.portfolio-v2 .card .frame::after{inset:35% 0 0;background:linear-gradient(transparent,rgba(3,11,18,.8))}
+html.portfolio-v2 .card img.poster,html.portfolio-v2 .card video.prev{filter:saturate(.72) contrast(1.04)}
+html.portfolio-v2 .card .meta{padding:28px;grid-template-columns:36px 1fr auto;gap:8px 16px}
+html.portfolio-v2 .card .meta .num{font-size:10px;color:var(--v2-peach)}
+html.portfolio-v2 .card .meta .t{font-size:clamp(34px,5vw,76px);font-stretch:72%;line-height:.85;max-width:760px}
+html.portfolio-v2 .card .meta .c{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+html.portfolio-v2 .card .meta .watch{font-size:9px;letter-spacing:.1em;color:#fff}
+html.portfolio-v2 .card .meta .watch::before{background:var(--v2-peach)}
+html.portfolio-v2 .card .play{opacity:1;transform:none;border-color:rgba(255,255,255,.55);background:rgba(7,19,31,.18)}
+html.portfolio-v2 .slider-controls{position:absolute;z-index:4;right:52px;margin-top:-80px;padding:0;gap:8px}
+html.portfolio-v2 .slider-button{width:40px;height:40px;border-color:rgba(255,255,255,.5);color:#fff;font-size:17px}
+html.portfolio-v2 .slider-button:hover{border-color:var(--v2-peach);color:var(--v2-peach)}
+html.portfolio-v2 .slider-count{display:none}
+
+html.portfolio-v2 #fotografie{background:#d6e1e5;color:#0b1b26}
+html.portfolio-v2 #fotografie .shead{border-color:rgba(11,27,38,.3)}
+html.portfolio-v2 #fotografie .shead h2 em,html.portfolio-v2 #fotografie .shead .count{color:inherit}
+html.portfolio-v2 .masonry{columns:3;column-gap:12px}
+html.portfolio-v2 .masonry a{margin-bottom:12px}
+html.portfolio-v2 .masonry img{filter:saturate(.72)}
+
+html.portfolio-v2 #auszeichnungen{background:var(--v2-peach);color:#17202a}
+html.portfolio-v2 #auszeichnungen .shead{border-color:rgba(23,32,42,.3)}
+html.portfolio-v2 .awards .item{border-color:rgba(23,32,42,.24)}
+html.portfolio-v2 .awards .item .n{font-size:clamp(20px,2vw,31px);font-weight:580}
+html.portfolio-v2 .awards .item .d{color:rgba(23,32,42,.65)}
+
+html.portfolio-v2 #kontakt{background:var(--v2-night)}
+html.portfolio-v2 .about{min-height:100svh}
+html.portfolio-v2 .about .pic img{filter:saturate(.2) contrast(1.04)}
+html.portfolio-v2 .about p{font-size:clamp(28px,3.2vw,52px);font-weight:380}
+html.portfolio-v2 .about p em{color:var(--v2-peach)}
+html.portfolio-v2 .about .facts div b{color:var(--v2-blue);font-size:clamp(38px,4.5vw,70px)}
+
+html.portfolio-v2 #booking{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
+html.portfolio-v2 .booking-head h2{font-size:clamp(60px,9vw,140px);line-height:.76}
+html.portfolio-v2 .booking-head h2 em{display:block;color:#0b1b26}
+html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label{color:#0b1b26}
+html.portfolio-v2 .field input,html.portfolio-v2 .field select,html.portfolio-v2 .field textarea{color:#0b1b26;border-color:rgba(11,27,38,.48)}
+html.portfolio-v2 .booking-submit{background:#0b1b26;border-color:#0b1b26}
+html.portfolio-v2 footer{background:var(--v2-night)}
+html.portfolio-v2 footer .big a:hover{color:var(--v2-peach)}
+html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
+
+@media(max-width:760px){
+  html.portfolio-v2 body{font-size:16px}
+  html.portfolio-v2 nav{padding:18px}
+  html.portfolio-v2 nav .logo{width:100px;height:40px}
+  html.portfolio-v2 nav .logo::before{font-size:16px}
+  html.portfolio-v2 .menu-toggle{display:none}
+  html.portfolio-v2 nav ul{display:none}
+  html.portfolio-v2 .hero{height:100svh;min-height:560px;padding:18px}
+  html.portfolio-v2 .hero-media video,html.portfolio-v2 .hero-poster{object-position:center center}
+  html.portfolio-v2 .hero .kicker{left:18px;bottom:22px;max-width:145px;font-size:9px}
+  html.portfolio-v2 .hero .sub{display:none}
+  html.portfolio-v2 .hero-showreel{display:block!important;right:18px!important;bottom:15px;top:auto!important;width:auto;height:auto;font-size:9px}
+  html.portfolio-v2 .hero-slide-status{left:auto!important;right:18px!important;top:20px!important;width:34vw;transform:none}
+  html.portfolio-v2 section{padding:74px 18px}
+  html.portfolio-v2 #arbeiten{padding:64px 18px 18px}
+  html.portfolio-v2 .filters{justify-content:flex-start;overflow-x:auto;margin-bottom:10px}
+  html.portfolio-v2 .filters button{font-size:10px;padding-inline:10px}
+  html.portfolio-v2 .card{height:calc(100svh - 138px);min-height:500px}
+  html.portfolio-v2 .card .frame{aspect-ratio:auto}
+  html.portfolio-v2 .card .meta{padding:20px;grid-template-columns:24px 1fr}
+  html.portfolio-v2 .card .meta .t{font-size:clamp(38px,13vw,58px)}
+  html.portfolio-v2 .card .meta .watch{grid-column:2;grid-row:3}
+  html.portfolio-v2 .card .play{width:44px;height:44px}
+  html.portfolio-v2 .slider-controls{right:38px;margin-top:-60px}
+  html.portfolio-v2 .slider-button{width:38px;height:38px}
+  html.portfolio-v2 .masonry{columns:2;column-gap:7px}
+  html.portfolio-v2 .masonry a{margin-bottom:7px}
+  html.portfolio-v2 .about{min-height:0}
+  html.portfolio-v2 .about p{font-size:26px}
+  html.portfolio-v2 .about .facts div s{font-size:16px}
+  html.portfolio-v2 .booking-head h2{font-size:clamp(58px,18vw,82px)}
+  html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label,html.portfolio-v2 .privacy{font-size:16px}
+}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
@@ -896,12 +1028,23 @@ document.getElementById('hero-showreel').addEventListener('click',()=>{
 });
 
 /* editorial hero reel — pauses when the first viewport is out of view */
-const heroProjects=['chris-brown','lauryn-hill','nike','cupra-miss-germany'];
+const isPortfolioV2=document.documentElement.classList.contains('portfolio-v2');
+const heroProjects=isPortfolioV2
+  ? ['people-of-deutschland','nike','cupra-miss-germany','lauryn-hill']
+  : ['chris-brown','lauryn-hill','nike','cupra-miss-germany'];
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
 const heroSource=heroVideo.querySelector('source');
 const heroSlideStatus=document.getElementById('hero-slide-status');
 let heroProjectIndex=0;
+if(isPortfolioV2){
+  const firstHero=heroProjects[0];
+  heroMedia.querySelector('.hero-poster').src=`assets/poster/${firstHero}.jpg`;
+  heroVideo.poster=`assets/poster/${firstHero}.jpg`;
+  heroSource.src=`assets/video/${firstHero}-preview.mp4`;
+  heroVideo.load();heroVideo.play().catch(()=>{});
+  heroSlideStatus.style.setProperty('--hero-index','1');
+}
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   setInterval(()=>{
     if(document.hidden||scrollY>innerHeight)return;
@@ -912,6 +1055,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
       heroVideo.load();
       heroVideo.play().catch(()=>{});
       heroSlideStatus.textContent=`${String(heroProjectIndex+1).padStart(2,'0')} / ${String(heroProjects.length).padStart(2,'0')}`;
+      heroSlideStatus.style.setProperty('--hero-index',String(heroProjectIndex+1));
       heroMedia.classList.remove('changing');
     },300);
   },6500);
