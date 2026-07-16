@@ -1,0 +1,7 @@
+# Rohmaterial & große Dateien (nicht versionieren)
+emmanuelwhajah/
+portfolio-emmanuel/assets/video/
+*.zip
+
+# Claude worktrees
+.claude/worktrees/

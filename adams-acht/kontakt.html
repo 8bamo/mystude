@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kontakt — ADAMS ACHT | Fan-Shop zum Film</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Passwort-Gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">ADAMS <em>ACHT</em></div>
+    <div class="gate-sub">Geschützter Entwurf · mystu.de</div>
+    <form id="gate-form">
+      <input type="password" id="gate-input" placeholder="Passwort" autocomplete="off">
+      <button type="submit">Entsperren</button>
+    </form>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<div class="site">
+<div class="grid-lines"><span></span><span></span><span></span><span></span><span></span></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">ADAMS <em>ACHT</em></a>
+    <button class="nav-burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="film.html">Der Film</a></li>
+      <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      <li><a href="en/contact.html" class="lang-link" lang="en">EN</a></li>
+      <li><button class="cart-btn" aria-label="Warenkorb öffnen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h2l2.4 11h11.2L21 8H6"/><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="16.5" cy="19.5" r="1.4"/></svg><span class="cart-count">0</span></button></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<!-- Seiten-Hero -->
+<header class="page-hero">
+  <div class="container">
+    <div class="kicker">Kontakt</div>
+    <h1 class="h-xl">Fragen zur<br><span class="blue">Bestellung?</span></h1>
+    <p class="lead" style="margin-top:1.6rem">Unser Support hilft bei Fragen zu Bestellung, Versand, Rückgabe oder Sammlereditionen — Antwort innerhalb von 24 Stunden.</p>
+  </div>
+</header>
+
+<!-- Kontakt -->
+<section class="section" style="padding-top:2rem">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="reveal">
+        <div class="contact-info-item">
+          <span class="k">E-Mail</span>
+          <span class="v"><a href="mailto:shop@adams-acht.de" style="color:inherit;text-decoration:none">shop@adams-acht.de</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="k">Telefon</span>
+          <span class="v"><a href="tel:+4971100000000" style="color:inherit;text-decoration:none">0711 / 000 00 00</a></span>
+        </div>
+        <div class="contact-info-item">
+          <span class="k">Erreichbarkeit</span>
+          <span class="v">Mo–Fr 9–17 Uhr</span>
+        </div>
+        <div class="contact-info-item">
+          <span class="k">Versand aus</span>
+          <span class="v">Stuttgart, Deutschland</span>
+        </div>
+        <div class="contact-info-item" style="border-bottom:0">
+          <span class="k">Presse &amp; Kino-Anfragen</span>
+          <span class="v"><a href="mailto:presse@adams-acht.de" style="color:inherit;text-decoration:none">presse@adams-acht.de</a></span>
+        </div>
+      </div>
+
+      <form class="form reveal reveal-d1" id="contact-form">
+        <div class="form-row">
+          <label><span class="lbl">Name *</span><input type="text" required placeholder="Max Mustermann"></label>
+          <label><span class="lbl">Bestellnummer</span><input type="text" placeholder="Optional, z. B. AA-10234"></label>
+        </div>
+        <div class="form-row">
+          <label><span class="lbl">E-Mail *</span><input type="email" required placeholder="max@beispiel.de"></label>
+          <label><span class="lbl">Telefon</span><input type="tel" placeholder="Optional"></label>
+        </div>
+        <label><span class="lbl">Betreff</span>
+          <select>
+            <option>Bitte wählen …</option>
+            <option>Frage zur Bestellung</option>
+            <option>Versand &amp; Lieferung</option>
+            <option>Rückgabe &amp; Umtausch</option>
+            <option>Sammlereditionen</option>
+            <option>Presse / Kino</option>
+            <option>Sonstiges</option>
+          </select>
+        </label>
+        <label><span class="lbl">Ihre Nachricht *</span><textarea rows="5" required placeholder="Beschreiben Sie kurz Ihr Anliegen …"></textarea></label>
+        <div class="form-success" id="form-success">✓ Vielen Dank! Ihre Nachricht wurde gesendet — wir melden uns innerhalb von 24 Stunden.</div>
+        <button type="submit" class="btn btn-primary" style="justify-content:center">Nachricht senden <span class="arr">→</span></button>
+        <p style="font-size:0.78rem;color:var(--muted)">Hinweis zum Datenschutz — mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß Datenschutzerklärung zu.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-dark cta-band">
+  <div class="container reveal">
+    <div class="kicker" style="justify-content:center;display:flex">Weiterstöbern</div>
+    <h2 class="h-lg">Zurück zum Shop</h2>
+    <p class="lead">Poster, Bekleidung und Sammlerstücke zum Film.</p>
+    <a href="shop.html" class="btn btn-light">Zum Shop <span class="arr">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">ADAMS <em>ACHT</em></div>
+        <p>Der offizielle Fan-Shop zum Kinofilm ADAMS ACHT. Ab 17. September 2026 im Kino.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Alle Produkte</a></li>
+          <li><a href="shop.html">Bekleidung</a></li>
+          <li><a href="shop.html">Poster &amp; Prints</a></li>
+          <li><a href="shop.html">Accessoires</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Service</h4>
+        <ul>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="#">Versand &amp; Rückgabe</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="film.html">Der Film</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">AGB</a></li>
+          <li><a href="#">Widerruf</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ADAMS ACHT Fan-Shop · Ein Film im Verleih von Majestic</span>
+      <span>Design-Entwurf von <a href="https://mystu.de">mystu.de</a></span>
+    </div>
+  </div>
+</footer>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
