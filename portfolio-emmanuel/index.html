@@ -1330,6 +1330,11 @@ document.getElementById('y').textContent=new Date().getFullYear();
 
 /* navigation + page progress */
 const menuToggle=document.getElementById('menu-toggle'),menu=document.querySelector('nav ul');
+if(location.protocol!=='file:'){
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    link.setAttribute('href',`${location.pathname}${link.getAttribute('href')}`);
+  });
+}
 menuToggle.addEventListener('click',()=>{
   const open=menu.classList.toggle('open');menuToggle.classList.toggle('open',open);
   menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen');
