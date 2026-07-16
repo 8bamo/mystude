@@ -232,7 +232,7 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .team-intro-text{font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:300;line-height:1.7;color:var(--mu)}
 .team-intro-text b{color:var(--w);font-weight:600}
 .team-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,32px)}
-.team-card{position:relative;overflow:hidden;aspect-ratio:3/4}
+.team-card{position:relative;overflow:hidden;height:600px}
 .team-card picture{position:absolute;inset:0;display:block}
 .team-img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .6s,transform .6s cubic-bezier(.16,1,.3,1);display:block}
 .team-card:hover .team-img{filter:grayscale(0%);transform:scale(1.03)}
@@ -245,7 +245,7 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .team-card-tags{display:flex;flex-wrap:wrap;gap:6px;opacity:0;transform:translateY(8px);transition:opacity .45s .05s,transform .45s .05s cubic-bezier(.16,1,.3,1)}
 .team-card:hover .team-card-tags{opacity:1;transform:translateY(0)}
 .team-tag{font-size:.52rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);border:1px solid rgba(201,255,46,.3);padding:4px 10px}
-@media(max-width:640px){.team-duo{grid-template-columns:1fr}.team-card-bio{opacity:1;transform:none}.team-card-tags{opacity:1;transform:none}}
+@media(max-width:640px){.team-duo{grid-template-columns:1fr}.team-card{height:auto;aspect-ratio:3/4}.team-card-bio{opacity:1;transform:none}.team-card-tags{opacity:1;transform:none}}
 
 #kontakt{position:relative;overflow:hidden;border-top:1px solid var(--ln)}
 .kt-glow{position:absolute;bottom:-30%;left:-10%;width:60vw;height:60vw;max-width:700px;border-radius:50%;filter:blur(150px);background:radial-gradient(circle,rgba(201,255,46,.09),transparent 70%);pointer-events:none}
