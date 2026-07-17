@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["--yes", "serve", "-l", "4173", "adams-acht"],
       "port": 4173
+    },
+    {
+      "name": "mystude-root",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4174", "."],
+      "port": 4174
     }
   ]
 }

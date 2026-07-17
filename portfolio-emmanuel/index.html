@@ -377,6 +377,23 @@ body.gated,body.menu-open{overflow:hidden}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
+/* ---------- Cookie-Consent-Banner ---------- */
+.ck-bar{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:1400;
+  width:min(720px,calc(100% - 32px));background:var(--ck-bg);color:var(--ck-ink);
+  border:1px solid var(--ck-line);border-radius:14px;box-shadow:0 18px 55px rgba(0,0,0,.45);
+  padding:20px 24px;font-family:var(--sans);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ck-bar.show{transform:translate(-50%,0)}
+.ck-in{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;justify-content:space-between}
+.ck-txt{flex:1 1 320px;font-size:13px;line-height:1.6;color:var(--ck-ink);opacity:.86;margin:0}
+.ck-btns{display:flex;flex-wrap:wrap;gap:10px;flex:0 0 auto}
+.ck-btn{font-family:var(--sans);font-weight:650;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;border-radius:999px;padding:11px 20px;border:1px solid var(--ck-line);
+  background:transparent;color:var(--ck-ink);transition:background .25s,color .25s,border-color .25s;line-height:1}
+.ck-btn:hover{border-color:var(--ck-ink)}
+.ck-btn.ck-acc{background:var(--ck-accent);color:var(--ck-accent-ink);border-color:var(--ck-accent)}
+.ck-btn.ck-acc:hover{filter:brightness(1.08)}
+@media(max-width:640px){.ck-in{flex-direction:column;align-items:stretch}.ck-btns{justify-content:stretch}.ck-btn{flex:1}}
+
 /* ---------- 2026 editorial direction ---------- */
 :root{
   --editorial-dark:#181311;
@@ -384,6 +401,11 @@ body.gated,body.menu-open{overflow:hidden}
   --editorial-paper:#eee9df;
   --editorial-red:#f0442d;
   --editorial-muted:#9b938a;
+  --ck-bg:#14100e;
+  --ck-ink:#f3efe7;
+  --ck-line:rgba(255,255,255,.16);
+  --ck-accent:var(--editorial-red);
+  --ck-accent-ink:#f3efe7;
 }
 body{background:var(--editorial-dark);color:#f3efe7}
 #progress{background:var(--editorial-red)}
@@ -560,6 +582,11 @@ html.portfolio-v2{
   --v2-peach:#f2a98d;
   --v2-blue:#8db7d2;
   --v2-line:rgba(246,242,233,.28);
+  --ck-bg:#0b1b26;
+  --ck-ink:#eef3f6;
+  --ck-line:rgba(255,255,255,.18);
+  --ck-accent:var(--v2-peach);
+  --ck-accent-ink:#07131f;
   background:var(--v2-night)
 }
 html.portfolio-v2 body{background:var(--v2-night);color:var(--v2-ink);font-size:16px}
@@ -685,7 +712,7 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
 }
 
 /* ---------- V3: bright studio portfolio ---------- */
-html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#16bd68;--v3-line:#d9d9d4;background:var(--v3-paper)}
+html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#16bd68;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
 html.portfolio-v3 body{background:var(--v3-paper);color:var(--v3-ink);font-family:var(--sans);font-size:16px}
 html.portfolio-v3 body::before{display:none}
 html.portfolio-v3 #progress{height:2px;background:var(--v3-green)}
@@ -1091,14 +1118,29 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 (function(){
   const PASSWORT='emmanuel', KEY='ew_mockup_auth';
   const gate=document.getElementById('gate');
-  if(location.protocol==='file:')return;
-  if(sessionStorage.getItem(KEY)==='1')return;
+
+  function initConsent(){
+    const CKEY='ew_consent';
+    if(document.getElementById('ck-bar'))return;
+    const bar=document.createElement('div');
+    bar.id='ck-bar';bar.className='ck-bar';bar.setAttribute('role','dialog');
+    bar.setAttribute('aria-live','polite');bar.setAttribute('aria-label','Cookie-Hinweis');
+    bar.innerHTML='<div class="ck-in"><p class="ck-txt">Diese Portfolio-Vorschau verwendet nur technisch notwendige Cookies (z. B. für das Buchungsformular). Kein Tracking, keine Werbe-Cookies.</p><div class="ck-btns"><button type="button" class="ck-btn" id="ck-deny">Nur notwendige</button><button type="button" class="ck-btn ck-acc" id="ck-acc">Verstanden</button></div></div>';
+    document.body.appendChild(bar);
+    const dismiss=v=>{localStorage.setItem(CKEY,v);bar.classList.remove('show')};
+    document.getElementById('ck-acc').addEventListener('click',()=>dismiss('granted'));
+    document.getElementById('ck-deny').addEventListener('click',()=>dismiss('denied'));
+    if(!localStorage.getItem(CKEY))setTimeout(()=>bar.classList.add('show'),60);
+  }
+
+  if(location.protocol==='file:'){initConsent();return;}
+  if(sessionStorage.getItem(KEY)==='1'){initConsent();return;}
   gate.hidden=false;document.body.classList.add('gated');
   document.getElementById('gatepw').focus();
   document.getElementById('gateform').addEventListener('submit',e=>{
     e.preventDefault();
     if(document.getElementById('gatepw').value.trim().toLowerCase()===PASSWORT){
-      sessionStorage.setItem(KEY,'1');gate.hidden=true;document.body.classList.remove('gated');
+      sessionStorage.setItem(KEY,'1');gate.hidden=true;document.body.classList.remove('gated');initConsent();
     }else{
       document.getElementById('gateerr').hidden=false;
       document.getElementById('gatepw').value='';document.getElementById('gatepw').focus();

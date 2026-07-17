@@ -236,6 +236,32 @@
     .hero { padding: 3rem 5vw 4rem; }
     .rechtsgebiete, .ueber-uns { padding: 4rem 5vw; }
   }
+
+  /* ---------- Cookie-Consent-Banner ---------- */
+  .ck-bar {
+    position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 140%);
+    z-index: 1400; width: min(720px, calc(100% - 32px));
+    background: var(--cream); color: var(--ink); border: 1px solid var(--border);
+    box-shadow: 0 18px 45px rgba(26, 20, 16, 0.18); padding: 1.4rem 1.6rem;
+    transition: transform 0.5s ease;
+  }
+  .ck-bar.show { transform: translate(-50%, 0); }
+  .ck-in { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; justify-content: space-between; }
+  .ck-txt { flex: 1 1 320px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; line-height: 1.6; color: var(--mid); margin: 0; }
+  .ck-btns { display: flex; flex-wrap: wrap; gap: 0.7rem; flex: 0 0 auto; }
+  .ck-btn {
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; border: 1px solid var(--ink); background: transparent; color: var(--ink);
+    padding: 0.75rem 1.3rem; transition: background 0.2s, color 0.2s;
+  }
+  .ck-btn:hover { background: var(--ink); color: var(--cream); }
+  .ck-btn.ck-acc { background: var(--wine); border-color: var(--wine); color: var(--cream); }
+  .ck-btn.ck-acc:hover { background: var(--ink); border-color: var(--ink); }
+  @media (max-width: 640px) {
+    .ck-in { flex-direction: column; align-items: stretch; }
+    .ck-btns { justify-content: stretch; }
+    .ck-btn { flex: 1; }
+  }
 </style>
 </head>
 <body>
@@ -376,5 +402,20 @@
 </footer>
 
 <div class="mockup-badge">Mockup · mystu.de</div>
+
+<script>
+(function(){
+  var CKEY='anwalt_consent';
+  var bar=document.createElement('div');
+  bar.id='ck-bar';bar.className='ck-bar';bar.setAttribute('role','dialog');
+  bar.setAttribute('aria-live','polite');bar.setAttribute('aria-label','Cookie-Hinweis');
+  bar.innerHTML='<div class="ck-in"><p class="ck-txt">Diese Entwurfs-Website verwendet nur technisch notwendige Cookies. Kein Tracking, keine Werbe-Cookies.</p><div class="ck-btns"><button type="button" class="ck-btn" id="ck-deny">Nur notwendige</button><button type="button" class="ck-btn ck-acc" id="ck-acc">Alle akzeptieren</button></div></div>';
+  document.body.appendChild(bar);
+  function dismiss(v){localStorage.setItem(CKEY,v);bar.classList.remove('show');}
+  document.getElementById('ck-acc').addEventListener('click',function(){dismiss('granted');});
+  document.getElementById('ck-deny').addEventListener('click',function(){dismiss('denied');});
+  if(!localStorage.getItem(CKEY)){setTimeout(function(){bar.classList.add('show');},60);}
+})();
+</script>
 </body>
 </html>

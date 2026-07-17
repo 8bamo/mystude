@@ -18,7 +18,9 @@
       cartNote: 'Kostenloser Versand ab 50 € Bestellwert.',
       gateError: 'Falsches Passwort — bitte erneut versuchen.',
       newsletterOk: '✓ ANGEMELDET — BIS ZUM KINOSTART!',
-      close: 'Schließen', less: 'Weniger', more: 'Mehr'
+      close: 'Schließen', less: 'Weniger', more: 'Mehr',
+      cookieText: 'Wir verwenden nur technisch notwendige Cookies, damit dieser Fan-Shop-Entwurf funktioniert (z. B. Warenkorb). Kein Tracking, keine Werbe-Cookies.',
+      cookieNecessary: 'Nur notwendige', cookieAcceptAll: 'Alle akzeptieren'
     },
     en: {
       cartTitle: 'Your Basket',
@@ -29,9 +31,38 @@
       cartNote: 'Free shipping on orders over €50.',
       gateError: 'Wrong password — please try again.',
       newsletterOk: '✓ SUBSCRIBED — SEE YOU AT THE MOVIES!',
-      close: 'Close', less: 'Less', more: 'More'
+      close: 'Close', less: 'Less', more: 'More',
+      cookieText: 'We only use technically necessary cookies to run this fan-shop preview (e.g. the basket). No tracking, no advertising cookies.',
+      cookieNecessary: 'Necessary only', cookieAcceptAll: 'Accept all'
     }
   }[LANG];
+
+  /* ---------- Cookie-Consent-Banner ---------- */
+  var CONSENT_KEY = 'aa_consent';
+  function showConsentBanner() {
+    if (document.getElementById('ck-banner')) return;
+    var html =
+      '<div class="ck-banner" id="ck-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">' +
+      '  <div class="ck-in">' +
+      '    <p class="ck-txt">' + T.cookieText + '</p>' +
+      '    <div class="ck-btns">' +
+      '      <button type="button" class="btn btn-ghost" id="ck-deny">' + T.cookieNecessary + '</button>' +
+      '      <button type="button" class="btn btn-primary" id="ck-acc">' + T.cookieAcceptAll + '</button>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>';
+    document.body.insertAdjacentHTML('beforeend', html);
+    var banner = document.getElementById('ck-banner');
+    function dismiss(value) {
+      localStorage.setItem(CONSENT_KEY, value);
+      banner.classList.remove('show');
+    }
+    document.getElementById('ck-acc').addEventListener('click', function () { dismiss('granted'); });
+    document.getElementById('ck-deny').addEventListener('click', function () { dismiss('denied'); });
+    if (!localStorage.getItem(CONSENT_KEY)) {
+      setTimeout(function () { banner.classList.add('show'); }, 60);
+    }
+  }
 
   /* ---------- Passwort-Gate ---------- */
   var gate = document.getElementById('gate');
@@ -43,6 +74,7 @@
       if (instant) { gate.style.display = 'none'; }
       else { gate.classList.add('gate-open'); }
     }
+    showConsentBanner();
   }
 
   if (sessionStorage.getItem(KEY) === '1') {

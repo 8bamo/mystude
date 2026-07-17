@@ -614,6 +614,25 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.08; font-weight: 4
 }
 .footer-bottom a { color: rgba(250, 246, 234, 0.45); }
 
+/* ---------- Cookie-Consent-Banner ---------- */
+.ck-banner {
+  position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 140%);
+  z-index: 1400; width: min(760px, calc(100% - 32px));
+  background: var(--cream); color: var(--ink); border: 1px solid var(--navy);
+  box-shadow: 10px 12px 0 rgba(0, 0, 0, 0.18); padding: 1.3rem 1.5rem;
+  transition: transform 0.5s var(--ease);
+}
+.ck-banner.show { transform: translate(-50%, 0); }
+.ck-in { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; justify-content: space-between; }
+.ck-txt { flex: 1 1 320px; font-family: var(--font-body); font-size: 0.86rem; line-height: 1.6; color: var(--ink); margin: 0; }
+.ck-btns { display: flex; flex-wrap: wrap; gap: 0.7rem; flex: 0 0 auto; }
+.ck-btns .btn { padding: 0.75rem 1.4rem; font-size: 0.7rem; }
+@media (max-width: 640px) {
+  .ck-in { flex-direction: column; align-items: stretch; }
+  .ck-btns { justify-content: stretch; }
+  .ck-btns .btn { flex: 1; justify-content: center; }
+}
+
 /* ---------- Scroll-Reveal ---------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
