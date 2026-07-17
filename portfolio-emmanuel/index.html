@@ -868,11 +868,14 @@ html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(
 html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!important;font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;-webkit-text-stroke:inherit!important}
 
 @media(max-width:760px){
-  html.portfolio-v3 nav{height:86px;padding:14px 18px}
+  /* no backdrop-filter here: it would turn the sticky nav into the containing
+     block for the fixed fullscreen menu, squashing it into the 86px bar */
+  html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
   html.portfolio-v3 nav .logo{width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px}
-  html.portfolio-v3 .menu-toggle{display:grid;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
-  html.portfolio-v3 nav ul{background:var(--v3-paper)}
-  html.portfolio-v3 nav ul a{font-size:30px;color:#111}
+  html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
+  html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);opacity:0;visibility:hidden;transition:.35s}
+  html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
+  html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1}
   html.portfolio-v3 .hero{height:calc(100svh - 96px);min-height:590px;margin:0 16px 10px;padding:28px 22px;border-radius:34px}
   html.portfolio-v3 .v3-headline{font-size:clamp(48px,15vw,72px);line-height:.92}
   html.portfolio-v3 .hero-showreel{right:20px!important;top:20px!important;width:92px;height:38px}
@@ -894,7 +897,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
   html.portfolio-v3 .about p{font-size:27px}
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
-  html.portfolio-v3 .booking-head h2{font-size:clamp(58px,18vw,82px)}
+  html.portfolio-v3 .booking-head h2{font-size:clamp(36px,12vw,72px)}
   html.portfolio-v3 .v3-scroll-gallery{height:220svh}
   html.portfolio-v3 .v3-scroll-copy{width:88vw}
   html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(46px,14vw,66px)}
