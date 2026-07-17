@@ -515,6 +515,18 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .about .facts div b{font-family:var(--sans);font-stretch:70%;font-weight:700;color:#fff;font-size:clamp(40px,5vw,76px);line-height:1}
 .about .facts div s{color:var(--editorial-muted);font-size:12px;letter-spacing:.1em}
 
+/* extended bio, lists & signature quote (About.pdf) */
+.about-more{padding:clamp(72px,10vw,150px) clamp(20px,3vw,48px);display:flex;flex-direction:column;gap:clamp(52px,7vw,100px)}
+.about-story{columns:2;column-gap:clamp(32px,5vw,80px);max-width:1240px}
+.about-story p{break-inside:avoid;margin-bottom:1.2em;font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:rgba(243,239,231,.82)}
+.about-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px);max-width:1240px}
+.about-columns h3{margin-bottom:18px;font-size:11px;font-weight:650;letter-spacing:.24em;text-transform:uppercase;color:var(--editorial-red)}
+.about-columns ul{list-style:none}
+.about-columns li{padding:11px 0;border-top:1px solid rgba(255,255,255,.14);font-size:14px;line-height:1.45;color:#f3efe7}
+.about-quote{max-width:1240px;border:0;padding:0}
+.about-quote p{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4.2vw,60px);line-height:1.2;color:#f3efe7;text-wrap:balance}
+.about-quote cite{display:block;margin-top:22px;font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--editorial-muted)}
+
 #contact{background:var(--editorial-red);color:var(--editorial-ink);border:0}
 .booking-head{grid-template-columns:minmax(0,1.2fr) minmax(280px,.45fr);align-items:end}
 .booking-head h2{font-size:clamp(66px,11vw,170px);line-height:.74;letter-spacing:-.04em;font-stretch:66%}
@@ -579,6 +591,11 @@ footer .row a[style]{color:var(--editorial-red)!important}
   .about .facts div{display:flex;align-items:baseline;gap:18px}
   .about .facts div b{min-width:62px;font-size:44px}
   .about .facts div s{font-size:16px}
+  .about-more{padding:64px 18px;gap:52px}
+  .about-story{columns:1}
+  .about-story p{font-size:16px}
+  .about-columns{grid-template-columns:1fr;gap:36px}
+  .about-quote p{font-size:clamp(26px,8vw,38px)}
   .booking-head{grid-template-columns:1fr;gap:28px}
   .booking-head h2{font-size:clamp(58px,19vw,88px)}
   .booking-intro{font-size:19px}
@@ -682,6 +699,9 @@ html.portfolio-v2 .about .pic img{filter:saturate(.2) contrast(1.04)}
 html.portfolio-v2 .about p{font-size:clamp(28px,3.2vw,52px);font-weight:380}
 html.portfolio-v2 .about p em{color:var(--v2-peach)}
 html.portfolio-v2 .about .facts div b{color:var(--v2-blue);font-size:clamp(38px,4.5vw,70px)}
+html.portfolio-v2 .about-columns h3{color:var(--v2-peach)}
+html.portfolio-v2 .about-story p{color:rgba(246,242,233,.82)}
+html.portfolio-v2 .about-quote cite{color:rgba(246,242,233,.6)}
 
 html.portfolio-v2 #contact{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
 html.portfolio-v2 .booking-head h2{font-size:clamp(60px,9vw,140px);line-height:.76}
@@ -849,6 +869,12 @@ html.portfolio-v3 .about p{font-size:clamp(28px,3vw,48px);font-weight:430;line-h
 html.portfolio-v3 .about p em{font-family:var(--sans);font-style:normal;color:#888}
 html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38px,4vw,66px);color:#111}
 html.portfolio-v3 .about .facts div s{color:#666}
+html.portfolio-v3 .about-more{color:#111}
+html.portfolio-v3 .about-story p{color:#333}
+html.portfolio-v3 .about-columns h3{color:#888}
+html.portfolio-v3 .about-columns li{color:#111;border-top-color:var(--v3-line)}
+html.portfolio-v3 .about-quote p{font-family:var(--sans);font-style:normal;font-weight:520;letter-spacing:-.03em;color:#111}
+html.portfolio-v3 .about-quote cite{color:#888}
 
 html.portfolio-v3 #contact{background:#1b1d1c;color:#fff;border:0}
 html.portfolio-v3 .booking-head h2{font-size:clamp(64px,9vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
@@ -1030,6 +1056,68 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
         <div><b>∞</b><s>Goosebumps</s></div>
       </div>
     </div>
+  </div>
+
+  <div class="about-more">
+    <div class="about-story reveal">
+      <p>Known for his cinematic eye and authentic storytelling, Emmanuel has built a reputation for creating work that goes beyond aesthetics. Every project begins with a story, an emotion and a clear creative vision — whether documenting world-renowned musicians, producing campaigns for international brands or directing visual concepts for elite athletes, his focus has always remained the same: creating timeless work that people remember.</p>
+      <p>His creative journey has taken him across more than 30 countries, documenting stories from intimate behind-the-scenes moments to international tours, editorial productions, commercial campaigns and major sporting events. This international experience has shaped his unique ability to adapt to different cultures while maintaining a consistent visual identity that feels authentic, premium and emotionally driven.</p>
+      <p>Today, Emmanuel serves as Founder and Creative Director of Play The Game GmbH, a creative agency specializing in premium content production and creative direction for professional athletes, sports organizations and brands — developing high-end visual campaigns, documentaries, social-first content, brand strategies and creative concepts that help clients strengthen their global presence.</p>
+      <p>Alongside his agency work, he operates his own production company, Emzyproductionfilms, leading commercial productions, editorial projects, documentaries and creative collaborations worldwide. His work combines photography, filmmaking, creative strategy and art direction into one seamless process — clients receive not simply content, but complete visual experiences. As a Content Creator for Rolling Stone Africa, he documents influential voices and important cultural moments for one of the continent's leading media platforms.</p>
+      <p>Over the years, his productions have reached millions of viewers across digital platforms and have been recognized through multiple awards and international publications across music, fashion and sport — reinforcing his reputation as one of Germany's emerging creative directors with an international perspective.</p>
+      <p>What distinguishes Emmanuel is his ability to move effortlessly between industries: one week directing a campaign for a global sports brand, the next documenting an international artist on tour, producing editorial imagery for a fashion label, or developing a documentary centered around an elite football player. Rather than chasing trends, he creates timeless visual narratives that remain relevant years after they are produced — every frame carefully considered, every story intentionally crafted, every collaboration approached with professionalism, trust and creative excellence.</p>
+    </div>
+
+    <div class="about-columns reveal">
+      <div>
+        <h3>Expertise</h3>
+        <ul>
+          <li>Creative Direction</li>
+          <li>Film Direction</li>
+          <li>Documentary Filmmaking</li>
+          <li>Commercial Production</li>
+          <li>Photography &amp; Editorial Photography</li>
+          <li>Sports Storytelling</li>
+          <li>Music Visuals</li>
+          <li>Brand Campaign Development</li>
+          <li>Creative Strategy &amp; Art Direction</li>
+          <li>Visual Storytelling</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Selected Clients</h3>
+        <ul>
+          <li>Nike</li>
+          <li>Puma</li>
+          <li>Daily Paper</li>
+          <li>Hennessy</li>
+          <li>Rolling Stone Africa</li>
+          <li>Chris Brown</li>
+          <li>Burna Boy</li>
+          <li>Ms. Lauryn Hill</li>
+          <li>Rita Ora · Asake · Keke Palmer</li>
+          <li>Eric Bellinger · Les Twins · Tyga</li>
+          <li>Jorja Smith · Ella Mai — and many more</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Career Highlights</h3>
+        <ul>
+          <li>18+ years of professional experience</li>
+          <li>Founder &amp; Creative Director, Play The Game GmbH</li>
+          <li>Founder, Emzyproductionfilms</li>
+          <li>Content Creator, Rolling Stone Africa</li>
+          <li>Worked across Europe, Africa and beyond</li>
+          <li>Campaigns, documentaries &amp; editorials viewed by millions</li>
+          <li>Multi award-winning Creative Director</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="about-quote reveal">
+      <p>“I don’t just create content.<br>I create stories people remember.”</p>
+      <cite>Emmanuel Whajah</cite>
+    </blockquote>
   </div>
 </section>
 
