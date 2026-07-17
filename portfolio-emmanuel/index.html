@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emmanuel Whajah — Director & Photographer</title>
-<meta name="description" content="Emmanuel Whajah — Multi-award-winning Director & Photographer. Aftermovies, Werbekampagnen und Portraits für Chris Brown, Lauryn Hill, Burna Boy, Nike, Hennessy u.v.m.">
+<meta name="description" content="Emmanuel Whajah — Multi-award-winning Director & Photographer. Aftermovies, ad campaigns and portraits for Chris Brown, Lauryn Hill, Burna Boy, Nike, Hennessy and more.">
 <meta name="robots" content="noindex">
 <base href="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/">
 <script>{const m=location.pathname.match(/^\/(?:emmanuelwhajah|emmanuel-whajah)-(v[23])\/?$/);if(m)document.documentElement.classList.add(`portfolio-${m[1]}`)}</script>
@@ -250,7 +250,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 .awards .pics img:first-child{grid-column:span 2}
 @media(max-width:900px){.awards{grid-template-columns:1fr}}
 
-/* ---------- about / kontakt ---------- */
+/* ---------- about ---------- */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,90px);align-items:center}
 .about .pic{overflow:hidden;border-radius:4px;position:relative}
 .about .pic img{filter:grayscale(.2)}
@@ -262,7 +262,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 @media(max-width:900px){.about{grid-template-columns:1fr}}
 
 /* ---------- booking ---------- */
-#booking{background:var(--bg2);border-top:1px solid var(--line)}
+#contact{background:var(--bg2);border-top:1px solid var(--line)}
 .booking-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.55fr);gap:clamp(32px,7vw,110px);align-items:end;margin-bottom:clamp(40px,7vw,80px)}
 .booking-head h2{font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(48px,8vw,116px);line-height:.88;letter-spacing:-.015em}
 .booking-head h2 .headline-accent{display:block;font-family:var(--serif);font-size:.72em;font-weight:400;font-style:italic;text-transform:none;color:var(--gold2);letter-spacing:0}
@@ -446,7 +446,7 @@ h1 .row:nth-child(2){padding-left:10.5vw}
 .marquee b{color:var(--editorial-ink)}
 
 section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
-#arbeiten{background:var(--editorial-paper);color:var(--editorial-ink)}
+#work{background:var(--editorial-paper);color:var(--editorial-ink)}
 .shead{margin-bottom:clamp(42px,7vw,92px);border-bottom:1px solid rgba(23,19,17,.32);padding-bottom:18px}
 .shead h2{font-size:clamp(58px,10vw,152px);line-height:.76;letter-spacing:-.035em;font-stretch:66%}
 .shead h2 .headline-accent{display:inline;color:var(--editorial-red);-webkit-text-stroke:0}
@@ -483,8 +483,8 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .masonry img{transition:transform .55s ease,filter .3s ease}
 .masonry a:hover img{transform:scale(1.02);filter:saturate(.75)}
 
-#auszeichnungen{background:var(--editorial-paper);color:var(--editorial-ink)}
-#auszeichnungen .shead{border-color:rgba(23,19,17,.32)}
+#awards{background:var(--editorial-paper);color:var(--editorial-ink)}
+#awards .shead{border-color:rgba(23,19,17,.32)}
 .awards{gap:clamp(44px,8vw,130px);align-items:start}
 .awards .item{border-color:rgba(23,19,17,.26);padding:24px 0}
 .awards .item .n{font-size:clamp(17px,1.6vw,25px)}
@@ -492,7 +492,19 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .awards .pics{gap:10px}
 .awards .pics img{border:0;border-radius:0}
 
-#kontakt{padding:0;background:var(--editorial-dark)}
+/* ---------- press ---------- */
+#press{background:var(--editorial-ink);color:#f3efe7}
+#press .shead{border-color:rgba(255,255,255,.25)}
+#press .shead h2 .headline-accent{color:var(--editorial-red)}
+#press .shead .count{color:var(--editorial-muted)}
+.press-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)}
+.press-grid a{display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:var(--editorial-ink);padding:clamp(20px,3.4vw,38px)}
+.press-grid img{width:100%;height:100%;object-fit:contain;opacity:.82;transition:opacity .3s ease,transform .3s ease}
+.press-grid a:hover img{opacity:1;transform:scale(1.06)}
+@media(max-width:900px){.press-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.press-grid{grid-template-columns:repeat(2,1fr)}}
+
+#about{padding:0;background:var(--editorial-dark)}
 .about{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;min-height:100svh;align-items:stretch}
 .about .pic{border-radius:0;min-height:100%;background:#0f0d0c}
 .about .pic img{width:100%;height:100%;object-fit:cover;object-position:center 28%;filter:none}
@@ -503,7 +515,7 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .about .facts div b{font-family:var(--sans);font-stretch:70%;font-weight:700;color:#fff;font-size:clamp(40px,5vw,76px);line-height:1}
 .about .facts div s{color:var(--editorial-muted);font-size:12px;letter-spacing:.1em}
 
-#booking{background:var(--editorial-red);color:var(--editorial-ink);border:0}
+#contact{background:var(--editorial-red);color:var(--editorial-ink);border:0}
 .booking-head{grid-template-columns:minmax(0,1.2fr) minmax(280px,.45fr);align-items:end}
 .booking-head h2{font-size:clamp(66px,11vw,170px);line-height:.74;letter-spacing:-.04em;font-stretch:66%}
 .booking-head h2 .headline-accent{color:var(--editorial-ink)}
@@ -625,8 +637,8 @@ html.portfolio-v2 .shead h2{font-size:12px;line-height:1;font-stretch:100%;font-
 html.portfolio-v2 .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;font-size:1em;font-weight:650;color:inherit;text-transform:uppercase}
 html.portfolio-v2 .shead .count{font-family:var(--sans);font-size:10px;font-style:normal;letter-spacing:.08em;color:inherit;opacity:.62}
 
-html.portfolio-v2 #arbeiten{position:relative;padding:76px 28px 28px;background:var(--v2-night);color:var(--v2-ink)}
-html.portfolio-v2 #arbeiten .shead{display:none}
+html.portfolio-v2 #work{position:relative;padding:76px 28px 28px;background:var(--v2-night);color:var(--v2-ink)}
+html.portfolio-v2 #work .shead{display:none}
 html.portfolio-v2 .filters{position:relative;z-index:5;margin:0 0 14px;border:0;justify-content:flex-end}
 html.portfolio-v2 .filters button{min-height:34px;padding:0 12px;color:rgba(246,242,233,.58);font-size:9px;letter-spacing:.08em}
 html.portfolio-v2 .filters button:first-child{padding-left:12px}
@@ -654,20 +666,24 @@ html.portfolio-v2 .masonry{columns:3;column-gap:12px}
 html.portfolio-v2 .masonry a{margin-bottom:12px}
 html.portfolio-v2 .masonry img{filter:saturate(.72)}
 
-html.portfolio-v2 #auszeichnungen{background:var(--v2-peach);color:#17202a}
-html.portfolio-v2 #auszeichnungen .shead{border-color:rgba(23,32,42,.3)}
+html.portfolio-v2 #awards{background:var(--v2-peach);color:#17202a}
+html.portfolio-v2 #awards .shead{border-color:rgba(23,32,42,.3)}
 html.portfolio-v2 .awards .item{border-color:rgba(23,32,42,.24)}
 html.portfolio-v2 .awards .item .n{font-size:clamp(20px,2vw,31px);font-weight:580}
 html.portfolio-v2 .awards .item .d{color:rgba(23,32,42,.65)}
 
-html.portfolio-v2 #kontakt{background:var(--v2-night)}
+html.portfolio-v2 #press{background:var(--v2-night)}
+html.portfolio-v2 .press-grid{background:rgba(246,242,233,.14);border-color:rgba(246,242,233,.14)}
+html.portfolio-v2 .press-grid a{background:var(--v2-night)}
+
+html.portfolio-v2 #about{background:var(--v2-night)}
 html.portfolio-v2 .about{min-height:100svh}
 html.portfolio-v2 .about .pic img{filter:saturate(.2) contrast(1.04)}
 html.portfolio-v2 .about p{font-size:clamp(28px,3.2vw,52px);font-weight:380}
 html.portfolio-v2 .about p em{color:var(--v2-peach)}
 html.portfolio-v2 .about .facts div b{color:var(--v2-blue);font-size:clamp(38px,4.5vw,70px)}
 
-html.portfolio-v2 #booking{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
+html.portfolio-v2 #contact{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
 html.portfolio-v2 .booking-head h2{font-size:clamp(60px,9vw,140px);line-height:.76}
 html.portfolio-v2 .booking-head h2 .headline-accent{display:block;color:#0b1b26}
 html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label{color:#0b1b26}
@@ -691,7 +707,7 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
   html.portfolio-v2 .hero-showreel{display:block!important;right:18px!important;bottom:15px;top:auto!important;width:auto;height:auto;font-size:9px}
   html.portfolio-v2 .hero-slide-status{left:auto!important;right:18px!important;top:20px!important;width:34vw;transform:none}
   html.portfolio-v2 section{padding:74px 18px}
-  html.portfolio-v2 #arbeiten{padding:64px 18px 18px}
+  html.portfolio-v2 #work{padding:64px 18px 18px}
   html.portfolio-v2 .filters{justify-content:flex-start;overflow-x:auto;margin-bottom:10px}
   html.portfolio-v2 .filters button{font-size:10px;padding-inline:10px}
   html.portfolio-v2 .card{height:calc(100svh - 138px);min-height:500px}
@@ -712,7 +728,7 @@ html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
 }
 
 /* ---------- V3: bright studio portfolio ---------- */
-html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#16bd68;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
+html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#111;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
 html.portfolio-v3 body{background:var(--v3-paper);color:var(--v3-ink);font-family:var(--sans);font-size:16px}
 html.portfolio-v3 body::before{display:none}
 html.portfolio-v3 #progress{height:2px;background:var(--v3-green)}
@@ -749,18 +765,18 @@ html.portfolio-v3 .marquee{display:none}
 
 .v3-intro{display:none}
 html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:#0b0c0b;color:#fff}
-html.portfolio-v3 .v3-intro p{max-width:220px;font-size:15px;color:#888;line-height:1.5}
+html.portfolio-v3 .v3-intro p{max-width:320px;font-size:19px;color:#fff;line-height:1.55}
 html.portfolio-v3 .v3-intro h2{font-size:clamp(50px,6.5vw,106px);font-weight:520;line-height:.94;letter-spacing:-.045em}
-html.portfolio-v3 .v3-intro h2 span{display:block;color:#4c4d4c}
+html.portfolio-v3 .v3-intro h2 span{display:block;color:#fff}
 
 .v3-scroll-gallery{display:none}
 html.portfolio-v3 .v3-scroll-gallery{display:block;position:relative;height:260svh;padding:0;background:#0b0c0b;color:#fff}
 html.portfolio-v3 .v3-scroll-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate}
 html.portfolio-v3 .v3-scroll-stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.48) 100%)}
 html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(760px,80vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#777}
+html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
 html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em}
-html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#4e504f}
+html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#fff}
 html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
 html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
 html.portfolio-v3 .v3-scroll-row.two{bottom:4vh;left:-8vw}
@@ -771,12 +787,12 @@ html.portfolio-v3 .v3-scroll-tile img{width:100%;height:100%;object-fit:cover;fi
 html.portfolio-v3 .v3-scroll-tile:hover img{filter:saturate(1)}
 
 html.portfolio-v3 section{padding:clamp(90px,10vw,160px) clamp(26px,4vw,64px)}
-html.portfolio-v3 #arbeiten{background:#fff;color:var(--v3-ink);overflow:hidden}
-html.portfolio-v3 #arbeiten .shead{margin-bottom:42px;padding:0;border:0;align-items:end}
-html.portfolio-v3 #arbeiten .shead h2{font-size:clamp(38px,4vw,64px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:none}
-html.portfolio-v3 #arbeiten .shead h2::before{content:"Neueste Arbeiten";display:block;margin-bottom:18px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#aaa}
-html.portfolio-v3 #arbeiten .shead h2 .headline-accent{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
-html.portfolio-v3 #arbeiten .shead .count{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
+html.portfolio-v3 #work{background:#fff;color:var(--v3-ink);overflow:hidden}
+html.portfolio-v3 #work .shead{margin-bottom:42px;padding:0;border:0;align-items:end}
+html.portfolio-v3 #work .shead h2{font-size:clamp(38px,4vw,64px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:none}
+html.portfolio-v3 #work .shead h2::before{content:"Latest Work";display:block;margin-bottom:18px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#aaa}
+html.portfolio-v3 #work .shead h2 .headline-accent{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
+html.portfolio-v3 #work .shead .count{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
 html.portfolio-v3 .filters{margin-bottom:30px;border-bottom:1px solid var(--v3-line);gap:0}
 html.portfolio-v3 .filters button{min-height:46px;padding:0 18px;border:0;border-radius:0;color:#888;font-size:10px;letter-spacing:.08em}
 html.portfolio-v3 .filters button:first-child{padding-left:0}
@@ -809,16 +825,22 @@ html.portfolio-v3 .masonry{columns:3;column-gap:14px}
 html.portfolio-v3 .masonry a{margin-bottom:14px;border-radius:18px}
 html.portfolio-v3 .masonry img{filter:saturate(.7)}
 
-html.portfolio-v3 #auszeichnungen{background:var(--v3-paper);color:var(--v3-ink)}
-html.portfolio-v3 #auszeichnungen .shead{border-color:var(--v3-line)}
-html.portfolio-v3 #auszeichnungen .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
-html.portfolio-v3 #auszeichnungen .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
+html.portfolio-v3 #awards{background:var(--v3-paper);color:var(--v3-ink)}
+html.portfolio-v3 #awards .shead{border-color:var(--v3-line)}
+html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
+html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 .awards .item{border-color:var(--v3-line)}
 html.portfolio-v3 .awards .item .n{font-size:clamp(17px,1.7vw,25px);font-weight:540;color:#111}
 html.portfolio-v3 .awards .item .d{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
 html.portfolio-v3 .awards .pics img{border:0;border-radius:18px}
 
-html.portfolio-v3 #kontakt{background:#fff;color:#111;padding:10px}
+html.portfolio-v3 #press{background:#171918}
+html.portfolio-v3 #press .shead h2{font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
+html.portfolio-v3 #press .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#777;text-transform:none}
+html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal}
+html.portfolio-v3 .press-grid a{background:#171918}
+
+html.portfolio-v3 #about{background:#fff;color:#111;padding:10px}
 html.portfolio-v3 .about{min-height:calc(100svh - 20px);grid-template-columns:1fr 1fr;gap:0;background:#e9e9e5;border-radius:38px;overflow:hidden}
 html.portfolio-v3 .about .pic{min-height:100%;border-radius:0}
 html.portfolio-v3 .about .pic img{width:100%;height:100%;object-fit:cover;filter:none}
@@ -828,12 +850,15 @@ html.portfolio-v3 .about p em{font-family:var(--sans);font-style:normal;color:#8
 html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38px,4vw,66px);color:#111}
 html.portfolio-v3 .about .facts div s{color:#666}
 
-html.portfolio-v3 #booking{background:#1b1d1c;color:#fff;border:0}
+html.portfolio-v3 #contact{background:#1b1d1c;color:#fff;border:0}
 html.portfolio-v3 .booking-head h2{font-size:clamp(64px,9vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
 html.portfolio-v3 .booking-head h2 .headline-accent{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
-html.portfolio-v3 .booking-intro{font-family:var(--sans);font-size:18px;color:#aaa}
-html.portfolio-v3 .field label{color:#bbb}
+html.portfolio-v3 .booking-intro{font-family:var(--sans);font-size:18px}
 html.portfolio-v3 .field input,html.portfolio-v3 .field select,html.portfolio-v3 .field textarea{color:#fff;border-color:#555}
+html.portfolio-v3 .field input::placeholder,html.portfolio-v3 .field textarea::placeholder{color:#fff;opacity:.85}
+html.portfolio-v3 .field label{color:#fff}
+html.portfolio-v3 .booking-intro{color:#fff}
+html.portfolio-v3 .privacy{color:#fff}
 html.portfolio-v3 .booking-submit{background:#fff;border-color:#fff;color:#111;border-radius:9px}
 html.portfolio-v3 footer{background:#1b1d1c}
 html.portfolio-v3 footer .big a{color:#fff;-webkit-text-stroke:0}
@@ -856,7 +881,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .v3-intro{grid-template-columns:1fr;gap:44px;padding:100px 22px}
   html.portfolio-v3 .v3-intro h2{font-size:clamp(48px,14vw,68px)}
   html.portfolio-v3 section{padding:84px 18px}
-  html.portfolio-v3 #arbeiten .shead h2{font-size:40px}
+  html.portfolio-v3 #work .shead h2{font-size:40px}
   html.portfolio-v3 .filters{flex-wrap:nowrap;overflow-x:auto}
   html.portfolio-v3 .grid{display:flex;gap:12px;margin-right:-18px;padding-right:18px}
   html.portfolio-v3 .card.v3-visible{flex-basis:86%}
@@ -894,24 +919,24 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" hidden>
   <form class="gate-box" id="gateform">
     <p class="gate-name" id="gate-title">Emmanuel <em>Whajah</em></p>
-    <p class="gate-hint" id="gate-desc">Dieses Portfolio ist passwortgeschützt.</p>
-    <label class="sr-only" for="gatepw">Passwort</label>
-    <input type="password" id="gatepw" placeholder="Passwort" autocomplete="current-password" aria-describedby="gate-desc gateerr">
-    <button type="submit">Ansehen →</button>
-    <p class="gate-err" id="gateerr" role="alert" hidden>Falsches Passwort.</p>
-    <p class="gate-note">Vertrauliche Arbeitsproben · Nicht zur Weitergabe</p>
+    <p class="gate-hint" id="gate-desc">This portfolio is password protected.</p>
+    <label class="sr-only" for="gatepw">Password</label>
+    <input type="password" id="gatepw" placeholder="Password" autocomplete="current-password" aria-describedby="gate-desc gateerr">
+    <button type="submit">View →</button>
+    <p class="gate-err" id="gateerr" role="alert" hidden>Incorrect password.</p>
+    <p class="gate-note">Confidential work samples · Not for distribution</p>
   </form>
 </div>
 
 <nav>
   <a class="logo" href="#top"><em>Emmanuel&nbsp;Whajah</em></a>
   <ul id="primary-menu">
-    <li><a href="#arbeiten">Arbeiten</a></li>
-    <li><a href="#fotografie">Fotografie</a></li>
-    <li><a href="#auszeichnungen">Auszeichnungen</a></li>
-    <li><a href="#booking">Booking</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#press">Press</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="primary-menu"><span aria-hidden="true"></span></button>
+  <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu"><span aria-hidden="true"></span></button>
 </nav>
 
 <header class="hero" id="top">
@@ -926,20 +951,20 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
     <span class="row"><span>Emmanuel</span></span>
     <span class="row"><span>Whajah</span></span>
   </h1>
-  <h1 class="v3-headline" hidden>Getrieben von <span class="v3-word">Vision.</span></h1>
+  <h1 class="v3-headline" hidden>Driven by <span class="v3-word">Vision.</span></h1>
   <div class="sub">
-    <span class="role">Bewegtbild, das Gänsehaut macht.</span>
+    <span class="role">Motion that gives you goosebumps.</span>
     <span class="facts">Multi-Award-Winning&ensp;·&ensp;Forbes 30 under 30&ensp;·&ensp;Founder @playthegame</span>
   </div>
-  <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Showreel von Emmanuel Whajah abspielen">Showreel<br>ansehen</button>
+  <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Play Emmanuel Whajah's showreel">Watch<br>Showreel</button>
   <span class="hero-slide-status" id="hero-slide-status" aria-hidden="true">01 / 04</span>
-  <button class="v3-sound" id="v3-sound" type="button" aria-label="Ton einschalten" hidden>♪</button>
+  <button class="v3-sound" id="v3-sound" type="button" aria-label="Turn sound on" hidden>♪</button>
   <span class="scroll">Scroll ↓</span>
 </header>
 
-<section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Ausgewählte Arbeiten in Bewegung">
+<section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
   <div class="v3-scroll-stage">
-    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Momente werden<span class="headline-accent">zu Geschichten.</span></h2></div>
+    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Moments become<span class="headline-accent">stories.</span></h2></div>
     <div class="v3-scroll-row one" id="v3-scroll-row-one"></div>
     <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
   </div>
@@ -951,83 +976,105 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   </div>
 </div>
 
-<section class="v3-intro" aria-label="Profil-Einleitung">
-  <p>Director, Photographer und Creative Director für internationale Artists, Brands und Kulturprojekte.</p>
-  <h2>Content, der bewegt.<span>Bilder, die bleiben.</span></h2>
+<section class="v3-intro" aria-label="Profile introduction">
+  <p>Director, photographer and creative director for international artists, brands and cultural projects.</p>
+  <h2>Content that moves.<span>Images that stay.</span></h2>
 </section>
 
-<section id="arbeiten">
+<section id="work">
   <div class="shead reveal">
-    <h2>Video<span class="headline-accent">produktion</span></h2>
+    <h2>Video<span class="headline-accent">Production</span></h2>
     <span class="count" id="vidcount"></span>
   </div>
   <div class="filters reveal" id="filters">
-    <button class="on" data-f="*">Alle</button>
+    <button class="on" data-f="*">All</button>
     <button data-f="aftermovie">Aftermovies</button>
-    <button data-f="kampagne">Werbekampagnen</button>
+    <button data-f="campaign">Campaigns</button>
     <button data-f="event">Events</button>
-    <button data-f="recruiting">Recruiting</button>
   </div>
-  <div class="project-slider reveal" id="project-slider" role="region" aria-roledescription="Karussell" aria-label="Videoprojekte">
+  <div class="project-slider reveal" id="project-slider" role="region" aria-roledescription="Carousel" aria-label="Video projects">
     <div class="grid" id="grid"></div>
     <div class="slider-controls">
-      <button class="slider-button" id="slide-prev" type="button" aria-label="Vorheriges Projekt" aria-controls="grid">←</button>
+      <button class="slider-button" id="slide-prev" type="button" aria-label="Previous project" aria-controls="grid">←</button>
       <div class="slider-count" id="slider-status" aria-live="polite" aria-atomic="true">
         <span class="current" id="slide-current">01</span>
         <span class="line" aria-hidden="true"></span>
-        <span id="slide-total">19</span>
+        <span id="slide-total">16</span>
       </div>
-      <button class="slider-button" id="slide-next" type="button" aria-label="Nächstes Projekt" aria-controls="grid">→</button>
+      <button class="slider-button" id="slide-next" type="button" aria-label="Next project" aria-controls="grid">→</button>
     </div>
   </div>
 </section>
 
 <section id="fotografie">
   <div class="shead reveal">
-    <h2>Foto<span class="headline-accent">grafie</span></h2>
-    <span class="count">Portraits &amp; Kampagnen</span>
+    <h2>Photo<span class="headline-accent">graphy</span></h2>
+    <span class="count">Portraits &amp; Campaigns</span>
   </div>
   <div class="masonry" id="masonry"></div>
 </section>
 
-<section id="auszeichnungen">
-  <div class="shead reveal">
-    <h2>Aus<span class="headline-accent">zeichnungen</span></h2>
-  </div>
-  <div class="awards reveal">
-    <div class="list">
-      <div class="item"><span class="n">Forbes 30 under 30</span><span class="d">Forbes</span></div>
-      <div class="item"><span class="n">Goldene Schallplatte — Eric Bellinger „G.O.A.T 2.0"</span><span class="d">500.000+ verkaufte Einheiten</span></div>
-      <div class="item"><span class="n">Keke Palmer — „Virgo Tendencies" Pt. 1 &amp; 2</span><span class="d">Offizielle Plaques</span></div>
-      <div class="item"><span class="n">Tory Lanez — Memories Don't Die Tour</span><span class="d">Streetlife International</span></div>
-      <div class="item"><span class="n">Little Simz — Poison Ivy Tour <i style="font-family:var(--serif);color:var(--gold)">Sold Out</i></span><span class="d">Streetlife International</span></div>
-    </div>
-    <div class="pics">
-      <img src="assets/img/award-gold-bellinger.webp" alt="Goldene Schallplatte für Eric Bellinger – G.O.A.T 2.0, überreicht an Emmanuel Whajah" loading="lazy">
-      <img src="assets/img/award-tory-lanez.webp" alt="Tour-Plaque Tory Lanez Memories Don't Die Tour" loading="lazy">
-      <img src="assets/img/award-little-simz.webp" alt="Tour-Plaque Little Simz Poison Ivy Tour – Sold Out" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
+<section id="about">
   <div class="about reveal">
-    <div class="pic"><img src="assets/img/emmanuel-whajah-blackwhite.webp" alt="Emmanuel Whajah mit Filmkamera" loading="lazy"></div>
+    <div class="pic"><img src="assets/img/emmanuel-whajah-blackwhite.webp" alt="Emmanuel Whajah holding a film camera" loading="lazy"></div>
     <div>
-      <p>Emmanuel Whajah ist <em>Director &amp; Photographer</em> — von Aftermovies für die größten Namen der Musikwelt bis zu Werbekampagnen für internationale Marken. Sein Blick: <em>cinematisch, energetisch, ehrlich.</em></p>
+      <p>Emmanuel Whajah is a Ghanaian-German <em>Creative Director, Director &amp; Photographer</em> with 18+ years of experience creating visual stories that connect culture, sport, music and fashion on a global scale.</p>
+      <p>From Chris Brown, Ms. Lauryn Hill and Burna Boy to Nike, Puma and Hennessy — his work has taken him across 30+ countries, always guided by one belief: <em>great visuals should make people feel something before they even understand what they're looking at.</em></p>
+      <p>Today he leads <em>Play The Game GmbH</em>, his creative agency for athletes, sports organizations and brands, alongside his production company <em>Emzyproductionfilms</em> and his work as Content Creator for <em>Rolling Stone Africa</em>.</p>
       <div class="facts">
-        <div><b>10+</b><s>Jahre Erfahrung</s></div>
-        <div><b>4</b><s>Kontinente</s></div>
-        <div><b>∞</b><s>Gänsehaut</s></div>
+        <div><b>18+</b><s>Years Experience</s></div>
+        <div><b>30+</b><s>Countries</s></div>
+        <div><b>∞</b><s>Goosebumps</s></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="booking">
+<section id="awards">
+  <div class="shead reveal">
+    <h2>Awards<span class="headline-accent"> &amp; Honors</span></h2>
+  </div>
+  <div class="awards reveal">
+    <div class="list">
+      <div class="item"><span class="n">Forbes 30 under 30</span><span class="d">Forbes</span></div>
+      <div class="item"><span class="n">Gold Record — Eric Bellinger "G.O.A.T 2.0"</span><span class="d">500,000+ units sold</span></div>
+      <div class="item"><span class="n">Keke Palmer — "Virgo Tendencies" Pt. 1 &amp; 2</span><span class="d">Official Plaques</span></div>
+      <div class="item"><span class="n">Tory Lanez — Memories Don't Die Tour</span><span class="d">Streetlife International</span></div>
+      <div class="item"><span class="n">Little Simz — Poison Ivy Tour <i style="font-family:var(--serif);color:var(--gold)">Sold Out</i></span><span class="d">Streetlife International</span></div>
+    </div>
+    <div class="pics">
+      <img src="assets/img/award-gold-bellinger.webp" alt="Gold record awarded to Emmanuel Whajah for Eric Bellinger's G.O.A.T 2.0" loading="lazy">
+      <img src="assets/img/award-tory-lanez.webp" alt="Tour plaque, Tory Lanez Memories Don't Die Tour" loading="lazy">
+      <img src="assets/img/award-little-simz.webp" alt="Tour plaque, Little Simz Poison Ivy Tour – Sold Out" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="press">
+  <div class="shead reveal">
+    <h2>Press<span class="headline-accent"> &amp; Media</span></h2>
+    <span class="count">Featured In</span>
+  </div>
+  <div class="press-grid reveal">
+    <a href="https://www.forbesafrica.com/" target="_blank" rel="noopener"><img src="assets/img/press/forbes.webp" alt="Forbes Africa" loading="lazy"></a>
+    <a href="https://www.billboard.com/" target="_blank" rel="noopener"><img src="assets/img/press/billboard.webp" alt="Billboard" loading="lazy"></a>
+    <a href="https://www.revolt.tv/" target="_blank" rel="noopener"><img src="assets/img/press/revolt-tv.webp" alt="Revolt TV" loading="lazy"></a>
+    <a href="https://www.gq.com/" target="_blank" rel="noopener"><img src="assets/img/press/gq.webp" alt="GQ" loading="lazy"></a>
+    <a href="https://www.pulse.ng/" target="_blank" rel="noopener"><img src="assets/img/press/pulse.webp" alt="Pulse" loading="lazy"></a>
+    <a href="https://www.africanews.com/" target="_blank" rel="noopener"><img src="assets/img/press/africanews.webp" alt="Africanews" loading="lazy"></a>
+    <a href="https://www.modernghana.com/" target="_blank" rel="noopener"><img src="assets/img/press/modern-ghana.webp" alt="Modern Ghana" loading="lazy"></a>
+    <a href="https://meedia.de/" target="_blank" rel="noopener"><img src="assets/img/press/meedia.webp" alt="Meedia" loading="lazy"></a>
+    <a href="https://www.neuepresse.de/" target="_blank" rel="noopener"><img src="assets/img/press/neue-presse.webp" alt="Neue Presse" loading="lazy"></a>
+    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/cityglow.webp" alt="Cityglow" loading="lazy"></a>
+    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/curl.webp" alt="Curl" loading="lazy"></a>
+    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/inthewritersmind.webp" alt="InTheWritersMind" loading="lazy"></a>
+  </div>
+</section>
+
+<section id="contact">
   <div class="booking-head reveal">
     <h2>Start the<span class="headline-accent">conversation.</span></h2>
-    <p class="booking-intro">Erzähl kurz, was du vorhast. Je konkreter das Briefing, desto schneller kann Emmanuel Verfügbarkeit und nächsten Schritt einschätzen.</p>
+    <p class="booking-intro">Tell us a bit about what you have in mind. The more concrete the brief, the faster Emmanuel can assess availability and next steps.</p>
   </div>
   <form class="booking-form reveal" action="/wp-admin/admin-post.php" method="post" id="booking-form">
     <input type="hidden" name="action" value="emmanuel_booking">
@@ -1040,59 +1087,59 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
     <div class="field">
       <label for="booking-name">Name *</label>
-      <input id="booking-name" name="name" type="text" autocomplete="name" placeholder="Vor- und Nachname" required>
+      <input id="booking-name" name="name" type="text" autocomplete="name" placeholder="First and last name" required>
     </div>
     <div class="field">
-      <label for="booking-email">E-Mail *</label>
-      <input id="booking-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@unternehmen.de" required>
+      <label for="booking-email">Email *</label>
+      <input id="booking-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required>
     </div>
     <div class="field">
-      <label for="booking-phone">Telefon <span class="optional">optional</span></label>
-      <input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+49 …">
+      <label for="booking-phone">Phone <span class="optional">optional</span></label>
+      <input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+1 …">
     </div>
     <div class="field">
-      <label for="booking-type">Projektart *</label>
+      <label for="booking-type">Project Type *</label>
       <select id="booking-type" name="project_type" required>
-        <option value="" selected disabled>Bitte auswählen</option>
-        <option>Musikvideo</option>
-        <option>Aftermovie / Eventfilm</option>
-        <option>Werbekampagne</option>
-        <option>Foto-Shooting</option>
+        <option value="" selected disabled>Please select</option>
+        <option>Music Video</option>
+        <option>Aftermovie / Event Film</option>
+        <option>Ad Campaign</option>
+        <option>Photo Shoot</option>
         <option>Creative Direction</option>
-        <option>Sonstiges</option>
+        <option>Other</option>
       </select>
     </div>
     <div class="field">
-      <label for="booking-date">Wunschtermin <span class="optional">optional</span></label>
+      <label for="booking-date">Preferred Date <span class="optional">optional</span></label>
       <input id="booking-date" name="project_date" type="date">
     </div>
     <div class="field">
-      <label for="booking-location">Ort <span class="optional">optional</span></label>
-      <input id="booking-location" name="location" type="text" autocomplete="address-level2" placeholder="Stadt / Land">
+      <label for="booking-location">Location <span class="optional">optional</span></label>
+      <input id="booking-location" name="location" type="text" autocomplete="address-level2" placeholder="City / Country">
     </div>
     <div class="field full">
-      <label for="booking-budget">Budgetrahmen <span class="optional">optional</span></label>
+      <label for="booking-budget">Budget Range <span class="optional">optional</span></label>
       <select id="booking-budget" name="budget">
-        <option value="" selected>Noch offen</option>
-        <option>bis 2.500 €</option>
-        <option>2.500–5.000 €</option>
-        <option>5.000–10.000 €</option>
-        <option>10.000–25.000 €</option>
-        <option>über 25.000 €</option>
+        <option value="" selected>Still open</option>
+        <option>up to €2,500</option>
+        <option>€2,500–5,000</option>
+        <option>€5,000–10,000</option>
+        <option>€10,000–25,000</option>
+        <option>over €25,000</option>
       </select>
     </div>
     <div class="field full">
-      <label for="booking-message">Projekt &amp; Idee *</label>
-      <textarea id="booking-message" name="message" placeholder="Worum geht es, was soll entstehen und bis wann?" required></textarea>
+      <label for="booking-message">Project &amp; Idea *</label>
+      <textarea id="booking-message" name="message" placeholder="What's it about, what should it become, and by when?" required></textarea>
     </div>
 
     <div class="booking-status" id="booking-status" role="status" aria-live="polite" hidden></div>
     <div class="booking-actions">
       <label class="privacy" for="booking-privacy">
         <input id="booking-privacy" name="privacy" type="checkbox" value="1" required>
-        <span>Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. Mehr in der <a href="https://mystu.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+        <span>I agree that my details will be used to process this inquiry. More in the <a href="https://mystu.de/datenschutz/" target="_blank" rel="noopener">privacy policy</a>.</span>
       </label>
-      <button class="booking-submit" type="submit">Booking anfragen →</button>
+      <button class="booking-submit" type="submit">Send Inquiry →</button>
     </div>
   </form>
 </section>
@@ -1106,12 +1153,12 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   </div>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Videoplayer">
-  <button class="x" id="lbx">Schließen ✕</button>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="x" id="lbx">Close ✕</button>
   <video id="lbv" controls playsinline></video>
   <span class="cap" id="lbcap"></span>
 </div>
-<div class="lbimg" id="lbimg" role="dialog" aria-modal="true" aria-label="Fotografie vergrößert"><img id="lbimgel" alt="Portrait-Fotografie von Emmanuel Whajah"></div>
+<div class="lbimg" id="lbimg" role="dialog" aria-modal="true" aria-label="Photo enlarged"><img id="lbimgel" alt="Portrait photography of Emmanuel Whajah"></div>
 
 <script>
 /* Passwort-Gate (wie adams-acht: kein echter Schutz, hält Zufallsbesucher fern) */
@@ -1124,8 +1171,8 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
     if(document.getElementById('ck-bar'))return;
     const bar=document.createElement('div');
     bar.id='ck-bar';bar.className='ck-bar';bar.setAttribute('role','dialog');
-    bar.setAttribute('aria-live','polite');bar.setAttribute('aria-label','Cookie-Hinweis');
-    bar.innerHTML='<div class="ck-in"><p class="ck-txt">Diese Portfolio-Vorschau verwendet nur technisch notwendige Cookies (z. B. für das Buchungsformular). Kein Tracking, keine Werbe-Cookies.</p><div class="ck-btns"><button type="button" class="ck-btn" id="ck-deny">Nur notwendige</button><button type="button" class="ck-btn ck-acc" id="ck-acc">Verstanden</button></div></div>';
+    bar.setAttribute('aria-live','polite');bar.setAttribute('aria-label','Cookie notice');
+    bar.innerHTML='<div class="ck-in"><p class="ck-txt">This portfolio preview only uses strictly necessary cookies (e.g. for the contact form). No tracking, no advertising cookies.</p><div class="ck-btns"><button type="button" class="ck-btn" id="ck-deny">Necessary only</button><button type="button" class="ck-btn ck-acc" id="ck-acc">Got it</button></div></div>';
     document.body.appendChild(bar);
     const dismiss=v=>{localStorage.setItem(CKEY,v);bar.classList.remove('show')};
     document.getElementById('ck-acc').addEventListener('click',()=>dismiss('granted'));
@@ -1161,24 +1208,21 @@ const VIDEOS=[
  {s:"jason-derulo",t:"Jason Derulo × Les Twins — Nu King Tour",c:"aftermovie",cl:"Official Video",layout:"tall"},
  {s:"burna-boy",t:"Burna Boy",c:"aftermovie",cl:"Aftermovie"},
  {s:"asake",t:"Asake",c:"aftermovie",cl:"Aftermovie",layout:"sq"},
- {s:"hennessy-nas",t:"Hennessy × NAS — 50 Years of Hip Hop",c:"kampagne",cl:"Event-Kampagne",layout:"tall"},
- {s:"nike",t:"Nike",c:"kampagne",cl:"Werbekampagne",layout:"sq"},
- {s:"nba-allstar",t:"NBA All-Star × Les Twins",c:"kampagne",cl:"Kampagne",layout:"wide"},
+ {s:"hennessy-nas",t:"Hennessy × NAS — 50 Years of Hip Hop",c:"campaign",cl:"Event Campaign",layout:"tall"},
+ {s:"nike",t:"Nike",c:"campaign",cl:"Ad Campaign",layout:"sq"},
+ {s:"nba-allstar",t:"NBA All-Star × Les Twins",c:"campaign",cl:"Campaign",layout:"wide"},
  {s:"hennessy-heros",t:"Hennessy × Heroes Festival",c:"aftermovie",cl:"Aftermovie"},
- {s:"miss-germany",t:"Miss Germany Awards 2026",c:"event",cl:"Eventfilm",layout:"wide"},
- {s:"people-of-deutschland",t:"People of Deutschland",c:"event",cl:"Eventfilm",layout:"tall"},
- {s:"cupra-miss-germany",t:"Cupra × Miss Germany",c:"kampagne",cl:"Werbekampagne"},
+ {s:"miss-germany",t:"Miss Germany Awards 2026",c:"event",cl:"Event Film",layout:"wide"},
+ {s:"people-of-deutschland",t:"People of Deutschland",c:"event",cl:"Event Film",layout:"tall"},
+ {s:"cupra-miss-germany",t:"Cupra × Miss Germany",c:"campaign",cl:"Ad Campaign"},
  {s:"les-twins-frankfurt",t:"Les Twins — Frankfurt",c:"aftermovie",cl:"Recap",layout:"tall"},
- {s:"flamant",t:"Flamant",c:"kampagne",cl:"Werbekampagne",layout:"sq"},
- {s:"85-racing",t:"85 Racing",c:"kampagne",cl:"Brand Film"},
+ {s:"flamant",t:"Flamant",c:"campaign",cl:"Ad Campaign",layout:"sq"},
+ {s:"85-racing",t:"85 Racing",c:"campaign",cl:"Brand Film"},
  {s:"hype-awards",t:"Hype Awards",c:"event",cl:"Aftermovie"},
- {s:"pax",t:"PaX AG — Imagefilm",c:"recruiting",cl:"Recruiting"},
- {s:"ontour",t:"ontour transport service",c:"recruiting",cl:"Recruiting Reel",layout:"tall"},
- {s:"henkel",t:"Henkel Beiz- &amp; Elektropolier&shy;technik",c:"recruiting",cl:"Recruiting Reel",layout:"tall"},
 ];
 const grid=document.getElementById('grid');
 grid.innerHTML=VIDEOS.map((v,index)=>`
-  <article class="card ${v.layout||''}" data-c="${v.c}" data-s="${v.s}" data-t="${v.t.replace(/&amp;/g,'&')}" role="button" tabindex="0" aria-label="${v.t.replace(/&amp;/g,'&')} abspielen">
+  <article class="card ${v.layout||''}" data-c="${v.c}" data-s="${v.s}" data-t="${v.t.replace(/&amp;/g,'&')}" role="button" tabindex="0" aria-label="Play ${v.t.replace(/&amp;/g,'&')}">
     <div class="frame">
       <img class="poster" src="assets/poster/${v.s}.jpg" alt="${v.t}" loading="lazy">
       <video class="prev" muted loop playsinline preload="none" src="assets/video/${v.s}-preview.mp4"></video>
@@ -1188,7 +1232,7 @@ grid.innerHTML=VIDEOS.map((v,index)=>`
       <span class="num">${String(index+1).padStart(2,'0')}</span>
       <span class="t">${v.t}</span>
       <span class="c">${v.cl}</span>
-      <span class="watch">Projekt ansehen</span>
+      <span class="watch">View project</span>
     </div>
   </article>`).join('');
 const allCards=[...grid.querySelectorAll('.card')];
@@ -1210,7 +1254,7 @@ function updateSlider(){
     slides.forEach((card,offset)=>{card.hidden=false;card.classList.add('active','v3-visible');if(offset===slideIndex){card.classList.add('v3-primary');card.tabIndex=0}});
     slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
     slideTotal.textContent=String(slides.length).padStart(2,'0');
-    document.getElementById('vidcount').textContent=`${slides.length} Projekte`;
+    document.getElementById('vidcount').textContent=`${slides.length} Projects`;
     prevButton.disabled=nextButton.disabled=slides.length<2;
     return;
   }
@@ -1218,7 +1262,7 @@ function updateSlider(){
   if(active){active.hidden=false;active.classList.add('active');active.tabIndex=0}
   slideCurrent.textContent=String(slides.length?slideIndex+1:0).padStart(2,'0');
   slideTotal.textContent=String(slides.length).padStart(2,'0');
-  document.getElementById('vidcount').textContent=`${slides.length} Projekte`;
+  document.getElementById('vidcount').textContent=`${slides.length} Projects`;
   prevButton.disabled=nextButton.disabled=slides.length<2;
 }
 function moveSlide(direction){
@@ -1294,21 +1338,21 @@ if(isPortfolioV2||isPortfolioV3){
   heroSlideStatus.style.setProperty('--hero-index','1');
 }
 if(isPortfolioV3){
-  const words=['Vision.','Energie.','Bewegung.','Kultur.'];
+  const words=['Vision.','Energy.','Motion.','Culture.'];
   const word=document.querySelector('.v3-word');
   let wordIndex=0;
   setInterval(()=>{word.style.opacity='0';setTimeout(()=>{wordIndex=(wordIndex+1)%words.length;word.textContent=words[wordIndex];word.style.opacity='1'},260)},3000);
   document.getElementById('v3-sound').addEventListener('click',e=>{
     heroVideo.muted=!heroVideo.muted;
     e.currentTarget.textContent=heroVideo.muted?'♪':'♫';
-    e.currentTarget.setAttribute('aria-label',heroVideo.muted?'Ton einschalten':'Ton ausschalten');
+    e.currentTarget.setAttribute('aria-label',heroVideo.muted?'Turn sound on':'Turn sound off');
   });
   addEventListener('resize',()=>updateSlider(),{passive:true});
   const gallery=document.getElementById('v3-scroll-gallery');
   const rowOne=document.getElementById('v3-scroll-row-one');
   const rowTwo=document.getElementById('v3-scroll-row-two');
   const galleryProjects=['lauryn-hill','nike','people-of-deutschland','cupra-miss-germany','hennessy-nas','nba-allstar','chris-brown','miss-germany','les-twins-frankfurt','85-racing','asake','jason-derulo'];
-  const tileMarkup=(slug,index)=>`<figure class="v3-scroll-tile ${index%4===1?'wide':index%4===3?'tall':''}"><img src="assets/poster/${slug}.jpg" alt="${VIDEOS.find(v=>v.s===slug)?.t||'Projekt von Emmanuel Whajah'}" loading="lazy"></figure>`;
+  const tileMarkup=(slug,index)=>`<figure class="v3-scroll-tile ${index%4===1?'wide':index%4===3?'tall':''}"><img src="assets/poster/${slug}.jpg" alt="${VIDEOS.find(v=>v.s===slug)?.t||'Project by Emmanuel Whajah'}" loading="lazy"></figure>`;
   rowOne.innerHTML=galleryProjects.slice(0,6).map(tileMarkup).join('');
   rowTwo.innerHTML=galleryProjects.slice(6).map((slug,index)=>tileMarkup(slug,index+2)).join('');
   let galleryTicking=false;
@@ -1355,7 +1399,7 @@ const order=[7,9,1,3,8,4,2,5,6];
 document.getElementById('masonry').innerHTML=order.map(i=>{
   const n=String(i).padStart(2,'0');
   return `<a href="assets/img/portrait-${n}.webp" data-full="assets/img/portrait-${n}.webp">
-    <img src="assets/img/portrait-${n}-thumb.webp" alt="Portrait-Fotografie von Emmanuel Whajah — Bild ${i}" loading="lazy"></a>`;
+    <img src="assets/img/portrait-${n}-thumb.webp" alt="Portrait photography of Emmanuel Whajah — image ${i}" loading="lazy"></a>`;
 }).join('');
 const lbi=document.getElementById('lbimg'),lbiel=document.getElementById('lbimgel');
 document.getElementById('masonry').addEventListener('click',e=>{
@@ -1382,7 +1426,7 @@ if(location.protocol!=='file:'){
 }
 menuToggle.addEventListener('click',()=>{
   const open=menu.classList.toggle('open');menuToggle.classList.toggle('open',open);
-  menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen');
+  menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
   document.body.classList.toggle('menu-open',open);
 });
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuToggle.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}));
@@ -1397,8 +1441,8 @@ if(bookingState==='success'||bookingState==='error'){
   bookingStatus.hidden=false;
   bookingStatus.classList.add(bookingState);
   bookingStatus.textContent=bookingState==='success'
-    ? 'Danke — deine Anfrage ist angekommen. Emmanuel meldet sich so schnell wie möglich.'
-    : 'Die Anfrage konnte nicht gesendet werden. Bitte prüfe deine Angaben oder schreibe direkt an info@emmanuelwhajah.com.';
+    ? 'Thank you — your inquiry has been received. Emmanuel will get back to you as soon as possible.'
+    : 'The inquiry could not be sent. Please check your details or email info@emmanuelwhajah.com directly.';
 }
 const bookingForm=document.getElementById('booking-form');
 const bookingDate=document.getElementById('booking-date');
@@ -1406,7 +1450,7 @@ bookingDate.min=new Date().toISOString().slice(0,10);
 bookingForm.addEventListener('submit',()=>{
   if(!bookingForm.checkValidity())return;
   const submit=bookingForm.querySelector('.booking-submit');
-  submit.disabled=true;submit.textContent='Wird gesendet …';bookingForm.setAttribute('aria-busy','true');
+  submit.disabled=true;submit.textContent='Sending …';bookingForm.setAttribute('aria-busy','true');
 });
 const at=q.get('at');
 if(at&&document.getElementById(at)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));document.getElementById(at).scrollIntoView({behavior:'instant'})}

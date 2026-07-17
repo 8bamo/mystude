@@ -5,3 +5,8 @@ portfolio-emmanuel/assets/video/
 
 # Claude worktrees
 .claude/worktrees/
+
+# Theme-Build: Kopien aus portfolio-emmanuel/ (Quelle bleibt dort)
+emmanuel-whajah-theme/assets/img/
+emmanuel-whajah-theme/assets/poster/
+emmanuel-whajah-theme/portfolio.html
