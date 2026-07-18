@@ -576,7 +576,6 @@ html.portfolio-v3 .v3-headline .v3-word{display:block;color:rgba(255,255,255,.38
 html.portfolio-v3 .hero-showreel{left:auto!important;right:42px!important;top:38px!important;transform:none;width:112px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:9px;background:rgba(0,0,0,.15);font-size:9px;color:#fff}
 html.portfolio-v3 .hero-showreel:hover{background:#fff;color:#111}
 html.portfolio-v3 .hero-slide-status{left:50%!important;right:auto!important;top:auto!important;bottom:29px;width:auto;height:auto;transform:translateX(-50%);font-size:10px;color:#fff}
-html.portfolio-v3 .v3-sound{display:grid;place-items:center;position:absolute;z-index:4;right:42px;bottom:32px;width:42px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(0,0,0,.14);color:#fff;cursor:pointer}
 .v3-intro{display:none}
 html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:#0b0c0b;color:#fff}
 html.portfolio-v3 .v3-intro p{max-width:320px;font-size:19px;color:#fff;line-height:1.55}
@@ -700,7 +699,6 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .v3-headline{font-size:clamp(48px,15vw,72px);line-height:.92}
   html.portfolio-v3 .hero-showreel{right:20px!important;top:20px!important;width:92px;height:38px}
   html.portfolio-v3 .hero-slide-status{bottom:22px}
-  html.portfolio-v3 .v3-sound{right:20px;bottom:18px;width:38px;height:38px}
   html.portfolio-v3 .v3-intro{grid-template-columns:1fr;gap:44px;padding:100px 22px}
   html.portfolio-v3 .v3-intro h2{font-size:clamp(48px,14vw,68px)}
   html.portfolio-v3 section{padding:84px 18px}
@@ -771,7 +769,6 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
   <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Play Emmanuel Whajah's showreel">Watch<br>Showreel</button>
   <span class="hero-slide-status" id="hero-slide-status" aria-hidden="true">01 / 04</span>
-  <button class="v3-sound" id="v3-sound" type="button" aria-label="Turn sound on">♪</button>
 </header>
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
@@ -1205,11 +1202,6 @@ let heroProjectIndex=0;
   const word=document.querySelector('.v3-word');
   let wordIndex=0;
   setInterval(()=>{word.style.opacity='0';setTimeout(()=>{wordIndex=(wordIndex+1)%words.length;word.textContent=words[wordIndex];word.style.opacity='1'},260)},3000);
-  document.getElementById('v3-sound').addEventListener('click',e=>{
-    heroVideo.muted=!heroVideo.muted;
-    e.currentTarget.textContent=heroVideo.muted?'♪':'♫';
-    e.currentTarget.setAttribute('aria-label',heroVideo.muted?'Turn sound on':'Turn sound off');
-  });
   addEventListener('resize',()=>updateSlider(),{passive:true});
   const gallery=document.getElementById('v3-scroll-gallery');
   const rowOne=document.getElementById('v3-scroll-row-one');
