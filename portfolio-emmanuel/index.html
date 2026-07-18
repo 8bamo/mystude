@@ -193,8 +193,10 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 .lbimg img{max-width:92vw;max-height:88vh;border-radius:4px}
 
 /* ---------- awards ---------- */
-.award-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:clamp(16px,2.2vw,26px)}
-.award-card{display:flex;flex-direction:column}
+.award-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.award-marquee .atrack{display:flex;align-items:stretch;gap:clamp(16px,2.2vw,26px);width:max-content;animation:amq 64s linear infinite}
+.award-marquee:hover .atrack{animation-play-state:paused}
+.award-card{flex:0 0 auto;width:min(260px,64vw);display:flex;flex-direction:column}
 .ac-pic{display:block;aspect-ratio:1/1;overflow:hidden;border-radius:4px}
 .ac-pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .award-card:hover .ac-pic img{transform:scale(1.04)}
@@ -203,20 +205,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 .ac-cap{display:block;padding:14px 2px 4px}
 .ac-cap b{display:block;font-weight:650;font-stretch:82%;text-transform:uppercase;font-size:14px;letter-spacing:.04em;line-height:1.3}
 .ac-cap span{display:block;margin-top:3px;font-size:12px}
-/* staggered fade-in: cards appear one after another instead of all at once */
-.award-card:nth-child(1){transition-delay:.02s}
-.award-card:nth-child(2){transition-delay:.08s}
-.award-card:nth-child(3){transition-delay:.14s}
-.award-card:nth-child(4){transition-delay:.2s}
-.award-card:nth-child(5){transition-delay:.26s}
-.award-card:nth-child(6){transition-delay:.32s}
-.award-card:nth-child(7){transition-delay:.38s}
-.award-card:nth-child(8){transition-delay:.44s}
-.award-card:nth-child(9){transition-delay:.5s}
-.award-card:nth-child(10){transition-delay:.56s}
-.award-card:nth-child(11){transition-delay:.62s}
-@media(max-width:900px){.award-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.award-grid{grid-template-columns:1fr}}
+@keyframes amq{to{transform:translateX(-50%)}}
 
 /* ---------- about ---------- */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,90px);align-items:center}
@@ -461,7 +450,7 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .press-marquee .ptrack{display:flex;align-items:center;width:max-content;animation:pmq 44s linear infinite}
 .press-marquee:hover .ptrack{animation-play-state:paused}
 .press-marquee a{flex:0 0 auto;display:flex;align-items:center;justify-content:center;margin:0 clamp(26px,3.6vw,54px);padding:clamp(20px,3.4vw,38px) 0}
-.press-marquee img{height:clamp(48px,6vw,76px);width:auto;max-width:220px;object-fit:contain;opacity:.85;transition:opacity .3s ease,transform .3s ease}
+.press-marquee img{height:clamp(58px,7.2vw,91px);width:auto;max-width:260px;object-fit:contain;opacity:.85;transition:opacity .3s ease,transform .3s ease}
 .press-marquee a:hover img{opacity:1;transform:scale(1.08)}
 @keyframes pmq{to{transform:translateX(-50%)}}
 
@@ -743,6 +732,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .press-marquee .ptrack{animation:none}
+  .award-marquee .atrack{animation:none}
   .card.active{animation:none}
 }
 </style>
@@ -917,48 +907,50 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
     <span class="count">Selected Recognition</span>
   </div>
 
-  <div class="award-grid">
-    <a href="assets/img/awards/emerging-brands-africa.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/emerging-brands-africa.webp" alt="Emerging Brands in Africa Awards certificate, Visual Storyteller of the Year 2025, presented to Emmanuel Whajah" loading="lazy"></span>
-      <span class="ac-cap"><b>2025 · Emerging Brands in Africa Awards</b><span>Visual Storyteller of the Year</span></span>
-    </a>
-    <a href="assets/img/awards/forbes-30u30-certificate.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/forbes-30u30-certificate.webp" alt="Forbes Africa 30 Under 30 certificate, Class of 2023, presented to Emmanuel Whajah" loading="lazy"></span>
-      <span class="ac-cap"><b>2023 · Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span>
-    </a>
-    <div class="award-card award-card--text reveal">
-      <span class="ac-cap"><b>2023 · Hipe Awards</b><span>Best Success Story of the Year</span></span>
+  <div class="award-marquee reveal">
+    <div class="atrack" id="amq">
+      <a href="assets/img/awards/emerging-brands-africa.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/emerging-brands-africa.webp" alt="Emerging Brands in Africa Awards certificate, Visual Storyteller of the Year 2025, presented to Emmanuel Whajah" loading="lazy"></span>
+        <span class="ac-cap"><b>2025 · Emerging Brands in Africa Awards</b><span>Visual Storyteller of the Year</span></span>
+      </a>
+      <a href="assets/img/awards/forbes-30u30-certificate.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/forbes-30u30-certificate.webp" alt="Forbes Africa 30 Under 30 certificate, Class of 2023, presented to Emmanuel Whajah" loading="lazy"></span>
+        <span class="ac-cap"><b>2023 · Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span>
+      </a>
+      <div class="award-card award-card--text">
+        <span class="ac-cap"><b>2023 · Hipe Awards</b><span>Best Success Story of the Year</span></span>
+      </div>
+      <div class="award-card award-card--text">
+        <span class="ac-cap"><b>2022 · Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span>
+      </div>
+      <div class="award-card award-card--text">
+        <span class="ac-cap"><b>2022 · Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span>
+      </div>
+      <a href="assets/img/awards/hipe-award-2021.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/hipe-award-2021.webp" alt="HIPE Award 2021 certificate for Emmanuel Whajah, Emzyproductionfilms" loading="lazy"></span>
+        <span class="ac-cap"><b>2021 · Hipe Awards</b><span>Best Service Industry Media</span></span>
+      </a>
+      <a href="assets/img/awards/keke-palmer-virgo-pt2.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/keke-palmer-virgo-pt2.webp" alt="Keke Palmer Virgo Tendencies Part 2 plaque, presented to Emmanuel Whajah" loading="lazy"></span>
+        <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span>
+      </a>
+      <a href="assets/img/awards/keke-palmer-virgo-pt1.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/keke-palmer-virgo-pt1.webp" alt="Keke Palmer Virgo Tendencies Part 1 plaque, presented to Emmanuel Whajah for over 5,000,000 streams" loading="lazy"></span>
+        <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 1</span></span>
+      </a>
+      <a href="assets/img/awards/little-simz-tour.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" loading="lazy"></span>
+        <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Little Simz "The Poison Tour"</span></span>
+      </a>
+      <a href="assets/img/awards/tory-lanez-tour.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" loading="lazy"></span>
+        <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Tory Lanez "Memories Don't Die Tour"</span></span>
+      </a>
+      <a href="assets/img/awards/eric-bellinger-gold.webp" class="award-card">
+        <span class="ac-pic"><img src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" loading="lazy"></span>
+        <span class="ac-cap"><b>Certification · Eric Bellinger</b><span>Gold Record — 500,000+ copies sold</span></span>
+      </a>
     </div>
-    <div class="award-card award-card--text reveal">
-      <span class="ac-cap"><b>2022 · Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span>
-    </div>
-    <div class="award-card award-card--text reveal">
-      <span class="ac-cap"><b>2022 · Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span>
-    </div>
-    <a href="assets/img/awards/hipe-award-2021.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/hipe-award-2021.webp" alt="HIPE Award 2021 certificate for Emmanuel Whajah, Emzyproductionfilms" loading="lazy"></span>
-      <span class="ac-cap"><b>2021 · Hipe Awards</b><span>Best Service Industry Media</span></span>
-    </a>
-    <a href="assets/img/awards/keke-palmer-virgo-pt2.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/keke-palmer-virgo-pt2.webp" alt="Keke Palmer Virgo Tendencies Part 2 plaque, presented to Emmanuel Whajah" loading="lazy"></span>
-      <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span>
-    </a>
-    <a href="assets/img/awards/keke-palmer-virgo-pt1.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/keke-palmer-virgo-pt1.webp" alt="Keke Palmer Virgo Tendencies Part 1 plaque, presented to Emmanuel Whajah for over 5,000,000 streams" loading="lazy"></span>
-      <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 1</span></span>
-    </a>
-    <a href="assets/img/awards/little-simz-tour.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" loading="lazy"></span>
-      <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Little Simz "The Poison Tour"</span></span>
-    </a>
-    <a href="assets/img/awards/tory-lanez-tour.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" loading="lazy"></span>
-      <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Tory Lanez "Memories Don't Die Tour"</span></span>
-    </a>
-    <a href="assets/img/awards/eric-bellinger-gold.webp" class="award-card reveal">
-      <span class="ac-pic"><img src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" loading="lazy"></span>
-      <span class="ac-cap"><b>Certification · Eric Bellinger</b><span>Gold Record — 500,000+ copies sold</span></span>
-    </a>
   </div>
 </section>
 
@@ -1304,6 +1296,8 @@ lbi.onclick=()=>lbi.classList.remove('open');
 
 /* press marquee duplicate */
 const pmq=document.getElementById('pmq');pmq.innerHTML+=pmq.innerHTML;
+/* awards marquee duplicate */
+const amq=document.getElementById('amq');amq.innerHTML+=amq.innerHTML;
 
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
