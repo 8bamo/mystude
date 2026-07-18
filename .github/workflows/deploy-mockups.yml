@@ -1,0 +1,54 @@
+name: Deploy mockups to mystu.de
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "portfolio-emmanuel/**"
+      - "adams-acht/**"
+      - "mockup-anwalt.html"
+      - "mockup-fahrschule.html"
+      - "mockup-zahnarzt.html"
+      - ".github/workflows/deploy-mockups.yml"
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ vars.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # No --delete: the server holds large gitignored assets (e.g. portfolio-emmanuel/assets/video/)
+      # that never exist in this checkout. A delete-sync would wipe them.
+      - name: Rsync emmanuel-whajah portfolio
+        if: hashFiles('portfolio-emmanuel/**') != ''
+        run: |
+          rsync -rtv --exclude ".git" \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            portfolio-emmanuel/ \
+            "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_BASE_PATH }}/emmanuel-whajah/"
+
+      - name: Rsync adams-acht mockup
+        if: hashFiles('adams-acht/**') != ''
+        run: |
+          rsync -rtv --exclude ".git" \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            adams-acht/ \
+            "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_BASE_PATH }}/adams-acht/"
+
+      - name: Rsync single-file mockups
+        run: |
+          for f in mockup-anwalt.html mockup-fahrschule.html mockup-zahnarzt.html; do
+            [ -f "$f" ] || continue
+            rsync -tv \
+              -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+              "$f" \
+              "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_BASE_PATH }}/$f"
+          done
