@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="portfolio-v3">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,6 @@
 <meta name="description" content="Emmanuel Whajah — Multi-award-winning Director & Photographer. Aftermovies, ad campaigns and portraits for Chris Brown, Lauryn Hill, Burna Boy, Nike, Hennessy and more.">
 <meta name="robots" content="noindex">
 <base href="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/">
-<script>{const m=location.pathname.match(/^\/(?:emmanuelwhajah|emmanuel-whajah)-(v[23])\/?$/);if(m)document.documentElement.classList.add(`portfolio-${m[1]}`)}</script>
 <link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="shortcut icon" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,49 +90,7 @@ nav ul a:hover{opacity:1}
   background:radial-gradient(120% 90% at 70% 10%,rgba(201,162,75,.14),transparent 55%);
 }
 .hero>*:not(.hero-media){position:relative;z-index:2}
-.hero .kicker{
-  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:2.2vh;font-weight:500;
-  display:flex;align-items:center;gap:14px;
-}
-.hero .kicker::before{content:"";width:44px;height:1px;background:var(--gold)}
-h1{
-  font-family:var(--sans);
-  font-weight:800;font-stretch:72%;
-  font-size:clamp(58px,13.2vw,218px);
-  line-height:.88;letter-spacing:-.015em;text-transform:uppercase;
-}
-h1 .row{display:block;overflow:hidden}
-h1 .row span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
-h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
-@keyframes rise{to{transform:none}}
-.hero .sub{
-  display:flex;flex-wrap:wrap;gap:10px 34px;align-items:baseline;
-  margin-top:3.2vh;border-top:1px solid var(--line);padding-top:2.4vh;
-  opacity:0;animation:fade 1s .7s forwards;
-}
-@keyframes fade{to{opacity:1}}
-.hero .sub .role{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.6vw,32px);color:var(--gold2)}
-.hero .sub .facts{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
-.hero .scroll{
-  position:absolute;right:clamp(20px,4vw,56px);bottom:4vh;
-  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);
-  writing-mode:vertical-rl;
-}
-@media(max-width:640px){.hero .scroll{display:none}}
 
-/* ---------- marquee ---------- */
-.marquee{
-  border-block:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;
-  background:var(--bg2);
-}
-.marquee .track{display:flex;align-items:center;width:max-content;animation:mq 36s linear infinite}
-.marquee span{
-  flex:0 0 auto;font-family:var(--serif);font-style:italic;font-size:26px;color:#fff;
-  margin:0 28px;
-}
-.marquee b{flex:0 0 auto;display:grid;place-items:center;align-self:center;color:var(--gold);font-weight:400;font-family:var(--sans);font-size:12px;line-height:1;letter-spacing:.2em}
-@keyframes mq{to{transform:translateX(-50%)}}
 
 /* ---------- sections ---------- */
 section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
@@ -236,19 +193,25 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 .lbimg img{max-width:92vw;max-height:88vh;border-radius:4px}
 
 /* ---------- awards ---------- */
-.awards{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,80px);align-items:start}
-.awards .list{display:flex;flex-direction:column}
-.awards .item{
-  padding:26px 0;border-bottom:1px solid var(--line);
-  display:flex;justify-content:space-between;gap:18px;align-items:baseline;
-}
-.awards .item:first-child{border-top:1px solid var(--line)}
-.awards .item .n{font-weight:650;font-stretch:82%;text-transform:uppercase;font-size:clamp(17px,2vw,24px);letter-spacing:.02em}
-.awards .item .d{font-family:var(--serif);font-style:italic;color:var(--mut);font-size:16px;text-align:right;flex-shrink:0}
-.awards .pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.awards .pics img{border-radius:4px;border:1px solid var(--line)}
-.awards .pics img:first-child{grid-column:span 2}
-@media(max-width:900px){.awards{grid-template-columns:1fr}}
+.award-feature{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,90px);align-items:center;margin-bottom:clamp(48px,7vw,96px)}
+.af-kicker{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:650;letter-spacing:.26em;text-transform:uppercase}
+.af-kicker::before{content:"";width:34px;height:1px;background:currentColor}
+.af-title{margin:16px 0 20px;font-weight:800;font-stretch:70%;text-transform:uppercase;font-size:clamp(44px,6.5vw,110px);line-height:.85;letter-spacing:-.02em}
+.af-sub{max-width:460px;font-size:clamp(15px,1.3vw,18px);line-height:1.65}
+.af-pic{display:block;overflow:hidden}
+.af-pic img{width:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.af-pic:hover img{transform:scale(1.025)}
+.award-grid{columns:3;column-gap:clamp(14px,2vw,26px)}
+.award-card{display:block;break-inside:avoid;margin-bottom:clamp(14px,2vw,26px)}
+.award-card img{width:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.award-card:hover img{transform:scale(1.02)}
+.award-card--text{display:flex;align-items:center;min-height:120px;padding:20px;border:1px solid rgba(23,19,17,.18);background:rgba(23,19,17,.03)}
+.award-card--text .ac-cap{padding:0}
+.ac-cap{display:block;padding:12px 2px 4px}
+.ac-cap b{display:block;font-weight:650;font-stretch:82%;text-transform:uppercase;font-size:14px;letter-spacing:.04em;line-height:1.3}
+.ac-cap span{display:block;margin-top:3px;font-size:12px}
+@media(max-width:900px){.award-feature{grid-template-columns:1fr;gap:26px}.award-grid{columns:2}}
+@media(max-width:560px){.award-grid{columns:1}}
 
 /* ---------- about ---------- */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,90px);align-items:center}
@@ -298,12 +261,6 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
   .hero{min-height:100svh;padding:0 18px max(24px,env(safe-area-inset-bottom))}
   .hero-media video{opacity:.28;object-position:58% center}
   .hero-media::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(12,11,9,.22) 60%,rgba(12,11,9,.52) 100%)}
-  .hero .kicker{font-size:9px;letter-spacing:.22em;margin-bottom:14px;gap:10px}
-  .hero .kicker::before{width:24px}
-  h1{font-size:clamp(45px,17vw,94px);line-height:.9;overflow-wrap:anywhere}
-  .hero .sub{display:block;margin-top:20px;padding-top:15px}
-  .hero .sub .role{display:block;font-size:21px;line-height:1.2;margin-bottom:9px}
-  .hero .sub .facts{display:block;font-size:9px;line-height:1.6;letter-spacing:.12em}
   section{padding:68px 18px}
   .shead{align-items:flex-start;margin-bottom:30px}
   .shead h2{font-size:clamp(38px,13vw,58px)}
@@ -314,8 +271,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
   .card .play{opacity:1;transform:none}
   .card .meta{align-items:flex-start;flex-direction:column;gap:4px;padding-bottom:22px}
   .masonry{columns:1}
-  .awards .item{align-items:flex-start;flex-direction:column;gap:4px;padding:21px 0}
-  .awards .item .d{text-align:left;white-space:normal}
+  .af-title{font-size:clamp(40px,12vw,64px)}
   .about .pic{aspect-ratio:4/5}
   .about .pic img{width:100%;height:100%;object-fit:cover}
   .about p{font-size:21px;line-height:1.55;text-wrap:pretty}
@@ -429,21 +385,9 @@ nav ul a{font-size:11px;font-weight:700;letter-spacing:.14em}
 .hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.82}
 .hero-media video{position:relative;z-index:1;opacity:.72;transform:scale(1.01);transition:opacity .3s ease}
 .hero-media.changing video{opacity:0}
-.hero .kicker{position:absolute;top:clamp(96px,14vh,160px);left:clamp(20px,3vw,48px);margin:0;color:#f3efe7;font-size:11px;letter-spacing:.14em}
-.hero .kicker::before{display:none}
-h1{font-size:clamp(78px,13vw,210px);line-height:.74;letter-spacing:-.035em;font-stretch:66%;max-width:100%;margin:0 0 clamp(24px,4vh,48px)}
-h1 .row:nth-child(2){padding-left:10.5vw}
-.hero .sub{display:grid;grid-template-columns:minmax(220px,.55fr) minmax(340px,1fr);gap:24px;align-items:end;width:100%;border-top:1px solid rgba(255,255,255,.36);padding-top:18px;margin:0}
-.hero .sub .role{font-size:clamp(19px,2vw,30px);line-height:1.15}
-.hero .sub .facts{font-size:11px;line-height:1.5;justify-self:end;text-align:right;letter-spacing:.13em}
-.hero .scroll{right:clamp(20px,3vw,48px);bottom:32px;display:none}
 .hero-showreel{position:absolute!important;left:auto!important;right:clamp(20px,3vw,48px)!important;top:50%!important;z-index:3;transform:translateY(-50%);display:grid;place-items:center;width:112px;height:112px;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(24,19,17,.12);color:#fff;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:background .18s ease,color .18s ease}
 .hero-showreel:hover{background:#f3efe7;color:var(--editorial-ink)}
 .hero-slide-status{position:absolute!important;right:clamp(20px,3vw,48px)!important;top:clamp(96px,14vh,160px)!important;z-index:4;font-size:11px;font-variant-numeric:tabular-nums;letter-spacing:.14em}
-
-.marquee{background:var(--editorial-red);border:0;color:var(--editorial-ink);padding:20px 0}
-.marquee .track{font-family:var(--sans);font-style:normal;font-weight:750;font-stretch:72%;font-size:clamp(28px,4vw,62px);text-transform:uppercase}
-.marquee b{color:var(--editorial-ink)}
 
 section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 #work{background:var(--editorial-paper);color:var(--editorial-ink)}
@@ -485,24 +429,25 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 
 #awards{background:var(--editorial-paper);color:var(--editorial-ink)}
 #awards .shead{border-color:rgba(23,19,17,.32)}
-.awards{gap:clamp(44px,8vw,130px);align-items:start}
-.awards .item{border-color:rgba(23,19,17,.26);padding:24px 0}
-.awards .item .n{font-size:clamp(17px,1.6vw,25px)}
-.awards .item .d{color:#6f675f}
-.awards .pics{gap:10px}
-.awards .pics img{border:0;border-radius:0}
+#awards .shead .count{color:#6f675f}
+.af-kicker{color:var(--editorial-red)}
+.af-sub{color:#5f5852}
+.award-card img,.af-pic img{background:#fff;box-shadow:0 10px 34px rgba(23,19,17,.14)}
+.ac-cap b{color:var(--editorial-ink)}
+.ac-cap span{color:#6f675f}
 
 /* ---------- press ---------- */
 #press{background:var(--editorial-ink);color:#f3efe7}
 #press .shead{border-color:rgba(255,255,255,.25)}
 #press .shead h2 .headline-accent{color:var(--editorial-red)}
 #press .shead .count{color:var(--editorial-muted)}
-.press-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)}
-.press-grid a{display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:var(--editorial-ink);padding:clamp(20px,3.4vw,38px)}
-.press-grid img{width:100%;height:100%;object-fit:contain;opacity:.82;transition:opacity .3s ease,transform .3s ease}
-.press-grid a:hover img{opacity:1;transform:scale(1.06)}
-@media(max-width:900px){.press-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:560px){.press-grid{grid-template-columns:repeat(2,1fr)}}
+.press-marquee{overflow:hidden;background:var(--editorial-ink);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.press-marquee .ptrack{display:flex;align-items:center;width:max-content;animation:pmq 44s linear infinite}
+.press-marquee:hover .ptrack{animation-play-state:paused}
+.press-marquee a{flex:0 0 auto;display:flex;align-items:center;justify-content:center;margin:0 clamp(26px,3.6vw,54px);padding:clamp(20px,3.4vw,38px) 0}
+.press-marquee img{height:clamp(20px,2.6vw,30px);width:auto;max-width:150px;object-fit:contain;filter:grayscale(1) brightness(0) invert(1);opacity:.5;transition:opacity .3s ease,transform .3s ease}
+.press-marquee a:hover img{opacity:1;transform:scale(1.08)}
+@keyframes pmq{to{transform:translateX(-50%)}}
 
 #about{padding:0;background:var(--editorial-dark)}
 .about{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;min-height:100svh;align-items:stretch}
@@ -554,16 +499,9 @@ footer .row a[style]{color:var(--editorial-red)!important}
   nav{padding:16px 18px}
   nav .logo{font-size:18px}
   .hero{padding:92px 18px 24px}
-  .hero .kicker{top:92px;left:18px;font-size:10px}
   .hero-slide-status{top:92px!important;right:18px!important;font-size:10px}
   .hero-media video{object-position:center}
-  h1{font-size:clamp(52px,18vw,82px);line-height:.78;margin-bottom:26px;max-width:100%;overflow:visible}
-  h1 .row:nth-child(2){padding-left:0}
-  .hero .sub{grid-template-columns:1fr;gap:8px;padding-top:14px}
-  .hero .sub .role{font-size:20px}
-  .hero .sub .facts{justify-self:start;text-align:left;font-size:11px;line-height:1.55;white-space:normal;max-width:100%;overflow-wrap:anywhere}
   .hero-showreel{display:flex!important;width:82px;height:82px;right:18px!important;top:42%!important;z-index:5!important;box-sizing:border-box;font-size:9px}
-  .marquee{padding:14px 0}
   section{padding:80px 18px}
   .shead{margin-bottom:40px;padding-bottom:14px}
   .shead h2{font-size:clamp(52px,18vw,82px)}
@@ -604,149 +542,6 @@ footer .row a[style]{color:var(--editorial-red)!important}
   footer .big{font-size:clamp(42px,13vw,66px)}
 }
 
-/* ---------- V2: restrained full-screen portfolio ---------- */
-html.portfolio-v2{
-  --v2-night:#07131f;
-  --v2-ink:#f6f2e9;
-  --v2-peach:#f2a98d;
-  --v2-blue:#8db7d2;
-  --v2-line:rgba(246,242,233,.28);
-  --ck-bg:#0b1b26;
-  --ck-ink:#eef3f6;
-  --ck-line:rgba(255,255,255,.18);
-  --ck-accent:var(--v2-peach);
-  --ck-accent-ink:#07131f;
-  background:var(--v2-night)
-}
-html.portfolio-v2 body{background:var(--v2-night);color:var(--v2-ink);font-size:16px}
-html.portfolio-v2 body::before{opacity:.22}
-html.portfolio-v2 #progress{height:1px;background:var(--v2-peach)}
-html.portfolio-v2 ::selection{background:var(--v2-peach);color:var(--v2-night)}
-html.portfolio-v2 :focus-visible{outline-color:var(--v2-peach)}
-
-html.portfolio-v2 nav{padding:22px 28px;align-items:flex-start;mix-blend-mode:normal;background:linear-gradient(180deg,rgba(3,10,16,.35),transparent)}
-html.portfolio-v2 nav .logo{position:relative;width:112px;height:44px;font-size:0;line-height:.92;color:#fff;letter-spacing:-.03em}
-html.portfolio-v2 nav .logo::before{content:"Emmanuel\A Whajah";white-space:pre;font-family:var(--sans);font-size:18px;font-weight:730;font-stretch:72%;text-transform:uppercase}
-html.portfolio-v2 nav ul{gap:24px;padding-top:3px}
-html.portfolio-v2 nav ul a{font-size:10px;letter-spacing:.08em;color:#fff;opacity:.82}
-html.portfolio-v2 nav ul a:hover{opacity:1;color:var(--v2-peach)}
-
-html.portfolio-v2 .hero{height:100svh;min-height:620px;padding:22px 28px 28px;justify-content:flex-end;background:#10293b}
-html.portfolio-v2 .hero::after{background:linear-gradient(180deg,rgba(3,11,18,.08) 30%,rgba(3,11,18,.72) 100%)}
-html.portfolio-v2 .hero-media::after{background:linear-gradient(90deg,rgba(4,14,23,.18),transparent 58%),linear-gradient(0deg,rgba(4,14,23,.72),transparent 52%)}
-html.portfolio-v2 .hero-poster{opacity:1;filter:saturate(.78) contrast(1.05);object-position:center 34%}
-html.portfolio-v2 .hero-media video{opacity:.9;filter:saturate(.72) contrast(1.05);object-position:center 34%}
-html.portfolio-v2 .hero .kicker{left:28px;top:auto;bottom:31px;margin:0;max-width:210px;font-size:10px;line-height:1.45;letter-spacing:.12em;color:var(--v2-ink)}
-html.portfolio-v2 .hero h1{display:none}
-html.portfolio-v2 .hero .sub{position:absolute;left:50%;bottom:28px;width:auto;display:block;border:0;padding:0;margin:0;transform:translateX(-50%);text-align:center;animation:none;opacity:1}
-html.portfolio-v2 .hero .sub .role{font-family:var(--sans);font-size:11px;font-style:normal;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-html.portfolio-v2 .hero .sub .facts{display:none}
-html.portfolio-v2 .hero-showreel{right:28px!important;top:auto!important;bottom:24px;width:auto;height:auto;transform:none;border:0;border-radius:0;background:none;padding:8px 0;color:#fff;font-size:10px;text-align:right;line-height:1.35}
-html.portfolio-v2 .hero-showreel::after{content:"  ↗";color:var(--v2-peach)}
-html.portfolio-v2 .hero-showreel:hover{background:none;color:var(--v2-peach)}
-html.portfolio-v2 .hero-slide-status{--hero-index:1;left:50%!important;right:auto!important;top:25px!important;width:min(23vw,280px);height:3px;transform:translateX(-50%);font-size:0;letter-spacing:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0,rgba(255,255,255,.28) calc(25% - 4px),transparent calc(25% - 4px),transparent 25%)}
-html.portfolio-v2 .hero-slide-status::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--hero-index) * 25% - 4px);background:repeating-linear-gradient(90deg,var(--v2-peach) 0,var(--v2-peach) calc(25% - 4px),transparent calc(25% - 4px),transparent 25%);transition:width .4s ease}
-html.portfolio-v2 .hero .scroll,html.portfolio-v2 .marquee{display:none}
-
-html.portfolio-v2 section{padding:clamp(90px,10vw,150px) 28px}
-html.portfolio-v2 .shead{margin-bottom:28px;padding-bottom:10px;border-color:var(--v2-line);align-items:center}
-html.portfolio-v2 .shead h2{font-size:12px;line-height:1;font-stretch:100%;font-weight:650;letter-spacing:.12em}
-html.portfolio-v2 .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;font-size:1em;font-weight:650;color:inherit;text-transform:uppercase}
-html.portfolio-v2 .shead .count{font-family:var(--sans);font-size:10px;font-style:normal;letter-spacing:.08em;color:inherit;opacity:.62}
-
-html.portfolio-v2 #work{position:relative;padding:76px 28px 28px;background:var(--v2-night);color:var(--v2-ink)}
-html.portfolio-v2 #work .shead{display:none}
-html.portfolio-v2 .filters{position:relative;z-index:5;margin:0 0 14px;border:0;justify-content:flex-end}
-html.portfolio-v2 .filters button{min-height:34px;padding:0 12px;color:rgba(246,242,233,.58);font-size:9px;letter-spacing:.08em}
-html.portfolio-v2 .filters button:first-child{padding-left:12px}
-html.portfolio-v2 .filters button:hover,html.portfolio-v2 .filters button.on{color:var(--v2-peach);box-shadow:none}
-html.portfolio-v2 .card{height:calc(100svh - 158px);min-height:540px;background:#10283a}
-html.portfolio-v2 .card .frame{height:100%;aspect-ratio:auto}
-html.portfolio-v2 .card .frame::after{inset:35% 0 0;background:linear-gradient(transparent,rgba(3,11,18,.8))}
-html.portfolio-v2 .card img.poster,html.portfolio-v2 .card video.prev{filter:saturate(.72) contrast(1.04)}
-html.portfolio-v2 .card .meta{padding:28px;grid-template-columns:36px 1fr auto;gap:8px 16px}
-html.portfolio-v2 .card .meta .num{font-size:10px;color:var(--v2-peach)}
-html.portfolio-v2 .card .meta .t{font-size:clamp(34px,5vw,76px);font-stretch:72%;line-height:.85;max-width:760px}
-html.portfolio-v2 .card .meta .c{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.7)}
-html.portfolio-v2 .card .meta .watch{font-size:9px;letter-spacing:.1em;color:#fff}
-html.portfolio-v2 .card .meta .watch::before{background:var(--v2-peach)}
-html.portfolio-v2 .card .play{opacity:1;transform:none;border-color:rgba(255,255,255,.55);background:rgba(7,19,31,.18)}
-html.portfolio-v2 .slider-controls{position:absolute;z-index:4;right:52px;margin-top:-80px;padding:0;gap:8px}
-html.portfolio-v2 .slider-button{width:40px;height:40px;border-color:rgba(255,255,255,.5);color:#fff;font-size:17px}
-html.portfolio-v2 .slider-button:hover{border-color:var(--v2-peach);color:var(--v2-peach)}
-html.portfolio-v2 .slider-count{display:none}
-
-html.portfolio-v2 #fotografie{background:#d6e1e5;color:#0b1b26}
-html.portfolio-v2 #fotografie .shead{border-color:rgba(11,27,38,.3)}
-html.portfolio-v2 #fotografie .shead h2 .headline-accent,html.portfolio-v2 #fotografie .shead .count{color:inherit}
-html.portfolio-v2 .masonry{columns:3;column-gap:12px}
-html.portfolio-v2 .masonry a{margin-bottom:12px}
-html.portfolio-v2 .masonry img{filter:saturate(.72)}
-
-html.portfolio-v2 #awards{background:var(--v2-peach);color:#17202a}
-html.portfolio-v2 #awards .shead{border-color:rgba(23,32,42,.3)}
-html.portfolio-v2 .awards .item{border-color:rgba(23,32,42,.24)}
-html.portfolio-v2 .awards .item .n{font-size:clamp(20px,2vw,31px);font-weight:580}
-html.portfolio-v2 .awards .item .d{color:rgba(23,32,42,.65)}
-
-html.portfolio-v2 #press{background:var(--v2-night)}
-html.portfolio-v2 .press-grid{background:rgba(246,242,233,.14);border-color:rgba(246,242,233,.14)}
-html.portfolio-v2 .press-grid a{background:var(--v2-night)}
-
-html.portfolio-v2 #about{background:var(--v2-night)}
-html.portfolio-v2 .about{min-height:100svh}
-html.portfolio-v2 .about .pic img{filter:saturate(.2) contrast(1.04)}
-html.portfolio-v2 .about p{font-size:clamp(28px,3.2vw,52px);font-weight:380}
-html.portfolio-v2 .about p em{color:var(--v2-peach)}
-html.portfolio-v2 .about .facts div b{color:var(--v2-blue);font-size:clamp(38px,4.5vw,70px)}
-html.portfolio-v2 .about-columns h3{color:var(--v2-peach)}
-html.portfolio-v2 .about-story p{color:rgba(246,242,233,.82)}
-html.portfolio-v2 .about-quote cite{color:rgba(246,242,233,.6)}
-
-html.portfolio-v2 #contact{background:#d6e1e5;color:#0b1b26;padding-block:clamp(90px,11vw,170px)}
-html.portfolio-v2 .booking-head h2{font-size:clamp(60px,9vw,140px);line-height:.76}
-html.portfolio-v2 .booking-head h2 .headline-accent{display:block;color:#0b1b26}
-html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label{color:#0b1b26}
-html.portfolio-v2 .field input,html.portfolio-v2 .field select,html.portfolio-v2 .field textarea{color:#0b1b26;border-color:rgba(11,27,38,.48)}
-html.portfolio-v2 .booking-submit{background:#0b1b26;border-color:#0b1b26}
-html.portfolio-v2 footer{background:var(--v2-night)}
-html.portfolio-v2 footer .big a:hover{color:var(--v2-peach)}
-html.portfolio-v2 footer .row a[style]{color:var(--v2-peach)!important}
-
-@media(max-width:760px){
-  html.portfolio-v2 body{font-size:16px}
-  html.portfolio-v2 nav{padding:18px}
-  html.portfolio-v2 nav .logo{width:100px;height:40px}
-  html.portfolio-v2 nav .logo::before{font-size:16px}
-  html.portfolio-v2 .menu-toggle{display:none}
-  html.portfolio-v2 nav ul{display:none}
-  html.portfolio-v2 .hero{height:100svh;min-height:560px;padding:18px}
-  html.portfolio-v2 .hero-media video,html.portfolio-v2 .hero-poster{object-position:center center}
-  html.portfolio-v2 .hero .kicker{left:18px;bottom:22px;max-width:145px;font-size:9px}
-  html.portfolio-v2 .hero .sub{display:none}
-  html.portfolio-v2 .hero-showreel{display:block!important;right:18px!important;bottom:15px;top:auto!important;width:auto;height:auto;font-size:9px}
-  html.portfolio-v2 .hero-slide-status{left:auto!important;right:18px!important;top:20px!important;width:34vw;transform:none}
-  html.portfolio-v2 section{padding:74px 18px}
-  html.portfolio-v2 #work{padding:64px 18px 18px}
-  html.portfolio-v2 .filters{justify-content:flex-start;overflow-x:auto;margin-bottom:10px}
-  html.portfolio-v2 .filters button{font-size:10px;padding-inline:10px}
-  html.portfolio-v2 .card{height:calc(100svh - 138px);min-height:500px}
-  html.portfolio-v2 .card .frame{aspect-ratio:auto}
-  html.portfolio-v2 .card .meta{padding:20px;grid-template-columns:24px 1fr}
-  html.portfolio-v2 .card .meta .t{font-size:clamp(38px,13vw,58px)}
-  html.portfolio-v2 .card .meta .watch{grid-column:2;grid-row:3}
-  html.portfolio-v2 .card .play{width:44px;height:44px}
-  html.portfolio-v2 .slider-controls{right:38px;margin-top:-60px}
-  html.portfolio-v2 .slider-button{width:38px;height:38px}
-  html.portfolio-v2 .masonry{columns:2;column-gap:7px}
-  html.portfolio-v2 .masonry a{margin-bottom:7px}
-  html.portfolio-v2 .about{min-height:0}
-  html.portfolio-v2 .about p{font-size:26px}
-  html.portfolio-v2 .about .facts div s{font-size:16px}
-  html.portfolio-v2 .booking-head h2{font-size:clamp(58px,18vw,82px)}
-  html.portfolio-v2 .booking-intro,html.portfolio-v2 .field label,html.portfolio-v2 .privacy{font-size:16px}
-}
-
 /* ---------- V3: bright studio portfolio ---------- */
 html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#111;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
 html.portfolio-v3 body{background:var(--v3-paper);color:var(--v3-ink);font-family:var(--sans);font-size:16px}
@@ -774,15 +569,12 @@ html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),t
 html.portfolio-v3 .hero-media::after{background:linear-gradient(0deg,rgba(5,8,7,.62),transparent 58%)}
 html.portfolio-v3 .hero-poster{opacity:.96;filter:saturate(.72);object-position:center}
 html.portfolio-v3 .hero-media video{opacity:.88;filter:saturate(.72) contrast(1.02);object-position:center}
-html.portfolio-v3 .hero>.kicker,html.portfolio-v3 .hero>h1:not(.v3-headline),html.portfolio-v3 .hero>.sub,html.portfolio-v3 .hero>.scroll{display:none}
 html.portfolio-v3 .v3-headline{display:block;max-width:980px;margin:0;font-size:clamp(64px,7.2vw,126px);font-weight:620;font-stretch:100%;line-height:.88;letter-spacing:-.055em;text-transform:none;color:#fff}
 html.portfolio-v3 .v3-headline .v3-word{display:block;color:rgba(255,255,255,.38);transition:opacity .35s ease}
 html.portfolio-v3 .hero-showreel{left:auto!important;right:42px!important;top:38px!important;transform:none;width:112px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:9px;background:rgba(0,0,0,.15);font-size:9px;color:#fff}
 html.portfolio-v3 .hero-showreel:hover{background:#fff;color:#111}
 html.portfolio-v3 .hero-slide-status{left:50%!important;right:auto!important;top:auto!important;bottom:29px;width:auto;height:auto;transform:translateX(-50%);font-size:10px;color:#fff}
 html.portfolio-v3 .v3-sound{display:grid;place-items:center;position:absolute;z-index:4;right:42px;bottom:32px;width:42px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(0,0,0,.14);color:#fff;cursor:pointer}
-html.portfolio-v3 .marquee{display:none}
-
 .v3-intro{display:none}
 html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:#0b0c0b;color:#fff}
 html.portfolio-v3 .v3-intro p{max-width:320px;font-size:19px;color:#fff;line-height:1.55}
@@ -849,16 +641,18 @@ html.portfolio-v3 #awards{background:var(--v3-paper);color:var(--v3-ink)}
 html.portfolio-v3 #awards .shead{border-color:var(--v3-line)}
 html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
 html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
-html.portfolio-v3 .awards .item{border-color:var(--v3-line)}
-html.portfolio-v3 .awards .item .n{font-size:clamp(17px,1.7vw,25px);font-weight:540;color:#111}
-html.portfolio-v3 .awards .item .d{font-family:var(--sans);font-size:13px;font-style:normal;color:#777}
-html.portfolio-v3 .awards .pics img{border:0;border-radius:18px}
+html.portfolio-v3 .af-kicker{color:#888}
+html.portfolio-v3 .af-title{font-weight:560;font-stretch:100%;letter-spacing:-.04em;text-transform:none;font-size:clamp(40px,5.5vw,92px);line-height:.92}
+html.portfolio-v3 .af-sub,html.portfolio-v3 #awards .shead .count,html.portfolio-v3 .ac-cap span{color:#777}
+html.portfolio-v3 .af-pic img,html.portfolio-v3 .award-card img{border-radius:18px;box-shadow:0 8px 28px rgba(17,17,17,.1)}
+html.portfolio-v3 .ac-cap b{font-stretch:100%;font-weight:570;text-transform:none;letter-spacing:-.01em;font-size:15px;color:#111}
+html.portfolio-v3 .award-card--text{border-radius:18px;border-color:var(--v3-line);background:rgba(17,17,17,.025)}
 
 html.portfolio-v3 #press{background:#171918}
 html.portfolio-v3 #press .shead h2{font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
 html.portfolio-v3 #press .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#777;text-transform:none}
 html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal}
-html.portfolio-v3 .press-grid a{background:#171918}
+html.portfolio-v3 .press-marquee{background:#171918}
 
 html.portfolio-v3 #about{background:#fff;color:#111;padding:10px}
 html.portfolio-v3 .about{min-height:calc(100svh - 20px);grid-template-columns:1fr 1fr;gap:0;background:#e9e9e5;border-radius:38px;overflow:hidden}
@@ -934,9 +728,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  h1 .row span{animation:none;transform:none}
-  .hero .sub{animation:none;opacity:1}
-  .marquee .track{animation:none}
+  .press-marquee .ptrack{animation:none}
   .card.active{animation:none}
 }
 </style>
@@ -975,20 +767,10 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
       <source src="assets/video/chris-brown-preview.mp4" type="video/mp4">
     </video>
   </div>
-  <p class="kicker">Director · Photographer · Creative Director</p>
-  <h1>
-    <span class="row"><span>Emmanuel</span></span>
-    <span class="row"><span>Whajah</span></span>
-  </h1>
-  <h1 class="v3-headline" hidden>Driven by <span class="v3-word">Vision.</span></h1>
-  <div class="sub">
-    <span class="role">Motion that gives you goosebumps.</span>
-    <span class="facts">Multi-Award-Winning&ensp;·&ensp;Forbes 30 under 30&ensp;·&ensp;Founder @playthegame</span>
-  </div>
+  <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
   <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Play Emmanuel Whajah's showreel">Watch<br>Showreel</button>
   <span class="hero-slide-status" id="hero-slide-status" aria-hidden="true">01 / 04</span>
-  <button class="v3-sound" id="v3-sound" type="button" aria-label="Turn sound on" hidden>♪</button>
-  <span class="scroll">Scroll ↓</span>
+  <button class="v3-sound" id="v3-sound" type="button" aria-label="Turn sound on">♪</button>
 </header>
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
@@ -998,12 +780,6 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
     <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
   </div>
 </section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="track" id="mq">
-    <span>Chris Brown</span><b>✦</b><span>Lauryn Hill</span><b>✦</b><span>Burna Boy</span><b>✦</b><span>Asake</span><b>✦</b><span>Jason Derulo</span><b>✦</b><span>Les Twins</span><b>✦</b><span>Nike</span><b>✦</b><span>Hennessy</span><b>✦</b><span>NAS</span><b>✦</b><span>NBA All-Star</span><b>✦</b><span>Cupra</span><b>✦</b><span>Miss Germany</span><b>✦</b><span>Little Simz</span><b>✦</b><span>Tory Lanez</span><b>✦</b><span>Keke Palmer</span><b>✦</b>
-  </div>
-</div>
 
 <section class="v3-intro" aria-label="Profile introduction">
   <p>Director, photographer and creative director for international artists, brands and cultural projects.</p>
@@ -1124,20 +900,56 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 <section id="awards">
   <div class="shead reveal">
     <h2>Awards<span class="headline-accent"> &amp; Honors</span></h2>
+    <span class="count">Selected Recognition</span>
   </div>
-  <div class="awards reveal">
-    <div class="list">
-      <div class="item"><span class="n">Forbes 30 under 30</span><span class="d">Forbes</span></div>
-      <div class="item"><span class="n">Gold Record — Eric Bellinger "G.O.A.T 2.0"</span><span class="d">500,000+ units sold</span></div>
-      <div class="item"><span class="n">Keke Palmer — "Virgo Tendencies" Pt. 1 &amp; 2</span><span class="d">Official Plaques</span></div>
-      <div class="item"><span class="n">Tory Lanez — Memories Don't Die Tour</span><span class="d">Streetlife International</span></div>
-      <div class="item"><span class="n">Little Simz — Poison Ivy Tour <i style="font-family:var(--serif);color:var(--gold)">Sold Out</i></span><span class="d">Streetlife International</span></div>
+
+  <div class="award-feature reveal">
+    <div class="af-copy">
+      <span class="af-kicker">Emerging Brands in Africa Awards · 2025</span>
+      <p class="af-title">Visual Storyteller<br>of the Year</p>
+      <p class="af-sub">Named Visual Storyteller of the Year at the Emerging Brands in Africa Awards — recognizing a body of work that shaped how African creative talent is seen on the world stage.</p>
     </div>
-    <div class="pics">
-      <img src="assets/img/award-gold-bellinger.webp" alt="Gold record awarded to Emmanuel Whajah for Eric Bellinger's G.O.A.T 2.0" loading="lazy">
-      <img src="assets/img/award-tory-lanez.webp" alt="Tour plaque, Tory Lanez Memories Don't Die Tour" loading="lazy">
-      <img src="assets/img/award-little-simz.webp" alt="Tour plaque, Little Simz Poison Ivy Tour – Sold Out" loading="lazy">
+    <a href="assets/img/awards/emerging-brands-africa.webp" class="af-pic"><img src="assets/img/awards/emerging-brands-africa.webp" alt="Emerging Brands in Africa Awards certificate, Visual Storyteller of the Year 2025, presented to Emmanuel Whajah" loading="lazy"></a>
+  </div>
+
+  <div class="award-grid reveal">
+    <a href="assets/img/awards/forbes-30u30-certificate.webp" class="award-card">
+      <img src="assets/img/awards/forbes-30u30-certificate.webp" alt="Forbes Africa 30 Under 30 certificate, Class of 2023, presented to Emmanuel Whajah" loading="lazy">
+      <span class="ac-cap"><b>2023 · Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span>
+    </a>
+    <div class="award-card award-card--text">
+      <span class="ac-cap"><b>2023 · Hipe Awards</b><span>Best Success Story of the Year</span></span>
     </div>
+    <div class="award-card award-card--text">
+      <span class="ac-cap"><b>2022 · Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span>
+    </div>
+    <div class="award-card award-card--text">
+      <span class="ac-cap"><b>2022 · Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span>
+    </div>
+    <a href="assets/img/awards/hipe-award-2021.webp" class="award-card">
+      <img src="assets/img/awards/hipe-award-2021.webp" alt="HIPE Award 2021 certificate for Emmanuel Whajah, Emzyproductionfilms" loading="lazy">
+      <span class="ac-cap"><b>2021 · Hipe Awards</b><span>Best Service Industry Media</span></span>
+    </a>
+    <a href="assets/img/awards/keke-palmer-virgo-pt2.webp" class="award-card">
+      <img src="assets/img/awards/keke-palmer-virgo-pt2.webp" alt="Keke Palmer Virgo Tendencies Part 2 plaque, presented to Emmanuel Whajah" loading="lazy">
+      <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span>
+    </a>
+    <a href="assets/img/awards/keke-palmer-virgo-pt1.webp" class="award-card">
+      <img src="assets/img/awards/keke-palmer-virgo-pt1.webp" alt="Keke Palmer Virgo Tendencies Part 1 plaque, presented to Emmanuel Whajah for over 5,000,000 streams" loading="lazy">
+      <span class="ac-cap"><b>2021 · Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 1</span></span>
+    </a>
+    <a href="assets/img/awards/little-simz-tour.webp" class="award-card">
+      <img src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" loading="lazy">
+      <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Little Simz "The Poison Tour"</span></span>
+    </a>
+    <a href="assets/img/awards/tory-lanez-tour.webp" class="award-card">
+      <img src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" loading="lazy">
+      <span class="ac-cap"><b>2018 · Streetlife International</b><span>Best Photographer — Tory Lanez "Memories Don't Die Tour"</span></span>
+    </a>
+    <a href="assets/img/awards/eric-bellinger-gold.webp" class="award-card">
+      <img src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" loading="lazy">
+      <span class="ac-cap"><b>Certification · Eric Bellinger</b><span>Gold Record — 500,000+ copies sold</span></span>
+    </a>
   </div>
 </section>
 
@@ -1146,19 +958,21 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
     <h2>Press<span class="headline-accent"> &amp; Media</span></h2>
     <span class="count">Featured In</span>
   </div>
-  <div class="press-grid reveal">
-    <a href="https://www.forbesafrica.com/" target="_blank" rel="noopener"><img src="assets/img/press/forbes.webp" alt="Forbes Africa" loading="lazy"></a>
-    <a href="https://www.billboard.com/" target="_blank" rel="noopener"><img src="assets/img/press/billboard.webp" alt="Billboard" loading="lazy"></a>
-    <a href="https://www.revolt.tv/" target="_blank" rel="noopener"><img src="assets/img/press/revolt-tv.webp" alt="Revolt TV" loading="lazy"></a>
-    <a href="https://www.gq.com/" target="_blank" rel="noopener"><img src="assets/img/press/gq.webp" alt="GQ" loading="lazy"></a>
-    <a href="https://www.pulse.ng/" target="_blank" rel="noopener"><img src="assets/img/press/pulse.webp" alt="Pulse" loading="lazy"></a>
-    <a href="https://www.africanews.com/" target="_blank" rel="noopener"><img src="assets/img/press/africanews.webp" alt="Africanews" loading="lazy"></a>
-    <a href="https://www.modernghana.com/" target="_blank" rel="noopener"><img src="assets/img/press/modern-ghana.webp" alt="Modern Ghana" loading="lazy"></a>
-    <a href="https://meedia.de/" target="_blank" rel="noopener"><img src="assets/img/press/meedia.webp" alt="Meedia" loading="lazy"></a>
-    <a href="https://www.neuepresse.de/" target="_blank" rel="noopener"><img src="assets/img/press/neue-presse.webp" alt="Neue Presse" loading="lazy"></a>
-    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/cityglow.webp" alt="Cityglow" loading="lazy"></a>
-    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/curl.webp" alt="Curl" loading="lazy"></a>
-    <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/inthewritersmind.webp" alt="InTheWritersMind" loading="lazy"></a>
+  <div class="press-marquee reveal">
+    <div class="ptrack" id="pmq">
+      <a href="https://www.forbesafrica.com/" target="_blank" rel="noopener"><img src="assets/img/press/forbes.webp" alt="Forbes Africa" loading="lazy"></a>
+      <a href="https://www.billboard.com/" target="_blank" rel="noopener"><img src="assets/img/press/billboard.webp" alt="Billboard" loading="lazy"></a>
+      <a href="https://www.revolt.tv/" target="_blank" rel="noopener"><img src="assets/img/press/revolt-tv.webp" alt="Revolt TV" loading="lazy"></a>
+      <a href="https://www.gq.com/" target="_blank" rel="noopener"><img src="assets/img/press/gq.webp" alt="GQ" loading="lazy"></a>
+      <a href="https://www.pulse.ng/" target="_blank" rel="noopener"><img src="assets/img/press/pulse.webp" alt="Pulse" loading="lazy"></a>
+      <a href="https://www.africanews.com/" target="_blank" rel="noopener"><img src="assets/img/press/africanews.webp" alt="Africanews" loading="lazy"></a>
+      <a href="https://www.modernghana.com/" target="_blank" rel="noopener"><img src="assets/img/press/modern-ghana.webp" alt="Modern Ghana" loading="lazy"></a>
+      <a href="https://meedia.de/" target="_blank" rel="noopener"><img src="assets/img/press/meedia.webp" alt="Meedia" loading="lazy"></a>
+      <a href="https://www.neuepresse.de/" target="_blank" rel="noopener"><img src="assets/img/press/neue-presse.webp" alt="Neue Presse" loading="lazy"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/cityglow.webp" alt="Cityglow" loading="lazy"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/curl.webp" alt="Curl" loading="lazy"></a>
+      <a href="#" target="_blank" rel="noopener"><img src="assets/img/press/inthewritersmind.webp" alt="InTheWritersMind" loading="lazy"></a>
+    </div>
   </div>
 </section>
 
@@ -1170,7 +984,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   <form class="booking-form reveal" action="/wp-admin/admin-post.php" method="post" id="booking-form">
     <input type="hidden" name="action" value="emmanuel_booking">
     <input type="hidden" name="emmanuel_booking_nonce" value="{{EMMANUEL_BOOKING_NONCE}}">
-    <input type="hidden" name="portfolio_version" id="portfolio-version" value="">
+    <input type="hidden" name="portfolio_version" id="portfolio-version" value="v3">
     <div class="booking-hp" aria-hidden="true">
       <label for="company-website">Website</label>
       <input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -1286,13 +1100,6 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   });
 })();
 
-const isPortfolioV2=document.documentElement.classList.contains('portfolio-v2');
-const isPortfolioV3=document.documentElement.classList.contains('portfolio-v3');
-if(isPortfolioV3){
-  document.querySelector('.v3-headline').hidden=false;
-  document.getElementById('v3-sound').hidden=false;
-}
-document.getElementById('portfolio-version').value=isPortfolioV3?'v3':isPortfolioV2?'v2':'';
 const VIDEOS=[
  {s:"chris-brown",t:"Chris Brown",c:"aftermovie",cl:"Aftermovie",layout:"wide"},
  {s:"lauryn-hill",t:"Lauryn Hill",c:"aftermovie",cl:"Aftermovie",layout:"sq"},
@@ -1341,16 +1148,7 @@ function updateSlider(){
     card.hidden=true;card.classList.remove('active','playing','v3-visible','v3-primary');card.tabIndex=-1;
     const preview=card.querySelector('video.prev');preview.pause();
   });
-  if(isPortfolioV3&&slides.length){
-    slides.forEach((card,offset)=>{card.hidden=false;card.classList.add('active','v3-visible');if(offset===slideIndex){card.classList.add('v3-primary');card.tabIndex=0}});
-    slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
-    slideTotal.textContent=String(slides.length).padStart(2,'0');
-    document.getElementById('vidcount').textContent=`${slides.length} Projects`;
-    prevButton.disabled=nextButton.disabled=slides.length<2;
-    return;
-  }
-  const active=slides[slideIndex];
-  if(active){active.hidden=false;active.classList.add('active');active.tabIndex=0}
+  slides.forEach((card,offset)=>{card.hidden=false;card.classList.add('active','v3-visible');if(offset===slideIndex){card.classList.add('v3-primary');card.tabIndex=0}});
   slideCurrent.textContent=String(slides.length?slideIndex+1:0).padStart(2,'0');
   slideTotal.textContent=String(slides.length).padStart(2,'0');
   document.getElementById('vidcount').textContent=`${slides.length} Projects`;
@@ -1358,11 +1156,9 @@ function updateSlider(){
 }
 function moveSlide(direction){
   slideIndex+=direction;updateSlider();
-  if(isPortfolioV3){
-    const slides=visibleSlides();
-    const target=slides[slideIndex];
-    if(target)grid.scrollTo({left:target.offsetLeft-grid.offsetLeft,behavior:'smooth'});
-  }
+  const slides=visibleSlides();
+  const target=slides[slideIndex];
+  if(target)grid.scrollTo({left:target.offsetLeft-grid.offsetLeft,behavior:'smooth'});
 }
 
 /* hover previews */
@@ -1409,18 +1205,14 @@ document.getElementById('hero-showreel').addEventListener('click',()=>{
   openLB('emmanuel-whajah-showreel','Emmanuel Whajah — Showreel');
 });
 
-/* editorial hero reel — pauses when the first viewport is out of view */
-const heroProjects=isPortfolioV2
-  ? ['people-of-deutschland','nike','cupra-miss-germany','lauryn-hill']
-  : isPortfolioV3
-    ? ['85-racing','nike','cupra-miss-germany','people-of-deutschland']
-    : ['chris-brown','lauryn-hill','nike','cupra-miss-germany'];
+/* hero reel — pauses when the first viewport is out of view */
+const heroProjects=['85-racing','nike','cupra-miss-germany','people-of-deutschland'];
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
 const heroSource=heroVideo.querySelector('source');
 const heroSlideStatus=document.getElementById('hero-slide-status');
 let heroProjectIndex=0;
-if(isPortfolioV2||isPortfolioV3){
+{
   const firstHero=heroProjects[0];
   heroMedia.querySelector('.hero-poster').src=`assets/poster/${firstHero}.jpg`;
   heroVideo.poster=`assets/poster/${firstHero}.jpg`;
@@ -1428,7 +1220,7 @@ if(isPortfolioV2||isPortfolioV3){
   heroVideo.load();heroVideo.play().catch(()=>{});
   heroSlideStatus.style.setProperty('--hero-index','1');
 }
-if(isPortfolioV3){
+{
   const words=['Vision.','Energy.','Motion.','Culture.'];
   const word=document.querySelector('.v3-word');
   let wordIndex=0;
@@ -1499,8 +1291,8 @@ document.getElementById('masonry').addEventListener('click',e=>{
 });
 lbi.onclick=()=>lbi.classList.remove('open');
 
-/* marquee duplicate */
-const mq=document.getElementById('mq');mq.innerHTML+=mq.innerHTML;
+/* press marquee duplicate */
+const pmq=document.getElementById('pmq');pmq.innerHTML+=pmq.innerHTML;
 
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
