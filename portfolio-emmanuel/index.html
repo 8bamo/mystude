@@ -702,6 +702,12 @@ html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38
 html.portfolio-v3 .about .facts div s{color:#666}
 html.portfolio-v3 .about-more{color:#111}
 html.portfolio-v3 .about-story p{color:#333}
+html.portfolio-v3 .client-logo-bar{width:calc(100% + clamp(40px,6vw,96px));margin-inline:clamp(-48px,-3vw,-20px);overflow:hidden;background:#111}
+html.portfolio-v3 .client-logo-track{display:flex;align-items:center;width:max-content;animation:client-logo-marquee 34s linear infinite;animation-play-state:paused}
+html.portfolio-v3 .client-logo-bar.is-visible .client-logo-track{animation-play-state:running}
+html.portfolio-v3 .client-logo-item{flex:0 0 220px;display:flex;align-items:center;justify-content:center;height:126px;padding:28px 26px}
+html.portfolio-v3 .client-logo-item img{display:block;width:auto;height:auto;max-width:168px;max-height:64px;object-fit:contain}
+@keyframes client-logo-marquee{to{transform:translateX(-50%)}}
 html.portfolio-v3 .about-columns h3{color:#888}
 html.portfolio-v3 .about-columns li{color:#111;border-top-color:var(--v3-line)}
 html.portfolio-v3 .about-quote p{font-family:var(--sans);font-style:normal;font-weight:520;letter-spacing:-.03em;color:#111}
@@ -761,6 +767,8 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
   html.portfolio-v3 .about p{font-size:27px}
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
+  html.portfolio-v3 .client-logo-item{flex-basis:170px;height:104px;padding:24px 20px}
+  html.portfolio-v3 .client-logo-item img{max-width:130px;max-height:54px}
   html.portfolio-v3 .booking-head h2{font-size:clamp(36px,12vw,72px)}
   html.portfolio-v3 .v3-scroll-gallery{height:220svh}
   html.portfolio-v3 .v3-scroll-copy{width:88vw}
@@ -776,6 +784,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   .as-img{transition:none}
   .card.active{animation:none}
   html.portfolio-v3 nav ul a,html.portfolio-v3 nav ul a::before,html.portfolio-v3 nav ul a::after{transition:none}
+  html.portfolio-v3 .client-logo-track{animation:none}
 }
 </style>
 </head>
@@ -936,6 +945,23 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
       <p>Alongside his agency work, he operates his own production company, Emzyproductionfilms, leading commercial productions, editorial projects, documentaries and creative collaborations worldwide. His work combines photography, filmmaking, creative strategy and art direction into one seamless process — clients receive not simply content, but complete visual experiences. As a Content Creator for Rolling Stone Africa, he documents influential voices and important cultural moments for one of the continent's leading media platforms.</p>
       <p>Over the years, his productions have reached millions of viewers across digital platforms and have been recognized through multiple awards and international publications across music, fashion and sport — reinforcing his reputation as one of Germany's emerging creative directors with an international perspective.</p>
       <p>What distinguishes Emmanuel is his ability to move effortlessly between industries: one week directing a campaign for a global sports brand, the next documenting an international artist on tour, producing editorial imagery for a fashion label, or developing a documentary centered around an elite football player. Rather than chasing trends, he creates timeless visual narratives that remain relevant years after they are produced — every frame carefully considered, every story intentionally crafted, every collaboration approached with professionalism, trust and creative excellence.</p>
+    </div>
+
+    <div class="client-logo-bar reveal" aria-label="Selected clients">
+      <div class="client-logo-track">
+        <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt="Nike"></div>
+        <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt="Puma"></div>
+        <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt="Daily Paper"></div>
+        <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt="Hennessy"></div>
+        <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt="Rolling Stone Africa"></div>
+        <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt="GQ"></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/nike.png" alt=""></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/puma.png" alt=""></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/daily-paper.png" alt=""></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/hennessy.png" alt=""></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/rolling-stone-africa.png" alt=""></div>
+        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/gq.png" alt=""></div>
+      </div>
     </div>
 
     <div class="about-columns reveal">
@@ -1376,6 +1402,13 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const clientLogoBar=document.querySelector('.client-logo-bar');
+if(clientLogoBar&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const clientLogoObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>clientLogoBar.classList.toggle('is-visible',entry.isIntersecting));
+  });
+  clientLogoObserver.observe(clientLogoBar);
+}
 
 document.getElementById('y').textContent=new Date().getFullYear();
 
