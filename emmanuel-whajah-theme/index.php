@@ -12,6 +12,14 @@ $html = file_get_contents(get_template_directory() . '/portfolio.html');
 
 // Booking form: real nonce + this install's admin-post endpoint.
 $html = str_replace('{{EMMANUEL_BOOKING_NONCE}}', esc_attr(wp_create_nonce('emmanuel_booking_request')), $html);
+$captcha_a = wp_rand(2, 9);
+$captcha_b = wp_rand(2, 9);
+$captcha_token = wp_hash($captcha_a . '|' . $captcha_b . '|emmanuel_booking_captcha');
+$html = str_replace(
+    ['{{EMMANUEL_CAPTCHA_A}}', '{{EMMANUEL_CAPTCHA_B}}', '{{EMMANUEL_CAPTCHA_TOKEN}}'],
+    [esc_attr($captcha_a), esc_attr($captcha_b), esc_attr($captcha_token)],
+    $html
+);
 $html = str_replace('action="/wp-admin/admin-post.php"', 'action="' . esc_url(admin_url('admin-post.php')) . '"', $html);
 
 // Assets resolve relative to this theme, not mystu.de.

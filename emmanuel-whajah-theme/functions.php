@@ -25,6 +25,14 @@ add_action('after_setup_theme', function () {
  */
 function ew_handle_booking() {
     $redirect_url = home_url('/');
+    $captcha_a = isset($_POST['captcha_a']) ? absint($_POST['captcha_a']) : 0;
+    $captcha_b = isset($_POST['captcha_b']) ? absint($_POST['captcha_b']) : 0;
+    $captcha_answer = isset($_POST['captcha_answer']) ? absint($_POST['captcha_answer']) : -1;
+    $captcha_token = isset($_POST['captcha_token']) ? sanitize_text_field(wp_unslash($_POST['captcha_token'])) : '';
+    $captcha_expected_token = wp_hash($captcha_a . '|' . $captcha_b . '|emmanuel_booking_captcha');
+    $captcha_valid = $captcha_a >= 2 && $captcha_a <= 9 && $captcha_b >= 2 && $captcha_b <= 9
+        && hash_equals($captcha_expected_token, $captcha_token)
+        && $captcha_answer === $captcha_a + $captcha_b;
 
     if (
         empty($_POST['emmanuel_booking_nonce']) ||
@@ -32,7 +40,8 @@ function ew_handle_booking() {
             sanitize_text_field(wp_unslash($_POST['emmanuel_booking_nonce'])),
             'emmanuel_booking_request'
         ) ||
-        !empty($_POST['company_website']) // honeypot
+        !empty($_POST['company_website']) || // honeypot
+        !$captcha_valid
     ) {
         wp_safe_redirect(add_query_arg('booking', 'error', $redirect_url) . '#contact');
         exit;

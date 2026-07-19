@@ -60,6 +60,14 @@ add_action('template_redirect', function(){
                 esc_attr(wp_create_nonce('emmanuel_booking_request')),
                 $portfolio_html
             );
+            $captcha_a = wp_rand(2, 9);
+            $captcha_b = wp_rand(2, 9);
+            $captcha_token = wp_hash($captcha_a . '|' . $captcha_b . '|emmanuel_booking_captcha');
+            $portfolio_html = str_replace(
+                ['{{EMMANUEL_CAPTCHA_A}}', '{{EMMANUEL_CAPTCHA_B}}', '{{EMMANUEL_CAPTCHA_TOKEN}}'],
+                [esc_attr($captcha_a), esc_attr($captcha_b), esc_attr($captcha_token)],
+                $portfolio_html
+            );
             echo $portfolio_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted local HTML template.
             exit;
         }
@@ -104,6 +112,14 @@ function mystu_handle_emmanuel_booking() {
         ? '/emmanuelwhajah-' . $portfolio_version
         : '/emmanuelwhajah';
     $redirect_url = home_url($redirect_slug);
+    $captcha_a = isset($_POST['captcha_a']) ? absint($_POST['captcha_a']) : 0;
+    $captcha_b = isset($_POST['captcha_b']) ? absint($_POST['captcha_b']) : 0;
+    $captcha_answer = isset($_POST['captcha_answer']) ? absint($_POST['captcha_answer']) : -1;
+    $captcha_token = isset($_POST['captcha_token']) ? sanitize_text_field(wp_unslash($_POST['captcha_token'])) : '';
+    $captcha_expected_token = wp_hash($captcha_a . '|' . $captcha_b . '|emmanuel_booking_captcha');
+    $captcha_valid = $captcha_a >= 2 && $captcha_a <= 9 && $captcha_b >= 2 && $captcha_b <= 9
+        && hash_equals($captcha_expected_token, $captcha_token)
+        && $captcha_answer === $captcha_a + $captcha_b;
 
     if (
         empty($_POST['emmanuel_booking_nonce']) ||
@@ -111,7 +127,8 @@ function mystu_handle_emmanuel_booking() {
             sanitize_text_field(wp_unslash($_POST['emmanuel_booking_nonce'])),
             'emmanuel_booking_request'
         ) ||
-        !empty($_POST['company_website'])
+        !empty($_POST['company_website']) ||
+        !$captcha_valid
     ) {
         wp_safe_redirect(add_query_arg('booking', 'error', $redirect_url) . '#booking');
         exit;

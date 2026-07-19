@@ -246,6 +246,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 .booking-status.success{border-color:rgba(201,162,75,.7);color:var(--gold2)}
 .booking-status.error{border-color:rgba(208,106,90,.65);color:#e29b8f}
 .booking-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.captcha-error{margin-top:4px;color:#e29b8f;font-size:18px;line-height:1.4}
 
 @media(max-width:760px){
   nav{padding:15px 18px}
@@ -1119,6 +1120,9 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     <input type="hidden" name="action" value="emmanuel_booking">
     <input type="hidden" name="emmanuel_booking_nonce" value="{{EMMANUEL_BOOKING_NONCE}}">
     <input type="hidden" name="portfolio_version" id="portfolio-version" value="v3">
+    <input type="hidden" name="captcha_a" value="{{EMMANUEL_CAPTCHA_A}}">
+    <input type="hidden" name="captcha_b" value="{{EMMANUEL_CAPTCHA_B}}">
+    <input type="hidden" name="captcha_token" value="{{EMMANUEL_CAPTCHA_TOKEN}}">
     <div class="booking-hp" aria-hidden="true">
       <label for="company-website">Website</label>
       <input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -1170,6 +1174,11 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     <div class="field full">
       <label for="booking-message">Project &amp; Idea *</label>
       <textarea id="booking-message" name="message" placeholder="What's it about, what should it become, and by when?" required></textarea>
+    </div>
+    <div class="field full captcha-field">
+      <label for="booking-captcha">Security check: {{EMMANUEL_CAPTCHA_A}} + {{EMMANUEL_CAPTCHA_B}} = ? *</label>
+      <input id="booking-captcha" name="captcha_answer" type="number" inputmode="numeric" autocomplete="off" placeholder="Your answer" aria-describedby="captcha-error" required>
+      <p class="captcha-error" id="captcha-error" role="alert" hidden>Please enter the correct result.</p>
     </div>
 
     <div class="booking-status" id="booking-status" role="status" aria-live="polite" hidden></div>
@@ -1511,8 +1520,17 @@ if(bookingState==='success'||bookingState==='error'){
 }
 const bookingForm=document.getElementById('booking-form');
 const bookingDate=document.getElementById('booking-date');
+const captchaInput=document.getElementById('booking-captcha');
+const captchaError=document.getElementById('captcha-error');
+const captchaA=Number(bookingForm.elements.captcha_a.value);
+const captchaB=Number(bookingForm.elements.captcha_b.value);
 bookingDate.min=new Date().toISOString().slice(0,10);
-bookingForm.addEventListener('submit',()=>{
+captchaInput.addEventListener('input',()=>{captchaInput.setCustomValidity('');captchaError.hidden=true});
+bookingForm.addEventListener('submit',event=>{
+  const captchaValid=Number(captchaInput.value)===captchaA+captchaB;
+  captchaInput.setCustomValidity(captchaValid?'':'Please enter the correct result.');
+  captchaError.hidden=captchaValid;
+  if(!captchaValid){event.preventDefault();captchaInput.reportValidity();captchaInput.focus();return}
   if(!bookingForm.checkValidity())return;
   const submit=bookingForm.querySelector('.booking-submit');
   submit.disabled=true;submit.textContent='Sending …';bookingForm.setAttribute('aria-busy','true');
