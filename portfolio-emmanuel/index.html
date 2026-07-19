@@ -702,10 +702,11 @@ html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38
 html.portfolio-v3 .about .facts div s{color:#666}
 html.portfolio-v3 .about-more{color:#111}
 html.portfolio-v3 .about-story p{color:#333}
-html.portfolio-v3 .client-logo-bar{width:calc(100% + clamp(40px,6vw,96px));margin-inline:clamp(-48px,-3vw,-20px);overflow:hidden;background:#111}
+html.portfolio-v3 .client-logo-bar{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;background:#111}
 html.portfolio-v3 .client-logo-track{display:flex;align-items:center;width:max-content;animation:client-logo-marquee 34s linear infinite;animation-play-state:paused}
 html.portfolio-v3 .client-logo-bar.is-visible .client-logo-track{animation-play-state:running}
-html.portfolio-v3 .client-logo-item{flex:0 0 220px;display:flex;align-items:center;justify-content:center;height:126px;padding:28px 26px}
+html.portfolio-v3 .client-logo-group{display:flex;flex:0 0 max(100vw,1020px)}
+html.portfolio-v3 .client-logo-item{flex:1 1 0;display:flex;align-items:center;justify-content:center;height:126px;padding:28px 26px}
 html.portfolio-v3 .client-logo-item img{display:block;width:auto;height:auto;max-width:168px;max-height:64px;object-fit:contain}
 @keyframes client-logo-marquee{to{transform:translateX(-50%)}}
 html.portfolio-v3 .about-columns h3{color:#888}
@@ -771,7 +772,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
   html.portfolio-v3 .about p{font-size:27px}
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
-  html.portfolio-v3 .client-logo-item{flex-basis:170px;height:104px;padding:24px 20px}
+  html.portfolio-v3 .client-logo-item{height:104px;padding:24px 20px}
   html.portfolio-v3 .client-logo-item img{max-width:130px;max-height:54px}
   html.portfolio-v3 .booking-head h2{font-size:clamp(36px,12vw,72px)}
   html.portfolio-v3 .v3-scroll-gallery{height:220svh}
@@ -953,18 +954,22 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
     <div class="client-logo-bar reveal" aria-label="Selected clients">
       <div class="client-logo-track">
-        <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt="Nike"></div>
-        <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt="Puma"></div>
-        <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt="Daily Paper"></div>
-        <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt="Hennessy"></div>
-        <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt="Rolling Stone Africa"></div>
-        <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt="GQ"></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/nike.png" alt=""></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/puma.png" alt=""></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/daily-paper.png" alt=""></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/hennessy.png" alt=""></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/rolling-stone-africa.png" alt=""></div>
-        <div class="client-logo-item" aria-hidden="true"><img src="assets/img/clients/gq.png" alt=""></div>
+        <div class="client-logo-group">
+          <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt="Nike"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt="Puma"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt="Daily Paper"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt="Hennessy"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt="Rolling Stone Africa"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt="GQ"></div>
+        </div>
+        <div class="client-logo-group" aria-hidden="true">
+          <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt=""></div>
+        </div>
       </div>
     </div>
 
