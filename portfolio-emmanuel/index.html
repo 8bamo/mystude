@@ -31,6 +31,13 @@
   font-weight:400;
   font-display:swap;
 }
+@font-face{
+  font-family:"Sequel 100 Black";
+  src:url("assets/fonts/Sequel100Black-75.ttf") format("truetype");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
 :root{
   --bg:#0c0b09;
   --bg2:#14120e;
@@ -798,7 +805,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
   html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0;border:0;border-radius:0;background:var(--v3-paper);color:#111;mix-blend-mode:normal;opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
   html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
-  html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1}
+  html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1;font-family:"Sequel 100 Black",var(--sans);font-weight:700}
   html.portfolio-v3 nav .mobile-contact{display:list-item}
   html.portfolio-v3 .nav-contact{display:none}
   html.portfolio-v3 .hero{height:calc(100svh - 96px);min-height:590px;margin:0 16px 10px;padding:28px 22px;border-radius:34px}
