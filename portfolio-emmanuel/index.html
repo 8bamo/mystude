@@ -572,9 +572,9 @@ html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line
 html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
 
 html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:104px;padding:22px 28px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
-html.portfolio-v3 nav .logo{position:absolute;left:50%;width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat;transform:translateX(-50%) scale(.8);transform-origin:center}
+html.portfolio-v3 nav .logo{position:absolute;left:50%;width:auto;height:auto;overflow:visible;background:none;transform:translateX(-50%);font-family:var(--serif);font-size:24px;font-weight:400;line-height:1;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 html.portfolio-v3 nav .logo::before{display:none}
-html.portfolio-v3 nav .logo em{display:none}
+html.portfolio-v3 nav .logo em{display:inline;color:inherit;font:inherit}
 html.portfolio-v3 nav ul{position:fixed;top:50%;left:18px;z-index:2;display:flex;flex-direction:column;gap:22px;align-items:flex-start;padding:18px 20px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(10,10,10,.82);color:#fff;mix-blend-mode:normal;transform:translateY(-50%)}
 html.portfolio-v3 nav ul a{position:relative;font-size:18px;font-weight:600;letter-spacing:0;text-transform:uppercase;opacity:.9;transition:opacity 180ms ease-out}
 html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-4px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
@@ -786,7 +786,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   /* no backdrop-filter here: it would turn the sticky nav into the containing
      block for the fixed fullscreen menu, squashing it into the 86px bar */
   html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
-  html.portfolio-v3 nav .logo{position:static;width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px;transform:scale(.8);transform-origin:left center}
+  html.portfolio-v3 nav .logo{position:static;width:auto;height:auto;transform:none;font-size:19px;letter-spacing:.09em}
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
   html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0;border:0;border-radius:0;background:var(--v3-paper);color:#111;mix-blend-mode:normal;opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
   html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
