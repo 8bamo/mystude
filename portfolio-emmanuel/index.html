@@ -561,13 +561,13 @@ html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:1
 html.portfolio-v3 nav .logo{position:absolute;left:50%;width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat;transform:translateX(-50%) scale(.8);transform-origin:center}
 html.portfolio-v3 nav .logo::before{display:none}
 html.portfolio-v3 nav .logo em{display:none}
-html.portfolio-v3 nav ul{position:fixed;top:50%;left:28px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;transform:translateY(-50%)}
-html.portfolio-v3 nav ul a{position:relative;font-size:14px;font-weight:450;letter-spacing:0;text-transform:uppercase;opacity:.78;transition:opacity 180ms ease-out}
+html.portfolio-v3 nav ul{position:fixed;top:50%;left:28px;z-index:2;display:flex;flex-direction:column;gap:22px;align-items:flex-start;color:#fff;mix-blend-mode:difference;transform:translateY(-50%)}
+html.portfolio-v3 nav ul a{position:relative;font-size:18px;font-weight:600;letter-spacing:0;text-transform:uppercase;opacity:.9;transition:opacity 180ms ease-out}
 html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-4px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
 html.portfolio-v3 nav ul a:hover::after,html.portfolio-v3 nav ul a:focus-visible::after{opacity:1;transform:scaleX(1)}
-html.portfolio-v3 nav ul a.active{font-weight:750;opacity:1}
+html.portfolio-v3 nav ul a.active{font-weight:800;opacity:1}
 html.portfolio-v3 nav .mobile-contact{display:none}
-html.portfolio-v3 .nav-contact{position:absolute;right:28px;display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;font-size:14px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out}
+html.portfolio-v3 .nav-contact{position:absolute;right:28px;display:flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid #ccc;border-radius:9px;font-size:16px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out}
 html.portfolio-v3 .nav-contact:hover,html.portfolio-v3 .nav-contact:focus-visible{border-color:#111}
 html.portfolio-v3 .nav-contact::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
 html.portfolio-v3 .nav-contact:hover::before,html.portfolio-v3 .nav-contact:focus-visible::before{transform:scale(1.45)}
@@ -754,7 +754,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
   html.portfolio-v3 nav .logo{position:static;width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px;transform:scale(.8);transform-origin:left center}
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
-  html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
+  html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);color:#111;mix-blend-mode:normal;opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
   html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
   html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1}
   html.portfolio-v3 nav .mobile-contact{display:list-item}
