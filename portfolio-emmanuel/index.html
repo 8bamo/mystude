@@ -1179,11 +1179,11 @@ const VIDEOS=[
 ];
 const grid=document.getElementById('grid');
 grid.innerHTML=VIDEOS.map((v,index)=>`
-  <article class="card ${v.layout||''}" data-c="${v.c}" data-s="${v.s}" data-t="${v.t.replace(/&amp;/g,'&')}" role="button" tabindex="0" aria-label="Play ${v.t.replace(/&amp;/g,'&')}">
+  <a class="card ${v.layout||''}" href="project.html?project=${encodeURIComponent(v.s)}" data-c="${v.c}" data-s="${v.s}" data-t="${v.t.replace(/&amp;/g,'&')}" aria-label="View project: ${v.t.replace(/&amp;/g,'&')}">
     <div class="frame">
       <img class="poster" src="assets/poster/${v.s}.jpg" alt="${v.t}" loading="lazy">
       <video class="prev" muted loop playsinline preload="none" src="assets/video/${v.s}-preview.mp4"></video>
-      <span class="play"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 6.25h7.2L6.4 3.4l1-1L12 7l-4.6 4.6-1-1 2.8-2.85H2z"/></svg></span>
     </div>
     <div class="meta">
       <span class="num">${String(index+1).padStart(2,'0')}</span>
@@ -1191,7 +1191,7 @@ grid.innerHTML=VIDEOS.map((v,index)=>`
       <span class="c">${v.cl}</span>
       <span class="watch">View project</span>
     </div>
-  </article>`).join('');
+  </a>`).join('');
 const allCards=[...grid.querySelectorAll('.card')];
 const projectSlider=document.getElementById('project-slider');
 const prevButton=document.getElementById('slide-prev'),nextButton=document.getElementById('slide-next');
@@ -1225,8 +1225,6 @@ allCards.forEach(card=>{
   const vid=card.querySelector('video.prev');
   card.addEventListener('mouseenter',()=>{vid.play().then(()=>card.classList.add('playing')).catch(()=>{})});
   card.addEventListener('mouseleave',()=>{card.classList.remove('playing');vid.pause()});
-  card.addEventListener('click',()=>openLB(card.dataset.s,card.dataset.t));
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLB(card.dataset.s,card.dataset.t)}});
 });
 
 prevButton.addEventListener('click',()=>moveSlide(-1));
