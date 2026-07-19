@@ -686,13 +686,24 @@ html.portfolio-v3 .masonry a{margin-bottom:14px;border-radius:18px}
 html.portfolio-v3 .masonry img{filter:saturate(.7)}
 
 html.portfolio-v3 #awards{background:var(--v3-paper);color:var(--v3-ink)}
-html.portfolio-v3 #awards .shead{border-color:var(--v3-line)}
+html.portfolio-v3 #awards .shead{width:min(100%,1400px);margin-inline:auto;border-color:var(--v3-line)}
 html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
 html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 #awards .shead .count,html.portfolio-v3 .al-b span{color:#777}
-html.portfolio-v3 .award-showcase{width:50%;justify-self:center;border-radius:18px;box-shadow:none}
-html.portfolio-v3 .al-b b{font-stretch:100%;font-weight:570;text-transform:none;letter-spacing:-.01em;font-size:15px;color:#111}
-html.portfolio-v3 .award-list,html.portfolio-v3 .award-list li{border-color:var(--v3-line)}
+html.portfolio-v3 .award-split{width:min(100%,1400px);margin-inline:auto;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:clamp(48px,7vw,110px);align-items:start}
+html.portfolio-v3 .award-list{display:grid;gap:6px;border:0}
+html.portfolio-v3 .award-list li{grid-template-columns:92px 1fr;gap:18px;margin:0;padding:17px 18px;border:1px solid transparent;border-radius:12px;transition:background-color 180ms ease-out,color 180ms ease-out,border-color 180ms ease-out}
+html.portfolio-v3 .award-list li[data-award]{cursor:pointer}
+html.portfolio-v3 .award-list li[data-award]:hover,html.portfolio-v3 .award-list li[data-award]:focus-visible{border-color:#cfcfca;background:#eeeeea;outline:none}
+html.portfolio-v3 .award-list li.active{border-color:#111;background:#111;color:#fff}
+html.portfolio-v3 .al-y{font-size:18px;font-variant-numeric:tabular-nums}
+html.portfolio-v3 .al-b b{font-stretch:100%;font-weight:620;text-transform:none;letter-spacing:-.01em;font-size:18px;color:inherit}
+html.portfolio-v3 .al-b span{font-size:18px;line-height:1.45}
+html.portfolio-v3 .award-list li.active .al-b span{color:#d7d7d2}
+html.portfolio-v3 .award-visual{position:sticky;top:132px;min-width:0}
+html.portfolio-v3 .award-visual-head{display:flex;justify-content:space-between;gap:20px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--v3-line);font-size:14px;font-weight:600;text-transform:uppercase;color:#777}
+html.portfolio-v3 .award-showcase{position:relative;top:auto;width:100%;max-width:480px;aspect-ratio:4/5;margin-inline:auto;border:1px solid #deded9;border-radius:22px;background:#efefeb;box-shadow:none}
+html.portfolio-v3 .as-img{transition:opacity 180ms ease-out}
 
 html.portfolio-v3 #press{background:#171918}
 html.portfolio-v3 #press .shead h2{font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
@@ -750,6 +761,8 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 }
 
 @media(max-width:900px){
+  html.portfolio-v3 .award-split{grid-template-columns:1fr}
+  html.portfolio-v3 .award-visual{position:relative;top:auto;grid-row:1}
   html.portfolio-v3 .award-showcase{width:min(100%,420px)}
   html.portfolio-v3 .about{grid-template-columns:1fr;height:auto;max-height:none}
   html.portfolio-v3 .about .pic{min-height:0;aspect-ratio:16/9}
@@ -1058,15 +1071,18 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
       <li data-award="tory-lanez"><span class="al-y">2018</span><span class="al-b"><b>Streetlife International</b><span>Best Photographer — Tory Lanez "Memories Don't Die Tour"</span></span></li>
       <li data-award="gold"><span class="al-y">Certification</span><span class="al-b"><b>Eric Bellinger</b><span>Gold Record — 500,000+ copies sold</span></span></li>
     </ul>
-    <div class="award-showcase" id="award-showcase">
-      <img class="as-img" src="assets/img/awards/emerging-brands-africa.webp" alt="Emerging Brands in Africa Awards certificate, Visual Storyteller of the Year 2025, presented to Emmanuel Whajah" data-award="emerging-brands" loading="lazy">
-      <img class="as-img" src="assets/img/awards/forbes-30u30-certificate.webp" alt="Forbes Africa 30 Under 30 certificate, Class of 2023, presented to Emmanuel Whajah" data-award="forbes" loading="lazy">
-      <img class="as-img" src="assets/img/awards/hipe-award-2021.webp" alt="HIPE Award 2021 certificate for Emmanuel Whajah, Emzyproductionfilms" data-award="hipe2021" loading="lazy">
-      <img class="as-img" src="assets/img/awards/keke-palmer-virgo-pt2.webp" alt="Keke Palmer Virgo Tendencies Part 2 plaque, presented to Emmanuel Whajah" data-award="boss-pt2" loading="lazy">
-      <img class="as-img" src="assets/img/awards/keke-palmer-virgo-pt1.webp" alt="Keke Palmer Virgo Tendencies Part 1 plaque, presented to Emmanuel Whajah for over 5,000,000 streams" data-award="boss-pt1" loading="lazy">
-      <img class="as-img" src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" data-award="little-simz" loading="lazy">
-      <img class="as-img" src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" data-award="tory-lanez" loading="lazy">
-      <img class="as-img" src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" data-award="gold" loading="lazy">
+    <div class="award-visual">
+      <div class="award-visual-head"><span>Selected Award</span><span id="award-position">01 / 08</span></div>
+      <div class="award-showcase" id="award-showcase">
+        <img class="as-img" src="assets/img/awards/emerging-brands-africa.webp" alt="Emerging Brands in Africa Awards certificate, Visual Storyteller of the Year 2025, presented to Emmanuel Whajah" data-award="emerging-brands" loading="lazy">
+        <img class="as-img" src="assets/img/awards/forbes-30u30-certificate.webp" alt="Forbes Africa 30 Under 30 certificate, Class of 2023, presented to Emmanuel Whajah" data-award="forbes" loading="lazy">
+        <img class="as-img" src="assets/img/awards/hipe-award-2021.webp" alt="HIPE Award 2021 certificate for Emmanuel Whajah, Emzyproductionfilms" data-award="hipe2021" loading="lazy">
+        <img class="as-img" src="assets/img/awards/keke-palmer-virgo-pt2.webp" alt="Keke Palmer Virgo Tendencies Part 2 plaque, presented to Emmanuel Whajah" data-award="boss-pt2" loading="lazy">
+        <img class="as-img" src="assets/img/awards/keke-palmer-virgo-pt1.webp" alt="Keke Palmer Virgo Tendencies Part 1 plaque, presented to Emmanuel Whajah for over 5,000,000 streams" data-award="boss-pt1" loading="lazy">
+        <img class="as-img" src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" data-award="little-simz" loading="lazy">
+        <img class="as-img" src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" data-award="tory-lanez" loading="lazy">
+        <img class="as-img" src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" data-award="gold" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -1412,15 +1428,27 @@ const pmq=document.getElementById('pmq');pmq.innerHTML+=pmq.innerHTML;
 /* awards showcase: crossfade through the images that exist, sync the matching list row */
 const showcaseImgs=[...document.querySelectorAll('.as-img')];
 const awardListItems=[...document.querySelectorAll('.award-list li')];
+const selectableAwards=awardListItems.filter(li=>li.dataset.award);
+const awardPosition=document.getElementById('award-position');
 let showcaseIndex=0;
 function updateShowcase(){
-  showcaseImgs.forEach((img,i)=>img.classList.toggle('on',i===showcaseIndex));
+  showcaseImgs.forEach((img,i)=>{const active=i===showcaseIndex;img.classList.toggle('on',active);img.setAttribute('aria-hidden',String(!active))});
   const key=showcaseImgs[showcaseIndex].dataset.award;
-  awardListItems.forEach(li=>li.classList.toggle('active',li.dataset.award===key));
+  selectableAwards.forEach(li=>{const active=li.dataset.award===key;li.classList.toggle('active',active);li.setAttribute('aria-pressed',String(active))});
+  awardPosition.textContent=`${String(showcaseIndex+1).padStart(2,'0')} / ${String(showcaseImgs.length).padStart(2,'0')}`;
 }
+selectableAwards.forEach(li=>{
+  li.tabIndex=0;li.setAttribute('role','button');
+  const selectAward=()=>{const index=showcaseImgs.findIndex(img=>img.dataset.award===li.dataset.award);if(index>=0){showcaseIndex=index;updateShowcase()}};
+  li.addEventListener('click',selectAward);
+  li.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();selectAward()}});
+});
 updateShowcase();
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  setInterval(()=>{showcaseIndex=(showcaseIndex+1)%showcaseImgs.length;updateShowcase()},3200);
+  let awardsInView=false;
+  const awardsObserver=new IntersectionObserver(entries=>entries.forEach(entry=>awardsInView=entry.isIntersecting),{threshold:.15});
+  awardsObserver.observe(document.getElementById('awards'));
+  setInterval(()=>{if(!awardsInView||document.hidden)return;showcaseIndex=(showcaseIndex+1)%showcaseImgs.length;updateShowcase()},4200);
 }
 
 /* reveal on scroll */
