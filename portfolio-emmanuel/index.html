@@ -561,10 +561,14 @@ html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:1
 html.portfolio-v3 nav .logo{width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat}
 html.portfolio-v3 nav .logo::before{display:none}
 html.portfolio-v3 nav .logo em{display:none}
-html.portfolio-v3 nav ul{gap:34px;align-items:center}
-html.portfolio-v3 nav ul a{font-size:14px;font-weight:450;letter-spacing:0;text-transform:none;opacity:.78}
-html.portfolio-v3 nav ul li:last-child a{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;opacity:1}
-html.portfolio-v3 nav ul li:last-child a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green)}
+html.portfolio-v3 nav ul{position:absolute;left:50%;gap:34px;align-items:center;transform:translateX(-50%)}
+html.portfolio-v3 nav ul a{position:relative;font-size:14px;font-weight:450;letter-spacing:0;text-transform:none;opacity:.78;transition:opacity 180ms ease-out}
+html.portfolio-v3 nav ul li:not(:last-child) a::after{content:"";position:absolute;right:0;bottom:-7px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:center;transition:transform 180ms ease-out,opacity 180ms ease-out}
+html.portfolio-v3 nav ul li:not(:last-child) a:hover::after,html.portfolio-v3 nav ul li:not(:last-child) a:focus-visible::after{opacity:1;transform:scaleX(1)}
+html.portfolio-v3 nav ul li:last-child a{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;opacity:1;transition:border-color 180ms ease-out}
+html.portfolio-v3 nav ul li:last-child a:hover,html.portfolio-v3 nav ul li:last-child a:focus-visible{border-color:#111}
+html.portfolio-v3 nav ul li:last-child a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
+html.portfolio-v3 nav ul li:last-child a:hover::before,html.portfolio-v3 nav ul li:last-child a:focus-visible::before{transform:scale(1.45)}
 
 html.portfolio-v3 .hero{height:calc(100svh - 114px);min-height:620px;margin:0 10px 10px;padding:42px 50px;border-radius:42px;justify-content:flex-end;overflow:hidden;background:#202624}
 html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),transparent 58%)}
@@ -724,7 +728,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
   html.portfolio-v3 nav .logo{width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px}
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
-  html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);opacity:0;visibility:hidden;transition:.35s}
+  html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
   html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
   html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1}
   html.portfolio-v3 .hero{height:calc(100svh - 96px);min-height:590px;margin:0 16px 10px;padding:28px 22px;border-radius:34px}
@@ -765,6 +769,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   .press-marquee .ptrack{animation:none}
   .as-img{transition:none}
   .card.active{animation:none}
+  html.portfolio-v3 nav ul a,html.portfolio-v3 nav ul a::before,html.portfolio-v3 nav ul a::after{transition:none}
 }
 </style>
 </head>
