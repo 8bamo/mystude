@@ -681,7 +681,7 @@ html.portfolio-v3 #awards .shead{border-color:var(--v3-line)}
 html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
 html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 #awards .shead .count,html.portfolio-v3 .al-b span{color:#777}
-html.portfolio-v3 .award-showcase{border-radius:18px;box-shadow:0 8px 28px rgba(17,17,17,.1)}
+html.portfolio-v3 .award-showcase{width:50%;justify-self:center;border-radius:18px;box-shadow:0 8px 28px rgba(17,17,17,.1)}
 html.portfolio-v3 .al-b b{font-stretch:100%;font-weight:570;text-transform:none;letter-spacing:-.01em;font-size:15px;color:#111}
 html.portfolio-v3 .award-list,html.portfolio-v3 .award-list li{border-color:var(--v3-line)}
 
@@ -732,6 +732,10 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
 @media(max-width:1200px){
   html.portfolio-v3 .profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:900px){
+  html.portfolio-v3 .award-showcase{width:min(100%,420px)}
 }
 
 @media(max-width:760px){
