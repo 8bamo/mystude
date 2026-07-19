@@ -581,6 +581,34 @@ html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:
 html.portfolio-v3 .v3-intro p{max-width:320px;font-size:19px;color:#fff;line-height:1.55}
 html.portfolio-v3 .v3-intro h2{font-size:clamp(50px,6.5vw,106px);font-weight:520;line-height:.94;letter-spacing:-.045em}
 html.portfolio-v3 .v3-intro h2 span{display:block;color:#fff}
+.profile-cards{display:none}
+html.portfolio-v3 .profile-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:18px clamp(26px,6vw,100px) clamp(90px,10vw,150px);background:#0b0c0b;color:#111}
+html.portfolio-v3 .profile-card{min-width:0;min-height:520px;border:1px solid #deded9;border-radius:14px;background:#f7f7f5;overflow:hidden}
+html.portfolio-v3 .profile-card-copy{display:flex;flex-direction:column;padding:42px}
+html.portfolio-v3 .profile-card h3{max-width:12ch;font-size:clamp(38px,4vw,66px);font-weight:520;line-height:.98;letter-spacing:-.04em;text-wrap:balance}
+html.portfolio-v3 .profile-card p{margin-top:26px;max-width:58ch;font-size:16px;line-height:1.65;color:#5c5c57;text-wrap:pretty}
+html.portfolio-v3 .profile-card-label{display:block;margin-bottom:24px;font-size:12px;font-weight:650;text-transform:uppercase;color:#70706b}
+html.portfolio-v3 .profile-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px}
+html.portfolio-v3 .profile-card-tags span{padding:7px 11px;border:1px solid #d7d7d1;border-radius:8px;font-size:12px;color:#555550}
+html.portfolio-v3 .profile-card-showreel{background:#151515;color:#fff;border-color:#272727}
+html.portfolio-v3 .profile-card-showreel h3{font-size:clamp(36px,3.5vw,58px)}
+html.portfolio-v3 .profile-card-showreel p,html.portfolio-v3 .profile-card-showreel .profile-card-label{color:#aaa}
+html.portfolio-v3 .profile-card-showreel a{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;margin-top:auto;border-radius:50%;background:#fff;color:#111;font-size:22px;text-decoration:none}
+html.portfolio-v3 .profile-card-portrait{position:relative;min-height:680px;background:#1b1b1b;color:#fff}
+html.portfolio-v3 .profile-card-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.04)}
+html.portfolio-v3 .profile-card-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 68%)}
+html.portfolio-v3 .profile-card-portrait .profile-card-overlay{position:absolute;z-index:1;right:0;bottom:0;left:0;padding:42px}
+html.portfolio-v3 .profile-card-portrait h3{max-width:14ch;font-size:clamp(42px,4.4vw,72px)}
+html.portfolio-v3 .profile-card-portrait p{max-width:48ch;color:#e2e2de}
+html.portfolio-v3 .profile-card-meet h3{max-width:none;font-size:clamp(34px,3.2vw,54px)}
+html.portfolio-v3 .profile-card-name{margin-top:4px;font-size:18px;font-weight:650;color:#111}
+html.portfolio-v3 .profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:auto;padding-top:38px}
+html.portfolio-v3 .profile-stat strong{display:block;font-size:clamp(34px,3vw,52px);font-weight:550;line-height:1;font-variant-numeric:tabular-nums}
+html.portfolio-v3 .profile-stat span{display:block;margin-top:8px;font-size:12px;line-height:1.35;color:#777772}
+html.portfolio-v3 .profile-signature{display:flex;align-items:center;gap:14px;margin-top:34px;padding-top:24px;border-top:1px solid #deded9}
+html.portfolio-v3 .profile-signature img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+html.portfolio-v3 .profile-signature strong,html.portfolio-v3 .profile-signature span{display:block}
+html.portfolio-v3 .profile-signature span{margin-top:3px;font-size:12px;color:#777772}
 
 .v3-scroll-gallery{display:none}
 html.portfolio-v3 .v3-scroll-gallery{display:block;position:relative;height:260svh;padding:0;background:#0b0c0b;color:#fff}
@@ -701,6 +729,10 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .hero-slide-status{bottom:22px}
   html.portfolio-v3 .v3-intro{grid-template-columns:1fr;gap:44px;padding:100px 22px}
   html.portfolio-v3 .v3-intro h2{font-size:clamp(48px,14vw,68px)}
+  html.portfolio-v3 .profile-cards{grid-template-columns:1fr;padding:18px 22px 90px}
+  html.portfolio-v3 .profile-card{min-height:500px}
+  html.portfolio-v3 .profile-card-copy,html.portfolio-v3 .profile-card-portrait .profile-card-overlay{padding:30px}
+  html.portfolio-v3 .profile-card-portrait{min-height:620px}
   html.portfolio-v3 section{padding:84px 18px}
   html.portfolio-v3 #work .shead h2{font-size:40px}
   html.portfolio-v3 .filters{flex-wrap:nowrap;overflow-x:auto}
@@ -782,6 +814,47 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 <section class="v3-intro" aria-label="Profile introduction">
   <p>Director, photographer and creative director for international artists, brands and cultural projects.</p>
   <h2>Content that moves.<span>Images that stay.</span></h2>
+</section>
+
+<section class="profile-cards" aria-label="Emmanuel Whajah profile">
+  <article class="profile-card profile-card-copy">
+    <span class="profile-card-label">Approach</span>
+    <h3>Authentic stories. Cinematic impact.</h3>
+    <p>Creative direction and visual storytelling shaped around people, culture and moments that matter.</p>
+    <div class="profile-card-tags" aria-label="Areas of expertise">
+      <span>Creative Direction</span><span>Film</span><span>Photography</span>
+    </div>
+  </article>
+
+  <article class="profile-card profile-card-copy profile-card-showreel">
+    <span class="profile-card-label">Showreel</span>
+    <h3>Stories in motion.</h3>
+    <p>A selection of cinematic projects across music, sports, fashion and lifestyle.</p>
+    <a href="#work" aria-label="View Emmanuel Whajah's selected work">&#8594;</a>
+  </article>
+
+  <article class="profile-card profile-card-portrait">
+    <img src="assets/img/portrait-03.webp" alt="Portrait by Emmanuel Whajah" loading="lazy">
+    <div class="profile-card-overlay">
+      <h3>Where creativity meets culture.</h3>
+      <p>Crafting cinematic visuals across music, sports, fashion and lifestyle through authentic storytelling and creative direction.</p>
+    </div>
+  </article>
+
+  <article class="profile-card profile-card-copy profile-card-meet">
+    <span class="profile-card-label">Meet Emmanuel</span>
+    <h3>Emmanuel Whajah</h3>
+    <p>Ghanaian-German Creative Director, Filmmaker and Photographer with over 18 years of experience producing premium visual content for artists, athletes and global brands.</p>
+    <p>Founder &amp; Creative Director of Play The Game GmbH and Content Creator at Rolling Stone Africa, recognized for developing cinematic campaigns, documentaries and editorial productions that connect culture, performance and storytelling.</p>
+    <div class="profile-stats" aria-label="Career statistics">
+      <div class="profile-stat"><strong>Multi</strong><span>Award-Winning</span></div>
+      <div class="profile-stat"><strong>30+</strong><span>Countries Worked In</span></div>
+    </div>
+    <div class="profile-signature">
+      <img src="assets/img/emmanuel-whajah-blackwhite.webp" alt="Emmanuel Whajah" loading="lazy">
+      <div><strong>Emmanuel Whajah</strong><span>Creative Director &bull; Filmmaker &bull; Photographer</span></div>
+    </div>
+  </article>
 </section>
 
 <section id="work">
