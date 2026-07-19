@@ -567,10 +567,15 @@ html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-4
 html.portfolio-v3 nav ul a:hover::after,html.portfolio-v3 nav ul a:focus-visible::after{opacity:1;transform:scaleX(1)}
 html.portfolio-v3 nav ul a.active{font-weight:800;opacity:1}
 html.portfolio-v3 nav .mobile-contact{display:none}
-html.portfolio-v3 .nav-contact{position:absolute;right:28px;display:flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid #ccc;border-radius:9px;font-size:16px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out}
-html.portfolio-v3 .nav-contact:hover,html.portfolio-v3 .nav-contact:focus-visible{border-color:#111}
-html.portfolio-v3 .nav-contact::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
+html.portfolio-v3 .nav-contact{position:absolute;right:28px;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid #bbb;border-radius:9px;font-size:16px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out,color 180ms ease-out}
+html.portfolio-v3 .nav-contact span{position:relative;z-index:1}
+html.portfolio-v3 .nav-contact::before{content:"";position:relative;z-index:1;width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
+html.portfolio-v3 .nav-contact::after{content:"";position:absolute;inset:0;z-index:0;background:#111;transform:scaleX(0);transform-origin:right;transition:transform 180ms ease-out}
+html.portfolio-v3 .nav-contact-arrow{font-size:18px;line-height:1;opacity:.55;transform:translate(-3px,3px);transition:transform 180ms ease-out,opacity 180ms ease-out}
+html.portfolio-v3 .nav-contact:hover,html.portfolio-v3 .nav-contact:focus-visible{border-color:#111;color:#fff}
 html.portfolio-v3 .nav-contact:hover::before,html.portfolio-v3 .nav-contact:focus-visible::before{transform:scale(1.45)}
+html.portfolio-v3 .nav-contact:hover::after,html.portfolio-v3 .nav-contact:focus-visible::after{transform:scaleX(1);transform-origin:left}
+html.portfolio-v3 .nav-contact:hover .nav-contact-arrow,html.portfolio-v3 .nav-contact:focus-visible .nav-contact-arrow{opacity:1;transform:translate(2px,-2px)}
 
 html.portfolio-v3 .hero{height:calc(100svh - 114px);min-height:620px;margin:0 10px 10px;padding:42px 50px;border-radius:42px;justify-content:flex-end;overflow:hidden;background:#202624}
 html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),transparent 58%)}
@@ -802,6 +807,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   .as-img{transition:none}
   .card.active{animation:none}
   html.portfolio-v3 nav ul a,html.portfolio-v3 nav ul a::before,html.portfolio-v3 nav ul a::after{transition:none}
+  html.portfolio-v3 .nav-contact,html.portfolio-v3 .nav-contact::before,html.portfolio-v3 .nav-contact::after,html.portfolio-v3 .nav-contact-arrow{transition:none}
   html.portfolio-v3 .client-logo-track{animation:none}
   html.portfolio-v3 .v3-typewriter::after{display:none}
 }
@@ -831,7 +837,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     <li><a href="#press" data-section="press">Press</a></li>
     <li class="mobile-contact"><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-contact" href="#contact">Contact</a>
+  <a class="nav-contact" href="#contact"><span>Contact</span><span class="nav-contact-arrow" aria-hidden="true">↗</span></a>
   <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu"><span aria-hidden="true"></span></button>
 </nav>
 
@@ -843,7 +849,6 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     </video>
   </div>
   <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
-  <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Play Emmanuel Whajah's showreel">Watch<br>Showreel</button>
 </header>
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
@@ -1325,9 +1330,6 @@ function closeLB(){lb.classList.remove('open');lbv.pause();lbv.removeAttribute('
 document.getElementById('lbx').onclick=closeLB;
 lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeLB();closePhoto()}});
-document.getElementById('hero-showreel').addEventListener('click',()=>{
-  openLB('emmanuel-whajah-showreel-preview','Emmanuel Whajah — Showreel');
-});
 function closePhoto(){lbi.classList.remove('open');document.body.style.overflow=''}
 grid.addEventListener('click',e=>{
   const photo=e.target.closest('.card.photo');if(!photo)return;
