@@ -693,14 +693,15 @@ html.portfolio-v3 #press .shead h2 .headline-accent{font-family:var(--sans);font
 html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal}
 html.portfolio-v3 .press-marquee{background:#171918}
 
-html.portfolio-v3 #about{background:#fff;color:#111;padding:10px}
-html.portfolio-v3 .about{min-height:calc(100svh - 20px);grid-template-columns:1fr 1fr;gap:0;background:#e9e9e5;border-radius:38px;overflow:hidden}
-html.portfolio-v3 .about .pic{min-height:100%;border-radius:0}
+html.portfolio-v3 #about{background:#fff;color:#111;padding:clamp(48px,7vw,110px) clamp(18px,4vw,64px)}
+html.portfolio-v3 .about{width:min(100%,1400px);height:clamp(620px,72vw,700px);max-height:700px;margin:0 auto;grid-template-columns:1fr 1fr;gap:14px;background:transparent;border-radius:0;overflow:visible}
+html.portfolio-v3 .about .pic{min-height:100%;border-radius:30px}
 html.portfolio-v3 .about .pic img{width:100%;height:100%;object-fit:cover;filter:none}
-html.portfolio-v3 .about>div:last-child{display:flex;flex-direction:column;justify-content:center;padding:clamp(44px,7vw,110px)}
-html.portfolio-v3 .about p{font-size:clamp(28px,3vw,48px);font-weight:430;line-height:1.15}
+html.portfolio-v3 .about>div:last-child{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,3.2vw,44px);background:#e9e9e5;border-radius:30px}
+html.portfolio-v3 .about p{font-size:clamp(19px,1.2vw,22px);font-weight:430;line-height:1.28}
 html.portfolio-v3 .about p em{font-family:var(--sans);font-style:normal;color:#888}
-html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(38px,4vw,66px);color:#111}
+html.portfolio-v3 .about .facts{margin-top:22px}
+html.portfolio-v3 .about .facts div b{font-family:var(--sans);font-size:clamp(30px,2.6vw,40px);line-height:1.1;color:#111}
 html.portfolio-v3 .about .facts div s{color:#666}
 html.portfolio-v3 .about-more{color:#111}
 html.portfolio-v3 .about-story p{color:#333}
@@ -739,6 +740,8 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
 @media(max-width:900px){
   html.portfolio-v3 .award-showcase{width:min(100%,420px)}
+  html.portfolio-v3 .about{grid-template-columns:1fr;height:auto;max-height:none}
+  html.portfolio-v3 .about .pic{min-height:0;aspect-ratio:16/9}
 }
 
 @media(max-width:760px){
@@ -771,10 +774,10 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   html.portfolio-v3 .card .meta .t{font-size:30px}
   html.portfolio-v3 .masonry{columns:2;column-gap:8px}
   html.portfolio-v3 .masonry a{margin-bottom:8px;border-radius:12px}
-  html.portfolio-v3 .about{grid-template-columns:1fr;min-height:0;border-radius:28px}
-  html.portfolio-v3 .about .pic{aspect-ratio:4/5}
+  html.portfolio-v3 .about{grid-template-columns:1fr;height:auto;max-height:none;gap:12px;border-radius:0}
+  html.portfolio-v3 .about .pic{min-height:0;aspect-ratio:4/5;border-radius:24px}
   html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
-  html.portfolio-v3 .about p{font-size:27px}
+  html.portfolio-v3 .about p{font-size:20px}
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
   html.portfolio-v3 .client-logo-item{height:104px;padding:24px 20px}
   html.portfolio-v3 .client-logo-item img{max-width:130px;max-height:54px}
