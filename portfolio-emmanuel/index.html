@@ -557,18 +557,20 @@ html.portfolio-v3 .gate-hint,html.portfolio-v3 .gate-note{color:#6d6d68}
 html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line)}
 html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
 
-html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:104px;padding:22px 28px;mix-blend-mode:normal;background:rgba(247,247,245,.94);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-html.portfolio-v3 nav .logo{width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat}
+html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:104px;padding:22px 28px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+html.portfolio-v3 nav .logo{position:absolute;left:50%;width:174px;height:64px;overflow:hidden;font-size:0;background:url("assets/img/logo.png") -105px -88px/384px 216px no-repeat;transform:translateX(-50%)}
 html.portfolio-v3 nav .logo::before{display:none}
 html.portfolio-v3 nav .logo em{display:none}
-html.portfolio-v3 nav ul{position:absolute;left:50%;gap:34px;align-items:center;transform:translateX(-50%)}
+html.portfolio-v3 nav ul{position:fixed;top:50%;left:28px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;transform:translateY(-50%)}
 html.portfolio-v3 nav ul a{position:relative;font-size:14px;font-weight:450;letter-spacing:0;text-transform:none;opacity:.78;transition:opacity 180ms ease-out}
-html.portfolio-v3 nav ul li:not(:last-child) a::after{content:"";position:absolute;right:0;bottom:-7px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:center;transition:transform 180ms ease-out,opacity 180ms ease-out}
-html.portfolio-v3 nav ul li:not(:last-child) a:hover::after,html.portfolio-v3 nav ul li:not(:last-child) a:focus-visible::after{opacity:1;transform:scaleX(1)}
-html.portfolio-v3 nav ul li:last-child a{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;opacity:1;transition:border-color 180ms ease-out}
-html.portfolio-v3 nav ul li:last-child a:hover,html.portfolio-v3 nav ul li:last-child a:focus-visible{border-color:#111}
-html.portfolio-v3 nav ul li:last-child a::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
-html.portfolio-v3 nav ul li:last-child a:hover::before,html.portfolio-v3 nav ul li:last-child a:focus-visible::before{transform:scale(1.45)}
+html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-4px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
+html.portfolio-v3 nav ul a:hover::after,html.portfolio-v3 nav ul a:focus-visible::after{opacity:1;transform:scaleX(1)}
+html.portfolio-v3 nav ul a.active{font-weight:750;opacity:1}
+html.portfolio-v3 nav .mobile-contact{display:none}
+html.portfolio-v3 .nav-contact{position:absolute;right:28px;display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ccc;border-radius:9px;font-size:14px;opacity:1;transition:border-color 180ms ease-out}
+html.portfolio-v3 .nav-contact:hover,html.portfolio-v3 .nav-contact:focus-visible{border-color:#111}
+html.portfolio-v3 .nav-contact::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
+html.portfolio-v3 .nav-contact:hover::before,html.portfolio-v3 .nav-contact:focus-visible::before{transform:scale(1.45)}
 
 html.portfolio-v3 .hero{height:calc(100svh - 114px);min-height:620px;margin:0 10px 10px;padding:42px 50px;border-radius:42px;justify-content:flex-end;overflow:hidden;background:#202624}
 html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),transparent 58%)}
@@ -743,11 +745,13 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   /* no backdrop-filter here: it would turn the sticky nav into the containing
      block for the fixed fullscreen menu, squashing it into the 86px bar */
   html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
-  html.portfolio-v3 nav .logo{width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px}
+  html.portfolio-v3 nav .logo{position:static;width:138px;height:54px;background-position:-84px -70px;background-size:307px 173px;transform:none}
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
   html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:var(--v3-paper);opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
   html.portfolio-v3 nav ul.open{opacity:1;visibility:visible}
   html.portfolio-v3 nav ul a{font-size:30px;color:#111;opacity:1}
+  html.portfolio-v3 nav .mobile-contact{display:list-item}
+  html.portfolio-v3 .nav-contact{display:none}
   html.portfolio-v3 .hero{height:calc(100svh - 96px);min-height:590px;margin:0 16px 10px;padding:28px 22px;border-radius:34px}
   html.portfolio-v3 .v3-headline{font-size:clamp(48px,15vw,72px);line-height:.92}
   html.portfolio-v3 .hero-showreel{right:20px!important;top:20px!important;width:92px;height:38px}
@@ -811,12 +815,13 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
 <nav>
   <a class="logo" href="#top"><em>Emmanuel&nbsp;Whajah</em></a>
-  <ul id="primary-menu">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#press">Press</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="section-nav" id="primary-menu">
+    <li><a href="#work" data-section="work">Work</a></li>
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#press" data-section="press">Press</a></li>
+    <li class="mobile-contact"><a href="#contact">Contact</a></li>
   </ul>
+  <a class="nav-contact" href="#contact">Contact</a>
   <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu"><span aria-hidden="true"></span></button>
 </nav>
 
@@ -1422,7 +1427,7 @@ if(clientLogoBar&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
 document.getElementById('y').textContent=new Date().getFullYear();
 
 /* navigation + page progress */
-const menuToggle=document.getElementById('menu-toggle'),menu=document.querySelector('nav ul');
+const menuToggle=document.getElementById('menu-toggle'),menu=document.getElementById('primary-menu');
 if(location.protocol!=='file:'){
   document.querySelectorAll('a[href^="#"]').forEach(link=>{
     link.setAttribute('href',`${location.pathname}${link.getAttribute('href')}`);
@@ -1434,6 +1439,20 @@ menuToggle.addEventListener('click',()=>{
   document.body.classList.toggle('menu-open',open);
 });
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuToggle.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}));
+const sectionNavLinks=[...document.querySelectorAll('.section-nav a[data-section]')];
+const sectionNavTargets=sectionNavLinks.map(link=>document.getElementById(link.dataset.section)).filter(Boolean);
+function updateSectionNav(){
+  const marker=scrollY+innerHeight*.42;
+  let active=sectionNavTargets[0]?.id;
+  sectionNavTargets.forEach(section=>{if(section.offsetTop<=marker)active=section.id});
+  sectionNavLinks.forEach(link=>{
+    const isActive=link.dataset.section===active;
+    link.classList.toggle('active',isActive);
+    if(isActive)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+  });
+}
+updateSectionNav();
+addEventListener('scroll',updateSectionNav,{passive:true});
 const progress=document.getElementById('progress');
 addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'},{passive:true});
 
