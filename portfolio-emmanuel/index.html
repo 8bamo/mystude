@@ -594,10 +594,15 @@ html.portfolio-v3 .profile-card p{margin-top:20px;max-width:58ch;font-size:14px;
 html.portfolio-v3 .profile-card-label{display:block;margin-bottom:20px;font-size:11px;font-weight:650;text-transform:uppercase;color:#70706b}
 html.portfolio-v3 .profile-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px}
 html.portfolio-v3 .profile-card-tags span{padding:7px 11px;border:1px solid #d7d7d1;border-radius:8px;font-size:12px;color:#555550}
+html.portfolio-v3 .profile-card-vision .profile-card-label,html.portfolio-v3 .profile-card-showreel .profile-card-label{text-transform:none}
+html.portfolio-v3 .profile-card-vision .profile-card-tags{margin-top:24px;padding-top:0}
+html.portfolio-v3 .profile-card-vision .profile-stats{margin-top:auto}
 html.portfolio-v3 .profile-card-showreel{background:#151515;color:#fff;border-color:#272727}
 html.portfolio-v3 .profile-card-showreel h3{font-size:clamp(28px,2.2vw,42px)}
 html.portfolio-v3 .profile-card-showreel p,html.portfolio-v3 .profile-card-showreel .profile-card-label{color:#aaa}
-html.portfolio-v3 .profile-card-showreel a{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;margin-top:auto;border-radius:50%;background:#fff;color:#111;font-size:22px;text-decoration:none}
+html.portfolio-v3 .profile-card-clients{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:24px;font-size:13px;color:#ddd}
+html.portfolio-v3 .profile-card-clients-label{display:block;margin-top:28px;font-size:11px;color:#aaa}
+html.portfolio-v3 .profile-card-showreel a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;margin-top:auto;border-radius:50%;background:#fff;color:#111;font-size:20px;text-decoration:none}
 html.portfolio-v3 .profile-card-portrait{position:relative;min-height:560px;background:#1b1b1b;color:#fff}
 html.portfolio-v3 .profile-card-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.04)}
 html.portfolio-v3 .profile-card-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 68%)}
@@ -827,19 +832,27 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 </section>
 
 <section class="profile-cards" aria-label="Emmanuel Whajah profile">
-  <article class="profile-card profile-card-copy">
-    <span class="profile-card-label">Approach</span>
-    <h3>Authentic stories. Cinematic impact.</h3>
-    <p>Creative direction and visual storytelling shaped around people, culture and moments that matter.</p>
+  <article class="profile-card profile-card-copy profile-card-vision">
+    <span class="profile-card-label">The Vision</span>
+    <h3>Creating stories that outlive the moment.</h3>
+    <p>Every project begins with a story. Whether working with artists, athletes or global brands, my focus is to create timeless visual experiences that inspire emotion, build culture and leave a lasting impact.</p>
     <div class="profile-card-tags" aria-label="Areas of expertise">
-      <span>Creative Direction</span><span>Film</span><span>Photography</span>
+      <span>Creative Direction</span><span>Filmmaking</span><span>Photography</span><span>Storytelling</span>
+    </div>
+    <div class="profile-stats" aria-label="Experience statistics">
+      <div class="profile-stat"><strong>18+</strong><span>Years of Experience</span></div>
+      <div class="profile-stat"><strong>100+</strong><span>International Productions</span></div>
     </div>
   </article>
 
   <article class="profile-card profile-card-copy profile-card-showreel">
-    <span class="profile-card-label">Showreel</span>
-    <h3>Stories in motion.</h3>
-    <p>A selection of cinematic projects across music, sports, fashion and lifestyle.</p>
+    <span class="profile-card-label">Featured Reel</span>
+    <h3>Visual stories in motion.</h3>
+    <p>A curated selection of films, campaigns and documentary work created for artists, athletes and international brands.</p>
+    <span class="profile-card-clients-label">Featured Clients</span>
+    <div class="profile-card-clients" aria-label="Featured clients">
+      <span>Nike</span><span>Puma</span><span>Daily Paper</span><span>Hennessy</span><span>Rolling Stone Africa</span><span>GQ</span><span>…and more.</span>
+    </div>
     <a href="#work" aria-label="View Emmanuel Whajah's selected work">&#8594;</a>
   </article>
 
