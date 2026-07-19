@@ -835,14 +835,13 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 
 <header class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <img class="hero-poster" src="assets/poster/chris-brown.jpg" alt="">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/poster/chris-brown.jpg">
-      <source src="assets/video/chris-brown-preview.mp4" type="video/mp4">
+    <img class="hero-poster" src="assets/poster/emmanuel-whajah-showreel.jpg" alt="">
+    <video muted loop playsinline preload="metadata" poster="assets/poster/emmanuel-whajah-showreel.jpg">
+      <source src="assets/video/emmanuel-whajah-showreel-preview.mp4" type="video/mp4">
     </video>
   </div>
   <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
   <button class="hero-showreel" id="hero-showreel" type="button" aria-label="Play Emmanuel Whajah's showreel">Watch<br>Showreel</button>
-  <span class="hero-slide-status" id="hero-slide-status" aria-hidden="true">01 / 04</span>
 </header>
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
@@ -1321,23 +1320,18 @@ document.getElementById('lbx').onclick=closeLB;
 lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeLB();lbi.classList.remove('open')}});
 document.getElementById('hero-showreel').addEventListener('click',()=>{
-  openLB('emmanuel-whajah-showreel','Emmanuel Whajah — Showreel');
+  openLB('emmanuel-whajah-showreel-preview','Emmanuel Whajah — Showreel');
 });
 
-/* hero reel — pauses when the first viewport is out of view */
-const heroProjects=['85-racing','nike','cupra-miss-germany','people-of-deutschland'];
+/* Black-and-white showreel in the hero — plays only while visible */
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
-const heroSource=heroVideo.querySelector('source');
-const heroSlideStatus=document.getElementById('hero-slide-status');
-let heroProjectIndex=0;
-{
-  const firstHero=heroProjects[0];
-  heroMedia.querySelector('.hero-poster').src=`assets/poster/${firstHero}.jpg`;
-  heroVideo.poster=`assets/poster/${firstHero}.jpg`;
-  heroSource.src=`assets/video/${firstHero}-preview.mp4`;
-  heroVideo.load();heroVideo.play().catch(()=>{});
-  heroSlideStatus.style.setProperty('--hero-index','1');
+const heroReduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!heroReduceMotion){
+  const heroVideoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting)heroVideo.play().catch(()=>{});else heroVideo.pause();
+  }),{threshold:.15});
+  heroVideoObserver.observe(document.querySelector('.hero'));
 }
 {
   const words=['Vision.','Energy.','Motion.','Culture.'];
@@ -1398,22 +1392,6 @@ let heroProjectIndex=0;
     slideIndex=nearest.index;slideCurrent.textContent=String(slideIndex+1).padStart(2,'0');
   },{passive:true});
 }
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  setInterval(()=>{
-    if(document.hidden||scrollY>innerHeight)return;
-    heroProjectIndex=(heroProjectIndex+1)%heroProjects.length;
-    heroMedia.classList.add('changing');
-    setTimeout(()=>{
-      heroSource.src=`assets/video/${heroProjects[heroProjectIndex]}-preview.mp4`;
-      heroVideo.load();
-      heroVideo.play().catch(()=>{});
-      heroSlideStatus.textContent=`${String(heroProjectIndex+1).padStart(2,'0')} / ${String(heroProjects.length).padStart(2,'0')}`;
-      heroSlideStatus.style.setProperty('--hero-index',String(heroProjectIndex+1));
-      heroMedia.classList.remove('changing');
-    },300);
-  },6500);
-}
-
 /* photo masonry */
 const order=[7,9,1,3,8,4,2,5,6];
 document.getElementById('masonry').innerHTML=order.map(i=>{
