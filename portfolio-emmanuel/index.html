@@ -827,6 +827,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .v3-scroll-tile{width:48vw;height:34vh;border-radius:14px}
   html.portfolio-v3 .v3-scroll-tile.wide{width:68vw;height:24vh}
   html.portfolio-v3 .v3-scroll-tile.tall{width:43vw;height:42vh}
+  html.portfolio-v3 main>section:not(.v3-scroll-gallery){content-visibility:auto;contain-intrinsic-size:auto 900px}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -888,9 +889,9 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 <main id="main-content">
 <header class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <img class="hero-poster" src="assets/poster/emmanuel-whajah-showreel.jpg" alt="">
-    <video muted loop playsinline preload="metadata" poster="assets/poster/emmanuel-whajah-showreel.jpg">
-      <source src="assets/video/emmanuel-whajah-showreel-preview.mp4" type="video/mp4">
+    <img class="hero-poster" src="assets/poster/emmanuel-whajah-showreel.jpg" alt="" fetchpriority="high">
+    <video muted loop playsinline preload="none" poster="assets/poster/emmanuel-whajah-showreel.jpg">
+      <source data-src="assets/video/emmanuel-whajah-showreel-preview.mp4" type="video/mp4">
     </video>
   </div>
   <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
@@ -1399,7 +1400,11 @@ lbi.addEventListener('click',closePhoto);
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
 const heroReduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!heroReduceMotion){
+const heroCanPlay=matchMedia('(min-width: 761px)').matches&&!navigator.connection?.saveData;
+if(!heroReduceMotion&&heroCanPlay){
+  const heroSource=heroVideo.querySelector('source[data-src]');
+  heroSource.src=heroSource.dataset.src;
+  heroVideo.load();
   const heroVideoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(entry.isIntersecting)heroVideo.play().catch(()=>{});else heroVideo.pause();
   }),{threshold:.15});
