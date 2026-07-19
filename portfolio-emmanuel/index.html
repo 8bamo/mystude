@@ -853,7 +853,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
   <div class="v3-scroll-stage">
-    <div class="v3-scroll-copy"><h2 aria-label="Moments become stories, become pictures, become memories, become art.">Moments<span class="v3-typewriter" id="v3-typewriter" aria-hidden="true">become stories</span></h2></div>
+    <div class="v3-scroll-copy"><h2 aria-label="Moments become stories. Become pictures. Become memories. Become art.">Moments<span class="v3-typewriter" id="v3-typewriter" aria-hidden="true">become stories.</span></h2></div>
     <div class="v3-scroll-row one" id="v3-scroll-row-one"></div>
     <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
   </div>
@@ -1358,7 +1358,7 @@ if(!heroReduceMotion){
   const rowOne=document.getElementById('v3-scroll-row-one');
   const rowTwo=document.getElementById('v3-scroll-row-two');
   const typewriter=document.getElementById('v3-typewriter');
-  const typewriterPhrases=['become stories','become pictures','become memories','become art'];
+  const typewriterPhrases=['become stories.','become pictures.','become memories.','become art.'];
   const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let typewriterPhrase=0,typewriterLength=typewriterPhrases[0].length,typewriterDeleting=true,typewriterRunning=false,typewriterTimer;
   const typewriterStep=()=>{
