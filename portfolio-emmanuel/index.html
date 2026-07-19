@@ -733,6 +733,10 @@ html.portfolio-v3 footer .big a:hover{color:#aaa}
 html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big),
 html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big) :is(em,i){font-family:var(--sans)!important;font-style:normal!important}
 html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!important;font:inherit!important;letter-spacing:inherit!important;text-transform:inherit!important;-webkit-text-stroke:inherit!important}
+html.portfolio-v3 .v3-scroll-copy h2 .v3-typewriter{display:block!important;min-height:1.05em;font-size:.82em!important;line-height:1.05!important;white-space:nowrap}
+html.portfolio-v3 .v3-typewriter::after{content:"";display:inline-block;width:.055em;height:.8em;margin-left:.08em;background:currentColor;opacity:1;transform:translateY(.06em);animation:v3-typewriter-caret 900ms steps(1,end) infinite;animation-play-state:paused}
+html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:running}
+@keyframes v3-typewriter-caret{50%{opacity:0}}
 
 @media(max-width:1200px){
   html.portfolio-v3 .profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -797,6 +801,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
   .card.active{animation:none}
   html.portfolio-v3 nav ul a,html.portfolio-v3 nav ul a::before,html.portfolio-v3 nav ul a::after{transition:none}
   html.portfolio-v3 .client-logo-track{animation:none}
+  html.portfolio-v3 .v3-typewriter::after{display:none}
 }
 </style>
 </head>
@@ -842,7 +847,7 @@ html.portfolio-v3 :is(h1,h2)>span{display:inline!important;color:inherit!importa
 
 <section class="v3-scroll-gallery" id="v3-scroll-gallery" aria-label="Selected work in motion">
   <div class="v3-scroll-stage">
-    <div class="v3-scroll-copy"><span>Selected motion</span><h2>Moments become<span class="headline-accent">stories.</span></h2></div>
+    <div class="v3-scroll-copy"><span>Selected motion</span><h2 aria-label="Moments become stories, become pictures, become memories, become art.">Moments<span class="v3-typewriter" id="v3-typewriter" aria-hidden="true">become stories</span></h2></div>
     <div class="v3-scroll-row one" id="v3-scroll-row-one"></div>
     <div class="v3-scroll-row two" id="v3-scroll-row-two"></div>
   </div>
@@ -1343,6 +1348,29 @@ let heroProjectIndex=0;
   const gallery=document.getElementById('v3-scroll-gallery');
   const rowOne=document.getElementById('v3-scroll-row-one');
   const rowTwo=document.getElementById('v3-scroll-row-two');
+  const typewriter=document.getElementById('v3-typewriter');
+  const typewriterPhrases=['become stories','become pictures','become memories','become art'];
+  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let typewriterPhrase=0,typewriterLength=typewriterPhrases[0].length,typewriterDeleting=true,typewriterRunning=false,typewriterTimer;
+  const typewriterStep=()=>{
+    if(!typewriterRunning)return;
+    const phrase=typewriterPhrases[typewriterPhrase];
+    typewriterLength+=typewriterDeleting?-1:1;
+    typewriter.textContent=phrase.slice(0,typewriterLength);
+    let delay=typewriterDeleting?42:72;
+    if(!typewriterDeleting&&typewriterLength===phrase.length){typewriterDeleting=true;delay=1200}
+    else if(typewriterDeleting&&typewriterLength===0){typewriterDeleting=false;typewriterPhrase=(typewriterPhrase+1)%typewriterPhrases.length;delay=260}
+    typewriterTimer=setTimeout(typewriterStep,delay);
+  };
+  if(!reduceMotion){
+    const typewriterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      typewriterRunning=entry.isIntersecting;
+      typewriter.classList.toggle('typing-active',typewriterRunning);
+      clearTimeout(typewriterTimer);
+      if(typewriterRunning)typewriterTimer=setTimeout(typewriterStep,500);
+    }),{threshold:.2});
+    typewriterObserver.observe(gallery);
+  }
   const galleryProjects=['lauryn-hill','nike','people-of-deutschland','cupra-miss-germany','hennessy-nas','nba-allstar','chris-brown','miss-germany','les-twins-frankfurt','85-racing','asake','jason-derulo'];
   const tileMarkup=(slug,index)=>`<figure class="v3-scroll-tile ${index%4===1?'wide':index%4===3?'tall':''}"><img src="assets/poster/${slug}.jpg" alt="${VIDEOS.find(v=>v.s===slug)?.t||'Project by Emmanuel Whajah'}" loading="lazy"></figure>`;
   rowOne.innerHTML=galleryProjects.slice(0,6).map(tileMarkup).join('');
