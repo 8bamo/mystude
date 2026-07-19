@@ -464,13 +464,13 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 
 /* extended bio, lists & signature quote (About.pdf) */
 .about-more{padding:clamp(72px,10vw,150px) clamp(20px,3vw,48px);display:flex;flex-direction:column;gap:clamp(52px,7vw,100px)}
-.about-story{columns:2;column-gap:clamp(32px,5vw,80px);max-width:1240px}
+.about-story{width:min(100%,1240px);margin-inline:auto;columns:2;column-gap:clamp(32px,5vw,80px)}
 .about-story p{break-inside:avoid;margin-bottom:1.2em;font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:rgba(243,239,231,.82)}
-.about-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px);max-width:1240px}
+.about-columns{display:grid;width:min(100%,1240px);margin-inline:auto;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px)}
 .about-columns h3{margin-bottom:18px;font-size:13px;font-weight:650;letter-spacing:.24em;text-transform:uppercase;color:var(--editorial-red)}
 .about-columns ul{list-style:none}
 .about-columns li{padding:11px 0;border-top:1px solid rgba(255,255,255,.14);font-size:17px;line-height:1.45;color:#f3efe7}
-.about-quote{max-width:1240px;border:0;padding:0}
+.about-quote{width:min(100%,1240px);margin-inline:auto;border:0;padding:0}
 .about-quote p{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4.2vw,60px);line-height:1.2;color:#f3efe7;text-wrap:balance}
 .about-quote cite{display:block;margin-top:22px;font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--editorial-muted)}
 
