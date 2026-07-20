@@ -626,7 +626,7 @@ html.portfolio-v3 .profile-card{min-width:0;min-height:560px;border:1px solid #d
 html.portfolio-v3 .profile-card-copy{display:flex;flex-direction:column;padding:28px}
 html.portfolio-v3 .profile-card h3{max-width:12ch;font-size:clamp(28px,2.2vw,42px);font-weight:520;line-height:1;letter-spacing:-.04em;text-wrap:balance}
 html.portfolio-v3 .profile-card p{margin-top:20px;max-width:58ch;font-size:18px;line-height:1.55;color:#000;text-wrap:pretty}
-html.portfolio-v3 .profile-card-label{display:block;margin-bottom:20px;font-size:11px;font-weight:650;text-transform:uppercase;color:#000}
+html.portfolio-v3 .profile-card-label{display:block;margin-bottom:20px;font-size:11px;font-weight:650;text-transform:uppercase!important;color:#000}
 html.portfolio-v3 .profile-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px}
 html.portfolio-v3 .profile-card-tags span{padding:7px 11px;border:1px solid #d7d7d1;border-radius:8px;font-size:12px;color:#000}
 html.portfolio-v3 .profile-card-vision .profile-card-label,html.portfolio-v3 .profile-card-showreel .profile-card-label{text-transform:none}
@@ -675,7 +675,7 @@ html.portfolio-v3 .v3-scroll-tile:hover img{filter:saturate(1)}
 html.portfolio-v3 section{padding:clamp(90px,10vw,160px) clamp(26px,4vw,64px)}
 html.portfolio-v3 #work{background:#fff;color:var(--v3-ink);overflow:hidden}
 html.portfolio-v3 #work .shead{margin-bottom:42px;padding:0;border:0;align-items:end}
-html.portfolio-v3 #work .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:none}
+html.portfolio-v3 #work .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;line-height:1;letter-spacing:-.035em;text-transform:uppercase}
 html.portfolio-v3 #work .shead h2::before{content:"Latest";display:block;margin-bottom:18px;font-size:18px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#777}
 html.portfolio-v3 #work .shead h2 .headline-accent{font-family:var(--sans);font-size:1em;font-style:normal;font-weight:inherit;color:inherit;text-transform:none}
 html.portfolio-v3 #work .shead .count{font-family:var(--sans);font-size:18px;font-style:normal;color:#777}
@@ -706,7 +706,7 @@ html.portfolio-v3 .slider-count .current{font-family:inherit;font-size:inherit;f
 
 html.portfolio-v3 #fotografie{background:#171918;color:#fff;border:0}
 html.portfolio-v3 #fotografie .shead{border:0;margin-bottom:50px}
-html.portfolio-v3 #fotografie .shead h2{font-size:clamp(54px,8vw,128px);font-weight:480;font-stretch:100%;letter-spacing:-.05em;text-transform:none}
+html.portfolio-v3 #fotografie .shead h2{font-size:clamp(54px,8vw,128px);font-weight:480;font-stretch:100%;letter-spacing:-.05em;text-transform:uppercase}
 html.portfolio-v3 #fotografie .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
 html.portfolio-v3 #fotografie .shead .count{color:#b8b8b8;font-family:var(--sans);font-style:normal}
 html.portfolio-v3 .masonry{columns:3;column-gap:14px}
@@ -715,7 +715,7 @@ html.portfolio-v3 .masonry img{filter:saturate(.7)}
 
 html.portfolio-v3 #awards{background:var(--v3-paper);color:var(--v3-ink)}
 html.portfolio-v3 #awards .shead{width:min(100%,1400px);margin-inline:auto;border-color:var(--v3-line)}
-html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
+html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:uppercase}
 html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 #awards .shead .count,html.portfolio-v3 .al-b span{color:#595959}
 html.portfolio-v3 .award-split{width:min(100%,1400px);margin-inline:auto;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:clamp(48px,7vw,110px);align-items:start}
@@ -734,9 +734,9 @@ html.portfolio-v3 .award-showcase{position:relative;top:auto;width:100%;max-widt
 html.portfolio-v3 .as-img{transition:opacity 180ms ease-out}
 
 html.portfolio-v3 #press{background:#171918}
-html.portfolio-v3 #press .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:none}
+html.portfolio-v3 #press .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:uppercase}
 html.portfolio-v3 #press .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#777;text-transform:none}
-html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal}
+html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal;text-transform:uppercase}
 html.portfolio-v3 .press-marquee{background:#171918}
 
 html.portfolio-v3 #about{background:#fff;color:#111;padding:clamp(48px,7vw,110px) clamp(18px,4vw,64px)}
@@ -842,6 +842,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .v3-scroll-tile.wide{width:68vw;height:24vh}
   html.portfolio-v3 .v3-scroll-tile.tall{width:43vw;height:42vh}
   html.portfolio-v3 main>section:not(.v3-scroll-gallery){content-visibility:auto;contain-intrinsic-size:auto 900px}
+  html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,footer .big,.about-quote p){line-height:1.1!important}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -920,7 +921,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 </section>
 
 <section class="v3-intro" aria-label="Profile introduction">
-  <p>Director, photographer and creative director for international artists, brands and cultural projects.</p>
+  <p>Award-winning Creative Director, Film Director and Photographer shaping visual narratives for global brands, world-class athletes and internationally acclaimed artists.</p>
   <h2>Content that moves.<span>Images that stay.</span></h2>
 </section>
 
@@ -1010,6 +1011,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
         <div><b>18+</b><s>Years Experience</s></div>
         <div><b>30+</b><s>Countries</s></div>
         <div><b>∞</b><s>Goosebumps</s></div>
+        <div><b>50+</b><s>Global Projects</s></div>
       </div>
     </div>
   </div>
@@ -1051,13 +1053,10 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
         <ul>
           <li>Creative Direction</li>
           <li>Film Direction</li>
-          <li>Documentary Filmmaking</li>
           <li>Commercial Production</li>
-          <li>Photography &amp; Editorial Photography</li>
           <li>Sports Storytelling</li>
-          <li>Music Visuals</li>
           <li>Brand Campaign Development</li>
-          <li>Creative Strategy &amp; Art Direction</li>
+          <li>Photography</li>
           <li>Visual Storytelling</li>
         </ul>
       </div>
@@ -1103,7 +1102,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
       <li data-award="emerging-brands"><span class="al-y">2025</span><span class="al-b"><b>Emerging Brands in Africa Awards</b><span>Visual Storyteller of the Year</span></span></li>
       <li data-award="forbes"><span class="al-y">2023</span><span class="al-b"><b>Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span></li>
       <li><span class="al-y">2023</span><span class="al-b"><b>Hipe Awards</b><span>Best Success Story of the Year</span></span></li>
-      <li><span class="al-y">2022</span><span class="al-b"><b>Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span></li>
+      <li><span class="al-y">2022</span><span class="al-b"><b>Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game) · Empire</span></span></li>
       <li data-award="gold"><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span></li>
       <li data-award="hipe2021"><span class="al-y">2021</span><span class="al-b"><b>Hipe Awards</b><span>Best Service Industry Media</span></span></li>
       <li data-award="boss-pt2"><span class="al-y">2021</span><span class="al-b"><b>Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span></li>
@@ -1152,7 +1151,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 
 <section id="contact">
   <div class="booking-head reveal">
-    <h2>Start the <span class="headline-accent">conversation.</span></h2>
+    <h2>Start the <span class="headline-accent">Conversation.</span></h2>
     <p class="booking-intro">Tell us a bit about what you have in mind. The more concrete the brief, the faster Emmanuel can assess availability and next steps.</p>
   </div>
   <form class="booking-form reveal" action="/wp-admin/admin-post.php" method="post" id="booking-form">
