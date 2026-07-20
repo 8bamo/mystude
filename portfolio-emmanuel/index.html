@@ -478,6 +478,11 @@ section{padding:clamp(88px,12vw,180px) clamp(20px,3vw,48px)}
 .press-marquee img{height:clamp(81px,10vw,127px);width:auto;max-width:340px;object-fit:contain;opacity:.85;transition:opacity .3s ease,transform .3s ease}
 .press-marquee a:hover img{opacity:1;transform:scale(1.08)}
 @keyframes pmq{to{transform:translateX(-50%)}}
+.press-covers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.press-covers figure{margin:0;overflow:hidden;border-radius:4px;aspect-ratio:3/4;background:var(--bg2)}
+.press-covers img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s ease;filter:saturate(.92)}
+.press-covers figure:hover img{transform:scale(1.04)}
+@media(max-width:760px){.press-covers{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:30px}}
 
 #about{padding:0;background:var(--editorial-dark)}
 .about{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;min-height:100svh;align-items:stretch}
@@ -637,7 +642,7 @@ html.portfolio-v3 .profile-card-showreel h3{font-size:clamp(28px,2.2vw,42px)}
 html.portfolio-v3 .profile-card-showreel p,html.portfolio-v3 .profile-card-showreel .profile-card-label{color:#fff}
 html.portfolio-v3 .profile-card-clients{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:24px;font-size:13px;color:#fff}
 html.portfolio-v3 .profile-card-clients-label{display:block;margin-top:28px;font-size:11px;color:#fff}
-html.portfolio-v3 .profile-card-showreel a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;margin-top:auto;border-radius:50%;background:#fff;color:#111;font-size:20px;text-decoration:none}
+html.portfolio-v3 .profile-card-showreel a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;margin-top:32px;border-radius:50%;background:#fff;color:#111;font-size:20px;text-decoration:none}
 html.portfolio-v3 .profile-card-portrait{position:relative;min-height:560px;background:#1b1b1b;color:#fff}
 html.portfolio-v3 .profile-card-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.04)}
 html.portfolio-v3 .profile-card-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent 68%)}
@@ -739,6 +744,9 @@ html.portfolio-v3 #press .shead h2{font-size:clamp(48px,6vw,96px);font-weight:48
 html.portfolio-v3 #press .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#777;text-transform:none}
 html.portfolio-v3 #press .shead .count{font-family:var(--sans);font-style:normal;text-transform:uppercase}
 html.portfolio-v3 .press-marquee{background:#171918}
+html.portfolio-v3 .press-covers{width:min(100%,1400px);margin:50px auto 0;gap:16px}
+html.portfolio-v3 .press-covers figure{border-radius:18px;background:#111}
+html.portfolio-v3 .press-covers img{filter:saturate(.85)}
 
 html.portfolio-v3 #about{background:#fff;color:#111;padding:clamp(48px,7vw,110px) clamp(18px,4vw,64px)}
 html.portfolio-v3 .about{width:min(100%,1400px);height:clamp(620px,72vw,700px);max-height:700px;margin:0 auto;grid-template-columns:1fr 1fr;gap:14px;background:transparent;border-radius:0;overflow:visible}
@@ -753,10 +761,10 @@ html.portfolio-v3 .about .facts div s{color:#666}
 html.portfolio-v3 .about-more{color:#111}
 html.portfolio-v3 .about-story p{color:#333}
 html.portfolio-v3 .client-logo-bar{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;background:#111}
-html.portfolio-v3 .client-logo-track{display:flex;align-items:center;width:max-content;animation:client-logo-marquee 34s linear infinite;animation-play-state:paused}
+html.portfolio-v3 .client-logo-track{display:flex;align-items:center;width:max-content;animation:client-logo-marquee 120s linear infinite;animation-play-state:paused}
 html.portfolio-v3 .client-logo-bar.is-visible .client-logo-track{animation-play-state:running}
-html.portfolio-v3 .client-logo-group{display:flex;flex:0 0 max(100vw,1020px)}
-html.portfolio-v3 .client-logo-item{flex:1 1 0;display:flex;align-items:center;justify-content:center;height:126px;padding:28px 26px}
+html.portfolio-v3 .client-logo-group{display:flex;flex:0 0 auto}
+html.portfolio-v3 .client-logo-item{flex:0 0 auto;display:flex;align-items:center;justify-content:center;height:126px;padding:28px 26px}
 html.portfolio-v3 .client-logo-item img{display:block;width:auto;height:auto;max-width:168px;max-height:64px;object-fit:contain}
 @keyframes client-logo-marquee{to{transform:translateX(-50%)}}
 html.portfolio-v3 .about-columns h3{color:#595959}
@@ -829,6 +837,8 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .card .meta .t{font-size:30px}
   html.portfolio-v3 .masonry{columns:2;column-gap:8px}
   html.portfolio-v3 .masonry a{margin-bottom:8px;border-radius:12px}
+  html.portfolio-v3 .press-covers{gap:8px;margin-top:34px}
+  html.portfolio-v3 .press-covers figure{border-radius:10px}
   html.portfolio-v3 .about{grid-template-columns:1fr;height:auto;max-height:none;gap:12px;border-radius:0}
   html.portfolio-v3 .about .pic{min-height:0;aspect-ratio:4/5;border-radius:24px}
   html.portfolio-v3 .about>div:last-child{padding:54px 24px 70px}
@@ -1032,20 +1042,54 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     <div class="client-logo-bar reveal" aria-label="Selected clients">
       <div class="client-logo-track">
         <div class="client-logo-group">
-          <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt="Nike"></div>
-          <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt="Puma"></div>
-          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt="Daily Paper"></div>
-          <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt="Hennessy"></div>
-          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt="Rolling Stone Africa"></div>
-          <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt="GQ"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/nike.webp" alt="Nike"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.webp" alt="Rolling Stone Africa"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hennessy.webp" alt="Hennessy"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/les-twins.webp" alt="Les Twins"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.webp" alt="Daily Paper"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/jorja-smith.webp" alt="Jorja Smith"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/puma.webp" alt="Puma"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/keke-palmer.webp" alt="Keke Palmer"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/universal-music-group.webp" alt="Universal Music Group"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rita-ora.webp" alt="Rita Ora"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/nba.webp" alt="NBA"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/live-nation.webp" alt="Live Nation"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/tezenis.webp" alt="Tezenis"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/ty-dolla-sign.webp" alt="Ty Dolla $ign"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/highsnobiety.webp" alt="Highsnobiety"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/ella-mai.webp" alt="Ella Mai"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/snipes.webp" alt="Snipes"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/eric-bellinger.webp" alt="Eric Bellinger"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/intimissimi.webp" alt="Intimissimi"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/miss-germany-awards.webp" alt="Miss Germany Awards 2026"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/streetlife-international.webp" alt="Streetlife International"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/millennium-dance-complex.webp" alt="Millennium Dance Complex Germany"></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hype-fest.webp" alt="Hype Fest"></div>
         </div>
         <div class="client-logo-group" aria-hidden="true">
-          <div class="client-logo-item"><img src="assets/img/clients/nike.png" alt=""></div>
-          <div class="client-logo-item"><img src="assets/img/clients/puma.png" alt=""></div>
-          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.png" alt=""></div>
-          <div class="client-logo-item"><img src="assets/img/clients/hennessy.png" alt=""></div>
-          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.png" alt=""></div>
-          <div class="client-logo-item"><img src="assets/img/clients/gq.png" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/nike.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rolling-stone-africa.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hennessy.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/les-twins.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/daily-paper.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/jorja-smith.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/puma.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/keke-palmer.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/universal-music-group.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/rita-ora.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/nba.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/live-nation.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/tezenis.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/ty-dolla-sign.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/highsnobiety.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/ella-mai.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/snipes.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/eric-bellinger.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/intimissimi.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/miss-germany-awards.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/streetlife-international.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/millennium-dance-complex.webp" alt=""></div>
+          <div class="client-logo-item"><img src="assets/img/clients/hype-fest.webp" alt=""></div>
         </div>
       </div>
     </div>
@@ -1105,7 +1149,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
       <li data-award="emerging-brands"><span class="al-y">2025</span><span class="al-b"><b>Emerging Brands in Africa Awards</b><span>Visual Storyteller of the Year</span></span></li>
       <li data-award="forbes"><span class="al-y">2023</span><span class="al-b"><b>Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span></li>
       <li><span class="al-y">2023</span><span class="al-b"><b>Hipe Awards</b><span>Best Success Story of the Year</span></span></li>
-      <li><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span></li>
+      <li data-award="blazin"><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span></li>
       <li data-award="gold"><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span></li>
       <li data-award="hipe2021"><span class="al-y">2021</span><span class="al-b"><b>Hipe Awards</b><span>Best Service Industry Media</span></span></li>
       <li data-award="boss-pt2"><span class="al-y">2021</span><span class="al-b"><b>Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span></li>
@@ -1124,6 +1168,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
         <img class="as-img" src="assets/img/awards/little-simz-tour.webp" alt="Framed tour plaque, Little Simz Poison Ivy Tour, sold out" data-award="little-simz" loading="lazy">
         <img class="as-img" src="assets/img/awards/tory-lanez-tour.webp" alt="Framed tour plaque, Tory Lanez Memories Don't Die Tour" data-award="tory-lanez" loading="lazy">
         <img class="as-img" src="assets/img/awards/eric-bellinger-gold.webp" alt="Certified gold record plaque for Eric Bellinger, presented to Emmanuel Whajah" data-award="gold" loading="lazy">
+        <img class="as-img" src="assets/img/awards/eric-bellinger-blazin.webp" alt="Empire award for Eric Bellinger, Best Video Director, Blazin Wit The Bros, presented to Emmanuel Whajah" data-award="blazin" loading="lazy">
       </div>
     </div>
   </div>
@@ -1149,6 +1194,11 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
       <span><img src="assets/img/press/curl.png" alt="Curl" loading="lazy"></span>
       <span><img src="assets/img/press/inthewritersmind.png" alt="InTheWritersMind" loading="lazy"></span>
     </div>
+  </div>
+  <div class="press-covers reveal" aria-label="Featured press coverage">
+    <figure><img src="assets/img/press/covers/gq-south-africa.webp" alt="GQ South Africa cover feature: Emmanuel Whajah chats about representing Africa to the world" loading="lazy"></figure>
+    <figure><img src="assets/img/press/covers/rolling-stone-africa-kofi-kyereh.webp" alt="Rolling Stone Africa feature on Kofi Kyereh, co-founder of Play The Game GmbH with Emmanuel Whajah" loading="lazy"></figure>
+    <figure><img src="assets/img/press/covers/rolling-stone-kojo-daily-paper.webp" alt="Rolling Stone feature: Kojo Kingsley Schindler teams up with Daily Paper" loading="lazy"></figure>
   </div>
 </section>
 
@@ -1451,10 +1501,22 @@ if(!heroReduceMotion&&heroCanPlay){
     }),{threshold:.2});
     typewriterObserver.observe(gallery);
   }
-  const galleryProjects=['lauryn-hill','nike','people-of-deutschland','cupra-miss-germany','hennessy-nas','nba-allstar','chris-brown','miss-germany','les-twins-frankfurt','85-racing','asake','jason-derulo'];
-  const tileMarkup=(slug,index)=>`<figure class="v3-scroll-tile ${index%4===1?'wide':index%4===3?'tall':''}"><img src="assets/poster/${slug}.jpg" alt="${VIDEOS.find(v=>v.s===slug)?.t||'Project by Emmanuel Whajah'}" loading="lazy"></figure>`;
-  rowOne.innerHTML=galleryProjects.slice(0,6).map(tileMarkup).join('');
-  rowTwo.innerHTML=galleryProjects.slice(6).map((slug,index)=>tileMarkup(slug,index+2)).join('');
+  const galleryMoments=[
+    {s:'daily-paper',t:'Daily Paper',cls:'tall'},
+    {s:'burna-boy',t:'Burna Boy',cls:'wide'},
+    {s:'migos',t:'Migos',cls:'tall'},
+    {s:'les-twins',t:'Les Twins',cls:'wide'},
+    {s:'asake',t:'Asake',cls:'tall'},
+    {s:'eightyfive-clothing',t:'Eightyfive Clothing',cls:'wide'},
+    {s:'chris-brown',t:'Chris Brown',cls:'tall'},
+    {s:'eightyfive-clothing-2',t:'Eightyfive Clothing',cls:'wide'},
+    {s:'miss-germany',t:'Miss Germany',cls:'tall'},
+    {s:'nas',t:'Nas',cls:'tall'},
+    {s:'jason-derulo',t:'Jason Derulo',cls:'tall'}
+  ];
+  const tileMarkup=item=>`<figure class="v3-scroll-tile ${item.cls}"><img src="assets/img/moments/${item.s}.webp" alt="${item.t} — moment by Emmanuel Whajah" loading="lazy"></figure>`;
+  rowOne.innerHTML=galleryMoments.slice(0,6).map(tileMarkup).join('');
+  rowTwo.innerHTML=galleryMoments.slice(6).map(tileMarkup).join('');
   let galleryTicking=false;
   const updateGallery=()=>{
     const rect=gallery.getBoundingClientRect();
