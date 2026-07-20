@@ -246,7 +246,7 @@ section{padding:clamp(64px,10vh,130px) clamp(20px,4vw,56px)}
 /* ---------- booking ---------- */
 #contact{background:var(--bg2);border-top:1px solid var(--line)}
 .booking-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.55fr);gap:clamp(32px,7vw,110px);align-items:end;margin-bottom:clamp(40px,7vw,80px)}
-.booking-head h2{font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(48px,8vw,116px);line-height:.88;letter-spacing:-.015em}
+.booking-head h2{min-width:0;overflow-wrap:break-word;font-weight:800;font-stretch:72%;text-transform:uppercase;font-size:clamp(48px,8vw,116px);line-height:.88;letter-spacing:-.015em}
 .booking-head h2 .headline-accent{display:block;font-family:var(--serif);font-size:.72em;font-weight:400;font-style:italic;text-transform:none;color:var(--gold2);letter-spacing:0}
 .booking-intro{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);line-height:1.35;color:var(--mut)}
 .booking-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(20px,4vw,56px);row-gap:26px}
@@ -773,7 +773,7 @@ html.portfolio-v3 .about-quote p{font-family:var(--sans);font-style:normal;font-
 html.portfolio-v3 .about-quote cite{color:#595959}
 
 html.portfolio-v3 #contact{background:#1b1d1c;color:#fff;border:0}
-html.portfolio-v3 .booking-head h2{font-size:clamp(64px,9vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
+html.portfolio-v3 .booking-head h2{font-size:clamp(64px,7vw,144px);font-weight:500;font-stretch:100%;line-height:.8;letter-spacing:-.05em;text-transform:none}
 html.portfolio-v3 .booking-head h2 .headline-accent{font-family:"Sequel 100 Black",var(--sans);font-style:normal;font-weight:inherit;color:#777;text-transform:none}
 html.portfolio-v3 .booking-intro{font-family:var(--sans);font-size:18px}
 html.portfolio-v3 .field input,html.portfolio-v3 .field select,html.portfolio-v3 .field textarea{color:#fff;border-color:#555}
@@ -796,6 +796,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 
 @media(max-width:1200px){
   html.portfolio-v3 .profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html.portfolio-v3 .booking-head{grid-template-columns:1fr;gap:24px;align-items:start}
 }
 
 @media(max-width:900px){
@@ -846,7 +847,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .about .facts div s,html.portfolio-v3 .booking-intro,html.portfolio-v3 .field label,html.portfolio-v3 .privacy{font-size:16px}
   html.portfolio-v3 .client-logo-item{height:104px;padding:24px 20px}
   html.portfolio-v3 .client-logo-item img{max-width:130px;max-height:54px}
-  html.portfolio-v3 .booking-head h2{font-size:clamp(36px,12vw,72px)}
+  html.portfolio-v3 .booking-head h2{font-size:clamp(36px,11.2vw,72px)}
   html.portfolio-v3 footer .big{font-size:clamp(18px,6.2vw,30px);white-space:nowrap;overflow-wrap:normal}
   html.portfolio-v3 .v3-scroll-gallery{height:220svh}
   html.portfolio-v3 .v3-scroll-copy{width:96vw}
