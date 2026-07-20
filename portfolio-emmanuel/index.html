@@ -611,7 +611,7 @@ html.portfolio-v3 .hero-media::after{background:linear-gradient(0deg,rgba(5,8,7,
 html.portfolio-v3 .hero-poster{opacity:.96;filter:saturate(.72);object-position:center}
 html.portfolio-v3 .hero-media video{opacity:.88;filter:saturate(.72) contrast(1.02);object-position:center}
 html.portfolio-v3 .v3-headline{display:block;max-width:980px;margin:0;font-size:clamp(64px,7.2vw,126px);font-weight:620;font-stretch:100%;line-height:.88;letter-spacing:-.055em;text-transform:none;color:#fff}
-html.portfolio-v3 .v3-headline .v3-word{display:block;color:rgba(255,255,255,.38);transition:opacity .35s ease}
+html.portfolio-v3 .v3-headline .v3-word{display:block!important;color:rgba(255,255,255,.38)!important;transition:opacity .35s ease}
 html.portfolio-v3 .hero-showreel{left:auto!important;right:42px!important;top:38px!important;transform:none;width:112px;height:42px;border:1px solid rgba(255,255,255,.6);border-radius:9px;background:rgba(0,0,0,.15);font-size:9px;color:#fff}
 html.portfolio-v3 .hero-showreel:hover{background:#fff;color:#111}
 html.portfolio-v3 .hero-slide-status{left:50%!important;right:auto!important;top:auto!important;bottom:29px;width:auto;height:auto;transform:translateX(-50%);font-size:10px;color:#fff}
@@ -619,7 +619,7 @@ html.portfolio-v3 .hero-slide-status{left:50%!important;right:auto!important;top
 html.portfolio-v3 .v3-intro{display:grid;grid-template-columns:.65fr 1.35fr;gap:8vw;align-items:end;padding:clamp(110px,14vw,220px) clamp(26px,6vw,100px);background:#0b0c0b;color:#fff}
 html.portfolio-v3 .v3-intro p{max-width:320px;font-size:19px;color:#fff;line-height:1.55}
 html.portfolio-v3 .v3-intro h2{font-size:clamp(50px,6.5vw,106px);font-weight:520;line-height:.94;letter-spacing:-.045em}
-html.portfolio-v3 .v3-intro h2 span{display:block;color:#fff}
+html.portfolio-v3 .v3-intro h2 span{display:block!important;color:#fff!important}
 .profile-cards{display:none}
 html.portfolio-v3 .profile-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:14px clamp(26px,3vw,54px) clamp(80px,8vw,120px);background:#0b0c0b;color:#111}
 html.portfolio-v3 .profile-card{min-width:0;min-height:560px;border:1px solid #deded9;border-radius:12px;background:#f7f7f5;overflow:hidden}
@@ -718,6 +718,7 @@ html.portfolio-v3 #awards .shead{width:min(100%,1400px);margin-inline:auto;borde
 html.portfolio-v3 #awards .shead h2{font-size:clamp(48px,6vw,96px);font-weight:480;font-stretch:100%;letter-spacing:-.04em;text-transform:uppercase}
 html.portfolio-v3 #awards .shead h2 .headline-accent{font-family:var(--sans);font-style:normal;color:#999;text-transform:none}
 html.portfolio-v3 #awards .shead .count,html.portfolio-v3 .al-b span{color:#595959}
+html.portfolio-v3 #awards .shead .count{font-family:"Sequel 100 Black",var(--sans);font-style:normal;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 html.portfolio-v3 .award-split{width:min(100%,1400px);margin-inline:auto;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:clamp(48px,7vw,110px);align-items:start}
 html.portfolio-v3 .award-list{display:grid;gap:6px;border:0}
 html.portfolio-v3 .award-list li{grid-template-columns:minmax(160px,.28fr) minmax(0,1fr);gap:18px;margin:0;padding:17px 18px;border:1px solid transparent;border-radius:12px;transition:background-color 180ms ease-out,color 180ms ease-out,border-color 180ms ease-out}
@@ -798,6 +799,8 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 }
 
 @media(max-width:760px){
+  html.portfolio-v3 #awards .shead{flex-direction:column;align-items:flex-start}
+  html.portfolio-v3 #awards .shead .count{margin-top:22px}
   /* no backdrop-filter here: it would turn the sticky nav into the containing
      block for the fixed fullscreen menu, squashing it into the 86px bar */
   html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
@@ -1102,7 +1105,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
       <li data-award="emerging-brands"><span class="al-y">2025</span><span class="al-b"><b>Emerging Brands in Africa Awards</b><span>Visual Storyteller of the Year</span></span></li>
       <li data-award="forbes"><span class="al-y">2023</span><span class="al-b"><b>Forbes Africa</b><span>30 Under 30 — Class of 2023 Achievers</span></span></li>
       <li><span class="al-y">2023</span><span class="al-b"><b>Hipe Awards</b><span>Best Success Story of the Year</span></span></li>
-      <li><span class="al-y">2022</span><span class="al-b"><b>Your Favorite Song Awards</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game) · Empire</span></span></li>
+      <li><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Video Director — Eric Bellinger "Blazin Wit The Bros" (feat. The Game)</span></span></li>
       <li data-award="gold"><span class="al-y">2022</span><span class="al-b"><b>Empire</b><span>Best Graphic Designer — Eric Bellinger "GOAT" (feat. Wale)</span></span></li>
       <li data-award="hipe2021"><span class="al-y">2021</span><span class="al-b"><b>Hipe Awards</b><span>Best Service Industry Media</span></span></li>
       <li data-award="boss-pt2"><span class="al-y">2021</span><span class="al-b"><b>Boss Entertainment</b><span>Best Graphic Designer — Keke Palmer "Virgo Tendencies" Pt. 2</span></span></li>
