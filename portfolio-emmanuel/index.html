@@ -665,8 +665,9 @@ html.portfolio-v3 .v3-scroll-gallery{display:block;position:relative;height:260s
 html.portfolio-v3 .v3-scroll-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate}
 html.portfolio-v3 .v3-scroll-stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.48) 100%)}
 html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(1360px,92vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
-html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
-html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 40px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.9)}
+html.portfolio-v3 .v3-scroll-copy::before{content:"";position:absolute;inset:-8% -10%;z-index:0;background:radial-gradient(ellipse at center,rgba(0,0,0,.5) 0%,rgba(0,0,0,.28) 55%,transparent 78%);pointer-events:none}
+html.portfolio-v3 .v3-scroll-copy span{position:relative;z-index:1;display:block;margin-bottom:22px;font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+html.portfolio-v3 .v3-scroll-copy h2{position:relative;z-index:1;font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 40px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.9)}
 html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#fff}
 html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
 html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
@@ -798,6 +799,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 @media(max-width:1200px){
   html.portfolio-v3 .profile-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   html.portfolio-v3 .booking-head{grid-template-columns:1fr;gap:24px;align-items:start}
+  html.portfolio-v3 .card.v3-visible{flex-basis:calc((100% - 18px)/2)}
 }
 
 @media(max-width:900px){
@@ -946,7 +948,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
     <h3>Creating stories that outlive the moment.</h3>
     <p>Every project begins with a story. Whether working with artists, athletes or global brands, my focus is to create timeless visual experiences that inspire emotion, build culture and leave a lasting impact.</p>
     <div class="profile-card-tags" aria-label="Areas of expertise">
-      <span>Creative Direction</span><span>Filmmaking</span><span>Photography</span><span>Storytelling</span>
+      <span>Creative Direction</span><span>Filmmaking</span><span>Photography</span><span>Storytelling</span><span>Marketing</span><span>Personal Branding</span>
     </div>
     <div class="profile-stats" aria-label="Experience statistics">
       <div class="profile-stat"><strong>18+</strong><span>Years of Experience</span></div>
