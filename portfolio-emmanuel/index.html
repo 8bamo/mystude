@@ -578,7 +578,7 @@ footer .row a[style]{color:var(--editorial-red)!important}
 }
 
 /* ---------- V3: bright studio portfolio ---------- */
-html.portfolio-v3{--v3-paper:#f7f7f5;--v3-ink:#111;--v3-green:#111;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
+html.portfolio-v3{--v3-paper:#fff;--v3-ink:#111;--v3-green:#111;--v3-line:#d9d9d4;--ck-bg:#fff;--ck-ink:#111;--ck-line:#d9d9d4;--ck-accent:var(--v3-green);--ck-accent-ink:#fff;background:var(--v3-paper)}
 html.portfolio-v3 body{background:var(--v3-paper);color:var(--v3-ink);font-family:var(--sans);font-size:18px}
 html.portfolio-v3 body::before{display:none}
 html.portfolio-v3 #progress{height:2px;background:var(--v3-green)}
@@ -664,9 +664,9 @@ html.portfolio-v3 .profile-signature span{margin-top:3px;font-size:12px;color:#0
 html.portfolio-v3 .v3-scroll-gallery{display:block;position:relative;height:260svh;padding:0;background:#0b0c0b;color:#fff}
 html.portfolio-v3 .v3-scroll-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate}
 html.portfolio-v3 .v3-scroll-stage::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.48) 100%)}
-html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(980px,92vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+html.portfolio-v3 .v3-scroll-copy{position:absolute;left:50%;top:50%;z-index:3;width:min(1360px,92vw);transform:translate(-50%,-50%);text-align:center;pointer-events:none}
 html.portfolio-v3 .v3-scroll-copy span{display:block;margin-bottom:22px;font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
-html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em}
+html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 40px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.9)}
 html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#fff}
 html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
 html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
@@ -783,6 +783,7 @@ html.portfolio-v3 .booking-intro{color:#fff}
 html.portfolio-v3 .privacy{color:#fff}
 html.portfolio-v3 .booking-submit{background:#fff;border-color:#fff;color:#111;border-radius:9px}
 html.portfolio-v3 footer{background:#1b1d1c}
+html.portfolio-v3 footer .big{font-size:40px;white-space:normal;overflow-wrap:anywhere}
 html.portfolio-v3 footer .big a{color:#fff;-webkit-text-stroke:0}
 html.portfolio-v3 footer .big a:hover{color:#aaa}
 html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,.awards .item .n,footer .big),
