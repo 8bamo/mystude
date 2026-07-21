@@ -11,12 +11,14 @@
 <meta property="og:title" content="Emmanuel Whajah — Director & Photographer">
 <meta property="og:description" content="Multi-award-winning Creative Director, Filmmaker and Photographer creating cinematic work for artists, athletes and global brands.">
 <meta property="og:url" content="https://mystu.de/emmanuelwhajah/">
-<meta property="og:image" content="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/assets/poster/emmanuel-whajah-showreel.jpg">
-<meta property="og:image:alt" content="Emmanuel Whajah showreel">
+<meta property="og:image" content="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/assets/img/emmanuel-whajah-blackwhite-second.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Portrait of Emmanuel Whajah">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Emmanuel Whajah — Director & Photographer">
 <meta name="twitter:description" content="Cinematic visual storytelling across music, sports, fashion and culture.">
-<meta name="twitter:image" content="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/assets/poster/emmanuel-whajah-showreel.jpg">
+<meta name="twitter:image" content="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/assets/img/emmanuel-whajah-blackwhite-second.jpg">
+<meta name="twitter:image:alt" content="Portrait of Emmanuel Whajah">
 <base href="https://mystu.de/wp-content/themes/mystu/mockups/emmanuel-whajah/">
 <link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
 <link rel="shortcut icon" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg?v=20260716">
@@ -415,7 +417,6 @@ nav ul a{font-size:11px;font-weight:700;letter-spacing:.14em}
 
 .hero{min-height:100svh;padding:clamp(96px,13vh,150px) clamp(20px,3vw,48px) 30px;display:flex;flex-direction:column;justify-content:flex-end}
 .hero-media::after{background:linear-gradient(180deg,rgba(24,19,17,.22),rgba(24,19,17,.08) 42%,rgba(24,19,17,.86) 100%)}
-.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.82}
 .hero-media video{position:relative;z-index:1;opacity:.72;transform:scale(1.01);transition:opacity .3s ease}
 .hero-media.changing video{opacity:0}
 .hero-showreel{position:absolute!important;left:auto!important;right:clamp(20px,3vw,48px)!important;top:50%!important;z-index:3;transform:translateY(-50%);display:grid;place-items:center;width:112px;height:112px;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(24,19,17,.12);color:#fff;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:background .18s ease,color .18s ease}
@@ -589,17 +590,17 @@ html.portfolio-v3 .gate-hint,html.portfolio-v3 .gate-note{color:#6d6d68}
 html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line)}
 html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
 
-html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:104px;padding:22px 28px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
-html.portfolio-v3 nav .logo{position:absolute;left:50%;width:auto;height:auto;overflow:visible;background:none;transform:translateX(-50%);font-family:"Sequel 100 Black",var(--sans);font-size:24px;font-weight:400;line-height:1;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:70px;padding:8px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+html.portfolio-v3 nav .logo{position:static;width:auto;height:auto;overflow:visible;background:none;transform:none;font-family:"Sequel 100 Black",var(--sans);font-size:16px;font-weight:400;line-height:1;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 html.portfolio-v3 nav .logo::before{display:none}
 html.portfolio-v3 nav .logo em{display:inline;color:inherit;font:inherit}
-html.portfolio-v3 nav ul{position:fixed;top:50%;left:18px;z-index:2;display:flex;flex-direction:column;gap:22px;align-items:flex-start;padding:18px 20px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(10,10,10,.82);color:#fff;mix-blend-mode:normal;transform:translateY(-50%)}
-html.portfolio-v3 nav ul a{position:relative;font-family:"Sequel 100 Black",var(--sans);font-size:18px;font-weight:700;letter-spacing:0;text-transform:uppercase;opacity:.9;transition:opacity 180ms ease-out}
-html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-4px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
+html.portfolio-v3 nav ul{position:static;z-index:2;display:flex;flex-direction:row;gap:14px;align-items:center;padding:0;border:0;border-radius:0;background:none;color:inherit;mix-blend-mode:normal;transform:none}
+html.portfolio-v3 nav ul a{position:relative;font-family:"Sequel 100 Black",var(--sans);font-size:10px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;opacity:.7;transition:opacity 180ms ease-out}
+html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-3px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
 html.portfolio-v3 nav ul a:hover::after,html.portfolio-v3 nav ul a:focus-visible::after,html.portfolio-v3 nav ul a.active::after{opacity:1;transform:scaleX(1)}
 html.portfolio-v3 nav ul a.active{font-weight:800;opacity:1}
 html.portfolio-v3 nav .mobile-contact{display:none}
-html.portfolio-v3 .nav-contact{position:absolute;right:28px;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid #bbb;border-radius:9px;font-size:16px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out,color 180ms ease-out}
+html.portfolio-v3 .nav-contact{position:absolute;top:50%;right:28px;transform:translateY(-50%);isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid #bbb;border-radius:8px;font-size:12px;text-transform:uppercase;opacity:1;transition:border-color 180ms ease-out,color 180ms ease-out}
 html.portfolio-v3 .nav-contact span{position:relative;z-index:1}
 html.portfolio-v3 .nav-contact::before{content:"";position:relative;z-index:1;width:8px;height:8px;border-radius:50%;background:var(--v3-green);transform:scale(1);transition:transform 180ms ease-out}
 html.portfolio-v3 .nav-contact::after{content:"";position:absolute;inset:0;z-index:0;background:#111;transform:scaleX(0);transform-origin:right;transition:transform 180ms ease-out}
@@ -612,7 +613,6 @@ html.portfolio-v3 .nav-contact:hover .nav-contact-arrow,html.portfolio-v3 .nav-c
 html.portfolio-v3 .hero{height:calc(100svh - 114px);min-height:620px;margin:0 10px 10px;padding:42px 50px;border-radius:42px;justify-content:flex-end;overflow:hidden;background:#202624}
 html.portfolio-v3 .hero::after{background:linear-gradient(0deg,rgba(5,8,7,.66),transparent 58%)}
 html.portfolio-v3 .hero-media::after{background:linear-gradient(0deg,rgba(5,8,7,.62),transparent 58%)}
-html.portfolio-v3 .hero-poster{opacity:.96;filter:saturate(.72);object-position:center}
 html.portfolio-v3 .hero-media video{opacity:.88;filter:saturate(.72) contrast(1.02);object-position:center}
 html.portfolio-v3 .v3-headline{display:block;max-width:980px;margin:0;font-size:clamp(64px,7.2vw,126px);font-weight:620;font-stretch:100%;line-height:.88;letter-spacing:-.055em;text-transform:none;color:#fff}
 html.portfolio-v3 .v3-headline .v3-word{display:block!important;color:#fff!important;transition:opacity .35s ease}
@@ -669,12 +669,13 @@ html.portfolio-v3 .v3-scroll-copy span{position:relative;z-index:1;display:block
 html.portfolio-v3 .v3-scroll-copy h2{position:relative;z-index:1;font-size:clamp(50px,7vw,112px);font-weight:480;line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 40px rgba(0,0,0,.9),0 1px 4px rgba(0,0,0,.9)}
 html.portfolio-v3 .v3-scroll-copy h2 .headline-accent{display:block;font-style:normal;color:#fff}
 html.portfolio-v3 .v3-scroll-row{position:absolute;z-index:1;display:flex;align-items:center;gap:clamp(18px,2.5vw,42px);width:max-content;will-change:transform}
-html.portfolio-v3 .v3-scroll-row.one{top:5vh;left:-12vw}
-html.portfolio-v3 .v3-scroll-row.two{bottom:4vh;left:-8vw}
-html.portfolio-v3 .v3-scroll-tile{flex:0 0 auto;width:clamp(180px,20vw,330px);height:clamp(230px,35vh,400px);overflow:hidden;border-radius:20px;background:#222;will-change:transform}
+html.portfolio-v3 .v3-scroll-row.one{top:2vh;left:-12vw}
+html.portfolio-v3 .v3-scroll-row.two{bottom:2vh;left:-8vw}
+html.portfolio-v3 .v3-scroll-tile{position:relative;flex:0 0 auto;width:clamp(180px,20vw,330px);height:clamp(230px,35vh,400px);overflow:hidden;border-radius:20px;background:#222;will-change:transform}
+html.portfolio-v3 .v3-scroll-tile::before{content:"";position:absolute;inset:-12px;background-image:var(--tile-image);background-size:cover;background-position:center;filter:blur(14px) brightness(.5);opacity:.68;transform:scale(1.06)}
 html.portfolio-v3 .v3-scroll-tile.wide{width:clamp(260px,30vw,480px);height:clamp(170px,25vh,290px)}
-html.portfolio-v3 .v3-scroll-tile.tall{width:clamp(170px,17vw,275px);height:clamp(280px,43vh,480px)}
-html.portfolio-v3 .v3-scroll-tile img{width:100%;height:100%;object-fit:cover;filter:saturate(.72);transition:filter .25s}
+html.portfolio-v3 .v3-scroll-tile.tall{width:clamp(260px,24vw,420px);height:clamp(280px,34vh,380px)}
+html.portfolio-v3 .v3-scroll-tile img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;filter:saturate(.72);transition:filter .25s}
 html.portfolio-v3 .v3-scroll-tile:hover img{filter:saturate(1)}
 
 html.portfolio-v3 section{padding:clamp(90px,10vw,160px) clamp(26px,4vw,64px)}
@@ -817,7 +818,7 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 #awards .shead .count{margin-top:22px}
   /* no backdrop-filter here: it would turn the sticky nav into the containing
      block for the fixed fullscreen menu, squashing it into the 86px bar */
-  html.portfolio-v3 nav{height:86px;padding:14px 18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
+  html.portfolio-v3 nav{height:64px;padding:12px 18px;flex-direction:row;justify-content:space-between;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(247,247,245,.97)}
   html.portfolio-v3 nav .logo{position:static;width:auto;height:auto;transform:none;font-size:19px;letter-spacing:.09em}
   html.portfolio-v3 .menu-toggle{display:grid;position:relative;z-index:2;width:44px;height:44px;border:0;border-radius:0;background:transparent;color:#111;box-shadow:none}
   html.portfolio-v3 nav ul{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0;border:0;border-radius:0;background:var(--v3-paper);color:#111;mix-blend-mode:normal;opacity:0;visibility:hidden;transform:none;transition:opacity 180ms ease-out,visibility 180ms ease-out}
@@ -854,12 +855,15 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
   html.portfolio-v3 .client-logo-item img{max-width:130px;max-height:54px}
   html.portfolio-v3 .booking-head h2{font-size:clamp(36px,11.2vw,72px)}
   html.portfolio-v3 footer .big{font-size:clamp(18px,6.2vw,30px);white-space:nowrap;overflow-wrap:normal}
-  html.portfolio-v3 .v3-scroll-gallery{height:220svh}
+  html.portfolio-v3 .v3-scroll-gallery{height:360svh}
   html.portfolio-v3 .v3-scroll-copy{width:96vw}
   html.portfolio-v3 .v3-scroll-copy h2{font-size:clamp(27px,8vw,66px)}
+  html.portfolio-v3 .v3-scroll-row.one{top:10vh}
+  html.portfolio-v3 .v3-scroll-row.two{bottom:10vh}
   html.portfolio-v3 .v3-scroll-tile{width:48vw;height:34vh;border-radius:14px}
-  html.portfolio-v3 .v3-scroll-tile.wide{width:68vw;height:24vh}
-  html.portfolio-v3 .v3-scroll-tile.tall{width:43vw;height:42vh}
+  html.portfolio-v3 .v3-scroll-tile.wide,
+  html.portfolio-v3 .v3-scroll-tile.tall{width:72vw;height:34vh}
+  html.portfolio-v3 .v3-scroll-tile img{object-fit:contain}
   html.portfolio-v3 main>section:not(.v3-scroll-gallery){content-visibility:auto;contain-intrinsic-size:auto 900px}
   html.portfolio-v3 :is(h1,h2,h3,.card .meta .t,footer .big,.about-quote p){line-height:1.1!important}
 }
@@ -923,9 +927,8 @@ html.portfolio-v3 .v3-typewriter.typing-active::after{animation-play-state:runni
 <main id="main-content">
 <header class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <img class="hero-poster" src="assets/poster/emmanuel-whajah-showreel.jpg" alt="" fetchpriority="high">
-    <video muted loop playsinline preload="none" poster="assets/poster/emmanuel-whajah-showreel.jpg">
-      <source data-src="assets/video/emmanuel-whajah-showreel-preview.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/poster/emmanuel-whajah-showreel.jpg">
+      <source src="assets/video/emmanuel-whajah-showreel-preview.mp4" type="video/mp4">
     </video>
   </div>
   <h1 class="v3-headline">Driven by <span class="v3-word">Vision.</span></h1>
@@ -1467,17 +1470,19 @@ document.querySelectorAll('.press-cover').forEach(a=>a.addEventListener('click',
 /* Black-and-white showreel in the hero — plays only while visible */
 const heroMedia=document.querySelector('.hero-media');
 const heroVideo=heroMedia.querySelector('video');
-const heroReduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const heroCanPlay=matchMedia('(min-width: 761px)').matches&&!navigator.connection?.saveData;
-if(!heroReduceMotion&&heroCanPlay){
-  const heroSource=heroVideo.querySelector('source[data-src]');
-  heroSource.src=heroSource.dataset.src;
-  heroVideo.load();
-  const heroVideoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(entry.isIntersecting)heroVideo.play().catch(()=>{});else heroVideo.pause();
-  }),{threshold:.15});
-  heroVideoObserver.observe(document.querySelector('.hero'));
-}
+const playHeroVideo=()=>{
+  heroVideo.muted=true;
+  heroVideo.play().catch(()=>{});
+};
+const heroVideoObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting)playHeroVideo();else heroVideo.pause();
+}),{threshold:.15});
+heroVideoObserver.observe(document.querySelector('.hero'));
+heroVideo.addEventListener('canplay',playHeroVideo,{once:true});
+addEventListener('pageshow',playHeroVideo);
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden&&document.querySelector('.hero').getBoundingClientRect().bottom>0)playHeroVideo();
+});
 {
   const words=['Vision.','Energy.','Motion.','Culture.'];
   const word=document.querySelector('.v3-word');
@@ -1512,18 +1517,19 @@ if(!heroReduceMotion&&heroCanPlay){
   }
   const galleryMoments=[
     {s:'daily-paper',t:'Daily Paper',cls:'tall'},
-    {s:'burna-boy',t:'Burna Boy',cls:'wide'},
+    {s:'burna-boy',t:'Burna Boy',cls:'tall'},
     {s:'migos',t:'Migos',cls:'tall'},
-    {s:'les-twins',t:'Les Twins',cls:'wide'},
+    {s:'les-twins',t:'Les Twins',cls:'tall'},
     {s:'asake',t:'Asake',cls:'tall'},
-    {s:'eightyfive-clothing',t:'Eightyfive Clothing',cls:'wide'},
+    {s:'keke-palmer',t:'Keke Palmer',cls:'tall'},
     {s:'chris-brown',t:'Chris Brown',cls:'tall'},
-    {s:'eightyfive-clothing-2',t:'Eightyfive Clothing',cls:'wide'},
+    {s:'eightyfive-clothing-2',t:'Eightyfive Clothing',cls:'tall'},
     {s:'miss-germany',t:'Miss Germany',cls:'tall'},
     {s:'nas',t:'Nas',cls:'tall'},
-    {s:'jason-derulo',t:'Jason Derulo',cls:'tall'}
+    {s:'jason-derulo',t:'Jason Derulo',cls:'tall'},
+    {s:'nike',t:'Nike',cls:'tall'}
   ];
-  const tileMarkup=item=>`<figure class="v3-scroll-tile ${item.cls}"><img src="assets/img/moments/${item.s}.webp" alt="${item.t} — moment by Emmanuel Whajah" loading="lazy"></figure>`;
+  const tileMarkup=item=>`<figure class="v3-scroll-tile ${item.cls}" style="--tile-image:url('assets/img/moments/${item.s}.webp')"><img src="assets/img/moments/${item.s}.webp" alt="${item.t} — moment by Emmanuel Whajah" loading="lazy"></figure>`;
   rowOne.innerHTML=galleryMoments.slice(0,6).map(tileMarkup).join('');
   rowTwo.innerHTML=galleryMoments.slice(6).map(tileMarkup).join('');
   let galleryTicking=false;
@@ -1531,8 +1537,17 @@ if(!heroReduceMotion&&heroCanPlay){
     const rect=gallery.getBoundingClientRect();
     const distance=Math.max(1,rect.height-innerHeight);
     const progress=Math.max(0,Math.min(1,-rect.top/distance));
-    rowOne.style.transform=`translate3d(${42-progress*88}vw,0,0)`;
-    rowTwo.style.transform=`translate3d(${-48+progress*88}vw,0,0)`;
+    const rowTravel=(row,reverse=false)=>{
+      const tiles=row.querySelectorAll('.v3-scroll-tile');
+      const first=tiles[0],last=tiles[tiles.length-1];
+      const firstCentered=innerWidth/2-row.offsetLeft-first.offsetLeft-first.offsetWidth/2;
+      const lastCentered=innerWidth/2-row.offsetLeft-last.offsetLeft-last.offsetWidth/2;
+      const from=reverse?lastCentered:firstCentered;
+      const to=reverse?firstCentered:lastCentered;
+      return from+(to-from)*progress;
+    };
+    rowOne.style.transform=`translate3d(${rowTravel(rowOne)}px,0,0)`;
+    rowTwo.style.transform=`translate3d(${rowTravel(rowTwo,true)}px,0,0)`;
     rowOne.querySelectorAll('.v3-scroll-tile').forEach((tile,index)=>tile.style.transform=`scale(${.86+Math.max(0,1-Math.abs(progress-(index+1)/7)*4)*.14})`);
     rowTwo.querySelectorAll('.v3-scroll-tile').forEach((tile,index)=>tile.style.transform=`scale(${.86+Math.max(0,1-Math.abs(progress-(index+1)/7)*4)*.14})`);
     galleryTicking=false;
