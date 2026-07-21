@@ -383,7 +383,7 @@ body.gated,body.menu-open{overflow:hidden}
 .ck-btn:hover{border-color:var(--ck-ink)}
 .ck-btn.ck-acc{background:var(--ck-accent);color:var(--ck-accent-ink);border-color:var(--ck-accent)}
 .ck-btn.ck-acc:hover{filter:brightness(1.08)}
-@media(max-width:640px){.ck-in{flex-direction:column;align-items:stretch}.ck-btns{justify-content:stretch}.ck-btn{flex:1}}
+@media(max-width:640px){.ck-in{flex-direction:column;align-items:stretch}.ck-txt{flex:0 0 auto}.ck-btns{justify-content:stretch}.ck-btn{flex:1}}
 
 /* ---------- 2026 editorial direction ---------- */
 :root{
@@ -590,11 +590,11 @@ html.portfolio-v3 .gate-hint,html.portfolio-v3 .gate-note{color:#6d6d68}
 html.portfolio-v3 .gate-box input{color:var(--v3-ink);border-color:var(--v3-line)}
 html.portfolio-v3 .gate-box button{background:var(--v3-ink);color:#fff;border-radius:8px}
 
-html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:70px;padding:8px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+html.portfolio-v3 nav{position:sticky;inset:0 0 auto;top:0;z-index:1000;height:80px;padding:8px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;mix-blend-mode:normal;background:rgba(247,247,245,.97);color:var(--v3-ink);border-bottom:1px solid rgba(17,17,17,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
 html.portfolio-v3 nav .logo{position:static;width:auto;height:auto;overflow:visible;background:none;transform:none;font-family:"Sequel 100 Black",var(--sans);font-size:16px;font-weight:400;line-height:1;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 html.portfolio-v3 nav .logo::before{display:none}
 html.portfolio-v3 nav .logo em{display:inline;color:inherit;font:inherit}
-html.portfolio-v3 nav ul{position:static;z-index:2;display:flex;flex-direction:row;gap:14px;align-items:center;padding:0;border:0;border-radius:0;background:none;color:inherit;mix-blend-mode:normal;transform:none}
+html.portfolio-v3 nav ul{position:static;z-index:2;display:flex;flex-direction:row;gap:14px;align-items:center;margin-top:10px;padding:0;border:0;border-radius:0;background:none;color:inherit;mix-blend-mode:normal;transform:none}
 html.portfolio-v3 nav ul a{position:relative;font-family:"Sequel 100 Black",var(--sans);font-size:10px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;opacity:.7;transition:opacity 180ms ease-out}
 html.portfolio-v3 nav ul a::after{content:"";position:absolute;right:0;bottom:-3px;left:0;height:1px;background:currentColor;opacity:0;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease-out,opacity 180ms ease-out}
 html.portfolio-v3 nav ul a:hover::after,html.portfolio-v3 nav ul a:focus-visible::after,html.portfolio-v3 nav ul a.active::after{opacity:1;transform:scaleX(1)}
