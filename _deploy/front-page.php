@@ -12,24 +12,289 @@ $lead_error = isset($_GET['lead_error']);
 $cap_n1    = wp_rand(2, 9);
 $cap_n2    = wp_rand(1, $cap_n1 - 1);
 $cap_token = hash_hmac('sha256', ($cap_n1 + $cap_n2), wp_salt('auth'));
+
+/**
+ * Language: an explicit ?lang=de|en switch wins and is remembered in a
+ * cookie for a year. Failing that, a previously-set cookie wins. Failing
+ * that, we go by the browser's Accept-Language header (its top-priority
+ * tag) — no GeoIP/IP lookup involved. No signal at all defaults to German.
+ */
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['de', 'en'], true)) {
+    $lang = $_GET['lang'];
+    if (!headers_sent()) {
+        setcookie('mystu_lang', $lang, time() + YEAR_IN_SECONDS, '/');
+    }
+} elseif (isset($_COOKIE['mystu_lang']) && in_array($_COOKIE['mystu_lang'], ['de', 'en'], true)) {
+    $lang = $_COOKIE['mystu_lang'];
+} else {
+    $accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+    $lang   = 'de';
+    if ($accept !== '' && preg_match('/^\s*([a-zA-Z]{2})/', $accept, $accept_m) && strtolower($accept_m[1]) !== 'de') {
+        $lang = 'en';
+    }
+}
+
+$L = [
+    'de' => [
+        'meta_desc'   => 'mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg. Moderne Websites, Onlineshops & Landingpages mit lokaler SEO. Festpreis, schnelle Umsetzung, persönlicher Kontakt.',
+        'og_title'    => 'mystu. – Websites, die Kunden bringen',
+        'og_desc'     => 'Webdesign-Agentur aus Stuttgart & Ludwigsburg. Wir bauen Websites, Onlineshops & Landingpages die online gefunden werden und Anfragen bringen.',
+        'nav_leist'   => 'Leistungen',
+        'nav_ref'     => 'Referenzen',
+        'nav_warum'   => 'Warum',
+        'nav_preise'  => 'Preise',
+        'nav_cta'     => 'Projekt starten',
+        'hero_eyebrow'=> 'Webdesign-Agentur &middot; Raum Stuttgart &amp; Ludwigsburg',
+        'hero_h1a'    => 'Mehr',
+        'hero_h1b'    => 'Kunden.',
+        'hero_sub'    => 'Websites, die nicht nur gut aussehen &mdash; sondern <b>Anfragen bringen, Vertrauen aufbauen</b> und deinen Umsatz wachsen lassen.',
+        'hero_cta1'   => 'Projekt starten',
+        'hero_cta2'   => 'Preise ansehen',
+        'sl_label'    => 'Leistungen',
+        'sl_title1'   => 'Was wir',
+        'sl_title2'   => 'bauen.',
+        'sl_meta'     => 'Design · Entwicklung<br/>SEO · Betreuung',
+        'sl1_title'   => 'Websites',
+        'sl1_tag'     => 'Unternehmen',
+        'sl1_desc'    => 'Moderne Auftritte für KMU, Handwerk &amp; Dienstleister — klar strukturiert, schnell und so gebaut, dass aus Besuchern Anfragen werden.',
+        'sl1_meta'    => 'Design<br/>Dev<br/>CMS',
+        'sl2_title'   => 'Onlineshops',
+        'sl2_tag'     => 'E-Commerce',
+        'sl2_desc'    => 'Verkaufen rund um die Uhr — sauber umgesetzt mit Shopify &amp; Co. Vom Design bis zur Zahlungsanbindung.',
+        'sl2_meta'    => 'Shopify<br/>Zahlung<br/>Design',
+        'sl3_title'   => 'Landingpages',
+        'sl3_tag'     => 'Kampagne',
+        'sl3_desc'    => 'Fokussierte Seiten für Ads &amp; Aktionen, die gezielt Anfragen generieren — ohne Ablenkung, direkt zur Conversion.',
+        'sl3_meta'    => 'Copy<br/>Tracking<br/>Ads',
+        'sl4_title'   => 'Lokale SEO',
+        'sl4_tag'     => 'Sichtbarkeit',
+        'sl4_desc'    => 'Damit dich Kunden im Raum Stuttgart &amp; Ludwigsburg bei Google finden — und nicht die Konkurrenz. Technik, Inhalte und Google-Profil aus einer Hand.',
+        'sl4_meta'    => 'Google<br/>Maps<br/>Technik',
+        'ref_label'   => 'Referenzen',
+        'ref_title1'  => 'Unsere',
+        'ref_title2'  => 'Arbeit.',
+        'ref_meta'    => 'Live &amp; in Betrieb',
+        'ref1_tag'    => 'Shopify · E-Commerce',
+        'ref1_desc'   => 'Exklusive Stuttgart Fanartikel — designed in Stuttgart, produziert auf Bestellung. Von Shirts über Hoodies bis zu Caps, alles mit Seele für den Kessel.',
+        'ref1_link'   => 'Zum Shop',
+        'ref2_tag'    => 'Webdesign · Gastronomie',
+        'ref2_desc'   => 'Cocktailbar in Stuttgart-Mitte — Events, Live-Musik und DJ-Sets. Website mit Eventkalender, Buchungsformular und mobilem Design.',
+        'ref2_chip1'  => 'Webdesign',
+        'ref2_chip2'  => 'Gastronomie',
+        'ref2_link'   => 'Zur Website',
+        'ref_divider' => 'Mockup-Referenzen',
+        'refm1_tag'   => 'WordPress · Handwerk',
+        'refm1_aria'  => 'Handwerker-Webseite in neuem Tab ansehen',
+        'refm1_link'  => 'Live ansehen →',
+        'refm2_tag'   => 'Landingpage · Fahrschule',
+        'refm2_aria'  => 'Fahrschul-Mockup in neuem Tab ansehen',
+        'refm2_link'  => 'Live ansehen →',
+        'refm3_tag'   => 'Landingpage · Kanzlei',
+        'refm3_aria'  => 'Kanzlei-Mockup in neuem Tab ansehen',
+        'refm3_link'  => 'Live ansehen →',
+        'refm4_tag'   => 'WordPress · Zahnarzt',
+        'refm4_aria'  => 'Zahnarzt-Mockup in neuem Tab ansehen',
+        'refm4_link'  => 'Live ansehen →',
+        'warum_label' => 'Warum mystu',
+        'warum_title1'=> 'Kein Bla,',
+        'warum_title2'=> 'nur Ergebnis.',
+        'warum_meta'  => 'Klein, schnell<br/>&amp; persönlich',
+        'w1_h1'       => 'Direkt mit',
+        'w1_h2'       => 'dem Macher',
+        'w1_p'        => 'Kein Account-Manager, keine Warteschleife. Du sprichst mit den Leuten, die deine Seite wirklich bauen — ohne Umwege, ohne Bullshit.',
+        'w2_h1'       => 'Antwort',
+        'w2_h2'       => 'in 24h',
+        'w2_p'        => 'Kurze Wege, schnelle Rückmeldung und eine ehrliche Einschätzung — bevor du dich auf irgendetwas festlegst.',
+        'w3_h1'       => 'Fair &amp;',
+        'w3_h2'       => 'transparent',
+        'w3_p'        => 'Festpreis statt böser Überraschungen. Du weißt vorher genau, was es kostet und was du dafür bekommst.',
+        'team_label'  => 'Das Team',
+        'team_intro'  => 'Yusuf und Michele sind wie <b>Yin und Yang</b> — einer denkt in Pixeln, der andere in Code. Was rauskommt, wenn Design auf Entwicklung trifft? Websites, die aussehen wie Kunst und funktionieren wie eine Maschine.',
+        'mi_role'     => 'Designer',
+        'mi_bio'      => 'Über 10 Jahre Erfahrung — von Websites bis Apps, von Flyern bis Branding. Und VfB-Fan seit Kindheit.',
+        'yu_role'     => 'Entwickler',
+        'yu_bio'      => 'Über 10 Jahre Erfahrung — Typo3, Shopify, WordPress, KI. Egal was es ist, er fuchst sich rein und liefert.',
+        'yu_tag_ai'   => 'KI',
+        'kt_label'    => 'Kontakt',
+        'kt_title1'   => 'Lass uns',
+        'kt_title2'   => 'reden.',
+        'kt_text'     => 'Erzähl uns kurz von deinem Vorhaben — wir melden uns innerhalb von 48 Stunden mit einer ehrlichen Einschätzung.',
+        'kt_ok'       => 'Danke! Deine Anfrage ist angekommen — wir melden uns innerhalb von 48 Stunden.',
+        'kt_err'      => 'Da ist etwas schiefgelaufen. Bitte prüfe deine Eingaben oder schreib uns direkt an hi@mystu.de.',
+        'kt_lbl_name' => 'Name',
+        'kt_ph_name'  => 'Dein Name',
+        'kt_lbl_mail' => 'E-Mail',
+        'kt_ph_mail'  => 'dein@email.de',
+        'kt_lbl_type' => 'Was brauchst du?',
+        'kt_opt1'     => 'Website',
+        'kt_opt2'     => 'Onlineshop',
+        'kt_opt3'     => 'Landingpage',
+        'kt_opt4'     => 'SEO / Sichtbarkeit',
+        'kt_opt5'     => 'Bin mir noch unsicher',
+        'kt_lbl_msg'  => 'Nachricht',
+        'kt_ph_msg'   => 'Erzähl uns kurz von deinem Projekt …',
+        'kt_cap_q'    => 'Sicherheitsfrage: Was ist %d − %d?',
+        'kt_ph_answer'=> 'Deine Antwort',
+        'kt_privacy'  => 'Ich habe die %s gelesen und stimme der Verarbeitung meiner Daten zu.',
+        'privacy_link_text' => 'Datenschutzerklärung',
+        'kt_submit'   => 'Anfrage senden',
+        'kt_note'     => 'Mit dem Absenden stimmst du der Verarbeitung deiner Daten zu. Siehe %s / %s.',
+        'note_datenschutz' => 'Datenschutz',
+        'note_impressum'   => 'Impressum',
+        'cal_label'   => 'Oder direkt Termin buchen',
+        'cal_title'   => 'Schnell &amp; unkompliziert.',
+        'cal_sub'     => 'Wähle einen freien Slot — wir sind %s verfügbar.',
+        'cal_sub_strong' => 'Mo–Fr ab 18 Uhr',
+        'foot_desc'   => 'Webdesign-Agentur aus dem Raum Stuttgart &amp; Ludwigsburg. Websites, die Kunden bringen.',
+        'foot_copy'   => '— Alle Rechte vorbehalten.',
+        'foot_impressum'  => 'Impressum',
+        'foot_datenschutz'=> 'Datenschutz',
+        'foot_agb'        => 'AGB',
+        'foot_cookie'     => 'Cookie-Einstellungen',
+        'foot_made'   => 'Made in Stuttgart von',
+    ],
+    'en' => [
+        'meta_desc'   => 'mystu – web design agency from Stuttgart &amp; Ludwigsburg, Germany. Modern websites, online shops &amp; landing pages with local SEO. Fixed pricing, fast delivery, personal contact.',
+        'og_title'    => 'mystu. – Websites that bring customers',
+        'og_desc'     => 'Web design agency from Stuttgart &amp; Ludwigsburg, Germany. We build websites, online shops &amp; landing pages that get found online and bring in leads.',
+        'nav_leist'   => 'Services',
+        'nav_ref'     => 'Work',
+        'nav_warum'   => 'Why us',
+        'nav_preise'  => 'Pricing',
+        'nav_cta'     => 'Start a project',
+        'hero_eyebrow'=> 'Web Design Agency &middot; Stuttgart &amp; Ludwigsburg, Germany',
+        'hero_h1a'    => 'More',
+        'hero_h1b'    => 'Customers.',
+        'hero_sub'    => 'Websites that don&rsquo;t just look good &mdash; they <b>bring in leads, build trust</b> and help your revenue grow.',
+        'hero_cta1'   => 'Start a project',
+        'hero_cta2'   => 'See pricing',
+        'sl_label'    => 'Services',
+        'sl_title1'   => 'What we',
+        'sl_title2'   => 'build.',
+        'sl_meta'     => 'Design · Development<br/>SEO · Support',
+        'sl1_title'   => 'Websites',
+        'sl1_tag'     => 'Business',
+        'sl1_desc'    => 'Modern sites for SMEs, trades &amp; service businesses — clearly structured, fast, and built to turn visitors into leads.',
+        'sl1_meta'    => 'Design<br/>Dev<br/>CMS',
+        'sl2_title'   => 'Online Shops',
+        'sl2_tag'     => 'E-Commerce',
+        'sl2_desc'    => 'Sell around the clock — cleanly built with Shopify &amp; co. From design all the way to payment integration.',
+        'sl2_meta'    => 'Shopify<br/>Payments<br/>Design',
+        'sl3_title'   => 'Landing Pages',
+        'sl3_tag'     => 'Campaign',
+        'sl3_desc'    => 'Focused pages for ads &amp; campaigns that generate leads on purpose — no distractions, straight to conversion.',
+        'sl3_meta'    => 'Copy<br/>Tracking<br/>Ads',
+        'sl4_title'   => 'Local SEO',
+        'sl4_tag'     => 'Visibility',
+        'sl4_desc'    => 'So customers around Stuttgart &amp; Ludwigsburg find you on Google — not your competitors. Technical SEO, content and your Google Business Profile, all from one hand.',
+        'sl4_meta'    => 'Google<br/>Maps<br/>Technical',
+        'ref_label'   => 'Work',
+        'ref_title1'  => 'Our',
+        'ref_title2'  => 'Work.',
+        'ref_meta'    => 'Live &amp; in production',
+        'ref1_tag'    => 'Shopify · E-Commerce',
+        'ref1_desc'   => 'Exclusive Stuttgart fan merchandise — designed in Stuttgart, made to order. From shirts to hoodies to caps, all made with heart for the Kessel.',
+        'ref1_link'   => 'Visit shop',
+        'ref2_tag'    => 'Web Design · Hospitality',
+        'ref2_desc'   => 'Cocktail bar in central Stuttgart — events, live music and DJ sets. Website with event calendar, booking form and mobile-first design.',
+        'ref2_chip1'  => 'Web Design',
+        'ref2_chip2'  => 'Hospitality',
+        'ref2_link'   => 'Visit website',
+        'ref_divider' => 'Mockup Projects',
+        'refm1_tag'   => 'WordPress · Trades',
+        'refm1_aria'  => 'View trades-business website in a new tab',
+        'refm1_link'  => 'View live →',
+        'refm2_tag'   => 'Landing Page · Driving School',
+        'refm2_aria'  => 'View driving-school mockup in a new tab',
+        'refm2_link'  => 'View live →',
+        'refm3_tag'   => 'Landing Page · Law Firm',
+        'refm3_aria'  => 'View law-firm mockup in a new tab',
+        'refm3_link'  => 'View live →',
+        'refm4_tag'   => 'WordPress · Dental',
+        'refm4_aria'  => 'View dental mockup in a new tab',
+        'refm4_link'  => 'View live →',
+        'warum_label' => 'Why mystu',
+        'warum_title1'=> 'No fluff,',
+        'warum_title2'=> 'just results.',
+        'warum_meta'  => 'Small, fast<br/>&amp; personal',
+        'w1_h1'       => 'Straight to',
+        'w1_h2'       => 'the maker',
+        'w1_p'        => 'No account manager, no hold music. You talk directly to the people actually building your site — no detours, no BS.',
+        'w2_h1'       => 'Reply',
+        'w2_h2'       => 'within 24h',
+        'w2_p'        => 'Short paths, fast replies, and an honest assessment — before you commit to anything.',
+        'w3_h1'       => 'Fair &amp;',
+        'w3_h2'       => 'transparent',
+        'w3_p'        => 'Fixed pricing instead of nasty surprises. You know exactly what it costs and what you get, upfront.',
+        'team_label'  => 'The Team',
+        'team_intro'  => 'Yusuf and Michele are like <b>Yin and Yang</b> — one thinks in pixels, the other in code. What happens when design meets development? Websites that look like art and run like a machine.',
+        'mi_role'     => 'Designer',
+        'mi_bio'      => 'Over 10 years of experience — from websites to apps, flyers to branding. And a VfB Stuttgart fan since childhood.',
+        'yu_role'     => 'Developer',
+        'yu_bio'      => 'Over 10 years of experience — Typo3, Shopify, WordPress, AI. Whatever it is, he digs in and delivers.',
+        'yu_tag_ai'   => 'AI',
+        'kt_label'    => 'Contact',
+        'kt_title1'   => 'Let&rsquo;s',
+        'kt_title2'   => 'talk.',
+        'kt_text'     => 'Tell us a bit about your project — we&rsquo;ll get back to you within 48 hours with an honest assessment.',
+        'kt_ok'       => 'Thanks! Your request has arrived — we&rsquo;ll get back to you within 48 hours.',
+        'kt_err'      => 'Something went wrong. Please check your input or email us directly at hi@mystu.de.',
+        'kt_lbl_name' => 'Name',
+        'kt_ph_name'  => 'Your name',
+        'kt_lbl_mail' => 'Email',
+        'kt_ph_mail'  => 'you@email.com',
+        'kt_lbl_type' => 'What do you need?',
+        'kt_opt1'     => 'Website',
+        'kt_opt2'     => 'Online shop',
+        'kt_opt3'     => 'Landing page',
+        'kt_opt4'     => 'SEO / Visibility',
+        'kt_opt5'     => 'Not sure yet',
+        'kt_lbl_msg'  => 'Message',
+        'kt_ph_msg'   => 'Tell us briefly about your project …',
+        'kt_cap_q'    => 'Security check: what is %d − %d?',
+        'kt_ph_answer'=> 'Your answer',
+        'kt_privacy'  => 'I have read the %s and agree to the processing of my data.',
+        'privacy_link_text' => 'privacy policy',
+        'kt_submit'   => 'Send request',
+        'kt_note'     => 'By submitting, you agree to the processing of your data. See %s / %s.',
+        'note_datenschutz' => 'Privacy Policy',
+        'note_impressum'   => 'Legal Notice',
+        'cal_label'   => 'Or book a call directly',
+        'cal_title'   => 'Fast &amp; easy.',
+        'cal_sub'     => 'Pick an open slot — we&rsquo;re available %s.',
+        'cal_sub_strong' => 'Mon–Fri from 6&nbsp;PM CET',
+        'foot_desc'   => 'Web design agency from the Stuttgart &amp; Ludwigsburg area, Germany. Websites that bring customers.',
+        'foot_copy'   => '— All rights reserved.',
+        'foot_impressum'  => 'Legal Notice',
+        'foot_datenschutz'=> 'Privacy Policy',
+        'foot_agb'        => 'Terms',
+        'foot_cookie'     => 'Cookie Settings',
+        'foot_made'   => 'Made in Stuttgart by',
+    ],
+];
+$t = $L[$lang];
+$og_locale = $lang === 'de' ? 'de_DE' : 'en_US';
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="<?php echo esc_attr($lang); ?>">
 <head>
 <meta charset="<?php bloginfo('charset'); ?>"/>
-<meta name="description" content="mystu – Webdesign-Agentur aus Stuttgart &amp; Ludwigsburg. Moderne Websites, Onlineshops &amp; Landingpages mit lokaler SEO. Festpreis, schnelle Umsetzung, persönlicher Kontakt."/>
+<meta name="description" content="<?php echo esc_attr(wp_strip_all_tags($t['meta_desc'])); ?>"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://mystu.de/"/>
-<meta property="og:title" content="mystu. – Websites, die Kunden bringen"/>
-<meta property="og:description" content="Webdesign-Agentur aus Stuttgart &amp; Ludwigsburg. Wir bauen Websites, Onlineshops &amp; Landingpages die online gefunden werden und Anfragen bringen."/>
+<meta property="og:title" content="<?php echo esc_attr(wp_strip_all_tags($t['og_title'])); ?>"/>
+<meta property="og:description" content="<?php echo esc_attr(wp_strip_all_tags($t['og_desc'])); ?>"/>
 <meta property="og:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:locale" content="de_DE"/>
+<meta property="og:locale" content="<?php echo esc_attr($og_locale); ?>"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="mystu. – Websites, die Kunden bringen"/>
-<meta name="twitter:description" content="Webdesign-Agentur aus Stuttgart &amp; Ludwigsburg."/>
+<meta name="twitter:title" content="<?php echo esc_attr(wp_strip_all_tags($t['og_title'])); ?>"/>
+<meta name="twitter:description" content="<?php echo esc_attr(wp_strip_all_tags($t['og_desc'])); ?>"/>
 <meta name="twitter:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.jpg"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="alternate" hreflang="de" href="<?php echo esc_url(add_query_arg('lang', 'de', home_url('/'))); ?>"/>
+<link rel="alternate" hreflang="en" href="<?php echo esc_url(add_query_arg('lang', 'en', home_url('/'))); ?>"/>
+<link rel="alternate" hreflang="x-default" href="<?php echo esc_url(home_url('/')); ?>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Barlow:wght@300;400;500;600&display=swap"/>
@@ -70,7 +335,7 @@ $cap_token = hash_hmac('sha256', ($cap_n1 + $cap_n2), wp_salt('auth'));
   --fD:'Big Shoulders Display',sans-serif;--fB:'Barlow',sans-serif;--pad:clamp(20px,5vw,72px);
   --hand:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='34'%20height='34'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23C9FF2E'%20stroke='%230A0A0A'%20stroke-width='0.8'%20stroke-linejoin='round'%20d='M9%2011V4.5a1.5%201.5%200%200%201%203%200V10h.5V6a1.5%201.5%200%200%201%203%200v4.5h.5V8a1.5%201.5%200%200%201%203%200v7c0%203-2%205.5-5.5%205.5h-2c-2%200-3-1-4.5-3l-2.5-3.5a1.4%201.4%200%200%201%202.2-1.7L9%2014z'/%3E%3C/svg%3E") 13 4,auto;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{font-size:18px;scroll-behavior:smooth;overflow-x:hidden}
 body.mystu-front{background:var(--b);color:var(--w);font-family:var(--fB);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:var(--hand)}
 body.mystu-front a,body.mystu-front button{cursor:var(--hand)}
 body.mystu-front a{color:inherit;text-decoration:none}
@@ -95,6 +360,11 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .mnav-r a:hover{color:var(--w)}
 .mnav-cta{color:var(--b)!important;background:var(--ac);padding:9px 22px;font-family:var(--fD);font-weight:700;letter-spacing:.08em;transition:background .3s,transform .3s}
 .mnav-cta:hover{background:var(--w);transform:translateY(-1px)}
+.mnav-lang{display:flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;letter-spacing:.1em;color:var(--mu2)}
+.mnav-lang a{color:var(--mu2);transition:color .3s}
+.mnav-lang a.active{color:var(--ac)}
+.mnav-lang a:hover{color:var(--w)}
+.mnav-lang span{color:var(--ln)}
 .mnav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:601;position:relative}
 .mnav-burger span{display:block;width:22px;height:2px;background:var(--w);transition:transform .35s,opacity .35s}
 .mnav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -105,7 +375,11 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .mob-menu a{font-family:var(--fD);font-size:clamp(2.5rem,10vw,5rem);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;color:var(--w);text-decoration:none;transition:color .3s}
 .mob-menu a:hover{color:var(--ac)}
 .mob-menu a.mob-cta{color:var(--ac)}
-.mob-menu-foot{position:absolute;bottom:32px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2)}
+.mob-menu-foot{position:absolute;bottom:32px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2);display:flex;align-items:center;gap:12px}
+.mob-lang{display:flex;align-items:center;gap:6px}
+.mob-lang a{font-family:var(--fB);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2)}
+.mob-lang a.active{color:var(--ac)}
+.mob-lang span{color:var(--ln)}
 
 #hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px var(--pad) 48px;overflow:hidden}
 .hero-glow{position:absolute;width:60vw;height:60vw;max-width:760px;max-height:760px;border-radius:50%;filter:blur(150px);background:radial-gradient(circle,rgba(201,255,46,.10) 0%,transparent 70%);top:-12%;right:-10%;pointer-events:none;animation:glow 9s ease-in-out infinite}
@@ -315,6 +589,8 @@ $logo_svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">'
   .'<path fill="#F4F5F1" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/></svg>';
 $home = esc_url(home_url('/'));
 $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+$lang_url_de = esc_url(add_query_arg('lang', 'de', $home));
+$lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
 ?>
 
 <div id="prog"></div>
@@ -326,58 +602,62 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
 <nav class="mnav" id="mnav">
   <a href="<?php echo $home; ?>" class="mnav-logo" aria-label="mystu"><?php echo $logo_svg; ?></a>
   <div class="mnav-r">
-    <a href="#leistungen">Leistungen</a>
-    <a href="#referenzen">Referenzen</a>
-    <a href="#warum">Warum</a><a href="/preise/">Preise</a>
-    <a href="#kontakt" class="mnav-cta">Projekt starten</a>
+    <a href="#leistungen"><?php echo $t['nav_leist']; ?></a>
+    <a href="#referenzen"><?php echo $t['nav_ref']; ?></a>
+    <a href="#warum"><?php echo $t['nav_warum']; ?></a><a href="/preise/"><?php echo $t['nav_preise']; ?></a>
+    <div class="mnav-lang"><a href="<?php echo $lang_url_de; ?>" class="<?php echo $lang === 'de' ? 'active' : ''; ?>">DE</a><span>/</span><a href="<?php echo $lang_url_en; ?>" class="<?php echo $lang === 'en' ? 'active' : ''; ?>">EN</a></div>
+    <a href="#kontakt" class="mnav-cta"><?php echo $t['nav_cta']; ?></a>
   </div>
   <div class="mnav-burger"><span></span><span></span><span></span></div>
 </nav>
 
 <div class="mob-menu" id="mob-menu" aria-hidden="true">
-  <a href="#leistungen" class="mob-link">Leistungen</a>
-  <a href="#referenzen" class="mob-link">Referenzen</a>
-  <a href="#warum" class="mob-link">Warum</a>
-  <a href="/preise/" class="mob-link">Preise</a>
-  <a href="#kontakt" class="mob-cta mob-link">Projekt starten</a>
-  <div class="mob-menu-foot">hi@mystu.de</div>
+  <a href="#leistungen" class="mob-link"><?php echo $t['nav_leist']; ?></a>
+  <a href="#referenzen" class="mob-link"><?php echo $t['nav_ref']; ?></a>
+  <a href="#warum" class="mob-link"><?php echo $t['nav_warum']; ?></a>
+  <a href="/preise/" class="mob-link"><?php echo $t['nav_preise']; ?></a>
+  <a href="#kontakt" class="mob-cta mob-link"><?php echo $t['nav_cta']; ?></a>
+  <div class="mob-menu-foot">
+    <span>hi@mystu.de</span>
+    <div class="mob-lang"><a href="<?php echo $lang_url_de; ?>" class="<?php echo $lang === 'de' ? 'active' : ''; ?>">DE</a><span>/</span><a href="<?php echo $lang_url_en; ?>" class="<?php echo $lang === 'en' ? 'active' : ''; ?>">EN</a></div>
+  </div>
 </div>
 
 <main>
 <section id="hero">
   <div class="hero-glow"></div>
-  <p class="hero-eyebrow">Webdesign-Agentur &middot; Raum Stuttgart &amp; Ludwigsburg</p>
+  <p class="hero-eyebrow"><?php echo $t['hero_eyebrow']; ?></p>
   <h1 class="hero-h">
-    <span class="line"><span>Mehr</span></span>
-    <span class="line"><span class="ac">Kunden.</span></span>
+    <span class="line"><span><?php echo $t['hero_h1a']; ?></span></span>
+    <span class="line"><span class="ac"><?php echo $t['hero_h1b']; ?></span></span>
   </h1>
   <div class="hero-bottom">
-    <p class="hero-sub">Websites, die nicht nur gut aussehen &mdash; sondern <b>Anfragen bringen, Vertrauen aufbauen</b> und deinen Umsatz wachsen lassen.</p>
+    <p class="hero-sub"><?php echo $t['hero_sub']; ?></p>
     <div class="hero-ctas">
-      <a href="#kontakt" class="hero-cta">Projekt starten <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="/preise/" class="hero-cta ghost">Preise ansehen</a>
+      <a href="#kontakt" class="hero-cta"><?php echo $t['hero_cta1']; ?> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="/preise/" class="hero-cta ghost"><?php echo $t['hero_cta2']; ?></a>
     </div>
   </div>
 </section>
 
-  
+
 
 <section id="leistungen" class="sec">
   <div class="sec-head rv">
-    <div><p class="slabel">Leistungen</p><h2 class="sec-title">Was wir<br/><span class="ac">bauen.</span></h2></div>
-    <span class="sec-meta">Design · Entwicklung<br/>SEO · Betreuung</span>
+    <div><p class="slabel"><?php echo $t['sl_label']; ?></p><h2 class="sec-title"><?php echo $t['sl_title1']; ?><br/><span class="ac"><?php echo $t['sl_title2']; ?></span></h2></div>
+    <span class="sec-meta"><?php echo $t['sl_meta']; ?></span>
   </div>
   <div class="sl-list">
     <div class="sl-item rv">
       <a href="#kontakt">
         <div class="sl-head">
           <span class="sl-num">01</span>
-          <h3 class="sl-title">Websites</h3>
-          <span class="sl-tag">Unternehmen</span>
+          <h3 class="sl-title"><?php echo $t['sl1_title']; ?></h3>
+          <span class="sl-tag"><?php echo $t['sl1_tag']; ?></span>
           <span class="sl-arr"><?php echo $arrow; ?></span>
         </div>
         <div class="sl-body"><div class="sl-inner"><div class="sl-detail">
-          <p class="sl-desc">Moderne Auftritte für KMU, Handwerk &amp; Dienstleister — klar strukturiert, schnell und so gebaut, dass aus Besuchern Anfragen werden.</p>
-          <span class="sl-meta">Design<br/>Dev<br/>CMS</span>
+          <p class="sl-desc"><?php echo $t['sl1_desc']; ?></p>
+          <span class="sl-meta"><?php echo $t['sl1_meta']; ?></span>
         </div></div></div>
       </a>
     </div>
@@ -385,13 +665,13 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
       <a href="#kontakt">
         <div class="sl-head">
           <span class="sl-num">02</span>
-          <h3 class="sl-title">Onlineshops</h3>
-          <span class="sl-tag">E-Commerce</span>
+          <h3 class="sl-title"><?php echo $t['sl2_title']; ?></h3>
+          <span class="sl-tag"><?php echo $t['sl2_tag']; ?></span>
           <span class="sl-arr"><?php echo $arrow; ?></span>
         </div>
         <div class="sl-body"><div class="sl-inner"><div class="sl-detail">
-          <p class="sl-desc">Verkaufen rund um die Uhr — sauber umgesetzt mit Shopify &amp; Co. Vom Design bis zur Zahlungsanbindung.</p>
-          <span class="sl-meta">Shopify<br/>Zahlung<br/>Design</span>
+          <p class="sl-desc"><?php echo $t['sl2_desc']; ?></p>
+          <span class="sl-meta"><?php echo $t['sl2_meta']; ?></span>
         </div></div></div>
       </a>
     </div>
@@ -399,13 +679,13 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
       <a href="#kontakt">
         <div class="sl-head">
           <span class="sl-num">03</span>
-          <h3 class="sl-title">Landingpages</h3>
-          <span class="sl-tag">Kampagne</span>
+          <h3 class="sl-title"><?php echo $t['sl3_title']; ?></h3>
+          <span class="sl-tag"><?php echo $t['sl3_tag']; ?></span>
           <span class="sl-arr"><?php echo $arrow; ?></span>
         </div>
         <div class="sl-body"><div class="sl-inner"><div class="sl-detail">
-          <p class="sl-desc">Fokussierte Seiten für Ads &amp; Aktionen, die gezielt Anfragen generieren — ohne Ablenkung, direkt zur Conversion.</p>
-          <span class="sl-meta">Copy<br/>Tracking<br/>Ads</span>
+          <p class="sl-desc"><?php echo $t['sl3_desc']; ?></p>
+          <span class="sl-meta"><?php echo $t['sl3_meta']; ?></span>
         </div></div></div>
       </a>
     </div>
@@ -413,13 +693,13 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
       <a href="#kontakt">
         <div class="sl-head">
           <span class="sl-num">04</span>
-          <h3 class="sl-title">Lokale SEO</h3>
-          <span class="sl-tag">Sichtbarkeit</span>
+          <h3 class="sl-title"><?php echo $t['sl4_title']; ?></h3>
+          <span class="sl-tag"><?php echo $t['sl4_tag']; ?></span>
           <span class="sl-arr"><?php echo $arrow; ?></span>
         </div>
         <div class="sl-body"><div class="sl-inner"><div class="sl-detail">
-          <p class="sl-desc">Damit dich Kunden im Raum Stuttgart &amp; Ludwigsburg bei Google finden — und nicht die Konkurrenz. Technik, Inhalte und Google-Profil aus einer Hand.</p>
-          <span class="sl-meta">Google<br/>Maps<br/>Technik</span>
+          <p class="sl-desc"><?php echo $t['sl4_desc']; ?></p>
+          <span class="sl-meta"><?php echo $t['sl4_meta']; ?></span>
         </div></div></div>
       </a>
     </div>
@@ -428,8 +708,8 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
 
 <section id="referenzen" class="sec">
   <div class="sec-head rv">
-    <div><p class="slabel">Referenzen</p><h2 class="sec-title">Unsere<br/><span class="ac">Arbeit.</span></h2></div>
-    <span class="sec-meta">Live &amp; in Betrieb</span>
+    <div><p class="slabel"><?php echo $t['ref_label']; ?></p><h2 class="sec-title"><?php echo $t['ref_title1']; ?><br/><span class="ac"><?php echo $t['ref_title2']; ?></span></h2></div>
+    <span class="sec-meta"><?php echo $t['ref_meta']; ?></span>
   </div>
   <div class="ref-list">
     <div class="ref-item rv">
@@ -437,16 +717,16 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <picture><source srcset="/wp-content/themes/mystu/assets/mystuShop.webp" type="image/webp"/><img src="/wp-content/themes/mystu/assets/mystuShop.jpg" alt="mystu.shop Referenz" width="1440" height="900" loading="lazy"/></picture>
       </div>
       <div>
-        <p class="ref-tag">Shopify · E-Commerce</p>
+        <p class="ref-tag"><?php echo $t['ref1_tag']; ?></p>
         <h3 class="ref-name">mystu<br/>Shop</h3>
-        <p class="ref-desc">Exklusive Stuttgart Fanartikel — designed in Stuttgart, produziert auf Bestellung. Von Shirts über Hoodies bis zu Caps, alles mit Seele für den Kessel.</p>
+        <p class="ref-desc"><?php echo $t['ref1_desc']; ?></p>
         <div class="ref-chips">
           <span class="ref-chip">Shopify</span>
           <span class="ref-chip">Custom Theme</span>
-          
+
           <span class="ref-chip">Stuttgart</span>
         </div>
-        <a href="https://mystu.shop" target="_blank" rel="noopener" class="ref-link">Zum Shop <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://mystu.shop" target="_blank" rel="noopener" class="ref-link"><?php echo $t['ref1_link']; ?> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
     <div class="ref-item rv">
@@ -454,20 +734,20 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <picture><source srcset="/wp-content/themes/mystu/assets/anderthalbbar.webp" type="image/webp"/><img src="/wp-content/themes/mystu/assets/anderthalbbar.jpg" alt="anderthalb Bar Referenz" width="1440" height="900" loading="lazy"/></picture>
       </div>
       <div>
-        <p class="ref-tag">Webdesign · Gastronomie</p>
+        <p class="ref-tag"><?php echo $t['ref2_tag']; ?></p>
         <h3 class="ref-name">anderthalb<br/>Bar</h3>
-        <p class="ref-desc">Cocktailbar in Stuttgart-Mitte — Events, Live-Musik und DJ-Sets. Website mit Eventkalender, Buchungsformular und mobilem Design.</p>
+        <p class="ref-desc"><?php echo $t['ref2_desc']; ?></p>
         <div class="ref-chips">
-          <span class="ref-chip">Webdesign</span>
-          <span class="ref-chip">Gastronomie</span>
+          <span class="ref-chip"><?php echo $t['ref2_chip1']; ?></span>
+          <span class="ref-chip"><?php echo $t['ref2_chip2']; ?></span>
           <span class="ref-chip">Stuttgart</span>
         </div>
-        <a href="https://anderthalb-bar.de" target="_blank" rel="noopener" class="ref-link">Zur Website <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://anderthalb-bar.de" target="_blank" rel="noopener" class="ref-link"><?php echo $t['ref2_link']; ?> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
 
-  <div class="ref-divider">Mockup-Referenzen</div>
+  <div class="ref-divider"><?php echo $t['ref_divider']; ?></div>
 
   <div class="ref-mockups">
     <div class="ref-mock rv">
@@ -475,11 +755,11 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <img src="<?php echo get_template_directory_uri(); ?>/assets/handwerk-preview.png" alt="Vorschau der Handwerker-Webseite" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
-        <p class="ref-mock-tag">WordPress · Handwerk</p>
+        <p class="ref-mock-tag"><?php echo $t['refm1_tag']; ?></p>
         <div class="ref-mock-name">Müller Bau</div>
       </div>
       <div class="ref-mock-over">
-        <a href="<?php echo esc_url(home_url('/handwerker-webseite/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="Handwerker-Webseite in neuem Tab ansehen">Live ansehen →</a>
+        <a href="<?php echo esc_url(home_url('/handwerker-webseite/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="<?php echo esc_attr($t['refm1_aria']); ?>"><?php echo $t['refm1_link']; ?></a>
       </div>
     </div>
     <div class="ref-mock rv">
@@ -487,11 +767,11 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <img src="<?php echo get_template_directory_uri(); ?>/assets/fahrschule-preview.png" alt="Vorschau des Fahrschul-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
-        <p class="ref-mock-tag">Landingpage · Fahrschule</p>
+        <p class="ref-mock-tag"><?php echo $t['refm2_tag']; ?></p>
         <div class="ref-mock-name">DriveNow</div>
       </div>
       <div class="ref-mock-over">
-        <a href="<?php echo esc_url(home_url('/mockup-fahrschule/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="Fahrschul-Mockup in neuem Tab ansehen">Live ansehen →</a>
+        <a href="<?php echo esc_url(home_url('/mockup-fahrschule/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="<?php echo esc_attr($t['refm2_aria']); ?>"><?php echo $t['refm2_link']; ?></a>
       </div>
     </div>
     <div class="ref-mock rv d1">
@@ -499,11 +779,11 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <img src="<?php echo get_template_directory_uri(); ?>/assets/anwalt-preview.png" alt="Vorschau des Kanzlei-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
-        <p class="ref-mock-tag">Landingpage · Kanzlei</p>
+        <p class="ref-mock-tag"><?php echo $t['refm3_tag']; ?></p>
         <div class="ref-mock-name">Kanzlei Westend</div>
       </div>
       <div class="ref-mock-over">
-        <a href="<?php echo esc_url(home_url('/mockup-anwalt/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="Kanzlei-Mockup in neuem Tab ansehen">Live ansehen →</a>
+        <a href="<?php echo esc_url(home_url('/mockup-anwalt/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="<?php echo esc_attr($t['refm3_aria']); ?>"><?php echo $t['refm3_link']; ?></a>
       </div>
     </div>
     <div class="ref-mock rv">
@@ -511,11 +791,11 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
         <img src="<?php echo get_template_directory_uri(); ?>/assets/zahnarzt-preview.png" alt="Vorschau des Zahnarzt-Mockups" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
       </div>
       <div class="ref-mock-info">
-        <p class="ref-mock-tag">WordPress · Zahnarzt</p>
+        <p class="ref-mock-tag"><?php echo $t['refm4_tag']; ?></p>
         <div class="ref-mock-name">Dr. Klein</div>
       </div>
       <div class="ref-mock-over">
-        <a href="<?php echo esc_url(home_url('/mockup-zahnarzt/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="Zahnarzt-Mockup in neuem Tab ansehen">Live ansehen →</a>
+        <a href="<?php echo esc_url(home_url('/mockup-zahnarzt/')); ?>" target="_blank" rel="noopener" class="ref-mock-link" aria-label="<?php echo esc_attr($t['refm4_aria']); ?>"><?php echo $t['refm4_link']; ?></a>
       </div>
     </div>
   </div>
@@ -524,38 +804,38 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
 
 <section id="warum" class="sec">
   <div class="sec-head rv">
-    <div><p class="slabel">Warum mystu</p><h2 class="sec-title">Kein Bla,<br/><span class="ac">nur Ergebnis.</span></h2></div>
-    <span class="sec-meta">Klein, schnell<br/>&amp; persönlich</span>
+    <div><p class="slabel"><?php echo $t['warum_label']; ?></p><h2 class="sec-title"><?php echo $t['warum_title1']; ?><br/><span class="ac"><?php echo $t['warum_title2']; ?></span></h2></div>
+    <span class="sec-meta"><?php echo $t['warum_meta']; ?></span>
   </div>
   <div class="why-stack">
     <div class="why-row rv">
       <span class="why-ghost">01</span>
       <div class="why-left">
         <p class="why-index">01</p>
-        <h3 class="why-h">Direkt mit<br/>dem Macher</h3>
+        <h3 class="why-h"><?php echo $t['w1_h1']; ?><br/><?php echo $t['w1_h2']; ?></h3>
       </div>
       <div class="why-right">
-        <p class="why-p">Kein Account-Manager, keine Warteschleife. Du sprichst mit den Leuten, die deine Seite wirklich bauen — ohne Umwege, ohne Bullshit.</p>
+        <p class="why-p"><?php echo $t['w1_p']; ?></p>
       </div>
     </div>
     <div class="why-row rv d1">
       <span class="why-ghost">02</span>
       <div class="why-left">
         <p class="why-index">02</p>
-        <h3 class="why-h">Antwort<br/>in 24h</h3>
+        <h3 class="why-h"><?php echo $t['w2_h1']; ?><br/><?php echo $t['w2_h2']; ?></h3>
       </div>
       <div class="why-right">
-        <p class="why-p">Kurze Wege, schnelle Rückmeldung und eine ehrliche Einschätzung — bevor du dich auf irgendetwas festlegst.</p>
+        <p class="why-p"><?php echo $t['w2_p']; ?></p>
       </div>
     </div>
     <div class="why-row rv d2">
       <span class="why-ghost">03</span>
       <div class="why-left">
         <p class="why-index">03</p>
-        <h3 class="why-h">Fair &amp;<br/>transparent</h3>
+        <h3 class="why-h"><?php echo $t['w3_h1']; ?><br/><?php echo $t['w3_h2']; ?></h3>
       </div>
       <div class="why-right">
-        <p class="why-p">Festpreis statt böser Überraschungen. Du weißt vorher genau, was es kostet und was du dafür bekommst.</p>
+        <p class="why-p"><?php echo $t['w3_p']; ?></p>
       </div>
     </div>
   </div>
@@ -563,16 +843,16 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
 
 <section id="team" class="sec">
   <div class="team-intro rv">
-    <p class="team-intro-label">Das Team</p>
-    <p class="team-intro-text">Yusuf und Michele sind wie <b>Yin und Yang</b> — einer denkt in Pixeln, der andere in Code. Was rauskommt, wenn Design auf Entwicklung trifft? Websites, die aussehen wie Kunst und funktionieren wie eine Maschine.</p>
+    <p class="team-intro-label"><?php echo $t['team_label']; ?></p>
+    <p class="team-intro-text"><?php echo $t['team_intro']; ?></p>
   </div>
   <div class="team-duo">
     <div class="team-card rv">
       <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/michele.webp" type="image/webp"/><img class="team-img" src="<?php echo get_template_directory_uri(); ?>/assets/michele.jpg" alt="Michele – Designer bei mystu" width="600" height="800" loading="lazy"/></picture>
       <div class="team-card-over">
-        <p class="team-card-role">Designer</p>
+        <p class="team-card-role"><?php echo $t['mi_role']; ?></p>
         <h3 class="team-card-name">Michele</h3>
-        <p class="team-card-bio">Über 10 Jahre Erfahrung — von Websites bis Apps, von Flyern bis Branding. Und VfB-Fan seit Kindheit.</p>
+        <p class="team-card-bio"><?php echo $t['mi_bio']; ?></p>
         <div class="team-card-tags">
           <span class="team-tag">UI/UX</span>
           <span class="team-tag">App Design</span>
@@ -584,14 +864,14 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
     <div class="team-card rv d1">
       <picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/yusuf.webp" type="image/webp"/><img class="team-img team-img-yusuf" src="<?php echo get_template_directory_uri(); ?>/assets/yusuf.jpg" alt="Yusuf – Entwickler bei mystu" width="1200" height="1800" loading="lazy"/></picture>
       <div class="team-card-over">
-        <p class="team-card-role">Entwickler</p>
+        <p class="team-card-role"><?php echo $t['yu_role']; ?></p>
         <h3 class="team-card-name">Yusuf</h3>
-        <p class="team-card-bio">Über 10 Jahre Erfahrung — Typo3, Shopify, WordPress, KI. Egal was es ist, er fuchst sich rein und liefert.</p>
+        <p class="team-card-bio"><?php echo $t['yu_bio']; ?></p>
         <div class="team-card-tags">
           <span class="team-tag">WordPress</span>
           <span class="team-tag">Shopify</span>
           <span class="team-tag">Typo3</span>
-          <span class="team-tag">KI</span>
+          <span class="team-tag"><?php echo $t['yu_tag_ai']; ?></span>
         </div>
       </div>
     </div>
@@ -603,9 +883,9 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
   <div class="kt-glow"></div>
   <div class="kt-grid">
     <div class="rv">
-      <p class="slabel">Kontakt</p>
-      <h2 class="kt-title">Lass uns<br/><span class="ac">reden.</span></h2>
-      <p class="kt-text">Erzähl uns kurz von deinem Vorhaben — wir melden uns innerhalb von 48 Stunden mit einer ehrlichen Einschätzung.</p>
+      <p class="slabel"><?php echo $t['kt_label']; ?></p>
+      <h2 class="kt-title"><?php echo $t['kt_title1']; ?><br/><span class="ac"><?php echo $t['kt_title2']; ?></span></h2>
+      <p class="kt-text"><?php echo $t['kt_text']; ?></p>
       <div class="kt-links">
         <a class="kt-link" href="mailto:hi@mystu.de"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>hi@mystu.de</a>
         <a class="kt-link" href="tel:+4915123456789"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>+49 151 2345 6789</a>
@@ -613,47 +893,47 @@ $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M
     </div>
 
     <form class="kt-form rv d1" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
-      <?php if ($lead_sent): ?><p class="kt-msg ok">Danke! Deine Anfrage ist angekommen — wir melden uns innerhalb von 48 Stunden.</p><?php endif; ?>
-      <?php if ($lead_error): ?><p class="kt-msg err">Da ist etwas schiefgelaufen. Bitte prüfe deine Eingaben oder schreib uns direkt an hi@mystu.de.</p><?php endif; ?>
+      <?php if ($lead_sent): ?><p class="kt-msg ok"><?php echo $t['kt_ok']; ?></p><?php endif; ?>
+      <?php if ($lead_error): ?><p class="kt-msg err"><?php echo $t['kt_err']; ?></p><?php endif; ?>
       <input type="hidden" name="action" value="mystu_lead_request"/>
       <?php wp_nonce_field('mystu_lead_request', 'mystu_lead_nonce'); ?>
-      <div class="kt-field"><label for="kt-name">Name</label><input id="kt-name" name="name" type="text" required placeholder="Dein Name"/></div>
-      <div class="kt-field"><label for="kt-mail">E-Mail</label><input id="kt-mail" name="email" type="email" required placeholder="dein@email.de"/></div>
-      <div class="kt-field"><label for="kt-type">Was brauchst du?</label>
+      <div class="kt-field"><label for="kt-name"><?php echo $t['kt_lbl_name']; ?></label><input id="kt-name" name="name" type="text" required placeholder="<?php echo esc_attr($t['kt_ph_name']); ?>"/></div>
+      <div class="kt-field"><label for="kt-mail"><?php echo $t['kt_lbl_mail']; ?></label><input id="kt-mail" name="email" type="email" required placeholder="<?php echo esc_attr($t['kt_ph_mail']); ?>"/></div>
+      <div class="kt-field"><label for="kt-type"><?php echo $t['kt_lbl_type']; ?></label>
         <select id="kt-type" name="projekt">
-          <option>Website</option><option>Onlineshop</option><option>Landingpage</option><option>SEO / Sichtbarkeit</option><option>Bin mir noch unsicher</option>
+          <option><?php echo $t['kt_opt1']; ?></option><option><?php echo $t['kt_opt2']; ?></option><option><?php echo $t['kt_opt3']; ?></option><option><?php echo $t['kt_opt4']; ?></option><option><?php echo $t['kt_opt5']; ?></option>
         </select>
       </div>
-      <div class="kt-field"><label for="kt-msg">Nachricht</label><textarea id="kt-msg" name="nachricht" required placeholder="Erzähl uns kurz von deinem Projekt …"></textarea></div>
+      <div class="kt-field"><label for="kt-msg"><?php echo $t['kt_lbl_msg']; ?></label><textarea id="kt-msg" name="nachricht" required placeholder="<?php echo esc_attr($t['kt_ph_msg']); ?>"></textarea></div>
       <div class="kt-field kt-captcha">
-        <label for="kt-cap">Sicherheitsfrage: Was ist <?php echo esc_html($cap_n1); ?> − <?php echo esc_html($cap_n2); ?>?</label>
-        <input id="kt-cap" name="captcha_answer" type="number" required placeholder="Deine Antwort"/>
+        <label for="kt-cap"><?php echo esc_html(sprintf($t['kt_cap_q'], $cap_n1, $cap_n2)); ?></label>
+        <input id="kt-cap" name="captcha_answer" type="number" required placeholder="<?php echo esc_attr($t['kt_ph_answer']); ?>"/>
         <input type="hidden" name="captcha_token" value="<?php echo esc_attr($cap_token); ?>"/>
       </div>
-      <label class="kt-check"><input type="checkbox" name="datenschutz" required/> Ich habe die <a href="<?php echo esc_url(home_url('/datenschutz/')); ?>">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
-      <button type="submit">Anfrage senden</button>
-      <p class="kt-note">Mit dem Absenden stimmst du der Verarbeitung deiner Daten zu. Siehe <a href="<?php echo esc_url(home_url('/datenschutz/')); ?>">Datenschutz</a> / <a href="<?php echo esc_url(home_url('/impressum/')); ?>">Impressum</a>.</p>
+      <label class="kt-check"><input type="checkbox" name="datenschutz" required/> <?php echo sprintf($t['kt_privacy'], '<a href="' . esc_url(home_url('/datenschutz/')) . '">' . $t['privacy_link_text'] . '</a>'); ?></label>
+      <button type="submit"><?php echo $t['kt_submit']; ?></button>
+      <p class="kt-note"><?php echo sprintf($t['kt_note'], '<a href="' . esc_url(home_url('/datenschutz/')) . '">' . $t['note_datenschutz'] . '</a>', '<a href="' . esc_url(home_url('/impressum/')) . '">' . $t['note_impressum'] . '</a>'); ?></p>
     </form>
   </div>
 
 <div class="calendly-wrap rv d2">
   <div class="calendly-head">
-    <p class="slabel">Oder direkt Termin buchen</p>
-    <h3 class="calendly-title">Schnell & unkompliziert.</h3>
-    <p class="calendly-sub">Wähle einen freien Slot — wir sind <strong>Mo–Fr ab 18 Uhr</strong> verfügbar.</p>
+    <p class="slabel"><?php echo $t['cal_label']; ?></p>
+    <h3 class="calendly-title"><?php echo $t['cal_title']; ?></h3>
+    <p class="calendly-sub"><?php echo sprintf($t['cal_sub'], '<strong>' . $t['cal_sub_strong'] . '</strong>'); ?></p>
   </div>
-  <div class="calendly-inline-widget" data-url="https://calendly.com/mystude?hide_gdpr_banner=1&background_color=101110&text_color=f4f5f1&primary_color=c9ff2e" style="min-width:280px;height:650px"></div>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/mystude?hide_gdpr_banner=1&background_color=101110&text_color=f4f5f1&primary_color=c9ff2e<?php echo $lang === 'en' ? '&locale=en' : ''; ?>" style="min-width:280px;height:650px"></div>
 </div>
 </section>
 
 </main>
 <footer class="mfoot">
   <div class="mfoot-top">
-    <div><a href="<?php echo $home; ?>" class="mfoot-logo" aria-label="mystu"><?php echo $logo_svg; ?></a><p class="mfoot-desc">Webdesign-Agentur aus dem Raum Stuttgart &amp; Ludwigsburg. Websites, die Kunden bringen.</p></div>
+    <div><a href="<?php echo $home; ?>" class="mfoot-logo" aria-label="mystu"><?php echo $logo_svg; ?></a><p class="mfoot-desc"><?php echo $t['foot_desc']; ?></p></div>
   </div>
   <div class="mfoot-bot">
-    <p class="mfoot-copy">&copy; <?php echo date('Y'); ?> mystu — Alle Rechte vorbehalten. <a href="<?php echo esc_url(home_url('/impressum/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Impressum</a> · <a href="<?php echo esc_url(home_url('/datenschutz/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Datenschutz</a> · <a href="<?php echo esc_url(home_url('/agb/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px">AGB</a> · <a href="#" class="mystu-cookie-settings" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Cookie-Einstellungen</a></p>
-    <p class="mfoot-made">Made in Stuttgart von <span>Yusuf &amp; Michele</span></p>
+    <p class="mfoot-copy">&copy; <?php echo date('Y'); ?> mystu <?php echo $t['foot_copy']; ?> <a href="<?php echo esc_url(home_url('/impressum/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><?php echo $t['foot_impressum']; ?></a> · <a href="<?php echo esc_url(home_url('/datenschutz/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><?php echo $t['foot_datenschutz']; ?></a> · <a href="<?php echo esc_url(home_url('/agb/')); ?>" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><?php echo $t['foot_agb']; ?></a> · <a href="#" class="mystu-cookie-settings" style="color:inherit;text-decoration:underline;text-underline-offset:3px"><?php echo $t['foot_cookie']; ?></a></p>
+    <p class="mfoot-made"><?php echo $t['foot_made']; ?> <span>Yusuf &amp; Michele</span></p>
   </div>
 </footer>
 
