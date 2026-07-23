@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg">
+<title>SPSR · Elfmeterkönig</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eeede9;--ink:#020202;--muted:#77746d;--tv:#d9cdb4;--tv-dark:#8f8571;--screen:#0b1f13}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:VT323,monospace;padding:40px 18px 70px}
+a{color:inherit}
+.card{width:min(94vw,480px);text-align:center}
+.brand h1{font-family:"Press Start 2P",monospace;font-size:clamp(28px,7vw,42px);letter-spacing:.04em;margin:0 0 14px}
+.brand p{margin:0 0 34px;font-size:20px;letter-spacing:.03em;color:var(--muted)}
+.vinyl{position:fixed;top:18px;right:18px;z-index:40;width:64px;height:64px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.vinyl-disc{width:100%;height:100%;border-radius:50%;background:repeating-radial-gradient(circle at center,#111 0 2px,#222 2px 4px);box-shadow:0 4px 14px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;animation:spin 3s linear infinite;animation-play-state:paused}
+.vinyl.playing .vinyl-disc{animation-play-state:running}
+.vinyl-disc span{width:22px;height:22px;border-radius:50%;background:#b5443b;display:flex;align-items:center;justify-content:center;font-family:"Press Start 2P",monospace;font-size:5px;color:#f4ede0}
+.vinyl-disc span::after{content:"";position:absolute}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.vinyl-disc{animation:none!important}}
+.tv{width:100%;margin:0 auto;background:var(--tv);border-radius:20px;padding:18px 18px 14px;box-shadow:0 24px 46px rgba(0,0,0,.28),inset 0 0 0 3px var(--tv-dark);position:relative}
+.tv-top{display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px;padding-right:4px}
+.tv-dot{width:8px;height:8px;border-radius:50%;background:var(--tv-dark)}
+.tv-screen{position:relative;aspect-ratio:4/3;background:var(--screen);border-radius:8px;overflow:hidden;box-shadow:inset 0 0 0 7px #1c1a16,inset 0 0 26px rgba(0,0,0,.85)}
+.tv-screen canvas{width:100%;height:100%;display:block;image-rendering:pixelated;touch-action:manipulation}
+.tv-screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,0) 0px,rgba(0,0,0,0) 1px,rgba(0,0,0,.16) 2px,rgba(0,0,0,.16) 3px)}
+.tv-screen::before{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 40px rgba(0,0,0,.5)}
+.hud{position:absolute;top:6px;left:8px;font-family:"Press Start 2P",monospace;font-size:9px;color:#d7f3d7;text-shadow:0 0 4px #3fae55;z-index:2;pointer-events:none}
+.hint{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-family:"Press Start 2P",monospace;font-size:7px;letter-spacing:.06em;color:#bfe8c4;opacity:.85;z-index:2;pointer-events:none}
+.msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Press Start 2P",monospace;font-size:clamp(14px,4vw,20px);color:#fff;text-shadow:0 0 8px #000;opacity:0;transition:opacity .15s;z-index:3;pointer-events:none}
+.msg.show{opacity:1}
+.overlay{position:absolute;inset:0;background:rgba(6,14,8,.86);display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:4;cursor:pointer}
+.overlay.show{display:flex}
+.overlay p{margin:0;font-family:"Press Start 2P",monospace;color:#fff;font-size:clamp(11px,3.4vw,15px);text-align:center;line-height:1.6;padding:0 10px}
+.overlay span{font-family:"Press Start 2P",monospace;color:#7fe38a;font-size:9px;letter-spacing:.06em}
+.overlay button{font-family:"Press Start 2P",monospace;font-size:10px;letter-spacing:.06em;color:#06170a;background:#7fe38a;border:0;border-radius:4px;padding:10px 16px;cursor:pointer;box-shadow:0 3px 0 #3f9a4c;-webkit-tap-highlight-color:transparent}
+.overlay button:active{transform:translateY(2px);box-shadow:0 1px 0 #3f9a4c}
+.controls{display:flex;gap:10px;justify-content:center;padding:12px 6px 0}
+.btn{flex:1;max-width:120px;font-family:"Press Start 2P",monospace;font-size:15px;padding:12px 0;border:0;border-radius:6px;background:#b5443b;color:#fff;box-shadow:0 4px 0 #7a2a24;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #7a2a24}
+.btn:nth-child(2){background:#2f7d3a;box-shadow:0 4px 0 #1f5226}
+.btn:nth-child(2):active{box-shadow:0 1px 0 #1f5226}
+.tv-base{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:12px 6px 0}
+.knob{width:14px;height:14px;border-radius:50%;background:var(--tv-dark);box-shadow:inset 0 -2px 3px rgba(0,0,0,.3)}
+.speaker{flex:1;height:12px;background:repeating-linear-gradient(90deg,var(--tv-dark) 0 3px,transparent 3px 7px);border-radius:2px;max-width:120px}
+.contact{margin-top:30px;font-size:18px;line-height:1.6;color:var(--muted)}
+.contact a{text-decoration:underline}
+.form{margin-top:44px;text-align:left}
+.form h2{font-family:"Press Start 2P",monospace;font-size:13px;margin:0 0 20px;text-align:center}
+.field{display:block;width:100%;height:42px;margin-bottom:14px;border:0;border-bottom:2px solid var(--tv-dark);background:transparent;color:var(--ink);font:20px VT323,monospace;padding:0 4px;outline:0}
+select.field{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--tv-dark) 50%),linear-gradient(135deg,var(--tv-dark) 50%,transparent 50%);background-position:calc(100% - 16px) 20px,calc(100% - 10px) 20px;background-size:6px 6px;background-repeat:no-repeat}
+.message{width:100%;min-height:100px;margin-bottom:16px;border:2px solid var(--tv-dark);background:#fff;color:var(--ink);padding:10px;font:20px VT323,monospace;outline:0;resize:vertical}
+.check{display:flex;gap:10px;align-items:center;font-size:17px;margin-bottom:20px;color:var(--muted)}
+.check input{width:18px;height:18px;margin:0;flex-shrink:0}
+.send{display:block;margin:0 auto;font-family:"Press Start 2P",monospace;font-size:12px;padding:12px 26px;border:0;border-radius:6px;background:var(--ink);color:var(--bg);cursor:pointer;box-shadow:0 4px 0 #444;-webkit-tap-highlight-color:transparent}
+.send:active{transform:translateY(3px);box-shadow:0 1px 0 #444}
+.press{margin-top:46px;padding:22px 0;border-top:2px solid var(--tv-dark);border-bottom:2px solid var(--tv-dark);overflow:hidden}
+.press-label{margin:0 0 16px;font-family:"Press Start 2P",monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-align:center}
+.press-track{display:flex;width:max-content;gap:38px;animation:press-scroll 22s linear infinite}
+.press:hover .press-track{animation-play-state:paused}
+.press-track span{font-family:"Press Start 2P",monospace;font-size:13px;white-space:nowrap;color:var(--ink)}
+.press-track a{color:var(--ink);text-decoration:underline}
+@keyframes press-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.press-track{animation:none}}
+.mockup-badge{position:fixed;right:14px;bottom:14px;z-index:60;background:var(--ink);color:var(--bg);font-family:VT323,monospace;font-size:14px;padding:6px 10px}
+</style>
+</head>
+<body>
+<div class="vinyl" id="vinyl" role="button" tabindex="0" aria-label="Musik abspielen">
+  <div class="vinyl-disc"><span></span></div>
+</div>
+<audio id="audio" loop preload="none" src="/wp-content/themes/mystu/mockups/spsr-studio/spsr-bounce.mp3"></audio>
+
+<main class="card">
+  <div class="brand">
+    <h1>SPSR</h1>
+    <p>Streetwear Tailors — Stuttgart</p>
+  </div>
+
+  <div class="tv">
+    <div class="tv-top"><span class="tv-dot"></span><span class="tv-dot"></span></div>
+    <div class="tv-screen" id="screen">
+      <canvas id="game" width="160" height="120"></canvas>
+      <div class="hud" id="hud">⚽ 0/0</div>
+      <div class="hint" id="hint">LINKS · MITTE · RECHTS TIPPEN</div>
+      <div class="msg" id="msg"></div>
+      <div class="overlay show" id="startOverlay">
+        <p>SPSR<br>ELFMETERKÖNIG</p>
+        <span>5 SCHÜSSE — KEEPER AUSTRICKSEN</span>
+        <button id="startBtn" type="button">SPIEL STARTEN</button>
+      </div>
+      <div class="overlay" id="overlay">
+        <p id="overlayText">ENDSTAND<br><span id="finalScore"></span></p>
+        <button id="restartBtn" type="button">NOCHMAL SPIELEN</button>
+      </div>
+    </div>
+    <div class="controls" id="controls">
+      <button class="btn" data-zone="0" type="button" aria-label="Links schießen">◀</button>
+      <button class="btn" data-zone="1" type="button" aria-label="Mitte schießen">●</button>
+      <button class="btn" data-zone="2" type="button" aria-label="Rechts schießen">▶</button>
+    </div>
+    <div class="tv-base"><span class="knob"></span><span class="knob"></span><div class="speaker"></div></div>
+  </div>
+
+  <div class="press" aria-label="Ausgewählte Referenzen">
+    <p class="press-label">Ausgewählte Referenzen</p>
+    <div class="press-track">
+      <span><a href="https://www.vogue.de/artikel/demokratisierung-tailoring-spsr-studio" target="_blank" rel="noopener">Vogue</a></span>
+      <span>10 Magazine</span>
+      <span>Bettergosouth</span>
+      <span>Lodenfrey</span>
+      <span>Ryan Leslie</span>
+      <span>Bausa</span>
+      <span><a href="https://www.vogue.de/artikel/demokratisierung-tailoring-spsr-studio" target="_blank" rel="noopener">Vogue</a></span>
+      <span>10 Magazine</span>
+      <span>Bettergosouth</span>
+      <span>Lodenfrey</span>
+      <span>Ryan Leslie</span>
+      <span>Bausa</span>
+    </div>
+  </div>
+
+  <div class="contact">
+    Brennerstrasse 21 // 0711 Stuttgart<br>
+    <a href="mailto:contact@atelier-rebellion.com">contact@atelier-rebellion.com</a>
+  </div>
+
+  <form class="form" action="#" method="post">
+    <h2>Kontakt</h2>
+    <input class="field" type="text" name="name" placeholder="Name">
+    <input class="field" type="email" name="email" placeholder="E-Mail">
+    <input class="field" type="tel" name="phone" placeholder="Telefon">
+    <select class="field" name="contact_way" aria-label="Bevorzugter Kontaktweg">
+      <option>Bevorzugter Kontaktweg</option>
+      <option>Termin im Studio</option>
+      <option>Termin im Büro</option>
+      <option>Video-Beratung</option>
+      <option>Telefon-Beratung</option>
+    </select>
+    <textarea class="message" name="message" placeholder="Wann erreichen wir dich am besten? Schreib uns eine Nachricht."></textarea>
+    <label class="check"><input type="checkbox" name="phone_consultation"><span>Telefon-Beratung gewünscht</span></label>
+    <button class="send" type="submit">Senden</button>
+  </form>
+</main>
+
+<div class="mockup-badge">Mockup · mystu.de</div>
+
+<script>
+(function(){
+  var vinyl = document.getElementById('vinyl');
+  var audio = document.getElementById('audio');
+  function toggleAudio(){
+    if(audio.paused){
+      audio.play().then(function(){ vinyl.classList.add('playing'); }).catch(function(){ vinyl.classList.remove('playing'); });
+    }else{
+      audio.pause();
+      vinyl.classList.remove('playing');
+    }
+  }
+  audio.addEventListener('error', function(){ vinyl.classList.remove('playing'); });
+  vinyl.addEventListener('click', toggleAudio);
+  vinyl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleAudio(); } });
+})();
+
+(function(){
+  var W=160,H=120;
+  var canvas=document.getElementById('game');
+  var ctx=canvas.getContext('2d');
+  var hud=document.getElementById('hud');
+  var hint=document.getElementById('hint');
+  var msgEl=document.getElementById('msg');
+  var overlay=document.getElementById('overlay');
+  var startOverlay=document.getElementById('startOverlay');
+  var startBtn=document.getElementById('startBtn');
+  var restartBtn=document.getElementById('restartBtn');
+  var controls=document.getElementById('controls');
+  var finalScoreEl=document.getElementById('finalScore');
+  var screenEl=document.getElementById('screen');
+
+  var ZONES=[44,80,116];
+  var GOAL={x1:26,x2:134,barY:18,barH:4};
+  var KEEPER_Y=46, NET_Y=30, GROUND_Y=64;
+  var PLAYER_POS={x:80,y:100};
+  var BALL_START={x:80,y:94};
+
+  var bg=document.createElement('canvas');
+  bg.width=W; bg.height=H;
+  (function drawBg(){
+    var b=bg.getContext('2d');
+    var grad=b.createLinearGradient(0,0,0,GROUND_Y);
+    grad.addColorStop(0,'#0e2a17'); grad.addColorStop(1,'#163b1e');
+    b.fillStyle=grad; b.fillRect(0,0,W,GROUND_Y);
+    b.fillStyle='rgba(214,224,196,.55)';
+    for(var i=0;i<40;i++){
+      var x=(i*13.7)%W, y=4+((i*7)%10);
+      b.fillRect(x,y,2,2);
+    }
+    b.fillStyle='#2f7d3a';
+    for(var s=0;s<W;s+=8){ b.fillStyle=(s/8)%2===0?'#2f7d3a':'#357f40'; b.fillRect(s,GROUND_Y,8,H-GROUND_Y); }
+    b.fillStyle='#e9e6dc';
+    b.fillRect(GOAL.x1,GOAL.barY,GOAL.x2-GOAL.x1,GOAL.barH);
+    b.fillRect(GOAL.x1,GOAL.barY,3,KEEPER_Y-GOAL.barY);
+    b.fillRect(GOAL.x2-3,GOAL.barY,3,KEEPER_Y-GOAL.barY);
+    b.strokeStyle='rgba(255,255,255,.35)'; b.lineWidth=1;
+    for(var nx=GOAL.x1;nx<=GOAL.x2;nx+=7){ b.beginPath(); b.moveTo(nx,GOAL.barY); b.lineTo(nx,KEEPER_Y); b.stroke(); }
+    for(var ny=GOAL.barY;ny<=KEEPER_Y;ny+=6){ b.beginPath(); b.moveTo(GOAL.x1,ny); b.lineTo(GOAL.x2,ny); b.stroke(); }
+    b.strokeStyle='rgba(255,255,255,.5)';
+    b.strokeRect(20,GROUND_Y+2,W-40,H-GROUND_Y-4);
+  })();
+
+  function drawFigure(x,y,shirt){
+    ctx.fillStyle='#f2d7b6'; ctx.fillRect(x-2,y-10,4,4);
+    ctx.fillStyle=shirt; ctx.fillRect(x-4,y-6,8,7);
+    ctx.fillStyle='#1c1c1c'; ctx.fillRect(x-4,y+1,3,5); ctx.fillRect(x+1,y+1,3,5);
+  }
+
+  function drawBall(x,y){
+    ctx.fillStyle='#f4f2ea'; ctx.fillRect(x-2,y-2,4,4);
+    ctx.fillStyle='#1c1c1c'; ctx.fillRect(x-1,y-1,1,1); ctx.fillRect(x,y,1,1);
+  }
+
+  var state={score:0,round:0,maxRounds:5,busy:false,started:false,keeperX:ZONES[1]};
+
+  function updateHud(){ hud.textContent='⚽ '+state.score+'/'+state.round; }
+
+  function render(ballPos,keeperX,playerVisible){
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(bg,0,0);
+    drawFigure(keeperX,KEEPER_Y+6,'#b5443b');
+    if(playerVisible) drawFigure(PLAYER_POS.x,PLAYER_POS.y,'#2f4f8f');
+    drawBall(ballPos.x,ballPos.y);
+  }
+
+  function flashMsg(text){
+    msgEl.textContent=text;
+    msgEl.classList.add('show');
+    setTimeout(function(){ msgEl.classList.remove('show'); },650);
+  }
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function animateShot(zoneIdx){
+    var shotX=ZONES[zoneIdx];
+    var keeperZone=Math.floor(Math.random()*3);
+    var saved=keeperZone===zoneIdx;
+    var targetKeeperX=ZONES[keeperZone];
+    var targetY=saved?KEEPER_Y:NET_Y;
+    var duration=420, start=null;
+
+    function step(ts){
+      if(!start) start=ts;
+      var t=Math.min(1,(ts-start)/duration);
+      var ballPos={
+        x:Math.round(lerp(BALL_START.x,shotX,t)),
+        y:Math.round(lerp(BALL_START.y,targetY,t))
+      };
+      var keeperX=Math.round(lerp(state.keeperX,targetKeeperX,Math.min(1,t*1.3)));
+      render(ballPos,keeperX,t<0.35);
+      if(t<1){ requestAnimationFrame(step); }
+      else{
+        state.keeperX=ZONES[1];
+        state.round++;
+        if(!saved) state.score++;
+        updateHud();
+        flashMsg(saved?'GEHALTEN!':'TOR!');
+        setTimeout(function(){
+          if(state.round>=state.maxRounds){ endGame(); }
+          else{ render(BALL_START,ZONES[1],true); state.busy=false; }
+        },750);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function endGame(){
+    finalScoreEl.textContent=state.score+' / '+state.maxRounds;
+    overlay.classList.add('show');
+  }
+
+  function resetGame(){
+    state.score=0; state.round=0; state.busy=false; state.keeperX=ZONES[1];
+    overlay.classList.remove('show');
+    updateHud();
+    render(BALL_START,ZONES[1],true);
+  }
+
+  function attemptShot(zoneIdx){
+    if(!state.started || state.busy || overlay.classList.contains('show') || startOverlay.classList.contains('show')) return;
+    hint.style.opacity='0';
+    state.busy=true;
+    animateShot(zoneIdx);
+  }
+
+  screenEl.addEventListener('click',function(e){
+    if(startOverlay.classList.contains('show') || overlay.classList.contains('show')) return;
+    var rect=canvas.getBoundingClientRect();
+    var relX=(e.clientX-rect.left)/rect.width;
+    var zoneIdx=relX<1/3?0:relX<2/3?1:2;
+    attemptShot(zoneIdx);
+  });
+
+  Array.prototype.forEach.call(controls.querySelectorAll('.btn'),function(btn){
+    btn.addEventListener('click',function(){
+      attemptShot(parseInt(btn.getAttribute('data-zone'),10));
+    });
+  });
+
+  startBtn.addEventListener('click',function(e){
+    e.stopPropagation();
+    startOverlay.classList.remove('show');
+    state.started=true;
+    resetGame();
+  });
+
+  restartBtn.addEventListener('click',function(e){
+    e.stopPropagation();
+    resetGame();
+  });
+
+  updateHud();
+  render(BALL_START,ZONES[1],true);
+})();
+</script>
+</body>
+</html>
