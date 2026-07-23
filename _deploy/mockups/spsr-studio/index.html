@@ -20,6 +20,14 @@ a{color:inherit}
 .vinyl{position:fixed;top:18px;right:18px;z-index:40;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .vinyl-disc{width:64px;height:64px;border-radius:50%;background:repeating-radial-gradient(circle at center,#111 0 2px,#222 2px 4px);box-shadow:0 4px 14px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;animation:spin 3s linear infinite;animation-play-state:paused}
 .vinyl-label{font-family:"Press Start 2P",monospace;font-size:6px;line-height:1.5;letter-spacing:.03em;color:var(--muted);text-align:center;max-width:76px}
+.mini-tv{width:122px;background:#141414;border-radius:10px;padding:8px 8px 12px;box-shadow:0 12px 26px rgba(0,0,0,.35),inset 0 0 0 2px #000;display:none}
+.mini-tv.show{display:block}
+.mini-tv-top{display:flex;justify-content:center;gap:5px;margin-bottom:6px}
+.mini-tv-top span{width:4px;height:4px;border-radius:50%;background:#3a3a3a}
+.mini-tv-screen{position:relative;aspect-ratio:4/3;background:#000;border-radius:4px;overflow:hidden;box-shadow:inset 0 0 0 4px #000,inset 0 0 14px rgba(0,0,0,.85)}
+.mini-tv-screen video{width:100%;height:100%;object-fit:cover;display:block}
+.mini-tv-screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,0) 0px,rgba(0,0,0,0) 1px,rgba(0,0,0,.22) 2px,rgba(0,0,0,.22) 3px)}
+.mini-tv-base{margin-top:7px;height:5px;border-radius:2px;background:repeating-linear-gradient(90deg,#000 0 2px,#2a2a2a 2px 5px)}
 .vinyl.playing .vinyl-disc{animation-play-state:running}
 .vinyl-disc span{width:22px;height:22px;border-radius:50%;background:#b5443b;display:flex;align-items:center;justify-content:center;font-family:"Press Start 2P",monospace;font-size:5px;color:#f4ede0}
 .vinyl-disc span::after{content:"";position:absolute}
@@ -30,8 +38,6 @@ a{color:inherit}
 .tv-dot{width:8px;height:8px;border-radius:50%;background:var(--tv-dark)}
 .tv-screen{position:relative;aspect-ratio:4/3;background:var(--screen);border-radius:8px;overflow:hidden;box-shadow:inset 0 0 0 7px #1c1a16,inset 0 0 26px rgba(0,0,0,.85)}
 .tv-screen canvas{width:100%;height:100%;display:block;image-rendering:pixelated;touch-action:manipulation}
-.tv-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:1}
-.tv-video.show{opacity:1}
 .tv-screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,0) 0px,rgba(0,0,0,0) 1px,rgba(0,0,0,.16) 2px,rgba(0,0,0,.16) 3px)}
 .tv-screen::before{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 40px rgba(0,0,0,.5)}
 .hud{position:absolute;top:6px;left:8px;font-family:"Press Start 2P",monospace;font-size:9px;color:#d7f3d7;text-shadow:0 0 4px #3fae55;z-index:2;pointer-events:none}
@@ -80,6 +86,13 @@ select.field{appearance:none;background-image:linear-gradient(45deg,transparent 
 <body>
 <div class="vinyl" id="vinyl" role="button" tabindex="0" aria-label="Musik abspielen">
   <div class="vinyl-disc"><span></span></div>
+  <div class="mini-tv" id="miniTv">
+    <div class="mini-tv-top"><span></span><span></span></div>
+    <div class="mini-tv-screen">
+      <video id="musicVideo" muted loop playsinline src="/wp-content/themes/mystu/mockups/spsr-studio/spsr-vinyl-video.mp4"></video>
+    </div>
+    <div class="mini-tv-base"></div>
+  </div>
   <span class="vinyl-label">press here to play</span>
 </div>
 <audio id="audio" loop preload="none" src="/wp-content/themes/mystu/mockups/spsr-studio/spsr-bounce.mp3"></audio>
@@ -94,7 +107,6 @@ select.field{appearance:none;background-image:linear-gradient(45deg,transparent 
     <div class="tv-top"><span class="tv-dot"></span><span class="tv-dot"></span></div>
     <div class="tv-screen" id="screen">
       <canvas id="game" width="160" height="120"></canvas>
-      <video id="musicVideo" class="tv-video" muted loop playsinline src="/wp-content/themes/mystu/mockups/spsr-studio/spsr-vinyl-video.mp4"></video>
       <div class="hud" id="hud">⚽ 0/0</div>
       <div class="hint" id="hint">LINKS · MITTE · RECHTS TIPPEN</div>
       <div class="msg" id="msg"></div>
@@ -165,25 +177,26 @@ select.field{appearance:none;background-image:linear-gradient(45deg,transparent 
   var vinyl = document.getElementById('vinyl');
   var audio = document.getElementById('audio');
   var video = document.getElementById('musicVideo');
+  var miniTv = document.getElementById('miniTv');
   function toggleAudio(){
     if(audio.paused){
       audio.play().then(function(){
         vinyl.classList.add('playing');
         video.currentTime = 0;
         video.play().catch(function(){});
-        video.classList.add('show');
+        miniTv.classList.add('show');
       }).catch(function(){ vinyl.classList.remove('playing'); });
     }else{
       audio.pause();
       vinyl.classList.remove('playing');
       video.pause();
-      video.classList.remove('show');
+      miniTv.classList.remove('show');
     }
   }
   audio.addEventListener('error', function(){
     vinyl.classList.remove('playing');
     video.pause();
-    video.classList.remove('show');
+    miniTv.classList.remove('show');
   });
   vinyl.addEventListener('click', toggleAudio);
   vinyl.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleAudio(); } });
