@@ -33,6 +33,13 @@ a{color:inherit}
 .vinyl-disc span::after{content:"";position:absolute}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.vinyl-disc{animation:none!important}}
+@media(max-width:480px){
+  .vinyl{top:10px;right:10px;gap:4px}
+  .vinyl-disc{width:44px;height:44px}
+  .vinyl-disc span{width:16px;height:16px;font-size:4px}
+  .vinyl-label{font-size:5px;max-width:54px}
+  .brand{padding:0 62px}
+}
 .tv{width:100%;margin:0 auto;background:var(--tv);border-radius:20px;padding:18px 18px 14px;box-shadow:0 24px 46px rgba(0,0,0,.28),inset 0 0 0 3px var(--tv-dark);position:relative}
 .tv-top{display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px;padding-right:4px}
 .tv-dot{width:8px;height:8px;border-radius:50%;background:var(--tv-dark)}
