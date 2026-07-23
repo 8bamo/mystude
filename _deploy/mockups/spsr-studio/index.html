@@ -40,6 +40,9 @@ a{color:inherit}
 .overlay.show{display:flex}
 .overlay p{margin:0;font-family:"Press Start 2P",monospace;color:#fff;font-size:clamp(11px,3.4vw,15px);text-align:center;line-height:1.6;padding:0 10px}
 .overlay span{font-family:"Press Start 2P",monospace;color:#7fe38a;font-size:9px;letter-spacing:.06em}
+.coin{font-family:"Press Start 2P",monospace;font-size:11px;letter-spacing:.08em;color:#ffd35c!important;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.coin{animation:none}}
 .overlay button{font-family:"Press Start 2P",monospace;font-size:10px;letter-spacing:.06em;color:#06170a;background:#7fe38a;border:0;border-radius:4px;padding:10px 16px;cursor:pointer;box-shadow:0 3px 0 #3f9a4c;-webkit-tap-highlight-color:transparent}
 .overlay button:active{transform:translateY(2px);box-shadow:0 1px 0 #3f9a4c}
 .controls{display:flex;gap:10px;justify-content:center;padding:12px 6px 0}
@@ -95,6 +98,7 @@ select.field{appearance:none;background-image:linear-gradient(45deg,transparent 
       <div class="overlay show" id="startOverlay">
         <p>SPSR<br>ELFMETERKÖNIG</p>
         <span>5 SCHÜSSE — KEEPER AUSTRICKSEN</span>
+        <span class="coin">INSERT COIN</span>
         <button id="startBtn" type="button">SPIEL STARTEN</button>
       </div>
       <div class="overlay" id="overlay">
