@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg">
+<title>GoldenBridge &middot; Recht. Vermittlung. Training.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1420;--panel:#101b2b;--ink:#f3efe6;--muted:#93a0b3;--line:rgba(243,239,230,.14);--gold:#c9a24b;--gold-deep:#8c6a24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,68px);position:fixed;inset:0 0 auto;background:rgba(11,20,32,.9);backdrop-filter:blur(12px);z-index:20}
+.brand{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:2px}.brand em{font-style:italic;color:var(--gold)}
+.nav ul{display:flex;gap:26px;align-items:center;list-style:none;margin:0;padding:0;font-size:13px}
+.nav ul a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:10px 16px}
+.hero{min-height:100svh;padding:72px clamp(18px,5vw,68px) 0;display:grid;grid-template-columns:1.06fr .94fr;border-bottom:1px solid var(--line)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:48px 0}
+.meta{font-size:13px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(50px,7.4vw,108px);line-height:.94;letter-spacing:-.03em;margin:0;max-width:780px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.lead{max-width:520px;margin:28px 0 34px;color:var(--muted);font-size:18px}
+.actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;min-height:48px;border:1px solid var(--line);padding:0 18px;font-weight:800;font-size:13px}
+.btn.dark{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.hero-media{position:relative;min-height:540px;border-left:1px solid var(--line);overflow:hidden;background:radial-gradient(circle at 30% 20%,#1b2c44,#0b1420 68%)}
+.hero-media::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent 0 46%,rgba(201,162,75,.55) 46% 47%,transparent 47% 100%),
+  linear-gradient(0deg,transparent 0 62%,rgba(201,162,75,.25) 62% 63%,transparent 63% 100%)}
+.hero-media svg{position:absolute;left:8%;right:8%;bottom:14%;width:84%}
+.caption{position:absolute;left:22px;bottom:18px;background:rgba(11,20,32,.88);border:1px solid var(--line);color:var(--ink);padding:12px 14px;font-size:13px}
+.bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.bar div{padding:28px clamp(18px,4vw,44px);border-right:1px solid var(--line)}
+.bar strong{display:block;font-family:"Instrument Serif",serif;font-size:44px;line-height:1;color:var(--gold)}
+.bar span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.section{padding:clamp(70px,9vw,126px) clamp(18px,5vw,68px)}
+.section-head{max-width:640px;margin:0 0 56px}
+h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:.98;letter-spacing:-.02em;margin:0}
+.section p{color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillar{background:var(--panel);padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;min-height:320px}
+.pillar span.num{color:var(--gold);font-family:"Instrument Serif",serif;font-size:15px;margin-bottom:auto}
+.pillar h3{font-family:"Instrument Serif",serif;font-size:32px;font-weight:400;margin:20px 0 12px}
+.pillar p{margin:0 0 22px}
+.pillar a{font-size:13px;font-weight:800;color:var(--gold);border-top:1px solid var(--line);padding-top:16px;margin-top:auto}
+.dark{background:var(--panel)}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{background:var(--bg);padding:34px;min-height:230px}
+.step span{display:block;color:var(--gold);margin-bottom:56px}
+.step h3{font-family:"Instrument Serif",serif;font-size:32px;font-weight:400;margin:0 0 12px}
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;border-top:1px solid var(--line)}
+.contact>div{padding:clamp(44px,6vw,80px) clamp(18px,5vw,68px)}
+.contact>div:first-child{border-right:1px solid var(--line)}
+.contact-links{margin-top:34px}
+.contact-links span{color:var(--muted);font-size:13px}
+.contact-links a{display:block;font-family:"Instrument Serif",serif;font-size:clamp(26px,3.6vw,52px);line-height:1.25;margin-top:14px;color:var(--gold)}
+.legal-form{display:grid;gap:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.input,.select,.textarea{width:100%;border:1px solid var(--line);border-radius:0;background:rgba(255,255,255,.03);color:var(--ink);font:500 15px Manrope,sans-serif;outline:0}
+.input,.select{min-height:52px;padding:0 14px}
+.textarea{min-height:150px;padding:14px;resize:vertical}
+.input::placeholder,.textarea::placeholder{color:var(--muted);opacity:1}
+.select{appearance:none}
+.select option{background:var(--panel);color:var(--ink)}
+.check{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;color:var(--muted);font-size:13px;line-height:1.45}
+.check input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--gold)}
+.submit{justify-self:start;min-height:52px;border:0;background:var(--gold);color:var(--bg);padding:0 22px;font:800 13px Manrope,sans-serif;cursor:pointer}
+footer{border-top:1px solid var(--line);padding:24px clamp(18px,5vw,68px);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.mockup-badge{position:fixed;right:14px;bottom:14px;z-index:30;background:var(--gold);color:var(--bg);font-size:12px;padding:8px 10px;font-weight:800}
+@media(max-width:860px){.nav ul{display:none}.hero{grid-template-columns:1fr}.hero-media{border-left:0;border-top:1px solid var(--line);min-height:380px}.bar{grid-template-columns:1fr 1fr}.pillars,.process,.contact,.form-row{grid-template-columns:1fr}.contact>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="#">Golden<em>Bridge</em></a>
+  <ul><li><a href="#saeulen">Leistungen</a></li><li><a href="#ablauf">Ablauf</a></li><li><a href="#kontakt" class="nav-cta">Anfrage senden</a></li></ul>
+</nav>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="meta">Recht &middot; Spielervermittlung &middot; Training</div>
+    <h1>Eine <em>Br&uuml;cke</em> f&uuml;r Recht, Karriere und Leistung.</h1>
+    <p class="lead">GoldenBridge verbindet juristische Beratung, professionelle Spielervermittlung und individuelles Training unter einem Dach &ndash; seri&ouml;s, pers&ouml;nlich und auf Augenh&ouml;he.</p>
+    <div class="actions"><a class="btn dark" href="#kontakt">Anfrage stellen</a><a class="btn" href="#saeulen">Leistungen ansehen</a></div>
+  </div>
+  <div class="hero-media">
+    <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10 130 C 80 30, 320 30, 390 130" stroke="#c9a24b" stroke-width="2" opacity=".85"/>
+      <path d="M10 140 C 80 55, 320 55, 390 140" stroke="#c9a24b" stroke-width="1" opacity=".4"/>
+      <line x1="60" y1="90" x2="60" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
+      <line x1="140" y1="55" x2="140" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
+      <line x1="200" y1="42" x2="200" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
+      <line x1="260" y1="55" x2="260" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
+      <line x1="340" y1="90" x2="340" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
+    </svg>
+    <div class="caption">GoldenBridge &middot; Stuttgart</div>
+  </div>
+</section>
+<section class="bar">
+  <div><strong>3</strong><span>Standbeine unter einem Dach</span></div>
+  <div><strong>1:1</strong><span>Pers&ouml;nliche Betreuung</span></div>
+  <div><strong>DE/EN</strong><span>Kommunikation</span></div>
+  <div><strong>STR</strong><span>Standort Stuttgart</span></div>
+</section>
+<section class="section" id="saeulen">
+  <div class="section-head"><h2>Drei S&auml;ulen. Ein Versprechen.</h2><p>Jeder Bereich steht f&uuml;r sich &ndash; verbunden durch denselben Anspruch: klare Kommunikation, echtes Engagement und Ergebnisse, auf die man sich verlassen kann.</p></div>
+  <div class="pillars">
+    <article class="pillar" id="recht">
+      <span class="num">01 &middot; Recht</span>
+      <h3>Rechtliche Klarheit</h3>
+      <p>Beratung in Ausl&auml;nder-, Sozial- und Sportrecht &ndash; verst&auml;ndlich erkl&auml;rt, schnell eingeordnet, ohne Kanzlei-Floskeln.</p>
+      <a href="#kontakt">Rechtsanfrage stellen &rarr;</a>
+    </article>
+    <article class="pillar" id="vermittlung">
+      <span class="num">02 &middot; Spielervermittlung</span>
+      <h3>Spielervermittlung</h3>
+      <p>Vermittlung und Karrierebegleitung f&uuml;r Athletinnen und Athleten &ndash; von der ersten Anfrage bis zum Vertragsabschluss.</p>
+      <a href="#kontakt">Talent vorstellen &rarr;</a>
+    </article>
+    <article class="pillar" id="training">
+      <span class="num">03 &middot; Training</span>
+      <h3>Training</h3>
+      <p>Individuelles Training f&uuml;r Leistungsentwicklung &ndash; k&ouml;rperlich und mental, zugeschnitten auf die jeweilige Situation.</p>
+      <a href="#kontakt">Training anfragen &rarr;</a>
+    </article>
+  </div>
+</section>
+<section class="section dark" id="ablauf">
+  <div class="section-head"><h2>Von der Anfrage zum Ergebnis.</h2><p>Der Ablauf ist bewusst niedrigschwellig: kurze Anfrage, saubere Einordnung, klare Empfehlung &ndash; unabh&auml;ngig davon, welche S&auml;ule betroffen ist.</p></div>
+  <div class="process">
+    <article class="step"><span>01</span><h3>Nachricht</h3><p>Kurze Schilderung deines Anliegens &uuml;ber das Formular oder direkt per Kontakt.</p></article>
+    <article class="step"><span>02</span><h3>Einordnung</h3><p>Wir pr&uuml;fen, welche S&auml;ule betroffen ist und was der n&auml;chste sinnvolle Schritt ist.</p></article>
+    <article class="step"><span>03</span><h3>Umsetzung</h3><p>Klare Empfehlung f&uuml;r Termin, Unterlagen oder das weitere Vorgehen.</p></article>
+  </div>
+</section>
+<section class="contact" id="kontakt">
+  <div>
+    <h2>Anfrage senden.</h2>
+    <p>Beschreibe kurz dein Anliegen &ndash; wir melden uns mit einer ersten Einordnung und dem passenden n&auml;chsten Schritt.</p>
+    <div class="contact-links">
+      <span>Kontakt</span>
+      <a href="mailto:info@goldenbridge-example.de">info@goldenbridge-example.de</a>
+      <a href="https://instagram.com/goldenbridge">@goldenbridge</a>
+    </div>
+  </div>
+  <div>
+    <form class="legal-form" action="#" method="post">
+      <div class="form-row"><input class="input" type="text" name="name" placeholder="Name"><input class="input" type="email" name="email" placeholder="E-Mail"></div>
+      <div class="form-row"><input class="input" type="tel" name="phone" placeholder="Telefon"><select class="select" name="topic" aria-label="Bereich ausw&auml;hlen">
+        <option>Bereich ausw&auml;hlen</option>
+        <option>Recht</option>
+        <option>Spielervermittlung</option>
+        <option>Training</option>
+        <option>Sonstiges Anliegen</option>
+      </select></div>
+      <textarea class="textarea" name="message" placeholder="Worum geht es? Je konkreter deine Anfrage, desto schneller ist eine erste Einordnung m&ouml;glich."></textarea>
+      <label class="check"><input type="checkbox" name="privacy"><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung dieser Mockup-Anfrage verwendet werden.</span></label>
+      <button class="submit" type="submit">Anfrage senden</button>
+    </form>
+  </div>
+</section>
+<footer><span>&copy; GoldenBridge &middot; Recht, Spielervermittlung, Training</span><span>Stuttgart</span></footer>
+</main>
+<div class="mockup-badge">Mockup &middot; mystu.de</div>
+</body>
+</html>
