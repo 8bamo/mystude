@@ -5,166 +5,471 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="https://mystu.de/wp-content/uploads/mystu-favicon.svg">
-<title>GoldenBridge &middot; Recht. Vermittlung. Training.</title>
+<title>GoldenBridge &middot; Recht. Sport. Training.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b1420;--panel:#101b2b;--ink:#f3efe6;--muted:#93a0b3;--line:rgba(243,239,230,.14);--gold:#c9a24b;--gold-deep:#8c6a24}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+:root{--bg:#0b1420;--panel:#101b2b;--ink:#f3efe6;--muted:#93a0b3;--line:rgba(243,239,230,.14);--gold:#c9a24b;--gold-deep:#8c6a24;--paper:#f4efe4;--paper-line:rgba(11,20,32,.12);--paper-muted:#000}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Montserrat",sans-serif;font-weight:600;font-size:16px;line-height:1.55;overflow-x:hidden}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
-.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,68px);position:fixed;inset:0 0 auto;background:rgba(11,20,32,.9);backdrop-filter:blur(12px);z-index:20}
-.brand{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:2px}.brand em{font-style:italic;color:var(--gold)}
+main{max-width:1560px;margin:0 auto}
+.bar,footer .footer-top,footer .footer-bottom{max-width:1560px;margin-left:auto;margin-right:auto}
+.nav{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,68px);position:fixed;inset:0 0 auto;background:rgba(11,20,32,.9);backdrop-filter:blur(12px);z-index:40}
+.brand{font-family:"Montserrat",sans-serif;font-weight:700;font-size:26px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}.brand em{font-style:italic;color:var(--gold)}
+.brand img{width:34px;height:34px;border-radius:50%;display:block}
 .nav ul{display:flex;gap:26px;align-items:center;list-style:none;margin:0;padding:0;font-size:13px}
 .nav ul a:hover{color:var(--gold)}
-.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:10px 16px}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:10px 22px;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:22px}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);background:none;position:relative;cursor:pointer;flex:none}
+.burger span{position:absolute;left:9px;right:9px;height:1px;background:var(--ink);transition:transform .25s,opacity .25s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:20px}.burger span:nth-child(3){top:25px}
+.burger.open span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.nav-overlay{position:fixed;inset:72px 0 0;background:var(--bg);z-index:30;display:none;flex-direction:column;justify-content:center;padding:32px clamp(18px,6vw,68px);gap:6px}
+.nav-overlay.open{display:flex}
+.nav-overlay a{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(30px,9vw,44px);padding:14px 0;border-bottom:1px solid var(--line)}
+.nav-overlay .nav-cta{align-self:flex-start;margin-top:26px;font-family:"Montserrat",sans-serif;font-size:13px;font-weight:700}
 .hero{min-height:100svh;padding:72px clamp(18px,5vw,68px) 0;display:grid;grid-template-columns:1.06fr .94fr;border-bottom:1px solid var(--line)}
 .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:48px 0}
 .meta{font-size:13px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:26px}
-.hero h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(50px,7.4vw,108px);line-height:.94;letter-spacing:-.03em;margin:0;max-width:780px}
+.hero h1{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(44px,6.6vw,96px);line-height:.98;letter-spacing:-.03em;margin:0;max-width:780px}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.lead{max-width:520px;margin:28px 0 34px;color:var(--muted);font-size:18px}
+.lead{max-width:520px;margin:28px 0 34px;color:var(--ink);font-size:18px}
 .actions{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;min-height:48px;border:1px solid var(--line);padding:0 18px;font-weight:800;font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:1px solid var(--line);padding:0 24px;font-weight:700;font-size:13px}
 .btn.dark{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.press-note{display:flex;align-items:center;gap:8px;margin-top:30px;color:var(--ink);font-size:12.5px;letter-spacing:.02em}
+.press-note svg{flex:none;color:var(--gold)}
 .hero-media{position:relative;min-height:540px;border-left:1px solid var(--line);overflow:hidden;background:radial-gradient(circle at 30% 20%,#1b2c44,#0b1420 68%)}
-.hero-media::before{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,transparent 0 46%,rgba(201,162,75,.55) 46% 47%,transparent 47% 100%),
-  linear-gradient(0deg,transparent 0 62%,rgba(201,162,75,.25) 62% 63%,transparent 63% 100%)}
-.hero-media svg{position:absolute;left:8%;right:8%;bottom:14%;width:84%}
+.hero-media img{width:100%;height:100%;object-fit:cover}
 .caption{position:absolute;left:22px;bottom:18px;background:rgba(11,20,32,.88);border:1px solid var(--line);color:var(--ink);padding:12px 14px;font-size:13px}
 .bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
 .bar div{padding:28px clamp(18px,4vw,44px);border-right:1px solid var(--line)}
-.bar strong{display:block;font-family:"Instrument Serif",serif;font-size:44px;line-height:1;color:var(--gold)}
-.bar span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.bar strong{display:block;font-family:"Montserrat",sans-serif;font-weight:700;font-size:44px;line-height:1;color:var(--gold)}
+.bar span{display:block;color:var(--ink);font-size:13px;margin-top:6px}
 .section{padding:clamp(70px,9vw,126px) clamp(18px,5vw,68px)}
-.section-head{max-width:640px;margin:0 0 56px}
-h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:.98;letter-spacing:-.02em;margin:0}
-.section p{color:var(--muted)}
+.section-head{max-width:1200px;margin:0 0 56px}
+.section-head h2{margin-bottom:18px}
+.section-head p{max-width:680px}
+h2{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(38px,5.2vw,72px);line-height:.98;letter-spacing:-.02em;margin:0}
+.section p{color:var(--ink)}
+.section h3{font-family:"Montserrat",sans-serif;font-size:28px;font-weight:700;margin:0 0 14px}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.pillar{background:var(--panel);padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;min-height:320px}
-.pillar span.num{color:var(--gold);font-family:"Instrument Serif",serif;font-size:15px;margin-bottom:auto}
-.pillar h3{font-family:"Instrument Serif",serif;font-size:32px;font-weight:400;margin:20px 0 12px}
+.pillar{background:var(--panel);padding:clamp(28px,3vw,42px);display:flex;flex-direction:column;min-height:320px;position:relative;transition:background .3s ease,box-shadow .3s ease,transform .3s ease;box-shadow:inset 0 0 0 var(--gold)}
+.pillar:hover{background:#16233c;box-shadow:inset 4px 0 0 var(--gold);transform:translateY(-4px)}
+.pillar span.num{color:var(--gold);font-family:"Montserrat",sans-serif;font-weight:700;font-size:15px;margin-bottom:auto;transition:opacity .3s ease}
+.pillar h3{font-family:"Montserrat",sans-serif;font-size:32px;font-weight:700;margin:20px 0 12px;transition:color .3s ease}
+.pillar:hover h3{color:var(--gold)}
 .pillar p{margin:0 0 22px}
-.pillar a{font-size:13px;font-weight:800;color:var(--gold);border-top:1px solid var(--line);padding-top:16px;margin-top:auto}
+.pillar a{font-size:13px;font-weight:700;color:var(--gold);border-top:1px solid var(--line);padding-top:16px;margin-top:auto;display:inline-flex;align-items:center;gap:6px;transition:gap .3s ease,border-color .3s ease}
+.pillar:hover a{gap:12px;border-color:rgba(201,162,75,.4)}
 .dark{background:var(--panel)}
+.paper{background:var(--paper);color:var(--bg)}
+.paper .meta{color:var(--gold-deep)}
+.paper p{color:var(--paper-muted)}
+.paper .lead{color:var(--paper-muted)}
+.paper .btn{border-color:var(--paper-line);color:var(--bg)}
+.paper .btn.dark{background:var(--gold-deep);color:#fff;border-color:var(--gold-deep)}
+.list-plain{list-style:none;margin:0 0 26px;padding:0}
+.list-plain li{position:relative;padding-left:22px;margin-bottom:11px;color:var(--ink)}
+.list-plain li::before{content:"\2013";position:absolute;left:0;color:var(--gold)}
+.paper .list-plain li{color:var(--paper-muted)}
+.paper .list-plain li::before{color:var(--gold-deep)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);margin-top:44px}
+.recht-more{border-top:1px solid var(--paper-line);padding-top:34px;margin-top:8px}
+.vita{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(28px,5vw,64px);align-items:start}
+.vita-media{border:1px solid var(--paper-line);overflow:hidden;height:clamp(340px,32vw,480px)}
+.vita-media img{width:100%;height:100%;object-fit:cover;object-position:top}
+.vita-copy p{margin:0 0 18px}
+.vita-copy .lead-name{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);color:var(--bg);margin:0 0 18px}
 .process{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .step{background:var(--bg);padding:34px;min-height:230px}
 .step span{display:block;color:var(--gold);margin-bottom:56px}
-.step h3{font-family:"Instrument Serif",serif;font-size:32px;font-weight:400;margin:0 0 12px}
+.step h3{font-family:"Montserrat",sans-serif;font-size:32px;font-weight:700;margin:0 0 12px}
+.vermittlung-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
+.vermittlung-media{border:1px solid var(--line);overflow:hidden;height:clamp(300px,26vw,420px)}
+.vermittlung-media img{width:100%;height:100%;object-fit:cover}
+.ref-label{font-size:13px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin:52px 0 18px}
+.ref-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ref-item{background:var(--panel)}
+.ref-item .ref-media{aspect-ratio:1/1;overflow:hidden}
+.ref-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
+.ref-item span{display:block;padding:14px;font-size:15px;font-weight:600;color:#fff;text-align:center}
+.train-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--paper-line);border:1px solid var(--paper-line);margin-top:16px}
+.train-card{background:var(--paper)}
+.train-media{aspect-ratio:4/3;overflow:hidden;position:relative}
+.train-media img{width:100%;height:100%;object-fit:cover}
+.train-media.placeholder{background:linear-gradient(135deg,#e7dcc4,#f4efe4 55%,#ddd0ae);display:flex;align-items:center;justify-content:center}
+.train-media.placeholder span{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);border:1px solid rgba(140,106,36,.35);padding:7px 12px;background:rgba(244,239,228,.6)}
+.train-body{padding:26px}
+.train-body h3{font-size:24px;margin:0 0 10px}
+.train-body p{color:var(--paper-muted);font-size:14.5px;margin:0}
+.imagefilm-wrap{display:flex;justify-content:center;margin-top:44px}
+.imagefilm-video{width:min(320px,80vw);aspect-ratio:9/16;object-fit:cover;border:1px solid var(--line);background:#000}
+.ig-banner{background:var(--panel);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:24px}
+.ig-banner .ig-copy{padding:clamp(50px,7vw,90px) clamp(18px,5vw,68px)}
+.ig-banner p{max-width:480px}
+.ig-note{color:var(--ink);font-size:12.5px;margin-top:14px}
+.ig-mark{display:flex;align-items:center;justify-content:center;height:100%;border-left:1px solid var(--line);padding:40px}
+.ig-mark svg{width:min(220px,60%);height:auto;color:var(--gold);opacity:.85}
 .contact{display:grid;grid-template-columns:.85fr 1.15fr;border-top:1px solid var(--line)}
 .contact>div{padding:clamp(44px,6vw,80px) clamp(18px,5vw,68px)}
 .contact>div:first-child{border-right:1px solid var(--line)}
-.contact-links{margin-top:34px}
-.contact-links span{color:var(--muted);font-size:13px}
-.contact-links a{display:block;font-family:"Instrument Serif",serif;font-size:clamp(26px,3.6vw,52px);line-height:1.25;margin-top:14px;color:var(--gold)}
+.contact-links{margin-top:34px;display:flex;flex-direction:column;gap:20px}
+.contact-links .row span{display:block;color:var(--ink);font-size:13px}
+.contact-links .row a,.contact-links .row p{display:block;font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,30px);line-height:1.3;margin:6px 0 0;color:var(--gold)}
+.contact-links .row p.plain{color:var(--ink);font-family:"Montserrat",sans-serif;font-size:16px;font-weight:600}
+.contact-links .row .tbd{color:var(--ink);font-family:"Montserrat",sans-serif;font-size:14px;font-weight:600}
 .legal-form{display:grid;gap:18px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.input,.select,.textarea{width:100%;border:1px solid var(--line);border-radius:0;background:rgba(255,255,255,.03);color:var(--ink);font:500 15px Manrope,sans-serif;outline:0}
+.input,.select,.textarea{width:100%;border:1px solid var(--line);border-radius:0;background:rgba(255,255,255,.03);color:var(--ink);font:600 15px "Montserrat",sans-serif;outline:0}
 .input,.select{min-height:52px;padding:0 14px}
 .textarea{min-height:150px;padding:14px;resize:vertical}
-.input::placeholder,.textarea::placeholder{color:var(--muted);opacity:1}
-.select{appearance:none}
+.input::placeholder,.textarea::placeholder{color:rgba(255,255,255,.55);opacity:1}
+.select{appearance:none;padding-right:40px;background-repeat:no-repeat;background-position:right 14px center;background-size:13px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f3efe6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
 .select option{background:var(--panel);color:var(--ink)}
-.check{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;color:var(--muted);font-size:13px;line-height:1.45}
+.captcha-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.captcha-row label{font-size:13px;color:var(--ink)}
+.captcha-row .input{width:90px;min-height:44px;text-align:center}
+.captcha-error{display:none;color:#e8a15a;font-size:12.5px;margin-top:-8px}
+.captcha-error.show{display:block}
+.captcha-row.invalid .input{border-color:#e8a15a}
+.check{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;color:var(--ink);font-size:13px;line-height:1.45}
 .check input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--gold)}
-.submit{justify-self:start;min-height:52px;border:0;background:var(--gold);color:var(--bg);padding:0 22px;font:800 13px Manrope,sans-serif;cursor:pointer}
-footer{border-top:1px solid var(--line);padding:24px clamp(18px,5vw,68px);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.mockup-badge{position:fixed;right:14px;bottom:14px;z-index:30;background:var(--gold);color:var(--bg);font-size:12px;padding:8px 10px;font-weight:800}
-@media(max-width:860px){.nav ul{display:none}.hero{grid-template-columns:1fr}.hero-media{border-left:0;border-top:1px solid var(--line);min-height:380px}.bar{grid-template-columns:1fr 1fr}.pillars,.process,.contact,.form-row{grid-template-columns:1fr}.contact>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+.submit{justify-self:start;min-height:52px;border:0;background:var(--gold);color:var(--bg);padding:0 22px;font:700 13px "Montserrat",sans-serif;cursor:pointer}
+footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;color:var(--ink);font-size:13px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.footer-tagline{font-family:"Montserrat",sans-serif;font-weight:700;font-size:22px;color:var(--ink)}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;font-size:13px}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:20px}
+.mockup-badge{position:fixed;right:14px;bottom:14px;z-index:50;background:var(--gold);color:var(--bg);font-size:12px;padding:8px 10px;font-weight:700}
+.back-to-top{position:fixed;left:14px;bottom:14px;z-index:45;width:46px;height:46px;border-radius:50%;background:var(--panel);border:1px solid var(--line);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s ease,transform .3s ease,visibility .3s,background .2s ease}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:var(--gold);color:var(--bg)}
+@media(max-width:960px){.vita,.vermittlung-grid,.two-col{grid-template-columns:1fr}.vita-media{aspect-ratio:4/3}}
+@media(max-width:860px){.nav ul{display:none}.burger{display:block}.hero{grid-template-columns:1fr}.hero-media{border-left:0;border-top:1px solid var(--line);min-height:380px}.bar{grid-template-columns:1fr 1fr}.pillars,.process,.contact,.form-row,.ref-strip,.train-grid{grid-template-columns:1fr}.contact>div:first-child{border-right:0;border-bottom:1px solid var(--line)}.ig-banner{grid-template-columns:1fr}.ig-mark{border-left:0;border-top:1px solid var(--line);padding:30px}}
 </style>
 </head>
 <body>
-<nav class="nav">
-  <a class="brand" href="#">Golden<em>Bridge</em></a>
-  <ul><li><a href="#saeulen">Leistungen</a></li><li><a href="#ablauf">Ablauf</a></li><li><a href="#kontakt" class="nav-cta">Anfrage senden</a></li></ul>
+<nav class="nav" id="nav">
+  <a class="brand" href="#"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/logo-mark.webp" alt="GoldenBridge Emblem"> Golden<em>Bridge</em></a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#ueber-mich">&Uuml;ber uns</a></li>
+      <li><a href="#recht">Recht</a></li>
+      <li><a href="#vermittlung">Spielervermittlung</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a class="nav-cta" href="#kontakt">Termin vereinbaren</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Men&uuml; &ouml;ffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+<div class="nav-overlay" id="nav-overlay">
+  <a href="#ueber-mich">&Uuml;ber uns</a>
+  <a href="#recht">Recht</a>
+  <a href="#vermittlung">Spielervermittlung</a>
+  <a href="#training">Training</a>
+  <a href="#kontakt">Kontakt</a>
+  <a class="btn dark nav-cta" href="#kontakt">Termin vereinbaren</a>
+</div>
 <main>
 <section class="hero">
   <div class="hero-copy">
     <div class="meta">Recht &middot; Spielervermittlung &middot; Training</div>
-    <h1>Eine <em>Br&uuml;cke</em> f&uuml;r Recht, Karriere und Leistung.</h1>
-    <p class="lead">GoldenBridge verbindet juristische Beratung, professionelle Spielervermittlung und individuelles Training unter einem Dach &ndash; seri&ouml;s, pers&ouml;nlich und auf Augenh&ouml;he.</p>
-    <div class="actions"><a class="btn dark" href="#kontakt">Anfrage stellen</a><a class="btn" href="#saeulen">Leistungen ansehen</a></div>
+    <h1>Recht. Sport. Leistung. <em>Eine Adresse</em> f&uuml;r alles, was z&auml;hlt.</h1>
+    <p class="lead">Wir begleiten Menschen und Sportler dort, wo es z&auml;hlt: mit rechtlicher Klarheit, starken Verbindungen im Fu&szlig;ball und einem Trainingsangebot, das an die eigenen Grenzen geht.</p>
+    <div class="actions"><a class="btn dark" href="#kontakt">Termin vereinbaren</a><a class="btn" href="#saeulen">Sparten entdecken</a></div>
+    <div class="press-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>Als Spielerberater bereits in der Rheinischen Post vorgestellt</div>
   </div>
   <div class="hero-media">
-    <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M10 130 C 80 30, 320 30, 390 130" stroke="#c9a24b" stroke-width="2" opacity=".85"/>
-      <path d="M10 140 C 80 55, 320 55, 390 140" stroke="#c9a24b" stroke-width="1" opacity=".4"/>
-      <line x1="60" y1="90" x2="60" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
-      <line x1="140" y1="55" x2="140" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
-      <line x1="200" y1="42" x2="200" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
-      <line x1="260" y1="55" x2="260" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
-      <line x1="340" y1="90" x2="340" y2="140" stroke="#c9a24b" stroke-width="1" opacity=".5"/>
-    </svg>
-    <div class="caption">GoldenBridge &middot; Stuttgart</div>
+    <img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/hero-portrait.webp" alt="Gerald Siebert, Gr&uuml;nder von GoldenBridge">
+    <div class="caption">GoldenBridge &middot; Oberhausen</div>
   </div>
 </section>
 <section class="bar">
   <div><strong>3</strong><span>Standbeine unter einem Dach</span></div>
   <div><strong>1:1</strong><span>Pers&ouml;nliche Betreuung</span></div>
   <div><strong>DE/EN</strong><span>Kommunikation</span></div>
-  <div><strong>STR</strong><span>Standort Stuttgart</span></div>
+  <div><strong>OB</strong><span>Standort Oberhausen</span></div>
 </section>
+
+<section class="section paper" id="ueber-mich">
+  <div class="section-head"><div class="meta">&Uuml;ber uns</div><h2>Drei Rollen. <em style="font-style:italic;color:var(--gold-deep)">Eine</em> Haltung.</h2></div>
+  <div class="vita">
+    <div class="vita-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/vita-portrait.webp" alt="Gerald Siebert, Gr&uuml;nder von GoldenBridge"></div>
+    <div class="vita-copy">
+      <p class="lead-name">Hinter GoldenBridge steht Gerald Siebert. Wir sind Juristen, Sportagenten und Trainer &ndash; und das nicht nacheinander, sondern gleichzeitig.</p>
+      <p>Mit einem LL.B. und dem ersten Staatsexamen in der Tasche bringen wir unsere juristische Expertise bei der Kanzlei und Notariat Aengenvoort in Oberhausen ein (aktuell im Rechtsreferendariat), mit Schwerpunkt im Aufenthalts- und Einwanderungsrecht sowie im Sportrecht &ndash; zwei Bereiche, in denen Menschen oft an einem Wendepunkt stehen und klare, verl&auml;ssliche Beratung brauchen.</p>
+      <p>Parallel dazu sind wir im Fu&szlig;ball zu Hause &ndash; nicht nur als Berater, sondern als aktive Trainer. Gemeinsam mit unserem Trainerteam betreuen wir die A-Jugend von DJK Arminia Lirich 1920 und arbeiten im Einzel- und Kleingruppentraining gezielt an Technik, Spielverst&auml;ndnis und Entscheidungsverhalten &ndash; vom Nachwuchsspieler bis zum Senioren-Kader. Als Spielerberater begleiten wir zudem Spieler und Vereine bei Vertragsverhandlungen und Karriereentscheidungen, immer mit dem Ziel, Perspektiven zu schaffen, die tragen.</p>
+      <p>Mit GoldenBridge bringen wir diese drei Welten unter einem Dach zusammen: Recht, Spielervermittlung und Training &ndash; erg&auml;nzt um mobiles EMS-Training direkt beim Kunden und die Kooperation mit der Stadt Oberhausen im Bereich Schwimmtraining. Was alle drei Bereiche verbindet, ist derselbe Anspruch: zuh&ouml;ren, einordnen, und dann konsequent handeln.</p>
+      <p>Ob Mandat, Vertrag oder Trainingsplan &ndash; bei GoldenBridge treffen Sie auf jemanden, der versteht, worum es wirklich geht.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="saeulen">
   <div class="section-head"><h2>Drei S&auml;ulen. Ein Versprechen.</h2><p>Jeder Bereich steht f&uuml;r sich &ndash; verbunden durch denselben Anspruch: klare Kommunikation, echtes Engagement und Ergebnisse, auf die man sich verlassen kann.</p></div>
   <div class="pillars">
-    <article class="pillar" id="recht">
+    <article class="pillar">
       <span class="num">01 &middot; Recht</span>
       <h3>Rechtliche Klarheit</h3>
-      <p>Beratung in Ausl&auml;nder-, Sozial- und Sportrecht &ndash; verst&auml;ndlich erkl&auml;rt, schnell eingeordnet, ohne Kanzlei-Floskeln.</p>
-      <a href="#kontakt">Rechtsanfrage stellen &rarr;</a>
+      <p>Klarheit in Aufenthalts- und Einwanderungsfragen, kompetente Begleitung im Sportrecht &ndash; und dar&uuml;ber hinaus Ihr Ansprechpartner f&uuml;r weitere rechtliche Anliegen. Pers&ouml;nlich, pr&auml;zise, verl&auml;sslich.</p>
+      <a href="#recht">Mehr zur Rechtsberatung &rarr;</a>
     </article>
-    <article class="pillar" id="vermittlung">
+    <article class="pillar">
       <span class="num">02 &middot; Spielervermittlung</span>
       <h3>Spielervermittlung</h3>
-      <p>Vermittlung und Karrierebegleitung f&uuml;r Athletinnen und Athleten &ndash; von der ersten Anfrage bis zum Vertragsabschluss.</p>
-      <a href="#kontakt">Talent vorstellen &rarr;</a>
+      <p>Vertragsverhandlung, Transferberatung und Karriereplanung f&uuml;r Spieler und Vereine &ndash; mit einem Netzwerk, das tr&auml;gt.</p>
+      <a href="#vermittlung">Mehr zur Spielervermittlung &rarr;</a>
     </article>
-    <article class="pillar" id="training">
+    <article class="pillar">
       <span class="num">03 &middot; Training</span>
       <h3>Training</h3>
-      <p>Individuelles Training f&uuml;r Leistungsentwicklung &ndash; k&ouml;rperlich und mental, zugeschnitten auf die jeweilige Situation.</p>
-      <a href="#kontakt">Training anfragen &rarr;</a>
+      <p>Fu&szlig;ball, Schwimmen und EMS: individuelles Training f&uuml;r alle, die an ihre Grenzen gehen wollen.</p>
+      <a href="#training">Mehr zum Trainingsangebot &rarr;</a>
     </article>
   </div>
 </section>
-<section class="section dark" id="ablauf">
-  <div class="section-head"><h2>Von der Anfrage zum Ergebnis.</h2><p>Der Ablauf ist bewusst niedrigschwellig: kurze Anfrage, saubere Einordnung, klare Empfehlung &ndash; unabh&auml;ngig davon, welche S&auml;ule betroffen ist.</p></div>
-  <div class="process">
-    <article class="step"><span>01</span><h3>Nachricht</h3><p>Kurze Schilderung deines Anliegens &uuml;ber das Formular oder direkt per Kontakt.</p></article>
-    <article class="step"><span>02</span><h3>Einordnung</h3><p>Wir pr&uuml;fen, welche S&auml;ule betroffen ist und was der n&auml;chste sinnvolle Schritt ist.</p></article>
-    <article class="step"><span>03</span><h3>Umsetzung</h3><p>Klare Empfehlung f&uuml;r Termin, Unterlagen oder das weitere Vorgehen.</p></article>
+
+<section class="section paper" id="recht">
+  <div class="section-head"><div class="meta">01 &middot; Recht</div><h2>Recht &ndash; Klarheit, wenn es darauf ankommt</h2></div>
+  <div class="vermittlung-grid">
+    <div>
+      <p>Rechtliche Fragen entstehen selten zur passenden Zeit. Ob Aufenthaltstitel, Einb&uuml;rgerung, Familiennachzug oder eine sportrechtliche Streitigkeit &ndash; wir begleiten Sie mit klarer Einsch&auml;tzung und einem Blick f&uuml;r das, was wirklich machbar ist. Unser Ziel ist es, Probleme nicht nur zu l&ouml;sen, sondern sie im besten Fall gar nicht erst entstehen zu lassen.</p>
+      <p>Unsere Schwerpunkte liegen im Aufenthalts- und Einwanderungsrecht sowie im Sportrecht &ndash; dar&uuml;ber hinaus sind wir auch f&uuml;r weitere rechtliche Anliegen gerne erster Ansprechpartner und vermitteln bei Bedarf innerhalb der Kanzlei Aengenvoort an die passende Fachkollegin oder den passenden Fachkollegen weiter.</p>
+    </div>
+    <div class="vermittlung-media" style="border-color:var(--paper-line)"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/recht-court.webp" alt="Gerald Siebert vor dem Landgericht und Amtsgericht D&uuml;sseldorf"></div>
+  </div>
+  <div class="two-col">
+    <div>
+      <h3>Aufenthalts- und Einwanderungsrecht</h3>
+      <ul class="list-plain">
+        <li>Aufenthaltstitel und Verl&auml;ngerungen</li>
+        <li>Einb&uuml;rgerungsverfahren</li>
+        <li>Familiennachzug</li>
+        <li>Widerspr&uuml;che und Klageverfahren gegen Ausl&auml;nderbeh&ouml;rden</li>
+        <li>Beratung f&uuml;r Arbeitgeber zu Besch&auml;ftigungserlaubnissen</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sportrecht</h3>
+      <ul class="list-plain">
+        <li>Spieler- und Trainervertr&auml;ge</li>
+        <li>Vereinsrecht und Satzungsfragen</li>
+        <li>Transferangelegenheiten</li>
+        <li>Konfliktberatung zwischen Sportlern, Vereinen und Verb&auml;nden</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recht-more">
+    <div class="vermittlung-grid" style="align-items:center">
+      <div>
+        <h3>Weitere rechtliche Anliegen</h3>
+        <p style="max-width:560px;margin-bottom:30px">Ihr Thema passt in keine der beiden Kategorien? Sprechen Sie uns trotzdem an &ndash; gemeinsam mit dem Team der Kanzlei und Notariat Aengenvoort finden wir f&uuml;r Sie den richtigen Ansprechpartner, auch au&szlig;erhalb unserer Schwerpunktbereiche.</p>
+        <a class="btn dark" href="#kontakt">Erstgespr&auml;ch vereinbaren</a>
+      </div>
+      <div class="vermittlung-media" style="border-color:var(--paper-line);height:clamp(240px,20vw,340px)"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/recht-consult.webp" alt="Mandantengespr&auml;ch mit Gerald Siebert"></div>
+    </div>
   </div>
 </section>
+
+<section class="section dark" id="vermittlung">
+  <div class="section-head"><div class="meta">02 &middot; Spielervermittlung</div><h2>Spielervermittlung &ndash; Verbindungen, die z&auml;hlen</h2></div>
+  <div class="vermittlung-grid">
+    <div>
+      <p>Als Spielerberater verstehen wir beide Seiten: den Anspruch der Spieler auf eine faire, planbare Karriere und die Anforderungen der Vereine an tragf&auml;hige, leistungsgerechte Vertr&auml;ge. Wir verhandeln mit Weitblick &ndash; f&uuml;r Perspektiven, die &uuml;ber die n&auml;chste Saison hinausgehen.</p>
+      <ul class="list-plain">
+        <li>Vertragsverhandlung f&uuml;r Spieler und Vereine</li>
+        <li>Karriereplanung und Vereinswechsel</li>
+        <li>Leistungsbasierte Vertragsmodelle</li>
+        <li>Vermittlung auf h&ouml;herem Liga-Niveau</li>
+        <li>Pers&ouml;nliche Betreuung w&auml;hrend der gesamten Vertragslaufzeit</li>
+      </ul>
+      <a class="btn dark" href="#kontakt">Anfrage f&uuml;r Spieler oder Vereine</a>
+    </div>
+    <div class="vermittlung-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/vermittlung-contract.webp" alt="Vertragsgespr&auml;ch mit einem Nachwuchsspieler"></div>
+  </div>
+  <div class="ref-label">Stationen &amp; Kontakte im Fu&szlig;ball</div>
+  <div class="ref-strip">
+    <article class="ref-item"><div class="ref-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/ref-leverkusen.webp" alt="Zu Besuch bei Bayer Leverkusen, BayArena"></div><span>Bayer 04 Leverkusen &middot; BayArena</span></article>
+    <article class="ref-item"><div class="ref-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/ref-bochum.webp" alt="Talentwerk von VfL Bochum 1848"></div><span>VfL Bochum 1848 &middot; Talentwerk</span></article>
+    <article class="ref-item"><div class="ref-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/ref-oberhausen.webp" alt="Spielerverpflichtung bei SC Rot-Wei&szlig; Oberhausen"></div><span>SC Rot-Wei&szlig; Oberhausen</span></article>
+  </div>
+</section>
+
+<section class="section paper" id="training">
+  <div class="section-head"><div class="meta">03 &middot; Training</div><h2>Training &ndash; Leistung entsteht im Detail</h2></div>
+  <p style="max-width:720px">Training bedeutet f&uuml;r uns mehr als Wiederholung &ndash; es geht um gezielte Entwicklung, kleine Gruppen und den Mut, an der eigenen Grenze zu arbeiten. Drei Bausteine stehen bei GoldenBridge im Zentrum:</p>
+  <div class="train-grid">
+    <article class="train-card">
+      <div class="train-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/training-fussball.webp" alt="Gerald Siebert als Trainer an der Seitenlinie"></div>
+      <div class="train-body">
+        <h3>Fu&szlig;balltraining</h3>
+        <p>Individual- und Kleingruppentraining f&uuml;r Spieler vom Nachwuchs- bis zum Seniorenbereich. Fokus auf Technik, Spielverst&auml;ndnis und schnelles Entscheidungsverhalten. Als Trainer der A-Jugend von DJK Arminia Lirich 1920 bringen wir zus&auml;tzlich unsere Erfahrung aus dem Vereinsalltag ein.</p>
+      </div>
+    </article>
+    <article class="train-card">
+      <div class="train-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/training-schwimmen.webp" alt="Schwimmtraining in Kooperation mit der Stadt Oberhausen"></div>
+      <div class="train-body">
+        <h3>Schwimmtraining</h3>
+        <p>In Kooperation mit der Stadt Oberhausen bieten wir strukturiertes Schwimmtraining an &ndash; f&uuml;r alle, die ihre Ausdauer, Technik und Wassersicherheit gezielt verbessern m&ouml;chten.</p>
+      </div>
+    </article>
+    <article class="train-card">
+      <div class="train-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/training-ems.webp" alt="EMS-Training mit Gerald Siebert direkt beim Kunden"></div>
+      <div class="train-body">
+        <h3>EMS-Training</h3>
+        <p>Kein Studio-Besuch n&ouml;tig: Mit moderner EMS-Technologie kommen wir direkt zu Ihnen &ndash; effizient, zeitsparend und individuell auf Ihr Ziel abgestimmt, von Muskelaufbau bis R&uuml;ckenpr&auml;vention.</p>
+      </div>
+    </article>
+  </div>
+  <div class="recht-more">
+    <a class="btn dark" href="#kontakt">Probetraining vereinbaren</a>
+  </div>
+</section>
+
+<section class="section dark" id="imagefilm">
+  <div class="section-head"><div class="meta">Imagefilm</div><h2>GoldenBridge in Bewegung</h2><p>Ein kurzer Einblick in unseren Trainingsalltag &ndash; Recht, Sport und Leistung in wenigen Sekunden.</p></div>
+  <div class="imagefilm-wrap">
+    <video class="imagefilm-video" poster="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/imagefilm-poster.webp" controls muted loop playsinline preload="metadata">
+      <source src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/video/imagefilm.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="ig-banner">
+  <div class="ig-copy">
+    <div class="meta">Instagram</div>
+    <h2>Recht und Sport &ndash; auch auf Instagram</h2>
+    <p>Auf Instagram geben wir Einblicke in juristische Themen, Sportbusiness und unseren Trainingsalltag &ndash; kurz, verst&auml;ndlich und aus erster Hand.</p>
+    <div class="actions" style="margin-top:26px"><a class="btn dark" href="https://www.instagram.com/goldenbridge_a/" target="_blank" rel="noopener">Jetzt folgen</a></div>
+  </div>
+  <div class="ig-mark">
+    <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10 130 C 80 30, 320 30, 390 130" stroke="currentColor" stroke-width="2" opacity=".85"/>
+      <line x1="60" y1="90" x2="60" y2="140" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="140" y1="55" x2="140" y2="140" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="200" y1="42" x2="200" y2="140" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="260" y1="55" x2="260" y2="140" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <line x1="340" y1="90" x2="340" y2="140" stroke="currentColor" stroke-width="1" opacity=".5"/>
+    </svg>
+  </div>
+</section>
+
 <section class="contact" id="kontakt">
   <div>
-    <h2>Anfrage senden.</h2>
-    <p>Beschreibe kurz dein Anliegen &ndash; wir melden uns mit einer ersten Einordnung und dem passenden n&auml;chsten Schritt.</p>
+    <h2>Lass uns sprechen.</h2>
+    <p>Ob rechtliche Frage, Anfrage zur Spielervermittlung oder Interesse am Training &ndash; schreib uns oder ruf direkt an.</p>
     <div class="contact-links">
-      <span>Kontakt</span>
-      <a href="mailto:info@goldenbridge-example.de">info@goldenbridge-example.de</a>
-      <a href="https://instagram.com/goldenbridge">@goldenbridge</a>
+      <div class="row"><span>Adresse</span><p class="plain">Bahnhofstra&szlig;e 51, 46145 Oberhausen</p></div>
+      <div class="row"><span>Telefon</span><a href="tel:015510178495">01551 0178495</a></div>
+      <div class="row"><span>E-Mail</span><a href="mailto:info@goldenbridgeagency.com">info@goldenbridgeagency.com</a></div>
+      <div class="row"><span>Instagram</span><a href="https://www.instagram.com/goldenbridge_a/" target="_blank" rel="noopener">@goldenbridge_a</a></div>
     </div>
   </div>
   <div>
-    <form class="legal-form" action="#" method="post">
-      <div class="form-row"><input class="input" type="text" name="name" placeholder="Name"><input class="input" type="email" name="email" placeholder="E-Mail"></div>
-      <div class="form-row"><input class="input" type="tel" name="phone" placeholder="Telefon"><select class="select" name="topic" aria-label="Bereich ausw&auml;hlen">
-        <option>Bereich ausw&auml;hlen</option>
+    <form class="legal-form" action="#" method="post" id="contactForm" novalidate>
+      <div class="form-row"><input class="input" type="text" name="name" placeholder="Name" required><input class="input" type="email" name="email" placeholder="E-Mail" required></div>
+      <div class="form-row"><input class="input" type="tel" name="phone" placeholder="Telefon (optional)"><select class="select" name="topic" aria-label="Anliegen ausw&auml;hlen" required>
+        <option value="">Anliegen ausw&auml;hlen</option>
         <option>Recht</option>
         <option>Spielervermittlung</option>
         <option>Training</option>
-        <option>Sonstiges Anliegen</option>
+        <option>Sonstiges</option>
       </select></div>
-      <textarea class="textarea" name="message" placeholder="Worum geht es? Je konkreter deine Anfrage, desto schneller ist eine erste Einordnung m&ouml;glich."></textarea>
-      <label class="check"><input type="checkbox" name="privacy"><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung dieser Mockup-Anfrage verwendet werden.</span></label>
+      <textarea class="textarea" name="message" placeholder="Worum geht es? Je konkreter deine Anfrage, desto schneller ist eine erste Einordnung m&ouml;glich." required></textarea>
+      <div class="captcha-row">
+        <label for="captchaInput">Sicherheitsfrage: <span id="captchaQ">4 + 3</span> = ?</label>
+        <input class="input" type="text" id="captchaInput" name="captcha_answer" inputmode="numeric" autocomplete="off" placeholder="Antwort" required>
+      </div>
+      <span class="captcha-error" id="captchaError">Bitte die Sicherheitsfrage korrekt beantworten.</span>
+      <label class="check"><input type="checkbox" name="privacy" required><span>Ich habe die Datenschutzerkl&auml;rung gelesen und akzeptiere sie.</span></label>
       <button class="submit" type="submit">Anfrage senden</button>
     </form>
   </div>
 </section>
-<footer><span>&copy; GoldenBridge &middot; Recht, Spielervermittlung, Training</span><span>Stuttgart</span></footer>
 </main>
+<footer>
+  <div class="footer-top">
+    <div class="footer-tagline">GoldenBridge &mdash; Recht. Sport. Training.</div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#ueber-mich">&Uuml;ber uns</a>
+      <a href="#recht">Recht</a>
+      <a href="#vermittlung">Spielervermittlung</a>
+      <a href="#training">Training</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <nav class="footer-links" aria-label="Rechtliches">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 GoldenBridge &ndash; Gerald Siebert. Alle Rechte vorbehalten.</span>
+    <span>Oberhausen</span>
+  </div>
+</footer>
 <div class="mockup-badge">Mockup &middot; mystu.de</div>
+<button class="back-to-top" id="backToTop" aria-label="Nach oben scrollen">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script>
+(function(){
+  var burger = document.getElementById('burger');
+  var overlay = document.getElementById('nav-overlay');
+  if (!burger || !overlay) return;
+  function close(){ burger.classList.remove('open'); overlay.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = burger.classList.toggle('open');
+    overlay.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+})();
+(function(){
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('show', window.scrollY > 700);
+  }, { passive: true });
+  btn.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+(function(){
+  var form = document.getElementById('contactForm');
+  var q = document.getElementById('captchaQ');
+  var input = document.getElementById('captchaInput');
+  var error = document.getElementById('captchaError');
+  var row = input ? input.closest('.captcha-row') : null;
+  if (!form || !q || !input) return;
+  var a, b, sum;
+  function newChallenge(){
+    a = 1 + Math.floor(Math.random() * 8);
+    b = 1 + Math.floor(Math.random() * 8);
+    sum = a + b;
+    q.textContent = a + ' + ' + b;
+    input.value = '';
+  }
+  newChallenge();
+  form.addEventListener('submit', function(e){
+    if (parseInt(input.value, 10) !== sum) {
+      e.preventDefault();
+      error.classList.add('show');
+      if (row) row.classList.add('invalid');
+      newChallenge();
+      input.focus();
+    } else {
+      error.classList.remove('show');
+      if (row) row.classList.remove('invalid');
+    }
+  });
+})();
+</script>
 </body>
 </html>
