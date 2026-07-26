@@ -98,22 +98,29 @@ h2{font-family:"Montserrat",sans-serif;font-weight:700;font-size:clamp(38px,5.2v
 .ref-item .ref-media{aspect-ratio:1/1;overflow:hidden}
 .ref-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
 .ref-item span{display:block;padding:14px;font-size:15px;font-weight:600;color:#fff;text-align:center}
-.train-grid{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-top:16px;padding:2px 2px 16px}
-.train-grid::-webkit-scrollbar{height:6px}
-.train-grid::-webkit-scrollbar-track{background:var(--paper-line)}
-.train-grid::-webkit-scrollbar-thumb{background:var(--gold-deep)}
-.train-card{background:var(--paper);border:1px solid var(--paper-line);flex:0 0 min(340px,78vw);scroll-snap-align:start}
+.train-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:16px}
+.train-card{background:var(--paper);border:1px solid var(--paper-line)}
 .train-media{aspect-ratio:4/5;overflow:hidden;position:relative}
-.train-media img{width:100%;height:100%;object-fit:cover}
+.train-media img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
 .train-media.placeholder{background:linear-gradient(135deg,#e7dcc4,#f4efe4 55%,#ddd0ae);display:flex;align-items:center;justify-content:center}
 .train-media.placeholder span{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);border:1px solid rgba(140,106,36,.35);padding:7px 12px;background:rgba(244,239,228,.6)}
 .train-body{padding:26px}
 .train-body h3{font-size:24px;margin:0 0 10px}
 .train-body p{color:var(--paper-muted);font-size:14.5px;margin:0}
-.imagefilm-banner{display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:clamp(28px,5vw,64px)}
+.imagefilm-banner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(28px,5vw,64px)}
 .imagefilm-copy p{max-width:480px}
 .imagefilm-media{display:flex;justify-content:center}
-.imagefilm-video{width:100%;max-width:280px;aspect-ratio:9/16;object-fit:cover;border:1px solid var(--line);background:#000}
+.imagefilm-frame{position:relative;width:100%;max-width:420px;aspect-ratio:9/16;cursor:pointer}
+.imagefilm-video{width:100%;height:100%;object-fit:cover;border:1px solid var(--line);background:#000}
+.imagefilm-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(11,20,32,.6);border:1px solid rgba(243,239,230,.4);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.imagefilm-frame:hover .imagefilm-play{background:var(--gold);color:var(--bg);transform:translate(-50%,-50%) scale(1.06)}
+.lightbox{position:fixed;inset:0;background:rgba(5,10,18,.94);display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;visibility:hidden;transition:opacity .25s ease;padding:64px 20px}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox-inner{max-width:920px;width:100%;max-height:86vh;display:flex;align-items:center;justify-content:center}
+.lightbox-inner img{max-width:100%;max-height:86vh;object-fit:contain;border:1px solid var(--line)}
+.lightbox-inner video{width:100%;max-width:420px;aspect-ratio:9/16;max-height:86vh;object-fit:contain;background:#000}
+.lightbox-close{position:fixed;top:20px;right:24px;width:44px;height:44px;border:1px solid rgba(243,239,230,.3);background:rgba(11,20,32,.7);color:var(--ink);font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:101}
+.lightbox-close:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
 .ig-banner{background:var(--panel);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:24px}
 .ig-banner .ig-copy{padding:clamp(50px,7vw,90px) clamp(18px,5vw,68px)}
 .ig-banner p{max-width:480px}
@@ -157,6 +164,7 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;c
 .back-to-top:hover{background:var(--gold);color:var(--bg)}
 @media(max-width:960px){.vita,.vermittlung-grid,.two-col{grid-template-columns:1fr}.vita-media{aspect-ratio:4/3}}
 @media(max-width:860px){.nav ul{display:none}.burger{display:block}.hero{grid-template-columns:1fr}.hero-media{border-left:0;border-top:1px solid var(--line);min-height:380px}.bar{grid-template-columns:1fr 1fr}.pillars,.process,.contact,.form-row,.ref-strip,.imagefilm-banner{grid-template-columns:1fr}.contact>div:first-child{border-right:0;border-bottom:1px solid var(--line)}.ig-banner{grid-template-columns:1fr}.ig-mark{border-left:0;border-top:1px solid var(--line);padding:30px}}
+@media(max-width:700px){.train-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 2px 16px}.train-grid::-webkit-scrollbar{height:6px}.train-grid::-webkit-scrollbar-track{background:var(--paper-line)}.train-grid::-webkit-scrollbar-thumb{background:var(--gold-deep)}.train-card{flex:0 0 82%;scroll-snap-align:start}}
 </style>
 </head>
 <body>
@@ -332,6 +340,20 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;c
         <p>Kein Studio-Besuch n&ouml;tig: Mit moderner EMS-Technologie kommen wir direkt zu Ihnen &ndash; effizient, zeitsparend und individuell auf Ihr Ziel abgestimmt, von Muskelaufbau bis R&uuml;ckenpr&auml;vention.</p>
       </div>
     </article>
+    <article class="train-card">
+      <div class="train-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/training-ems-pitch.webp" alt="EMS-Einheit auf dem Fu&szlig;ballplatz"></div>
+      <div class="train-body">
+        <h3>Auch auf dem Platz</h3>
+        <p>EMS-Einheiten lassen sich mit Fu&szlig;balltraining kombinieren &ndash; f&uuml;r zus&auml;tzlichen Trainingsreiz in derselben Zeit.</p>
+      </div>
+    </article>
+    <article class="train-card">
+      <div class="train-media"><img src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/training-ems-outdoor.webp" alt="Mobiles EMS-Training im Freien"></div>
+      <div class="train-body">
+        <h3>Flexibel &amp; mobil</h3>
+        <p>Ob Garten, Park oder zu Hause &ndash; die Ausr&uuml;stung kommt dorthin, wo es f&uuml;r Sie am besten passt.</p>
+      </div>
+    </article>
   </div>
   <div class="recht-more">
     <a class="btn dark" href="#kontakt">Probetraining vereinbaren</a>
@@ -346,9 +368,14 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;c
       <p>Ein kurzer Einblick in unseren Trainingsalltag &ndash; Recht, Sport und Leistung in wenigen Sekunden.</p>
     </div>
     <div class="imagefilm-media">
-      <video class="imagefilm-video" poster="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/imagefilm-poster.webp" controls muted loop playsinline preload="metadata">
-        <source src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/video/imagefilm.mp4" type="video/mp4">
-      </video>
+      <div class="imagefilm-frame" id="imagefilmFrame">
+        <video class="imagefilm-video" id="imagefilmVideo" poster="/wp-content/themes/mystu/mockups/geraldgizzo/assets/img/imagefilm-poster.webp" muted loop playsinline preload="metadata">
+          <source src="/wp-content/themes/mystu/mockups/geraldgizzo/assets/video/imagefilm.mp4" type="video/mp4">
+        </video>
+        <button class="imagefilm-play" type="button" aria-label="Imagefilm gro&szlig; abspielen">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -429,6 +456,10 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;c
 <button class="back-to-top" id="backToTop" aria-label="Nach oben scrollen">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Schlie&szlig;en">&times;</button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
 <script>
 (function(){
   var burger = document.getElementById('burger');
@@ -480,6 +511,68 @@ footer{border-top:1px solid var(--line);padding:36px clamp(18px,5vw,68px) 28px;c
       if (row) row.classList.remove('invalid');
     }
   });
+})();
+(function(){
+  var lightbox = document.getElementById('lightbox');
+  var inner = document.getElementById('lightboxInner');
+  var closeBtn = document.getElementById('lightboxClose');
+  if (!lightbox || !inner || !closeBtn) return;
+  var activeVideo = null;
+  var videoHome = null;
+
+  function show(){
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    if (activeVideo) {
+      activeVideo.pause();
+      activeVideo.currentTime = 0;
+      activeVideo.muted = true;
+      activeVideo.controls = false;
+      activeVideo.classList.remove('in-lightbox');
+      if (videoHome.next) videoHome.parent.insertBefore(activeVideo, videoHome.next);
+      else videoHome.parent.appendChild(activeVideo);
+      activeVideo = null;
+      videoHome = null;
+    }
+    inner.innerHTML = '';
+  }
+  function openImage(src, alt){
+    inner.innerHTML = '';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = alt || '';
+    inner.appendChild(img);
+    show();
+  }
+  function openVideo(videoEl){
+    videoHome = { parent: videoEl.parentNode, next: videoEl.nextSibling };
+    inner.innerHTML = '';
+    inner.appendChild(videoEl);
+    videoEl.classList.add('in-lightbox');
+    videoEl.muted = false;
+    videoEl.controls = true;
+    videoEl.currentTime = 0;
+    videoEl.play().catch(function(){});
+    activeVideo = videoEl;
+    show();
+  }
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lightbox.classList.contains('open')) close(); });
+
+  document.querySelectorAll('.train-media img').forEach(function(img){
+    img.addEventListener('click', function(){ openImage(img.currentSrc || img.src, img.alt); });
+  });
+
+  var frame = document.getElementById('imagefilmFrame');
+  var video = document.getElementById('imagefilmVideo');
+  if (frame && video) {
+    frame.addEventListener('click', function(){ openVideo(video); });
+  }
 })();
 </script>
 </body>
