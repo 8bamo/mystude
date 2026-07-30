@@ -11,7 +11,7 @@ $lead_error = isset($_GET['lead_error']);
 // Stateless math CAPTCHA token
 $cap_n1    = wp_rand(2, 9);
 $cap_n2    = wp_rand(1, $cap_n1 - 1);
-$cap_token = hash_hmac('sha256', ($cap_n1 + $cap_n2), wp_salt('auth'));
+$cap_token = hash_hmac('sha256', ($cap_n1 - $cap_n2), wp_salt('auth'));
 
 /**
  * Language: an explicit ?lang=de|en switch wins and is remembered in a
@@ -47,6 +47,7 @@ $L = [
         'hero_eyebrow'=> 'Webdesign-Agentur &middot; Raum Stuttgart &amp; Ludwigsburg',
         'hero_h1a'    => 'Mehr',
         'hero_h1b'    => 'Kunden.',
+        'hero_h1b_words' => ['Kunden.', 'Umsatz.', 'Reichweite.'],
         'hero_sub'    => 'Websites, die nicht nur gut aussehen &mdash; sondern <b>Anfragen bringen, Vertrauen aufbauen</b> und deinen Umsatz wachsen lassen.',
         'hero_cta1'   => 'Projekt starten',
         'hero_cta2'   => 'Preise ansehen',
@@ -82,6 +83,18 @@ $L = [
         'ref2_chip1'  => 'Webdesign',
         'ref2_chip2'  => 'Gastronomie',
         'ref2_link'   => 'Zur Website',
+        'ref3_tag'    => 'Portfolio · Film &amp; Fotografie',
+        'ref3_desc'   => 'Portfolioseite für einen Creative Director und Filmemacher mit über 18 Jahren Erfahrung — Arbeiten für Nike, Puma, Hennessy und GQ. Bewegtbild im Fokus, dunkles Layout, alles auf die Reels ausgerichtet.',
+        'ref3_chip1'  => 'Webdesign',
+        'ref3_chip2'  => 'Portfolio',
+        'ref3_chip3'  => 'International',
+        'ref3_link'   => 'Zur Website',
+        'ref4_tag'    => 'Webdesign · Kanzlei &amp; Sport',
+        'ref4_desc'   => 'Drei Geschäftsfelder unter einem Dach: Rechtsberatung, Spielervermittlung und Training. Website mit klarer Sparten-Struktur, Terminbuchung und zweisprachiger Ansprache.',
+        'ref4_chip1'  => 'Webdesign',
+        'ref4_chip2'  => 'Recht &amp; Sport',
+        'ref4_chip3'  => 'Oberhausen',
+        'ref4_link'   => 'Zur Website',
         'ref_divider' => 'Mockup-Referenzen',
         'refm1_tag'   => 'WordPress · Handwerk',
         'refm1_aria'  => 'Handwerker-Webseite in neuem Tab ansehen',
@@ -123,14 +136,27 @@ $L = [
         'kt_err'      => 'Da ist etwas schiefgelaufen. Bitte prüfe deine Eingaben oder schreib uns direkt an hi@mystu.de.',
         'kt_lbl_name' => 'Name',
         'kt_ph_name'  => 'Dein Name',
+        'kt_lbl_company' => 'Firma',
+        'kt_ph_company'  => 'Firmenname',
         'kt_lbl_mail' => 'E-Mail',
         'kt_ph_mail'  => 'dein@email.de',
+        'kt_lbl_phone'=> 'Telefon',
+        'kt_ph_phone' => '+49 151 2345 6789',
+        'kt_lbl_city' => 'Ort',
+        'kt_ph_city'  => 'Stuttgart',
         'kt_lbl_type' => 'Was brauchst du?',
         'kt_opt1'     => 'Website',
         'kt_opt2'     => 'Onlineshop',
         'kt_opt3'     => 'Landingpage',
         'kt_opt4'     => 'SEO / Sichtbarkeit',
         'kt_opt5'     => 'Bin mir noch unsicher',
+        'kt_lbl_budget' => 'Budget',
+        'kt_budget1' => 'unter 2.000 €',
+        'kt_budget2' => '2.000–5.000 €',
+        'kt_budget3' => '5.000–10.000 €',
+        'kt_budget4' => '10.000–20.000 €',
+        'kt_budget5' => '20.000 €+',
+        'kt_budget6' => 'Noch offen',
         'kt_lbl_msg'  => 'Nachricht',
         'kt_ph_msg'   => 'Erzähl uns kurz von deinem Projekt …',
         'kt_cap_q'    => 'Sicherheitsfrage: Was ist %d − %d?',
@@ -165,6 +191,7 @@ $L = [
         'hero_eyebrow'=> 'Web Design Agency &middot; Stuttgart &amp; Ludwigsburg, Germany',
         'hero_h1a'    => 'More',
         'hero_h1b'    => 'Customers.',
+        'hero_h1b_words' => ['Customers.', 'Revenue.', 'Reach.'],
         'hero_sub'    => 'Websites that don&rsquo;t just look good &mdash; they <b>bring in leads, build trust</b> and help your revenue grow.',
         'hero_cta1'   => 'Start a project',
         'hero_cta2'   => 'See pricing',
@@ -200,6 +227,18 @@ $L = [
         'ref2_chip1'  => 'Web Design',
         'ref2_chip2'  => 'Hospitality',
         'ref2_link'   => 'Visit website',
+        'ref3_tag'    => 'Portfolio · Film &amp; Photography',
+        'ref3_desc'   => 'Portfolio site for a creative director and filmmaker with 18+ years of experience — work for Nike, Puma, Hennessy and GQ. Built around moving image, dark layout, everything geared towards the reels.',
+        'ref3_chip1'  => 'Web Design',
+        'ref3_chip2'  => 'Portfolio',
+        'ref3_chip3'  => 'International',
+        'ref3_link'   => 'Visit website',
+        'ref4_tag'    => 'Web Design · Law &amp; Sports',
+        'ref4_desc'   => 'Three business areas under one roof: legal advice, player representation and training. Website with a clear division structure, appointment booking and bilingual copy.',
+        'ref4_chip1'  => 'Web Design',
+        'ref4_chip2'  => 'Law &amp; Sports',
+        'ref4_chip3'  => 'Oberhausen',
+        'ref4_link'   => 'Visit website',
         'ref_divider' => 'Mockup Projects',
         'refm1_tag'   => 'WordPress · Trades',
         'refm1_aria'  => 'View trades-business website in a new tab',
@@ -241,14 +280,27 @@ $L = [
         'kt_err'      => 'Something went wrong. Please check your input or email us directly at hi@mystu.de.',
         'kt_lbl_name' => 'Name',
         'kt_ph_name'  => 'Your name',
+        'kt_lbl_company' => 'Company',
+        'kt_ph_company'  => 'Company name',
         'kt_lbl_mail' => 'Email',
         'kt_ph_mail'  => 'you@email.com',
+        'kt_lbl_phone'=> 'Phone',
+        'kt_ph_phone' => '+49 151 2345 6789',
+        'kt_lbl_city' => 'Location',
+        'kt_ph_city'  => 'Stuttgart',
         'kt_lbl_type' => 'What do you need?',
         'kt_opt1'     => 'Website',
         'kt_opt2'     => 'Online shop',
         'kt_opt3'     => 'Landing page',
         'kt_opt4'     => 'SEO / Visibility',
         'kt_opt5'     => 'Not sure yet',
+        'kt_lbl_budget' => 'Budget',
+        'kt_budget1' => 'under €2,000',
+        'kt_budget2' => '€2,000–5,000',
+        'kt_budget3' => '€5,000–10,000',
+        'kt_budget4' => '€10,000–20,000',
+        'kt_budget5' => '€20,000+',
+        'kt_budget6' => 'Not sure yet',
         'kt_lbl_msg'  => 'Message',
         'kt_ph_msg'   => 'Tell us briefly about your project …',
         'kt_cap_q'    => 'Security check: what is %d − %d?',
@@ -283,16 +335,17 @@ $og_locale = $lang === 'de' ? 'de_DE' : 'en_US';
 <meta property="og:url" content="https://mystu.de/"/>
 <meta property="og:title" content="<?php echo esc_attr(wp_strip_all_tags($t['og_title'])); ?>"/>
 <meta property="og:description" content="<?php echo esc_attr(wp_strip_all_tags($t['og_desc'])); ?>"/>
-<meta property="og:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.jpg"/>
+<meta property="og:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="<?php echo esc_attr($og_locale); ?>"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="<?php echo esc_attr(wp_strip_all_tags($t['og_title'])); ?>"/>
 <meta name="twitter:description" content="<?php echo esc_attr(wp_strip_all_tags($t['og_desc'])); ?>"/>
-<meta name="twitter:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.jpg"/>
+<meta name="twitter:image" content="https://mystu.de/wp-content/themes/mystu/assets/og-image.png"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<link rel="alternate" hreflang="de" href="<?php echo esc_url(add_query_arg('lang', 'de', home_url('/'))); ?>"/>
+<link rel="canonical" href="<?php echo esc_url(home_url('/')); ?>"/>
+<link rel="alternate" hreflang="de" href="<?php echo esc_url(home_url('/')); ?>"/>
 <link rel="alternate" hreflang="en" href="<?php echo esc_url(add_query_arg('lang', 'en', home_url('/'))); ?>"/>
 <link rel="alternate" hreflang="x-default" href="<?php echo esc_url(home_url('/')); ?>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -301,31 +354,7 @@ $og_locale = $lang === 'de' ? 'de_DE' : 'en_US';
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
 <?php wp_head(); ?>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "mystu",
-  "description": "Webdesign-Agentur aus Stuttgart & Ludwigsburg. Wir bauen moderne Websites, Onlineshops und Landingpages – und sorgen mit lokaler SEO für mehr Kunden.",
-  "url": "https://mystu.de",
-  "email": "hi@mystu.de",
-  "telephone": "+4915123456789",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Stuttgart",
-    "addressRegion": "Baden-Württemberg",
-    "addressCountry": "DE"
-  },
-  "areaServed": [
-    {"@type": "City", "name": "Stuttgart"},
-    {"@type": "City", "name": "Ludwigsburg"}
-  ],
-  "serviceType": ["Webdesign", "Onlineshop Entwicklung", "Landingpage", "Lokale SEO"],
-  "priceRange": "$$",
-  "openingHours": "Mo-Fr 09:00-18:00",
-  "sameAs": ["https://mystu.de"]
-}
-</script>
+<?php echo mystu_local_business_schema_json(); ?>
 
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -345,16 +374,16 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 
 #prog{position:fixed;top:0;left:0;height:2px;background:var(--ac);z-index:600;width:0}
 
-#loader{position:fixed;inset:0;background:var(--b);z-index:9000;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease}
+#loader{position:fixed;inset:0;background:var(--b);z-index:9000;display:flex;align-items:center;justify-content:center;transition:opacity 1.1s ease,visibility 1.1s ease}
 #loader.out{opacity:0;visibility:hidden}
-.ldr svg{height:clamp(30px,4.5vw,46px);width:auto;opacity:0;animation:ldrIn .6s cubic-bezier(.16,1,.3,1) .2s forwards}
+.ldr svg,.ldr img{height:clamp(42px,6vw,74px);width:auto;max-width:min(74vw,360px);opacity:0;animation:ldrIn .6s cubic-bezier(.16,1,.3,1) .2s forwards}
 .ldr-line{width:0;height:2px;background:var(--ac);margin-top:18px;animation:ldrLine .9s ease .55s forwards}
 @keyframes ldrIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes ldrLine{to{width:140px}}
+@keyframes ldrLine{to{width:min(58vw,280px)}}
 
 .mnav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:24px var(--pad);transition:padding .4s,background .4s,border-color .4s;border-bottom:1px solid transparent}
 .mnav.stuck{padding:14px var(--pad);background:rgba(10,10,10,.82);backdrop-filter:blur(14px);border-color:var(--ln)}
-.mnav-logo svg{height:18px;width:auto;display:block}
+.mnav-logo svg,.mnav-logo img{height:18px;width:auto;display:block}
 .mnav-r{display:flex;align-items:center;gap:34px}
 .mnav-r a{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);transition:color .3s}
 .mnav-r a:hover{color:var(--w)}
@@ -382,16 +411,22 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .mob-lang span{color:var(--ln)}
 
 #hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px var(--pad) 48px;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.5px);background-size:30px 30px;pointer-events:none}
 .hero-glow{position:absolute;width:60vw;height:60vw;max-width:760px;max-height:760px;border-radius:50%;filter:blur(150px);background:radial-gradient(circle,rgba(201,255,46,.10) 0%,transparent 70%);top:-12%;right:-10%;pointer-events:none;animation:glow 9s ease-in-out infinite}
 @keyframes glow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+.hero-spot{position:absolute;width:640px;height:640px;left:0;top:0;border-radius:50%;background:radial-gradient(circle,rgba(201,255,46,.20) 0%,rgba(201,255,46,.07) 38%,transparent 68%);filter:blur(20px);mix-blend-mode:screen;pointer-events:none;will-change:transform;opacity:0;transition:opacity .4s ease}
+.hero-spot.on{opacity:1}
+@media(prefers-reduced-motion:reduce),(pointer:coarse){.hero-spot{display:none}}
 .hero-eyebrow{display:flex;align-items:center;gap:14px;font-size:.68rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ac);margin-bottom:clamp(24px,4vw,40px)}
 .hero-eyebrow::before{content:'';width:34px;height:1px;background:var(--ac)}
 .hero-h{font-family:var(--fD);font-weight:900;line-height:.86;letter-spacing:-.02em;font-size:clamp(56px,12vw,196px);text-transform:uppercase;max-width:14ch}
-.hero-h .line{display:block;overflow:hidden}
-.hero-h .line span{display:block;transform:translateY(106%);animation:lineUp 1s cubic-bezier(.16,1,.3,1) forwards}
+.hero-h .line{display:block;overflow:hidden;white-space:nowrap}
+.hero-h .line>span{display:block;transform:translateY(106%);animation:lineUp 1s cubic-bezier(.16,1,.3,1) forwards}
 .hero-h .line:nth-child(1) span{animation-delay:.5s}
 .hero-h .line:nth-child(2) span{animation-delay:.62s}
 .hero-h .ac{color:var(--ac)}
+.hero-cursor{display:inline-block;width:.06em;height:.78em;background:var(--ac);margin-left:.05em;vertical-align:-.05em;animation:caretBlink .9s step-end infinite}
+@keyframes caretBlink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes lineUp{to{transform:none}}
 .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:clamp(36px,6vw,64px);opacity:0;animation:fadeUp .9s ease 1.05s forwards}
 .hero-sub{font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;line-height:1.7;color:var(--mu);max-width:34ch}
@@ -400,7 +435,7 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .hero-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--fD);font-size:1.05rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--b)!important;background:var(--ac);padding:16px 34px;flex-shrink:0;transition:background .3s,transform .3s}
 .hero-cta:hover{background:var(--w)}
 .hero-cta.ghost{background:transparent!important;color:var(--w)!important;border:1px solid rgba(244,245,241,.40)}
-.hero-cta.ghost:hover{background:var(--w)!important;color:var(--b)!important;border-color:var(--w)}
+.hero-cta.ghost:hover{background:transparent!important;color:var(--ac)!important;border-color:var(--ac)}
 .hero-cta svg{transition:transform .3s}
 .hero-cta:hover svg{transform:translateX(5px)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
@@ -545,17 +580,18 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .kt-note a{color:var(--mu);text-decoration:underline;text-underline-offset:2px}
 .kt-captcha input[type="number"]{-moz-appearance:textfield}
 .kt-captcha input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
-.kt-check{display:flex;align-items:flex-start;gap:10px;font-size:.78rem;font-weight:300;color:var(--mu);line-height:1.5;cursor:pointer}
+.kt-check{display:flex;align-items:flex-start;justify-content:flex-start;gap:12px;font-size:.78rem;font-weight:300;color:var(--mu);line-height:1.55;text-align:left;cursor:pointer}
 .kt-check input[type="checkbox"]{width:16px;height:16px;min-width:16px;accent-color:var(--ac);margin-top:2px;cursor:pointer}
-.kt-check a{color:var(--mu);text-decoration:underline;text-underline-offset:2px}
+.kt-check span{display:inline;min-width:0;max-width:none;text-align:left;white-space:normal}
+.kt-check a{color:var(--mu);text-decoration:underline;text-underline-offset:2px;white-space:normal}
 .kt-msg{padding:13px 16px;font-size:.85rem;font-weight:500;border:1px solid}
 .kt-msg.ok{border-color:var(--ac);color:var(--ac);background:rgba(201,255,46,.06)}
 .kt-msg.err{border-color:#ff6b5e;color:#ff8e84;background:rgba(255,107,94,.06)}
-@media(max-width:1024px){.kt-grid{grid-template-columns:1fr 1fr;gap:36px}.kt-grid .rv:first-child{grid-column:1/-1}}@media(max-width:640px){.kt-grid{grid-template-columns:1fr;gap:40px}}
+@media(max-width:1024px){.kt-grid{grid-template-columns:1fr 1fr;gap:36px}.kt-grid .rv:first-child{grid-column:1/-1}}@media(max-width:640px){.kt-grid{grid-template-columns:minmax(0,1fr);gap:40px}.kt-form{grid-column:auto;width:100%;min-width:0}.kt-field input,.kt-field select,.kt-field textarea{width:100%;min-width:0}.kt-check{max-width:100%}}
 
 .mfoot{background:#060606;border-top:1px solid var(--ln);padding:clamp(48px,7vw,72px) var(--pad) 36px}
 .mfoot-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid var(--ln);margin-bottom:28px}
-.mfoot-logo svg{height:30px;width:auto;margin-bottom:14px}
+.mfoot-logo svg,.mfoot-logo img{height:30px;width:auto;margin-bottom:14px}
 .mfoot-desc{font-size:.8rem;font-weight:300;color:var(--mu);line-height:1.7;max-width:30ch}
 .mfoot-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .mfoot-copy,.mfoot-made{font-size:.68rem;color:var(--mu2);letter-spacing:.04em}
@@ -575,22 +611,26 @@ body.mystu-front ::selection{background:var(--ac);color:var(--b)}
 .calendly-sub{font-size:.88rem;line-height:1.75;color:var(--mu2)}
 .calendly-sub strong{color:var(--ac)}
 .calendly-inline-widget{border:1px solid var(--ln);background:var(--g1)}
+
+.dpad{position:fixed;right:clamp(14px,2.5vw,28px);top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:dpadIn .6s cubic-bezier(.16,1,.3,1) .3s forwards}
+@keyframes dpadIn{to{opacity:1}}
+.dpad-btn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--mu2);background:rgba(16,17,16,.55);backdrop-filter:blur(8px);border:1px solid var(--ln);cursor:pointer;transition:color .25s ease,transform .2s ease,border-color .25s ease,background .25s ease}
+.dpad-btn:hover:not(:disabled){color:var(--ac);border-color:rgba(201,255,46,.4);background:rgba(201,255,46,.08);transform:scale(1.08)}
+.dpad-btn:disabled{opacity:.3;cursor:default}
+@media(pointer:coarse),(max-width:900px){.dpad{display:none}}
+@media(prefers-reduced-motion:reduce){.dpad{animation:none;opacity:1}}
 </style>
 </head>
 <body <?php body_class('mystu-front'); ?>>
 <?php wp_body_open(); ?>
 
 <?php
-$logo_svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.6 51.7">'
-  .'<path fill="#C9FF2E" d="M49,20v19.1h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.3,2.3-6.3,6.8v16.4h-8.1v-16.5c0-4.3-2.2-6.7-5.9-6.7s-6.4,2.3-6.4,6.8v16.4H.4V9.1h7.9v3.5c2.1-3.2,5.4-4.3,8.8-4.3s7.9,2,9.9,5.1c2.3-3.8,6.3-5.1,10.2-5.1,7.1,0,11.8,4.7,11.8,11.7Z"/>'
-  .'<path fill="#F4F5F1" d="M63.5,51.6h-8.9l10.5-18.9-12.9-23.6h9.2l8.2,15.4,8-15.4h8.9l-23,42.5Z"/>'
-  .'<path fill="#F4F5F1" d="M111.8,17.4c-2.4-1.2-6.2-2.4-9.6-2.4-3.1,0-4.6,1.1-4.6,2.7s2.2,2.2,4.9,2.6l2.7.4c6.5,1,10.1,3.9,10.1,9s-5.1,10.2-13.8,10.2-9.4-.8-13.4-3.5l3.2-6.1c2.6,1.7,5.7,2.9,10.2,2.9s5.5-1.1,5.5-2.8-1.5-2.3-5-2.8l-2.4-.3c-6.9-1-10.4-4-10.4-9.1s4.8-9.8,12.7-9.8,8.5.9,12.5,2.8l-2.7,6.3Z"/>'
-  .'<path fill="#F4F5F1" d="M143.2,16.2h-10.9v11c0,3.7,2,5.1,4.5,5.1s4-1,5.6-2l3,6.3c-2.6,1.8-5.7,3.2-9.9,3.2-7.4,0-11.2-4.2-11.2-12v-11.6h-5.8v-7.2h5.8V.1h8.1v8.9h10.9v7.2Z"/>'
-  .'<path fill="#F4F5F1" d="M178.2,26.3c0,9.5-6.7,13.6-14.2,13.6s-14.2-4.1-14.2-13.6V9.1h8.1v16.5c0,4.8,2.6,6.8,6.1,6.8s6.1-2,6.1-6.8V9.1h8.1v17.2Z"/></svg>';
+$logo_svg = '<img src="' . esc_url(MYSTU_URI . '/assets/logo-mystu.svg') . '" alt="mystu" decoding="async">';
 $home = esc_url(home_url('/'));
 $arrow = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 $lang_url_de = esc_url(add_query_arg('lang', 'de', $home));
 $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
+$pricing_url = esc_url(add_query_arg('lang', $lang, home_url('/preise/')));
 ?>
 
 <div id="prog"></div>
@@ -604,7 +644,7 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
   <div class="mnav-r">
     <a href="#leistungen"><?php echo $t['nav_leist']; ?></a>
     <a href="#referenzen"><?php echo $t['nav_ref']; ?></a>
-    <a href="#warum"><?php echo $t['nav_warum']; ?></a><a href="/preise/"><?php echo $t['nav_preise']; ?></a>
+    <a href="#warum"><?php echo $t['nav_warum']; ?></a><a href="<?php echo $pricing_url; ?>"><?php echo $t['nav_preise']; ?></a>
     <div class="mnav-lang"><a href="<?php echo $lang_url_de; ?>" class="<?php echo $lang === 'de' ? 'active' : ''; ?>">DE</a><span>/</span><a href="<?php echo $lang_url_en; ?>" class="<?php echo $lang === 'en' ? 'active' : ''; ?>">EN</a></div>
     <a href="#kontakt" class="mnav-cta"><?php echo $t['nav_cta']; ?></a>
   </div>
@@ -615,7 +655,7 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
   <a href="#leistungen" class="mob-link"><?php echo $t['nav_leist']; ?></a>
   <a href="#referenzen" class="mob-link"><?php echo $t['nav_ref']; ?></a>
   <a href="#warum" class="mob-link"><?php echo $t['nav_warum']; ?></a>
-  <a href="/preise/" class="mob-link"><?php echo $t['nav_preise']; ?></a>
+  <a href="<?php echo $pricing_url; ?>" class="mob-link"><?php echo $t['nav_preise']; ?></a>
   <a href="#kontakt" class="mob-cta mob-link"><?php echo $t['nav_cta']; ?></a>
   <div class="mob-menu-foot">
     <span>hi@mystu.de</span>
@@ -623,18 +663,24 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
   </div>
 </div>
 
+<div class="dpad" id="dpad" aria-label="<?php echo $lang === 'en' ? 'Section navigation' : 'Seitennavigation'; ?>">
+  <button type="button" class="dpad-btn dpad-up" id="dpadUp" aria-label="<?php echo $lang === 'en' ? 'Previous section' : 'Vorherige Sektion'; ?>"><svg width="24" height="24" viewBox="0 0 16 16" fill="none"><path d="M3 10l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button type="button" class="dpad-btn dpad-down" id="dpadDown" aria-label="<?php echo $lang === 'en' ? 'Next section' : 'N&auml;chste Sektion'; ?>"><svg width="24" height="24" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+
 <main>
 <section id="hero">
   <div class="hero-glow"></div>
+  <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
   <p class="hero-eyebrow"><?php echo $t['hero_eyebrow']; ?></p>
-  <h1 class="hero-h">
+  <h1 class="hero-h" id="heroH">
     <span class="line"><span><?php echo $t['hero_h1a']; ?></span></span>
-    <span class="line"><span class="ac"><?php echo $t['hero_h1b']; ?></span></span>
+    <span class="line"><span><span class="ac" id="heroType"><?php echo $t['hero_h1b']; ?></span><span class="hero-cursor" aria-hidden="true"></span></span></span>
   </h1>
   <div class="hero-bottom">
     <p class="hero-sub"><?php echo $t['hero_sub']; ?></p>
     <div class="hero-ctas">
-      <a href="#kontakt" class="hero-cta"><?php echo $t['hero_cta1']; ?> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="/preise/" class="hero-cta ghost"><?php echo $t['hero_cta2']; ?></a>
+      <a href="#kontakt" class="hero-cta"><?php echo $t['hero_cta1']; ?> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a href="<?php echo $pricing_url; ?>" class="hero-cta ghost"><?php echo $t['hero_cta2']; ?></a>
     </div>
   </div>
 </section>
@@ -743,6 +789,38 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
           <span class="ref-chip">Stuttgart</span>
         </div>
         <a href="https://anderthalb-bar.de" target="_blank" rel="noopener" class="ref-link"><?php echo $t['ref2_link']; ?> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="ref-item rv">
+      <div class="ref-screen">
+        <picture><source srcset="/wp-content/themes/mystu/assets/emmanuelwhajah.webp" type="image/webp"/><img src="/wp-content/themes/mystu/assets/emmanuelwhajah.jpg" alt="Emmanuel Whajah Referenz" width="1440" height="900" loading="lazy"/></picture>
+      </div>
+      <div>
+        <p class="ref-tag"><?php echo $t['ref3_tag']; ?></p>
+        <h3 class="ref-name">Emmanuel<br/>Whajah</h3>
+        <p class="ref-desc"><?php echo $t['ref3_desc']; ?></p>
+        <div class="ref-chips">
+          <span class="ref-chip"><?php echo $t['ref3_chip1']; ?></span>
+          <span class="ref-chip"><?php echo $t['ref3_chip2']; ?></span>
+          <span class="ref-chip"><?php echo $t['ref3_chip3']; ?></span>
+        </div>
+        <a href="https://emmanuelwhajah.com" target="_blank" rel="noopener" class="ref-link"><?php echo $t['ref3_link']; ?> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="ref-item rv">
+      <div class="ref-screen">
+        <picture><source srcset="/wp-content/themes/mystu/assets/gbridge.webp" type="image/webp"/><img src="/wp-content/themes/mystu/assets/gbridge.jpg" alt="GoldenBridge Referenz" width="1440" height="900" loading="lazy"/></picture>
+      </div>
+      <div>
+        <p class="ref-tag"><?php echo $t['ref4_tag']; ?></p>
+        <h3 class="ref-name">Golden<br/>Bridge</h3>
+        <p class="ref-desc"><?php echo $t['ref4_desc']; ?></p>
+        <div class="ref-chips">
+          <span class="ref-chip"><?php echo $t['ref4_chip1']; ?></span>
+          <span class="ref-chip"><?php echo $t['ref4_chip2']; ?></span>
+          <span class="ref-chip"><?php echo $t['ref4_chip3']; ?></span>
+        </div>
+        <a href="https://gbridge.de" target="_blank" rel="noopener" class="ref-link"><?php echo $t['ref4_link']; ?> <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
@@ -893,15 +971,23 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
     </div>
 
     <form class="kt-form rv d1" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
-      <?php if ($lead_sent): ?><p class="kt-msg ok"><?php echo $t['kt_ok']; ?></p><?php endif; ?>
+      <?php if ($lead_sent): ?><p class="kt-msg ok"><?php echo $t['kt_ok']; ?></p><script>if(typeof gtag==='function'){gtag('event','generate_lead',{form_name:'homepage_kontakt'});}</script><?php endif; ?>
       <?php if ($lead_error): ?><p class="kt-msg err"><?php echo $t['kt_err']; ?></p><?php endif; ?>
       <input type="hidden" name="action" value="mystu_lead_request"/>
       <?php wp_nonce_field('mystu_lead_request', 'mystu_lead_nonce'); ?>
       <div class="kt-field"><label for="kt-name"><?php echo $t['kt_lbl_name']; ?></label><input id="kt-name" name="name" type="text" required placeholder="<?php echo esc_attr($t['kt_ph_name']); ?>"/></div>
+      <div class="kt-field"><label for="kt-company"><?php echo $t['kt_lbl_company']; ?></label><input id="kt-company" name="firma" type="text" placeholder="<?php echo esc_attr($t['kt_ph_company']); ?>"/></div>
       <div class="kt-field"><label for="kt-mail"><?php echo $t['kt_lbl_mail']; ?></label><input id="kt-mail" name="email" type="email" required placeholder="<?php echo esc_attr($t['kt_ph_mail']); ?>"/></div>
+      <div class="kt-field"><label for="kt-phone"><?php echo $t['kt_lbl_phone']; ?></label><input id="kt-phone" name="telefon" type="tel" placeholder="<?php echo esc_attr($t['kt_ph_phone']); ?>"/></div>
+      <div class="kt-field"><label for="kt-city"><?php echo $t['kt_lbl_city']; ?></label><input id="kt-city" name="ort" type="text" placeholder="<?php echo esc_attr($t['kt_ph_city']); ?>"/></div>
       <div class="kt-field"><label for="kt-type"><?php echo $t['kt_lbl_type']; ?></label>
         <select id="kt-type" name="projekt">
           <option><?php echo $t['kt_opt1']; ?></option><option><?php echo $t['kt_opt2']; ?></option><option><?php echo $t['kt_opt3']; ?></option><option><?php echo $t['kt_opt4']; ?></option><option><?php echo $t['kt_opt5']; ?></option>
+        </select>
+      </div>
+      <div class="kt-field"><label for="kt-budget"><?php echo $t['kt_lbl_budget']; ?></label>
+        <select id="kt-budget" name="budget">
+          <option><?php echo $t['kt_budget1']; ?></option><option><?php echo $t['kt_budget2']; ?></option><option><?php echo $t['kt_budget3']; ?></option><option><?php echo $t['kt_budget4']; ?></option><option><?php echo $t['kt_budget5']; ?></option><option><?php echo $t['kt_budget6']; ?></option>
         </select>
       </div>
       <div class="kt-field"><label for="kt-msg"><?php echo $t['kt_lbl_msg']; ?></label><textarea id="kt-msg" name="nachricht" required placeholder="<?php echo esc_attr($t['kt_ph_msg']); ?>"></textarea></div>
@@ -910,7 +996,7 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
         <input id="kt-cap" name="captcha_answer" type="number" required placeholder="<?php echo esc_attr($t['kt_ph_answer']); ?>"/>
         <input type="hidden" name="captcha_token" value="<?php echo esc_attr($cap_token); ?>"/>
       </div>
-      <label class="kt-check"><input type="checkbox" name="datenschutz" required/> <?php echo sprintf($t['kt_privacy'], '<a href="' . esc_url(home_url('/datenschutz/')) . '">' . $t['privacy_link_text'] . '</a>'); ?></label>
+      <label class="kt-check"><input type="checkbox" name="datenschutz" required/> <span><?php echo sprintf($t['kt_privacy'], '<a href="' . esc_url(home_url('/datenschutz/')) . '">' . $t['privacy_link_text'] . '</a>'); ?></span></label>
       <button type="submit"><?php echo $t['kt_submit']; ?></button>
       <p class="kt-note"><?php echo sprintf($t['kt_note'], '<a href="' . esc_url(home_url('/datenschutz/')) . '">' . $t['note_datenschutz'] . '</a>', '<a href="' . esc_url(home_url('/impressum/')) . '">' . $t['note_impressum'] . '</a>'); ?></p>
     </form>
@@ -938,7 +1024,7 @@ $lang_url_en = esc_url(add_query_arg('lang', 'en', $home));
 </footer>
 
 <script>
-window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('out')},1200)});
+window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('out')},2600)});
 (function(){
   var nav=document.getElementById('mnav'),prog=document.getElementById('prog');
   addEventListener('scroll',function(){
@@ -949,6 +1035,73 @@ window.addEventListener('load',function(){setTimeout(function(){var l=document.g
 (function(){
   var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+})();
+(function(){
+  var hero=document.getElementById('hero');
+  var spot=document.getElementById('heroSpot');
+  if(!hero||!spot) return;
+  if(window.matchMedia&&(window.matchMedia('(pointer:coarse)').matches||window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var tx=hero.clientWidth/2,ty=hero.clientHeight/2,cx=tx,cy=ty,raf;
+  hero.addEventListener('mouseenter',function(){spot.classList.add('on')});
+  hero.addEventListener('mouseleave',function(){spot.classList.remove('on')});
+  hero.addEventListener('mousemove',function(e){
+    var r=hero.getBoundingClientRect();
+    tx=e.clientX-r.left;ty=e.clientY-r.top;
+  });
+  function loop(){
+    cx+=(tx-cx)*.09;cy+=(ty-cy)*.09;
+    spot.style.transform='translate3d('+(cx-320)+'px,'+(cy-320)+'px,0)';
+    raf=requestAnimationFrame(loop);
+  }
+  loop();
+})();
+(function(){
+  var h1=document.getElementById('heroH');
+  if(!h1) return;
+  var fitWords=<?php echo wp_json_encode(array_merge([$t['hero_h1a']], $t['hero_h1b_words'])); ?>;
+  var probe=document.createElement('span');
+  probe.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;top:-9999px;left:-9999px;pointer-events:none';
+  document.body.appendChild(probe);
+  function fit(){
+    h1.style.fontSize='';
+    var cs=getComputedStyle(h1);
+    var base=parseFloat(cs.fontSize);
+    probe.style.fontFamily=cs.fontFamily;
+    probe.style.fontWeight=cs.fontWeight;
+    probe.style.letterSpacing=cs.letterSpacing;
+    probe.style.textTransform=cs.textTransform;
+    probe.style.fontSize=base+'px';
+    var avail=h1.clientWidth;
+    var max=0;
+    fitWords.forEach(function(w){probe.textContent=w;if(probe.offsetWidth>max)max=probe.offsetWidth;});
+    if(max>0&&avail>0&&max>avail){
+      h1.style.fontSize=(base*(avail/max)*0.96)+'px';
+    }
+  }
+  fit();
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}
+  var rt;
+  window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(fit,150)});
+})();
+(function(){
+  var el=document.getElementById('heroType');
+  if(!el||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var words=<?php echo wp_json_encode($t['hero_h1b_words']); ?>;
+  if(!words||words.length<2) return;
+  var wi=0,ci=words[0].length,deleting=false;
+  function tick(){
+    var word=words[wi];
+    if(!deleting){
+      ci++;
+      if(ci>word.length){ci=word.length;deleting=true;return setTimeout(tick,1800);}
+    } else {
+      ci--;
+      if(ci<0){ci=0;deleting=false;wi=(wi+1)%words.length;return setTimeout(tick,300);}
+    }
+    el.textContent=word.slice(0,ci);
+    setTimeout(tick,deleting?40:80);
+  }
+  setTimeout(tick,2200);
 })();
 (function(){
   var burger=document.querySelector('.mnav-burger');
@@ -969,6 +1122,33 @@ window.addEventListener('load',function(){setTimeout(function(){var l=document.g
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape') toggleMenu(false);
   });
+})();
+(function(){
+  var ids=['hero','leistungen','referenzen','warum','team','kontakt'];
+  var sections=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
+  var dpad=document.getElementById('dpad'),up=document.getElementById('dpadUp'),down=document.getElementById('dpadDown');
+  if(!dpad||!up||!down||!sections.length) return;
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function currentIndex(){
+    var y=window.scrollY+innerHeight*0.35,idx=0;
+    for(var i=0;i<sections.length;i++){ if(sections[i].offsetTop<=y) idx=i; }
+    return idx;
+  }
+  function updateState(){
+    var idx=currentIndex();
+    up.disabled=idx<=0;
+    down.disabled=idx>=sections.length-1;
+  }
+  up.addEventListener('click',function(){
+    var idx=currentIndex();
+    if(idx>0) sections[idx-1].scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+  });
+  down.addEventListener('click',function(){
+    var idx=currentIndex();
+    if(idx<sections.length-1) sections[idx+1].scrollIntoView({behavior:reduceMotion?'auto':'smooth'});
+  });
+  window.addEventListener('scroll',updateState,{passive:true});
+  updateState();
 })();
 </script>
 
