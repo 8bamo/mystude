@@ -12,6 +12,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["--yes", "serve", "-l", "4174", "."],
       "port": 4174
+    },
+    {
+      "name": "geraldgizzo",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4176", "_deploy/mockups/geraldgizzo"],
+      "port": 4176
     }
   ]
 }

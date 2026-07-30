@@ -48,6 +48,72 @@ add_action('admin_head', 'mystu_favicon', 1);
 add_action('template_redirect', function(){
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
+    if ($uri === 'slizzycologne') {
+        $cookie_name = 'mystu_slizzycologne_access';
+        $has_access = isset($_COOKIE[$cookie_name]) && hash_equals(wp_hash('slizzy'), sanitize_text_field(wp_unslash($_COOKIE[$cookie_name])));
+        $login_error = false;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $submitted_password = isset($_POST['slizzy_password']) ? sanitize_text_field(wp_unslash($_POST['slizzy_password'])) : '';
+            if (hash_equals('slizzy', $submitted_password)) {
+                setcookie($cookie_name, wp_hash('slizzy'), time() + DAY_IN_SECONDS, COOKIEPATH ?: '/', COOKIE_DOMAIN, is_ssl(), true);
+                wp_safe_redirect(home_url('/slizzycologne/'));
+                exit;
+            }
+            $login_error = true;
+        }
+
+        if (!$has_access) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            ?>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slizzy Cologne Preview</title>
+  <style>
+    @import url("https://fonts.bunny.net/css?family=archivo-black:400|archivo:500,800&display=swap");
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:#c90000;color:#fff;font-family:Archivo,sans-serif;padding:24px}
+    main{width:min(520px,100%);border:2px solid #fff;padding:28px;background:#c90000}
+    img{width:190px;max-width:70%;display:block;margin:0 0 40px}
+    h1{font-family:"Archivo Black",sans-serif;font-size:clamp(42px,12vw,86px);line-height:.82;margin:0 0 18px;text-transform:uppercase}
+    p{line-height:1.5;margin:0 0 22px;color:rgba(255,255,255,.8)}
+    label{display:block;font-weight:800;margin-bottom:8px}
+    input{width:100%;min-height:50px;border:2px solid #fff;background:#fff;color:#160303;padding:0 14px;font:inherit}
+    button{width:100%;min-height:50px;margin-top:12px;border:2px solid #fff;background:#160303;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+    .error{color:#fff;background:#160303;padding:10px 12px;margin-bottom:14px}
+  </style>
+</head>
+<body>
+  <main>
+    <img src="<?php echo esc_url(MYSTU_URI . '/mockups/slizzycologne/assets/slizzy-logo.png'); ?>" alt="Slizzy Cologne">
+    <h1>Preview locked</h1>
+    <p>Passwort eingeben, um das Slizzy Cologne Mockup zu sehen.</p>
+    <?php if ($login_error): ?><div class="error">Passwort stimmt nicht.</div><?php endif; ?>
+    <form method="post">
+      <label for="slizzy_password">Passwort</label>
+      <input id="slizzy_password" name="slizzy_password" type="password" autocomplete="current-password" autofocus>
+      <button type="submit">Mockup öffnen</button>
+    </form>
+  </main>
+</body>
+</html>
+            <?php
+            exit;
+        }
+
+        $slizzy_file = MYSTU_DIR . '/mockups/slizzycologne/index.html';
+        if (is_readable($slizzy_file)) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Length: ' . filesize($slizzy_file));
+            readfile($slizzy_file);
+            exit;
+        }
+    }
+
     // Clean public URL for the standalone Emmanuel Whajah portfolio.
     if (in_array($uri, ['emmanuelwhajah', 'emmanuel-whajah', 'emmanuelwhajah-v2', 'emmanuel-whajah-v2', 'emmanuelwhajah-v3', 'emmanuel-whajah-v3'], true)) {
         $portfolio_file = MYSTU_DIR . '/mockups/emmanuel-whajah/index.html';
@@ -69,6 +135,124 @@ add_action('template_redirect', function(){
                 $portfolio_html
             );
             echo $portfolio_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted local HTML template.
+            exit;
+        }
+    }
+
+    $protected_mockups = [
+        'mockup-anwalt-stuttgart' => [
+            'file' => 'anwalt-stuttgart/index.html',
+            'password' => 'anwalt',
+            'title' => 'Kanzlei Mockup',
+            'label' => 'Kanzlei Preview',
+        ],
+        'geraldgizzo' => [
+            'file' => 'geraldgizzo/index.html',
+            'password' => 'gerald',
+            'title' => 'Gerald Gizzo Mockup',
+            'label' => 'Gerald Gizzo Preview',
+        ],
+        'mockup-spsr-studio' => [
+            'file' => 'spsr-studio/index.html',
+            'password' => 'spsr',
+            'title' => 'SPSR Studio Mockup',
+            'label' => 'SPSR Preview',
+        ],
+        'dominicglaser' => [
+            'file' => 'dominicglaser/index.html',
+            'password' => 'dominic',
+            'title' => 'Dominic Glaser Mockup',
+            'label' => 'Dominic Glaser Preview',
+        ],
+        'merch' => [
+            'file' => 'merchkonzept/index.html',
+            'password' => 'merch',
+            'title' => 'Merch-Konzept Mockup',
+            'label' => 'Merch & Streetwear Preview',
+        ],
+        '12bar' => [
+            'file' => 'anderthalb-bar/index.html',
+            'password' => 'jeff',
+            'title' => 'anderthalb Bar Mockup',
+            'label' => 'anderthalb Bar Preview',
+        ],
+        'ghost' => [
+            'file' => 'ghost/index.html',
+            'password' => 'ghost',
+            'title' => 'Essence Hunters CH Mockup',
+            'label' => 'Paranormale Ermittlungen Preview',
+        ],
+        'marven' => [
+            'file' => 'marven/index.html',
+            'password' => 'marven',
+            'title' => 'Marven Gabriel Mockup',
+            'label' => 'Marven Gabriel Preview',
+        ],
+    ];
+
+    if (isset($protected_mockups[$uri])) {
+        $mockup = $protected_mockups[$uri];
+        $cookie_name = 'mystu_' . sanitize_key($uri) . '_access';
+        $has_access = isset($_COOKIE[$cookie_name]) && hash_equals(wp_hash($mockup['password']), sanitize_text_field(wp_unslash($_COOKIE[$cookie_name])));
+        $login_error = false;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $submitted_password = isset($_POST['mockup_password']) ? sanitize_text_field(wp_unslash($_POST['mockup_password'])) : '';
+            if (hash_equals($mockup['password'], strtolower($submitted_password))) {
+                setcookie($cookie_name, wp_hash($mockup['password']), time() + DAY_IN_SECONDS, COOKIEPATH ?: '/', COOKIE_DOMAIN, is_ssl(), true);
+                wp_safe_redirect(home_url('/' . $uri . '/'));
+                exit;
+            }
+            $login_error = true;
+        }
+
+        if (!$has_access) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            ?>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title><?php echo esc_html($mockup['title']); ?></title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:#111;color:#f5f1e8;font-family:ui-sans-serif,system-ui,sans-serif;padding:24px}
+    main{width:min(480px,100%);border:1px solid rgba(245,241,232,.24);padding:28px;background:#181715}
+    h1{font-size:clamp(38px,10vw,72px);line-height:.92;margin:0 0 18px;text-transform:uppercase;letter-spacing:-.04em}
+    p{line-height:1.5;margin:0 0 22px;color:rgba(245,241,232,.68)}
+    label{display:block;font-weight:700;margin-bottom:8px}
+    input{width:100%;min-height:50px;border:1px solid rgba(245,241,232,.36);background:#0f0f0e;color:#f5f1e8;padding:0 14px;font:inherit}
+    button{width:100%;min-height:50px;margin-top:12px;border:0;background:#f5f1e8;color:#111;font:inherit;font-weight:800;cursor:pointer}
+    .label{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:rgba(245,241,232,.48);margin-bottom:22px}
+    .error{color:#111;background:#f5f1e8;padding:10px 12px;margin-bottom:14px}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="label"><?php echo esc_html($mockup['label']); ?> · mystu.de</div>
+    <h1>Preview locked</h1>
+    <p>Passwort eingeben, um das Mockup zu sehen.</p>
+    <?php if ($login_error): ?><div class="error">Passwort stimmt nicht.</div><?php endif; ?>
+    <form method="post">
+      <label for="mockup_password">Passwort</label>
+      <input id="mockup_password" name="mockup_password" type="password" autocomplete="current-password" autofocus>
+      <button type="submit">Mockup öffnen</button>
+    </form>
+  </main>
+</body>
+</html>
+            <?php
+            exit;
+        }
+
+        $mockup_file = MYSTU_DIR . '/mockups/' . $mockup['file'];
+        if (is_readable($mockup_file)) {
+            status_header(200);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Length: ' . filesize($mockup_file));
+            readfile($mockup_file);
             exit;
         }
     }
@@ -100,6 +284,85 @@ add_action('template_redirect', function(){
         }
     }
 });
+
+function mystu_handle_geraldgizzo_contact() {
+    $redirect_url = home_url('/geraldgizzo/#kontakt');
+
+    if (!empty($_POST['website'])) {
+        wp_safe_redirect($redirect_url);
+        exit;
+    }
+
+    $name = isset($_POST['name']) ? sanitize_text_field(wp_unslash($_POST['name'])) : '';
+    $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+    $phone = isset($_POST['phone']) ? sanitize_text_field(wp_unslash($_POST['phone'])) : '';
+    $topic = isset($_POST['topic']) ? sanitize_text_field(wp_unslash($_POST['topic'])) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field(wp_unslash($_POST['message'])) : '';
+    $privacy = !empty($_POST['privacy']);
+
+    if (!$name || !$email || !$message || !$privacy || !is_email($email)) {
+        wp_safe_redirect(add_query_arg('geraldgizzo_contact', 'invalid', $redirect_url));
+        exit;
+    }
+
+    $body = "Neue GoldenBridge Anfrage\n\n";
+    $body .= "Name: {$name}\n";
+    $body .= "E-Mail: {$email}\n";
+    $body .= "Telefon: " . ($phone ?: '-') . "\n";
+    $body .= "Anliegen: " . ($topic ?: '-') . "\n\n";
+    $body .= "Nachricht:\n{$message}\n";
+
+    $headers = [
+        'Content-Type: text/plain; charset=UTF-8',
+        'Reply-To: ' . $name . ' <' . $email . '>',
+    ];
+
+    $sent = wp_mail('info@goldenbridgeagency.com', 'GoldenBridge Anfrage', $body, $headers);
+
+    wp_safe_redirect(add_query_arg('geraldgizzo_contact', $sent ? 'sent' : 'failed', $redirect_url));
+    exit;
+}
+add_action('admin_post_mystu_geraldgizzo_contact', 'mystu_handle_geraldgizzo_contact');
+add_action('admin_post_nopriv_mystu_geraldgizzo_contact', 'mystu_handle_geraldgizzo_contact');
+
+function mystu_handle_slizzy_contact() {
+    $redirect_url = home_url('/slizzycologne/');
+
+    if (!empty($_POST['website'])) {
+        wp_safe_redirect(add_query_arg('contact', 'error', $redirect_url) . '#kontakt');
+        exit;
+    }
+
+    $name = isset($_POST['name']) ? sanitize_text_field(wp_unslash($_POST['name'])) : '';
+    $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+    $request_type = isset($_POST['request_type']) ? sanitize_text_field(wp_unslash($_POST['request_type'])) : '';
+    $social_link = isset($_POST['social_link']) ? sanitize_text_field(wp_unslash($_POST['social_link'])) : '';
+    $message = isset($_POST['message']) ? sanitize_textarea_field(wp_unslash($_POST['message'])) : '';
+
+    if (!$name || !$email || !$request_type || !$message || !is_email($email) || empty($_POST['privacy'])) {
+        wp_safe_redirect(add_query_arg('contact', 'error', $redirect_url) . '#kontakt');
+        exit;
+    }
+
+    $body  = "Neue Slizzy Cologne Anfrage\n\n";
+    $body .= "Name: {$name}\n";
+    $body .= "E-Mail: {$email}\n";
+    $body .= "Anfrage: {$request_type}\n";
+    $body .= "Instagram/Link: {$social_link}\n\n";
+    $body .= "Nachricht:\n{$message}\n";
+
+    $sent = wp_mail(
+        'hi@mystu.de',
+        'Slizzy Cologne Anfrage: ' . $request_type,
+        $body,
+        ['Reply-To: ' . $name . ' <' . $email . '>']
+    );
+
+    wp_safe_redirect(add_query_arg('contact', $sent ? 'success' : 'error', $redirect_url) . '#kontakt');
+    exit;
+}
+add_action('admin_post_mystu_slizzy_contact', 'mystu_handle_slizzy_contact');
+add_action('admin_post_nopriv_mystu_slizzy_contact', 'mystu_handle_slizzy_contact');
 
 /**
  * Public booking form on the Emmanuel Whajah portfolio.
@@ -273,6 +536,8 @@ add_action('wp_footer', 'mystu_consent_banner', 20);
 
 function mystu_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 }
 add_action('wp_head', 'mystu_preconnect', 0);
 
@@ -307,13 +572,30 @@ function mystu_enqueue() {
 }
 add_action('wp_enqueue_scripts', 'mystu_enqueue');
 
+// Load the bunny.net font stylesheet non-blocking (print->all swap trick)
+function mystu_async_font_style($html, $handle) {
+    if ($handle !== 'mystu-fonts') {
+        return $html;
+    }
+    if (strpos($html, 'onload=') !== false) {
+        return $html;
+    }
+    $async = preg_replace("/media=(['\"])all\\1/", "media='print' onload=\"this.media='all'\"", $html, 1, $count);
+    if (!$count) {
+        $async = str_replace('/>', ' media=\'print\' onload="this.media=\'all\'"/>', $html);
+    }
+    $noscript = '<noscript>' . $html . '</noscript>';
+    return $async . $noscript;
+}
+add_filter('style_loader_tag', 'mystu_async_font_style', 10, 2);
+
 /**
  * Front page ships its own self-contained dark/neon styles.
  * Drop the shared light theme assets (Tailwind, main.css, fonts) there
  * so they cannot clash. Other pages keep them untouched.
  */
 function mystu_frontpage_assets() {
-    if (is_front_page() || is_page('preise') || is_page_template('page-preise.php') || is_page('impressum') || is_page_template('page-impressum.php') || is_page('datenschutz') || is_page('agb')) {
+    if (is_front_page() || is_404() || is_page('preise') || is_page_template('page-preise.php') || is_page('impressum') || is_page_template('page-impressum.php') || is_page('datenschutz') || is_page('agb') || is_page('ki-texter') || is_page('unterrichtsplaner')) {
         wp_dequeue_style('mystu-main');
         wp_dequeue_style('mystu-fonts');
         wp_dequeue_script('mystu-tailwind');
@@ -542,7 +824,7 @@ Typische Umsetzung: 2–4 Wochen bis zum Launch. Antwort auf Anfragen binnen 24 
 
 - Preise & Pakete: <?php echo esc_url(home_url('/preise/')); ?>
 
-- Startseite (Stuttgart-Magazin): <?php echo esc_url(home_url('/')); ?>
+- Startseite (Webdesign-Agentur): <?php echo esc_url(home_url('/')); ?>
 
 ## Kontakt
 
@@ -552,6 +834,103 @@ Typische Umsetzung: 2–4 Wochen bis zum Launch. Antwort auf Anfragen binnen 24 
     exit;
 }
 add_action('init', 'mystu_serve_llms_txt', 0);
+
+/* ---------------------------------------------------------------------------
+ * Sitewide LocalBusiness-Schema + SEO-Meta für alle Seiten außer Front-Page
+ * und Handwerker-Landingpage (die zwei liefern ihre eigene, vollständige
+ * Meta/Schema bereits selbst).
+ * ------------------------------------------------------------------------- */
+
+function mystu_local_business_schema_json() {
+    $schema = [
+        '@context'     => 'https://schema.org',
+        '@type'        => 'LocalBusiness',
+        'name'         => 'mystu',
+        'description'  => 'Webdesign-Agentur aus Stuttgart & Ludwigsburg. Wir bauen moderne Websites, Onlineshops und Landingpages – und sorgen mit lokaler SEO für mehr Kunden.',
+        'url'          => 'https://mystu.de',
+        'email'        => 'hi@mystu.de',
+        'telephone'    => '+4915123456789',
+        'address'      => [
+            '@type'           => 'PostalAddress',
+            'addressLocality' => 'Stuttgart',
+            'addressRegion'   => 'Baden-Württemberg',
+            'addressCountry'  => 'DE',
+        ],
+        'areaServed'   => [
+            ['@type' => 'City', 'name' => 'Stuttgart'],
+            ['@type' => 'City', 'name' => 'Ludwigsburg'],
+        ],
+        'serviceType'  => ['Webdesign', 'Onlineshop Entwicklung', 'Landingpage', 'Lokale SEO'],
+        'priceRange'   => '$$',
+        'openingHours' => 'Mo-Fr 09:00-18:00',
+        'sameAs'       => ['https://mystu.de'],
+    ];
+    return '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
+}
+
+function mystu_seo_meta() {
+    if (is_front_page() || is_page('handwerker-webseite') || is_page('unterrichtsplaner')) {
+        return;
+    }
+
+    $descriptions = [
+        'preise'         => 'Transparente Webdesign-Preise für Stuttgart & Ludwigsburg – Websites, Onlineshops und laufende Betreuung von mystu.',
+        'collab-partner' => 'Kooperationen & Partnerschaften mit mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg.',
+        'impressum'      => 'Impressum von mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg.',
+        'datenschutz'    => 'Datenschutzerklärung von mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg.',
+        'agb'            => 'Allgemeine Geschäftsbedingungen von mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg.',
+        'ki-texter'      => 'Kostenloses Tool von mystu: KI-Text aus ChatGPT & Co. bereinigen, Gedankenstriche entfernen und den Text menschlicher machen – direkt im Browser.',
+    ];
+
+    $slug = is_singular() ? get_post_field('post_name', get_queried_object_id()) : '';
+
+    $description = $descriptions[$slug] ?? '';
+    if ($description === '' && is_singular()) {
+        $description = wp_strip_all_tags(get_the_excerpt());
+    }
+    if ($description === '') {
+        $description = get_bloginfo('description');
+    }
+    if ($description === '') {
+        $description = 'mystu – Webdesign-Agentur aus Stuttgart & Ludwigsburg. Moderne Websites, Onlineshops & Landingpages mit lokaler SEO.';
+    }
+
+    $path      = wp_parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+    $canonical = home_url($path);
+    $title     = wp_get_document_title();
+    $image     = MYSTU_URI . '/assets/og-image.png';
+
+    echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<link rel="canonical" href="' . esc_url($canonical) . '">' . "\n";
+    echo '<meta property="og:type" content="website">' . "\n";
+    echo '<meta property="og:locale" content="de_DE">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($canonical) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($image) . '">' . "\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
+
+    echo mystu_local_business_schema_json();
+}
+add_action('wp_head', 'mystu_seo_meta', 2);
+
+function mystu_legal_document_title($title) {
+    $titles = [
+        'impressum'   => 'Impressum – mystu',
+        'datenschutz' => 'Datenschutzerklärung – mystu',
+        'agb'         => 'AGB – mystu',
+    ];
+    if (is_page()) {
+        $slug = get_post_field('post_name', get_queried_object_id());
+        if (isset($titles[$slug])) {
+            return $titles[$slug];
+        }
+    }
+    return $title;
+}
+add_filter('pre_get_document_title', 'mystu_legal_document_title');
 
 /* ---------------------------------------------------------------------------
  * Handwerker-Landingpage (/handwerker-webseite/): SEO-Meta, Schema & Formular
