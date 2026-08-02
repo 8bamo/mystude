@@ -8,416 +8,500 @@
 <title>Marven Gabriel &middot; Schauspieler &middot; T&auml;nzer &middot; Performer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   TOKENS
+   MARVEN GABRIEL — Modemagazin
+   Satzbild eines Fashion-Editorials: Didone-Nameplate, Coverlines,
+   Haarlinienraster, versetzte Modestrecke, Ultramarin als zweite
+   Druckfarbe. Papierkorn statt Flat-Design.
    ============================================================ */
 :root{
-  /* Spacing-Skala */
   --s1:4px;  --s2:8px;  --s3:12px; --s4:16px; --s5:24px;
-  --s6:32px; --s7:48px; --s8:64px; --s9:88px; --s10:120px;
+  --s6:32px; --s7:48px; --s8:64px; --s9:96px; --s10:140px;
 
-  /* Typo-Skala — ruhig, keine Display-Extreme */
-  --t-cap:12px; --t-sm:14px; --t-base:17px; --t-lg:19px;
-  --t-h3:clamp(20px,1.9vw,24px);
-  --t-h2:clamp(30px,3.6vw,46px);
-  --t-h1:clamp(38px,5.4vw,68px);
+  /* Papier & Druckfarbe — helles Kunstdruckpapier, kein Zeitungsgrau */
+  --paper:#f4f3f0;
+  --paper-2:#eceae5;
+  --paper-3:#faf9f7;
+  --ink:#0f1013;
+  --ink-2:#494b52;
+  --ink-3:#8b8a87;
+  --rule:#d4d1ca;
+  --rule-2:#bdb9b0;
 
-  /* Neutrale — kühles Grau, hoher Kontrast */
-  --ink:#0d1526;      /* Fließtext-Schwarz, leicht blaustichig */
-  --ink-2:#3d4759;    /* Sekundärtext */
-  --ink-3:#6b7688;    /* Meta / Labels */
-  --line:#e4e8ef;
-  --line-2:#d3dae4;
-  --bg:#ffffff;
-  --bg-2:#f6f8fb;     /* Flächen, Formular */
+  /* Ultramarin — die zweite Druckfarbe */
+  --blue:#1a2ccc;
+  --blue-2:#0f1d99;
+  --blue-wash:#dfe1f7;
 
-  /* Akzent — ein einziges Blau, konsequent */
-  --blue:#1a4fd6;
-  --blue-700:#1541b4;
-  --blue-soft:#eaf0fe;
-  --blue-line:#c2d3f8;
+  --gut:clamp(20px,5vw,84px);
+  --measure:64ch;
 
-  --r1:6px; --r2:10px; --r3:14px; --rp:999px;
-
-  --e1:0 1px 2px rgba(13,21,38,.06);
-  --e2:0 6px 20px rgba(13,21,38,.07);
-  --e3:0 18px 48px rgba(13,21,38,.11);
-
-  --gut:clamp(20px,5vw,80px);
-  --measure:62ch;
+  /* Satzspiegel */
+  --col:minmax(0,1fr);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;
-  font-size:var(--t-base);line-height:1.65;font-weight:400;
-  overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:Archivo,ui-sans-serif,sans-serif;font-size:17px;line-height:1.62;font-weight:400;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-::selection{background:var(--blue-soft);color:var(--blue-700)}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:var(--r1)}
+::selection{background:var(--blue);color:var(--paper)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
-h1,h2,h3{font-weight:600;letter-spacing:-.022em;color:var(--ink)}
-h2{margin:0;font-size:var(--t-h2);line-height:1.12}
+/* Papierkorn — nimmt der Fläche das Digitale */
+body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.3;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E")}
 
-.label{font-size:var(--t-cap);letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500}
-
-/* ============================================================
-   NAV
-   ============================================================ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
-  justify-content:space-between;gap:var(--s5);padding:var(--s5) var(--gut);
-  background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;transition:padding .3s ease,border-color .3s ease,box-shadow .3s ease}
-.nav.stuck{padding:var(--s3) var(--gut);border-bottom-color:var(--line);box-shadow:var(--e1)}
-.nav .mark{font-weight:600;font-size:16px;letter-spacing:-.01em;
-  display:flex;align-items:center;gap:var(--s3)}
-.nav .mark s{width:18px;height:2px;background:var(--blue);text-decoration:none;border-radius:2px}
-.nav ul{display:flex;gap:var(--s6);align-items:center;list-style:none;margin:0;padding:0;
-  font-size:15px;font-weight:450}
-.nav ul a{color:var(--ink-2);position:relative;padding-bottom:2px;transition:color .25s}
-.nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;
-  background:var(--blue);transition:right .35s cubic-bezier(.22,1,.36,1)}
-.nav ul a:hover{color:var(--ink)}
-.nav ul a:hover::after{right:0}
-.nav .book{color:#fff;background:var(--blue);border-radius:var(--rp);padding:10px var(--s5);
-  font-weight:500;transition:background .25s,box-shadow .25s}
-.nav .book:hover{background:var(--blue-700);box-shadow:0 6px 18px rgba(26,79,214,.28)}
-.nav .book::after{display:none}
+/* ---- Typografische Grundformen ---- */
+.didone{font-family:'Bodoni Moda',Didot,'Bodoni MT',serif;font-weight:400;
+  font-optical-sizing:auto;letter-spacing:-.005em}
+.smallcaps{font-family:Archivo,sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.rule{height:1px;background:var(--rule);border:0;margin:0}
 
 /* ============================================================
-   HERO — zweispaltig, Foto trägt, Typografie bleibt ruhig
+   KOPFLEISTE
    ============================================================ */
-.hero{padding:calc(var(--s10) + var(--s6)) var(--gut) var(--s9)}
-.hero-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  gap:clamp(40px,6vw,88px);align-items:center;max-width:1320px;margin:0 auto}
-.hero .eyebrow{margin-bottom:var(--s5)}
-.hero h1{margin:0;font-size:var(--t-h1);line-height:1.06;letter-spacing:-.03em}
-.hero .role{display:block;margin-top:var(--s4);font-size:clamp(17px,1.7vw,21px);
-  font-weight:500;color:var(--blue);letter-spacing:-.01em}
-.hero .lede{max-width:52ch;margin:var(--s5) 0 0;color:var(--ink-2);font-size:var(--t-lg);font-weight:350}
-.hero .cta{display:flex;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s7)}
-.hero figure{margin:0;position:relative;aspect-ratio:4/5;border-radius:var(--r3);
-  overflow:hidden;background:var(--bg-2);box-shadow:var(--e3)}
-.hero figure img{width:100%;height:100%;object-fit:cover;object-position:52% 30%}
-.hero figure figcaption{position:absolute;left:var(--s4);bottom:var(--s4);
-  background:rgba(255,255,255,.94);color:var(--ink-2);border-radius:var(--rp);
-  padding:6px var(--s4);font-size:12px;letter-spacing:.04em;font-weight:500}
-.fade-up{opacity:0;transform:translateY(20px);animation:up .8s cubic-bezier(.22,1,.36,1) forwards}
-.fade-up[data-a="1"]{animation-delay:.08s}
-.fade-up[data-a="2"]{animation-delay:.16s}
-.fade-up[data-a="3"]{animation-delay:.24s}
-@keyframes up{to{opacity:1;transform:none}}
+.masthead-bar{position:fixed;top:0;left:0;right:0;z-index:60;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--s5);
+  padding:var(--s4) var(--gut);
+  background:rgba(244,243,240,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule)}
+.masthead-bar .sig{font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;
+  letter-spacing:.02em;white-space:nowrap}
+.masthead-bar .sig i{font-style:italic;color:var(--blue)}
+.masthead-bar nav{display:flex;gap:var(--s6);justify-self:center}
+.masthead-bar nav a{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-2);position:relative;padding-bottom:3px;transition:color .3s}
+.masthead-bar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;
+  background:var(--blue);transition:right .4s cubic-bezier(.22,1,.36,1)}
+.masthead-bar nav a:hover{color:var(--blue)}
+.masthead-bar nav a:hover::after{right:0}
+.masthead-bar .end{justify-self:end;display:flex;align-items:center;gap:var(--s4)}
+.masthead-bar .issue{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+  font-variant-numeric:tabular-nums}
+.masthead-bar .book{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--paper);background:var(--blue);padding:9px var(--s5);
+  transition:background .3s}
+.masthead-bar .book:hover{background:var(--blue-2)}
 
 /* ============================================================
-   BUTTONS
+   TITELSEITE
    ============================================================ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);
-  min-height:50px;padding:0 var(--s6);border-radius:var(--rp);
-  border:1px solid var(--line-2);font-size:15px;font-weight:500;letter-spacing:-.005em;
-  color:var(--ink);background:#fff;
-  transition:border-color .25s,color .25s,background .25s,box-shadow .25s,transform .25s}
-.btn:hover{border-color:var(--blue-line);color:var(--blue);background:var(--blue-soft)}
-.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-.btn.primary:hover{background:var(--blue-700);border-color:var(--blue-700);color:#fff;
-  box-shadow:0 8px 24px rgba(26,79,214,.26);transform:translateY(-1px)}
+.cover{padding:calc(var(--s10) + var(--s2)) var(--gut) var(--s8);position:relative}
+.cover-meta{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s5);
+  border-bottom:1px solid var(--ink);padding-bottom:var(--s3);margin-bottom:var(--s6);flex-wrap:wrap}
+.cover-meta .l{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+.cover-meta .r{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+  font-variant-numeric:tabular-nums}
+
+/* Der Titel: zwei Zeilen, zweite kursiv, im Ansatz überlappend */
+.title{font-family:'Bodoni Moda',Didot,serif;font-weight:400;line-height:.82;
+  font-size:clamp(58px,15.5vw,236px);letter-spacing:-.025em;margin:0;
+  text-transform:uppercase}
+.title .ln{display:block;overflow:hidden}
+.title .ln>span{display:block;transform:translateY(102%);
+  animation:lift 1.15s cubic-bezier(.22,1,.36,1) forwards}
+.title .ln:nth-child(2)>span{animation-delay:.13s}
+.title .ln:nth-child(2){text-align:right;font-style:italic;font-weight:500;
+  margin-top:clamp(-14px,-1.4vw,-4px)}
+@keyframes lift{to{transform:none}}
+
+.cover-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:clamp(28px,5vw,80px);align-items:start;margin-top:var(--s7)}
+.cover-body .stand{border-top:1px solid var(--ink);padding-top:var(--s4)}
+.cover-body .role{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2.3vw,29px);
+  line-height:1.25;margin:0 0 var(--s4);color:var(--blue)}
+.cover-body .lede{margin:0;color:var(--ink-2);font-weight:300;font-size:18px;max-width:46ch}
+.cover-body .acts{display:flex;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s6)}
+
+/* Coverlines — die Zeilen, die auf einem Heftcover neben dem Kopf stehen */
+.coverlines{list-style:none;margin:var(--s6) 0 0;padding:0;max-width:44ch}
+.coverlines li{border-top:1px solid var(--rule);padding:var(--s3) 0;
+  font-size:13px;letter-spacing:.03em;color:var(--ink-2);font-weight:300;
+  display:flex;gap:var(--s3);align-items:baseline}
+.coverlines li:last-child{border-bottom:1px solid var(--rule)}
+.coverlines b{font-family:'Bodoni Moda',serif;font-weight:500;font-size:17px;color:var(--blue);
+  flex:none;font-variant-numeric:lining-nums}
+.coverlines i{font-family:'Bodoni Moda',serif;font-style:italic;color:var(--ink)}
+
+/* Das Titelbild bricht aus dem Satzspiegel nach rechts aus */
+.plate-cover{position:relative;margin:0}
+.plate-cover img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:52% 30%;
+  border:1px solid var(--rule-2)}
+.plate-cover figcaption{display:flex;gap:var(--s3);align-items:baseline;
+  margin-top:var(--s3);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.plate-cover figcaption b{color:var(--blue);font-weight:600}
+
+/* Randnotiz — vertikal im Bundsteg */
+.marginal{position:absolute;left:calc(var(--gut) / 3);top:38vh;
+  writing-mode:vertical-rl;font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--ink-3);pointer-events:none}
+@media(max-width:1200px){.marginal{display:none}}
 
 /* ============================================================
-   SEKTIONEN
+   AUSZEICHNUNGSFORMEN
    ============================================================ */
-.wrap{padding:var(--s10) var(--gut);position:relative;max-width:1320px;margin:0 auto}
-.wrap.alt{max-width:none;background:var(--bg-2);border-block:1px solid var(--line)}
-.wrap.alt>*{max-width:1320px;margin-inline:auto}
-.eyebrow{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4)}
-.eyebrow b{font-size:var(--t-cap);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue);font-weight:600}
-.eyebrow s{width:24px;height:1px;background:var(--line-2);text-decoration:none}
-.eyebrow span{font-size:var(--t-cap);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500}
-.head{max-width:var(--measure);margin-bottom:var(--s8)}
-.head p{color:var(--ink-2);font-weight:350;font-size:var(--t-lg);margin:var(--s4) 0 0;max-width:54ch}
+.btn{display:inline-flex;align-items:center;gap:var(--s2);min-height:46px;padding:0 var(--s6);
+  border:1px solid var(--ink);font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;background:transparent;position:relative;overflow:hidden;
+  transition:color .35s,border-color .35s}
+.btn>span{position:relative;z-index:1}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);
+  transform:translateY(101%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.btn:hover{color:var(--paper)}
+.btn:hover::before{transform:none}
+.btn.ink{background:var(--blue);border-color:var(--blue);color:var(--paper)}
+.btn.ink::before{background:var(--blue-2)}
 
-/* ---- Disziplinen-Leiste (statt Lauftext) ---- */
-.disciplines{border-block:1px solid var(--line);background:var(--bg-2)}
+/* ============================================================
+   RUBRIKEN
+   ============================================================ */
+.sheet{padding:var(--s10) var(--gut);position:relative;max-width:1500px;margin:0 auto}
+.sheet.tint{max-width:none;background:var(--paper-2);
+  border-block:1px solid var(--rule)}
+.sheet.tint>*{max-width:1500px;margin-inline:auto}
+
+.rubric{display:grid;grid-template-columns:minmax(0,.26fr) minmax(0,.74fr);
+  gap:clamp(20px,4vw,56px);align-items:baseline;
+  border-bottom:1px solid var(--ink);padding-bottom:var(--s5);margin-bottom:var(--s8)}
+.rubric .no{display:flex;align-items:baseline;gap:var(--s3);
+  font-family:'Bodoni Moda',serif;font-size:clamp(30px,3.4vw,46px);line-height:.9;
+  color:var(--blue);font-variant-numeric:lining-nums}
+.rubric .no small{font-family:Archivo,sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.rubric h2{margin:0;font-family:'Bodoni Moda',serif;font-weight:400;
+  font-size:clamp(30px,5.2vw,72px);line-height:.98;letter-spacing:-.025em}
+.rubric h2 i{font-style:italic;font-weight:500}
+.rubric p{grid-column:2;margin:var(--s4) 0 0;color:var(--ink-2);font-weight:300;
+  font-size:16px;max-width:52ch}
+
+/* ---- Fachgebiete ---- */
+.disciplines{border-block:1px solid var(--rule);background:var(--paper-3)}
 .disciplines ul{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
-  gap:var(--s3) var(--s6);list-style:none;margin:0 auto;padding:var(--s5) var(--gut);
-  max-width:1320px;font-size:var(--t-sm);font-weight:500;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--ink-2)}
-.disciplines li{display:flex;align-items:center;gap:var(--s6)}
-.disciplines li::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--blue-line)}
+  gap:var(--s3) var(--s6);list-style:none;margin:0 auto;padding:var(--s4) var(--gut);
+  max-width:1500px;font-family:'Bodoni Moda',serif;font-size:clamp(15px,1.5vw,20px)}
+.disciplines li{display:flex;align-items:center;gap:var(--s6);font-style:italic}
+.disciplines li::after{content:"";width:3px;height:3px;background:var(--blue);
+  transform:rotate(45deg)}
 .disciplines li:last-child::after{display:none}
 
-/* ---- Zahlen ---- */
-.figures{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-  border-block:1px solid var(--line)}
-.fig{padding:var(--s7) var(--s5);background:var(--bg);text-align:center}
-.fig b{display:block;font-size:clamp(30px,3.6vw,44px);font-weight:600;line-height:1;
-  letter-spacing:-.03em;color:var(--ink)}
-.fig span{display:block;font-size:var(--t-cap);letter-spacing:.1em;text-transform:uppercase;
+/* ---- Kennzahlen ---- */
+.figures{display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--rule);max-width:1500px;margin:0 auto}
+.fig{padding:var(--s7) var(--s5);border-left:1px solid var(--rule);text-align:center}
+.fig:first-child{border-left:0}
+.fig b{display:block;font-family:'Bodoni Moda',serif;font-weight:400;
+  font-size:clamp(38px,5vw,66px);line-height:.9;font-variant-numeric:lining-nums}
+.fig span{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--ink-3);margin-top:var(--s3);font-weight:500}
 
-/* ---- Work: ruhige Editorial-Reihen ---- */
-.works{display:grid;gap:var(--s9)}
-.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(28px,4vw,64px);align-items:center}
-.work:nth-child(even) .work-media{order:2}
-.work-media{position:relative;aspect-ratio:4/3;border-radius:var(--r3);overflow:hidden;
-  background:var(--bg-2);box-shadow:var(--e2)}
-.work-media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;
-  transition:transform .8s cubic-bezier(.22,1,.36,1)}
-.work:hover .work-media img{transform:scale(1.03)}
-/* Die Silhouette ist eine 3:4-Grafik in einer 4:3-Kachel — mittig zeigen */
-.work-media img[src$="dance.png"]{object-position:50% 38%}
-.work-media .n{position:absolute;left:var(--s4);top:var(--s4);z-index:2;
-  background:rgba(255,255,255,.94);color:var(--blue);border-radius:var(--rp);
-  min-width:34px;height:26px;display:grid;place-items:center;padding:0 10px;
-  font-size:12px;font-weight:600;letter-spacing:.06em}
-.work-copy .cat{display:block;font-size:var(--t-cap);letter-spacing:.14em;
-  text-transform:uppercase;color:var(--blue);margin-bottom:var(--s3);font-weight:600}
-.work-copy h3{margin:0;font-size:var(--t-h3);line-height:1.25}
-.work-copy p{margin:var(--s3) 0 0;color:var(--ink-2);font-weight:350;max-width:46ch}
+/* ---- Werkstrecke: Bild und Spalte im Satzspiegel ---- */
+.works{display:grid;gap:var(--s10)}
+.work{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s5);align-items:center}
+.work-media{position:relative;grid-column:1 / span 7;margin:0}
+.work:nth-child(even) .work-media{grid-column:6 / span 7;order:2}
+.work-media img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 28%;
+  border:1px solid var(--rule-2);transition:filter .7s}
+.work-media .plate-no{position:absolute;left:0;top:0;transform:translate(-45%,-38%);
+  font-family:'Bodoni Moda',serif;font-size:clamp(52px,6.5vw,104px);line-height:.8;
+  color:var(--blue);z-index:2;font-variant-numeric:lining-nums;
+  text-shadow:0 0 14px var(--paper),0 0 26px var(--paper)}
+.work-copy{grid-column:9 / span 4}
+.work:nth-child(even) .work-copy{grid-column:1 / span 4}
+.work-copy .cat{display:block;font-size:10px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:var(--s3);
+  border-bottom:1px solid var(--blue);padding-bottom:var(--s2)}
+.work-copy h3{margin:0;font-family:'Bodoni Moda',serif;font-weight:400;
+  font-size:clamp(22px,2.4vw,32px);line-height:1.1;letter-spacing:-.015em}
+.work-copy p{margin:var(--s3) 0 0;color:var(--ink-2);font-weight:300;font-size:16px}
 .work-copy .more{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);
-  font-size:15px;font-weight:500;color:var(--blue);
-  border-bottom:1px solid var(--blue-line);padding-bottom:2px;transition:gap .25s,border-color .25s}
-.work:hover .work-copy .more{gap:var(--s3);border-color:var(--blue)}
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .3s,border-color .3s,gap .3s}
+.work:hover .work-copy .more{color:var(--blue);border-color:var(--blue);gap:var(--s3)}
+.work:hover .work-media img{filter:contrast(1.04)}
 
-/* ---- Galerie: Bento-Raster ---- */
-/* 3x3-Raster: 1 tall (2 Zeilen) + 2 wide (2 Spalten) + 3 sq = exakt 9 Zellen,
-   damit keine Lücke stehen bleibt. */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(180px,18vw,270px);
-  gap:var(--s4);grid-auto-flow:dense}
-.shot{position:relative;overflow:hidden;border-radius:var(--r2);background:var(--bg-2);
-  box-shadow:var(--e1);transition:box-shadow .4s,transform .4s cubic-bezier(.22,1,.36,1)}
-.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,1,.36,1)}
-/* Hochformat-Bühnenfotos in der breiten 2:1-Kachel: oberes Drittel zeigen,
-   sonst steht dort nur die Hüfte im Bild. */
-.shot.wide img{object-position:50% 26%}
-.shot figcaption{position:absolute;left:var(--s3);bottom:var(--s3);z-index:2;
-  background:rgba(255,255,255,.94);color:var(--ink-2);border-radius:var(--rp);
-  padding:5px var(--s3);font-size:11.5px;font-weight:500;letter-spacing:.04em;
-  opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
-.shot:hover{transform:translateY(-3px);box-shadow:var(--e2)}
-.shot:hover img{transform:scale(1.04)}
-.shot:hover figcaption{opacity:1;transform:none}
-.shot.tall{grid-row:span 2}
-.shot.wide{grid-column:span 2}
-.shot.sq{grid-column:span 1;grid-row:span 1}
+/* ---- Tafeln: versetzte Bildstrecke mit Bildunterschrift ---- */
+.plates{display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(28px,4vw,64px) clamp(28px,6vw,96px);align-items:start}
+.plate{margin:0;position:relative}
+.plate:nth-child(even){margin-top:clamp(36px,9vw,150px)}
+.plate:nth-child(3n){justify-self:end;width:88%}
+.plate:nth-child(4n){width:94%}
+.plate img{width:100%;aspect-ratio:var(--ar,4/5);object-fit:cover;
+  border:1px solid var(--rule-2);transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.plate:hover img{transform:scale(1.012)}
+.plate figcaption{display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:baseline;
+  margin-top:var(--s3);padding-top:var(--s2);border-top:1px solid var(--rule);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.plate figcaption b{color:var(--blue);font-weight:600;font-variant-numeric:tabular-nums}
 
-/* ---- Über ---- */
-.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-  gap:clamp(36px,5vw,80px);align-items:start}
-.portrait{position:relative;aspect-ratio:3/4;border-radius:var(--r3);overflow:hidden;
-  background:var(--bg-2);box-shadow:var(--e2)}
-.portrait img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,1,.36,1)}
-.portrait:hover img{transform:scale(1.03)}
-.portrait .lbl{position:absolute;left:var(--s4);bottom:var(--s4);z-index:2;
-  background:rgba(255,255,255,.94);color:var(--ink-2);border-radius:var(--rp);
-  padding:6px var(--s4);font-size:12px;font-weight:500;letter-spacing:.04em}
-.split p{color:var(--ink-2);font-weight:350;font-size:var(--t-lg);margin:0 0 var(--s5);max-width:58ch}
-.split p strong{color:var(--ink);font-weight:600}
-.split p em{font-style:normal;color:var(--ink);font-weight:500}
-.tags{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s6)}
-.tag{font-size:13px;font-weight:500;padding:7px var(--s4);border:1px solid var(--line-2);
-  border-radius:var(--rp);color:var(--ink-2);background:#fff;
-  transition:color .25s,border-color .25s,background .25s}
-.tag:hover{color:var(--blue);border-color:var(--blue-line);background:var(--blue-soft)}
+/* ---- Porträtseite mit Initiale ---- */
+.profile{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);
+  gap:clamp(28px,5vw,84px);align-items:start}
+.profile figure{margin:0;position:sticky;top:110px}
+.profile figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border:1px solid var(--rule-2)}
+.profile figure figcaption{margin-top:var(--s3);padding-top:var(--s2);
+  border-top:1px solid var(--rule);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3)}
+/* Einspaltig als Grundfall. Blocksatz vermeidet man bei deutschen
+   Komposita auf schmalem Maß — sonst reißen Löcher in die Zeile. */
+.profile-text{column-gap:clamp(28px,3vw,52px)}
+@media(min-width:1500px){.profile-text{column-count:2}}
+.profile-text p{margin:0 0 var(--s4);color:var(--ink-2);font-weight:300;
+  font-size:16.5px;line-height:1.72;hyphens:auto;max-width:64ch}
+.profile-text p:first-child{margin-top:0}
+.profile-text p:first-child::first-letter{font-family:'Bodoni Moda',serif;float:left;
+  font-size:4.1em;line-height:.78;padding:.06em .1em 0 0;color:var(--blue);font-weight:400}
+.profile-text p strong{color:var(--ink);font-weight:600}
+.profile-text p em{font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.06em;color:var(--ink)}
+.profile-foot{margin-top:var(--s6);border-top:1px solid var(--ink);padding-top:var(--s4)}
+.tags{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:0 0 var(--s6)}
+.tag{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
+  transition:color .3s}
+.tag::after{content:" ◆";color:var(--rule-2);font-size:8px;vertical-align:2px}
+.tag:last-child::after{display:none}
+.tag:hover{color:var(--blue)}
 
-/* ---- Vita ---- */
-.list{border-top:1px solid var(--line)}
-.list a{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:var(--s5);align-items:baseline;
-  padding:var(--s5) var(--s4);border-bottom:1px solid var(--line);position:relative;
-  transition:background .3s,padding-left .35s cubic-bezier(.22,1,.36,1)}
-.list a:hover{background:var(--bg-2);padding-left:var(--s5)}
-.list .n{font-size:13px;font-weight:500;color:var(--ink-3);font-variant-numeric:tabular-nums}
-.list .t{font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.015em;
-  transition:color .25s}
-.list a:hover .t{color:var(--blue)}
-.list .m{font-size:var(--t-sm);color:var(--ink-3);text-align:right;font-weight:400}
+/* ---- Rollenverzeichnis mit Punktführung ---- */
+.index{border-top:1px solid var(--ink)}
+.index a{display:grid;grid-template-columns:44px minmax(0,auto) 1fr auto;
+  gap:var(--s4);align-items:baseline;padding:var(--s5) 0;
+  border-bottom:1px solid var(--rule);transition:color .3s}
+.index .n{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;letter-spacing:.1em}
+.index .t{font-family:'Bodoni Moda',serif;font-size:clamp(19px,2.1vw,27px);
+  line-height:1.15;letter-spacing:-.01em;transition:color .3s,font-style .3s}
+/* Punktführung wie im gedruckten Inhaltsverzeichnis. Ein gepunkteter
+   Rahmen rendert bei 1px sub-pixel und verschwindet — daher gemalte Punkte. */
+.index .dots{align-self:center;height:3px;min-width:20px;
+  background-image:radial-gradient(circle,var(--rule-2) 1.1px,transparent 1.2px);
+  background-size:6px 3px;background-repeat:repeat-x;background-position:0 center;
+  transition:background-image .3s}
+.index .m{font-size:12px;letter-spacing:.06em;color:var(--ink-3);text-align:right;
+  font-variant-numeric:tabular-nums}
+.index a:hover .t{color:var(--blue);font-style:italic}
+.index a:hover .m{color:var(--ink-2)}
+.index a:hover .dots{background-image:radial-gradient(circle,var(--blue) 1.1px,transparent 1.2px)}
 
-/* ---- Booking ---- */
-.deck{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
-  gap:clamp(28px,4vw,56px);align-items:start}
-.card{border:1px solid var(--line);border-radius:var(--r2);padding:var(--s5);
-  background:#fff;margin-bottom:var(--s3);transition:border-color .3s,box-shadow .3s}
-.card:hover{border-color:var(--blue-line);box-shadow:var(--e1)}
-.card strong{display:block;font-size:20px;font-weight:600;letter-spacing:-.015em;
-  margin:var(--s2) 0 var(--s1)}
-.card p{margin:0;color:var(--ink-2);font-size:var(--t-sm);font-weight:400}
-.card .link{display:inline-block;margin-top:var(--s3);font-size:15px;font-weight:500;
-  color:var(--blue);border-bottom:1px solid var(--blue-line);padding-bottom:2px;
-  transition:border-color .25s}
-.card .link:hover{border-color:var(--blue)}
+/* ---- Anfrage ---- */
+.deck{display:grid;grid-template-columns:minmax(0,.36fr) minmax(0,.64fr);
+  gap:clamp(28px,4vw,72px);align-items:start}
+.entry{border-top:1px solid var(--ink);padding:var(--s4) 0 var(--s5)}
+.entry:last-child{border-bottom:1px solid var(--ink)}
+.entry .k{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.entry strong{display:block;font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;
+  letter-spacing:-.01em;margin:var(--s2) 0 var(--s1)}
+.entry p{margin:0;color:var(--ink-2);font-size:14px;font-weight:300}
+.entry .link{display:inline-block;margin-top:var(--s3);font-size:12px;letter-spacing:.08em;
+  color:var(--blue);border-bottom:1px solid var(--blue-wash);padding-bottom:2px;
+  transition:border-color .3s}
+.entry .link:hover{border-color:var(--blue)}
 
-form{border:1px solid var(--line);border-radius:var(--r3);padding:clamp(24px,3vw,44px);
-  background:#fff;display:grid;gap:var(--s5);box-shadow:var(--e2)}
-.formhead{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);
-  font-size:var(--t-cap);letter-spacing:.12em;text-transform:uppercase;font-weight:500;
-  color:var(--ink-3);border-bottom:1px solid var(--line);padding-bottom:var(--s4)}
+form{display:grid;gap:var(--s6);background:var(--paper-3);
+  border:1px solid var(--rule-2);padding:clamp(24px,3.4vw,52px)}
+.formhead{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
+  border-bottom:1px solid var(--ink);padding-bottom:var(--s3);
+  font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 .formhead b{color:var(--blue)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6)}
 .field{display:grid;gap:var(--s2)}
-.field label{font-size:13px;font-weight:500;color:var(--ink-2)}
-input,select,textarea{width:100%;border:1px solid var(--line-2);border-radius:var(--r1);
-  background:#fff;color:var(--ink);font:400 16px Inter,sans-serif;outline:0;
-  padding:11px var(--s3);transition:border-color .25s,box-shadow .25s}
-textarea{min-height:130px;resize:vertical;line-height:1.6}
-input:focus,select:focus,textarea:focus{border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(26,79,214,.13)}
-input::placeholder,textarea::placeholder{color:#9aa4b4}
-select{appearance:none;cursor:pointer;padding-right:var(--s7);
-  background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),
-    linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);
-  background-position:calc(100% - 20px) 21px,calc(100% - 15px) 21px;
+.field label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+input,select,textarea{width:100%;border:0;border-bottom:1px solid var(--rule-2);border-radius:0;
+  background:transparent;color:var(--ink);font:400 16px Archivo,sans-serif;outline:0;
+  padding:var(--s2) 0;transition:border-color .3s}
+textarea{min-height:118px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);border-bottom-width:2px;
+  padding-bottom:calc(var(--s2) - 1px)}
+input::placeholder,textarea::placeholder{color:var(--ink-3);font-weight:300}
+select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),
+    linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);
+  background-position:calc(100% - 10px) 15px,calc(100% - 5px) 15px;
   background-size:5px 5px;background-repeat:no-repeat}
-.consent{display:grid;grid-template-columns:20px 1fr;gap:var(--s3);align-items:start;
-  color:var(--ink-2);font-size:var(--t-sm);font-weight:400;line-height:1.55}
-.consent input{width:18px;height:18px;padding:0;accent-color:var(--blue)}
-.send{justify-self:start;min-height:50px;padding:0 var(--s7);border-radius:var(--rp);cursor:pointer;
-  background:var(--blue);border:1px solid var(--blue);color:#fff;
-  font:500 15px Inter,sans-serif;letter-spacing:-.005em;
-  transition:background .25s,box-shadow .25s,transform .25s}
-.send:hover{background:var(--blue-700);border-color:var(--blue-700);
-  box-shadow:0 8px 24px rgba(26,79,214,.26);transform:translateY(-1px)}
-.ok{display:none;font-size:var(--t-sm);color:var(--ink-2);background:var(--blue-soft);
-  border-left:2px solid var(--blue);border-radius:0 var(--r1) var(--r1) 0;
-  padding:var(--s4) var(--s5);line-height:1.7}
-.ok.show{display:block;animation:up .4s cubic-bezier(.22,1,.36,1) forwards;opacity:0;transform:translateY(10px)}
+.consent{display:grid;grid-template-columns:18px 1fr;gap:var(--s3);align-items:start;
+  color:var(--ink-2);font-size:13px;font-weight:300;line-height:1.55}
+.consent input{width:16px;height:16px;padding:0;accent-color:var(--blue);border:0}
+.send{justify-self:start;min-height:46px;padding:0 var(--s7);cursor:pointer;
+  background:var(--blue);border:1px solid var(--blue);color:var(--paper);
+  font:500 11px Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;
+  transition:background .3s}
+.send:hover{background:var(--blue-2)}
+.ok{display:none;font-size:14px;font-weight:300;color:var(--ink-2);
+  border-left:2px solid var(--blue);padding:var(--s3) var(--s5);line-height:1.7;
+  background:var(--blue-wash)}
+.ok.show{display:block;animation:fade .5s cubic-bezier(.22,1,.36,1) forwards;opacity:0}
+@keyframes fade{to{opacity:1}}
 
-/* ---- Footer ---- */
-footer{border-top:1px solid var(--line);background:var(--bg-2);
-  padding:var(--s8) var(--gut) var(--s6)}
-.fgrid{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s6);
-  flex-wrap:wrap;max-width:1320px;margin:0 auto}
-.fmark{font-size:clamp(22px,2.6vw,30px);font-weight:600;letter-spacing:-.025em;line-height:1.15}
-.fnav{display:flex;gap:var(--s5);font-size:15px;color:var(--ink-2);flex-wrap:wrap}
-.fnav a{transition:color .25s}
+/* ---- Impressum-Fuß ---- */
+footer{border-top:1px solid var(--ink);padding:var(--s8) var(--gut) var(--s6);background:var(--paper-2)}
+.colophon{max-width:1500px;margin:0 auto}
+.fmark{font-family:'Bodoni Moda',serif;font-size:clamp(38px,9vw,132px);line-height:.86;
+  text-transform:uppercase;letter-spacing:-.03em;margin-bottom:var(--s6)}
+.fmark i{font-style:italic;display:block;text-align:right}
+.fgrid{display:flex;justify-content:space-between;gap:var(--s6);flex-wrap:wrap;
+  border-top:1px solid var(--ink);padding-top:var(--s4)}
+.fnav{display:flex;gap:var(--s5);flex-wrap:wrap;
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2)}
+.fnav a{transition:color .3s}
 .fnav a:hover{color:var(--blue)}
 .fbase{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
-  max-width:1320px;margin:var(--s7) auto 0;padding-top:var(--s5);border-top:1px solid var(--line);
-  font-size:var(--t-sm);color:var(--ink-3)}
-.fbase a{color:var(--blue);transition:color .25s}
-.fbase a:hover{color:var(--blue-700)}
+  max-width:1500px;margin:var(--s6) auto 0;padding-top:var(--s4);border-top:1px solid var(--rule);
+  font-size:11px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
+.fbase a{color:var(--blue)}
 
-/* ---- Reveal ---- */
-.rv{opacity:0;transform:translateY(24px);
-  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+/* ---- Einblendung ---- */
+.rv{opacity:0;transform:translateY(22px);
+  transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
 .rv.in{opacity:1;transform:none}
-[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}
+[data-d="1"]{transition-delay:.09s}[data-d="2"]{transition-delay:.18s}[data-d="3"]{transition-delay:.27s}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
-  .rv,.fade-up{opacity:1;transform:none}
-  .ok.show{opacity:1;transform:none}
+  .rv{opacity:1;transform:none}
+  .title .ln>span{transform:none}
+  .ok.show{opacity:1}
 }
 
 /* ============================================================
-   MOBILE NAV
+   KLEINERE FORMATE
    ============================================================ */
-.burger{display:none;width:44px;height:44px;border:1px solid var(--line-2);border-radius:var(--r1);
-  background:#fff;cursor:pointer;padding:0;place-items:center;gap:5px;flex-direction:column}
-.burger s{display:block;width:18px;height:2px;background:var(--ink);text-decoration:none;border-radius:2px;
+.burger{display:none;width:42px;height:42px;border:1px solid var(--ink);background:transparent;
+  cursor:pointer;padding:0;place-items:center;gap:5px;flex-direction:column;justify-self:end}
+.burger s{display:block;width:17px;height:1.5px;background:var(--ink);text-decoration:none;
   transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .2s}
-.nav.open .burger s:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav.open .burger s:nth-child(2){opacity:0}
-.nav.open .burger s:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.open .burger s:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.open .burger s:nth-child(2){opacity:0}
+.open .burger s:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-@media(max-width:960px){
-  :root{--s8:48px;--s9:56px;--s10:72px}
+@media(max-width:1000px){
+  :root{--s8:48px;--s9:56px;--s10:76px}
 
+  .masthead-bar{grid-template-columns:1fr auto;padding:var(--s3) var(--gut)}
+  .masthead-bar .end{display:none}
   .burger{display:flex}
-  .nav{border-bottom-color:var(--line);padding:var(--s4) var(--gut)}
-  .nav ul{position:fixed;inset:64px 0 auto;flex-direction:column;align-items:stretch;gap:0;
-    background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--e2);
-    padding:var(--s3) var(--gut) var(--s6);font-size:16px;
-    transform:translateY(-10px);opacity:0;pointer-events:none;
+  .masthead-bar nav{position:fixed;inset:57px 0 auto;flex-direction:column;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--ink);
+    padding:0 var(--gut) var(--s5);
+    transform:translateY(-8px);opacity:0;pointer-events:none;
     transition:opacity .25s ease,transform .3s cubic-bezier(.22,1,.36,1)}
-  .nav.open ul{opacity:1;transform:none;pointer-events:auto}
-  .nav ul li{border-bottom:1px solid var(--line)}
-  .nav ul li:last-child{border-bottom:0;margin-top:var(--s4)}
-  .nav ul a{display:block;padding:var(--s4) 0;color:var(--ink)}
-  .nav ul a::after{display:none}
-  .nav .book{display:block;padding:var(--s4) var(--s5);text-align:center;width:100%}
+  .masthead-bar.open nav{opacity:1;transform:none;pointer-events:auto}
+  .masthead-bar nav a{padding:var(--s4) 0;border-bottom:1px solid var(--rule);font-size:13px}
+  .masthead-bar nav a:last-child{border-bottom:0}
 
-  .hero{padding:100px var(--gut) var(--s8)}
-  .hero-in{grid-template-columns:1fr;gap:var(--s7)}
-  .hero figure{order:-1;aspect-ratio:4/5;max-width:440px}
-  .hero .cta{margin-top:var(--s6)}
-  .hero .cta .btn{flex:1 1 auto}
+  .cover{padding:96px var(--gut) var(--s7)}
+  /* Enger Zeilenabstand plus kursive Oberlängen lassen die zweite Zeile
+     auf schmalem Format in die erste laufen — hier entzerren. */
+  .title{font-size:clamp(46px,16vw,120px);line-height:.92}
+  .title .ln:nth-child(2){text-align:left;margin-top:0}
+  .cover-body{grid-template-columns:1fr;gap:var(--s6)}
+  .plate-cover{order:-1}
+  .cover-body .acts .btn{flex:1 1 auto;justify-content:center}
 
-  .head{margin-bottom:var(--s7)}
-  .head p{font-size:var(--t-base)}
+  .rubric{grid-template-columns:1fr;gap:var(--s4);align-items:start}
+  .rubric p{grid-column:1}
+  .rubric .no{display:flex;align-items:baseline;gap:var(--s4);font-size:34px}
+  .rubric .no small{margin:0}
+
   .work,.work:nth-child(even){grid-template-columns:1fr;gap:var(--s5)}
-  .work:nth-child(even) .work-media{order:0}
-  .work-media{aspect-ratio:3/2}
-  .works{gap:var(--s8)}
+  .work-media,.work:nth-child(even) .work-media{grid-column:1;order:0}
+  .work-copy,.work:nth-child(even) .work-copy{grid-column:1}
+  .work-media img{aspect-ratio:3/2}
+  .work-media .plate-no{transform:translate(-8%,-34%);font-size:56px}
+  .works{gap:var(--s9)}
+
   .figures{grid-template-columns:1fr 1fr}
-  .split,.deck,.row{grid-template-columns:1fr;gap:var(--s5)}
-  .portrait{max-width:420px}
-  .split p{font-size:var(--t-base)}
-  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:clamp(140px,32vw,200px)}
-  .shot.wide,.shot.tall,.shot.sq{grid-column:span 1;grid-row:span 1}
-  /* Auf Touch kein Hover — Bildunterschrift dauerhaft zeigen */
-  .shot figcaption{opacity:1;transform:none}
-  .list a{grid-template-columns:32px 1fr;gap:var(--s3);padding:var(--s4) var(--s2)}
-  .list a:hover{padding-left:var(--s2)}
-  .list .m{grid-column:2;text-align:left;margin-top:2px}
+  .fig:nth-child(3),.fig:nth-child(4){border-top:1px solid var(--rule)}
+  .fig:nth-child(odd){border-left:0}
+
+  .plates{gap:var(--s6)}
+  .plate:nth-child(even){margin-top:0}
+  .plate:nth-child(3n),.plate:nth-child(4n){width:100%;justify-self:stretch}
+
+  .profile{grid-template-columns:1fr;gap:var(--s6)}
+  .profile figure{position:static;max-width:420px}
+  .profile-text{column-count:1}
+
+  .index a{grid-template-columns:32px 1fr;gap:var(--s3);padding:var(--s4) 0}
+  .index .dots{display:none}
+  .index .m{grid-column:2;text-align:left;margin-top:2px}
+
+  .deck,.row{grid-template-columns:1fr;gap:var(--s5)}
   .send{width:100%;justify-self:stretch}
-  .fgrid{flex-direction:column;align-items:flex-start;gap:var(--s5)}
-  .fbase{flex-direction:column;gap:var(--s2)}
+  .fmark i{text-align:left}
 }
 
-@media(max-width:420px){
+@media(max-width:430px){
   :root{--gut:18px}
-  .gallery{grid-template-columns:1fr;grid-auto-rows:64vw}
-  .shot.wide{grid-column:span 1}
+  .plates{grid-template-columns:1fr}
   .figures{grid-template-columns:1fr}
-  .disciplines ul{gap:var(--s2) var(--s5);font-size:13px}
+  .fig{border-left:0;border-top:1px solid var(--rule)}
+  .fig:first-child{border-top:0}
+  .disciplines ul{gap:var(--s2) var(--s5)}
   .disciplines li{gap:var(--s5)}
 }
 
-/* Touch-Geräte: Hover-Transforms deaktivieren */
 @media(hover:none){
-  .btn:hover,.send:hover,.shot:hover{transform:none}
-  .work:hover .work-media img,.shot:hover img,.portrait:hover img{transform:none}
+  .plate:hover img,.work:hover .work-media img{transform:none;filter:none}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <a class="mark" href="#top"><s></s>Marven Gabriel</a>
+<header class="masthead-bar" id="bar">
+  <a class="sig" href="#top">Marven <i>Gabriel</i></a>
+  <nav id="navlist">
+    <a href="#work">Werk</a>
+    <a href="#tafeln">Mode</a>
+    <a href="#profil">Profil</a>
+    <a href="#rollen">Filmografie</a>
+    <a href="#anfrage">Anfrage</a>
+  </nav>
+  <div class="end">
+    <span class="issue">Ausgabe 01 &mdash; MMXXVI</span>
+    <a class="book" href="#anfrage">Booking</a>
+  </div>
   <button class="burger" id="burger" aria-label="Men&uuml; &ouml;ffnen" aria-expanded="false" aria-controls="navlist">
     <s></s><s></s><s></s>
   </button>
-  <ul id="navlist">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">&Uuml;ber</a></li>
-    <li><a href="#vita">Vita</a></li>
-    <li><a class="book" href="#booking">Booking</a></li>
-  </ul>
-</nav>
+</header>
 
 <main id="top">
 
-<section class="hero">
-  <div class="hero-in">
-    <div>
-      <div class="eyebrow fade-up"><b>Marven Gabriel</b><s></s><span>Portfolio 2026</span></div>
-      <h1 class="fade-up" data-a="1">Pr&auml;senz, die eine<br>Einstellung tr&auml;gt.</h1>
-      <span class="role fade-up" data-a="1">Schauspieler &middot; T&auml;nzer &middot; Performer</span>
-      <p class="lede fade-up" data-a="2">Seit 2022 vor der Kamera deutschsprachiger TV- und Serienproduktionen &ndash; 20 Credits, ein Hintergrund im Tanz und ein Gesp&uuml;r f&uuml;r Timing, das auch ohne Text funktioniert.</p>
-      <div class="cta fade-up" data-a="3">
-        <a class="btn primary" href="#booking">Booking anfragen</a>
-        <a class="btn" href="#work">Work ansehen</a>
+<section class="cover">
+  <span class="marginal">Talent &middot; Marven Gabriel &mdash; Schauspiel, Tanz &amp; Mode</span>
+
+  <div class="cover-meta">
+    <span class="l">Cover Story &mdash; Nr. 01</span>
+    <span class="r">Schauspiel &middot; Mode &middot; Tanz</span>
+  </div>
+
+  <h1 class="title">
+    <span class="ln"><span>Marven</span></span>
+    <span class="ln"><span>Gabriel</span></span>
+  </h1>
+
+  <div class="cover-body">
+    <div class="stand">
+      <p class="role">Der Schauspieler,<br>der tanzt wie ein Model geht</p>
+      <p class="lede">Seit 2022 vor der Kamera deutschsprachiger TV- und Serienproduktionen. Ein Hintergrund im Tanz, der in jeder Rolle sp&uuml;rbar bleibt &ndash; Timing, K&ouml;rpersprache, Pr&auml;senz.</p>
+      <ul class="coverlines">
+        <li><b>20</b> Credits &mdash; von <i>Tatort</i> bis <i>Schattenseite</i></li>
+        <li><b>253K</b> auf Instagram &mdash; und warum das kein Zufall ist</li>
+        <li><b>Editorial</b> Sechs Looks zwischen B&uuml;hne und Red Carpet</li>
+      </ul>
+      <div class="acts">
+        <a class="btn ink" href="#anfrage"><span>Booking anfragen</span></a>
+        <a class="btn" href="#work"><span>Werk ansehen</span></a>
       </div>
     </div>
-    <figure class="fade-up" data-a="2">
+    <figure class="plate-cover">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marvenportrait.jpg"
            alt="Portrait von Marven Gabriel" width="640" height="800" fetchpriority="high">
-      <figcaption>Marven Gabriel &middot; 2026</figcaption>
+      <figcaption><b>Cover</b> <span>Portrait &middot; 2026</span></figcaption>
     </figure>
   </div>
 </section>
@@ -436,19 +520,19 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
   <div class="fig rv" data-d="3"><b data-count="24" data-suffix="H">24H</b><span>R&uuml;ckmeldung</span></div>
 </section>
 
-<section class="wrap" id="work">
-  <div class="head rv">
-    <div class="eyebrow"><b>01</b><s></s><span>Selected Work</span></div>
-    <h2>Was ich mache</h2>
+<section class="sheet" id="work">
+  <div class="rubric rv">
+    <div class="no"><small>Strecke</small>01</div>
+    <h2>Das <i>Portfolio</i></h2>
     <p>Rollenarbeit, Choreografie, Kampagne. Vier Felder, ein Handwerk &ndash; jede Anfrage l&auml;uft &uuml;ber dasselbe Formular.</p>
   </div>
   <div class="works">
 
-    <a class="work rv" href="#booking">
-      <div class="work-media">
-        <span class="n">01</span>
+    <a class="work rv" href="#anfrage">
+      <figure class="work-media">
+        <span class="plate-no">01</span>
         <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-5.jpg" alt="" aria-hidden="true" loading="lazy">
-      </div>
+      </figure>
       <div class="work-copy">
         <span class="cat">Film &amp; TV</span>
         <h3>Rollenarbeit vor der Kamera</h3>
@@ -457,9 +541,11 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
       </div>
     </a>
 
-    <a class="work rv" href="#booking">
-      <div class="work-media"><span class="n">02</span>
-        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-6.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+    <a class="work rv" href="#anfrage">
+      <figure class="work-media">
+        <span class="plate-no">02</span>
+        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-6.jpg" alt="" aria-hidden="true" loading="lazy">
+      </figure>
       <div class="work-copy">
         <span class="cat">Tanz &amp; Performance</span>
         <h3>Choreografie und B&uuml;hne</h3>
@@ -468,9 +554,11 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
       </div>
     </a>
 
-    <a class="work rv" href="#booking">
-      <div class="work-media"><span class="n">03</span>
-        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-model.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+    <a class="work rv" href="#anfrage">
+      <figure class="work-media">
+        <span class="plate-no">03</span>
+        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-model.jpg" alt="" aria-hidden="true" loading="lazy">
+      </figure>
       <div class="work-copy">
         <span class="cat">Kampagne</span>
         <h3>Brand &amp; Werbung</h3>
@@ -479,9 +567,11 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
       </div>
     </a>
 
-    <a class="work rv" href="#booking">
-      <div class="work-media"><span class="n">04</span>
-        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-2.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+    <a class="work rv" href="#anfrage">
+      <figure class="work-media">
+        <span class="plate-no">04</span>
+        <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-2.jpg" alt="" aria-hidden="true" loading="lazy">
+      </figure>
       <div class="work-copy">
         <span class="cat">Social</span>
         <h3>Formate mit eigener Reichweite</h3>
@@ -493,119 +583,121 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
   </div>
 </section>
 
-<section class="wrap alt" id="gallery">
-  <div class="head rv">
-    <div class="eyebrow"><b>02</b><s></s><span>Impressionen</span></div>
-    <h2>Aus dem Archiv</h2>
-    <p>Set, B&uuml;hne, Backstage &ndash; und die Momente dazwischen.</p>
+<section class="sheet tint" id="tafeln">
+  <div class="rubric rv">
+    <div class="no"><small>Strecke</small>02</div>
+    <h2>Die <i>Modestrecke</i></h2>
+    <p>Sechs Looks zwischen B&uuml;hne, Set und Red Carpet. Fotografiert 2025&ndash;2026.</p>
   </div>
-  <div class="gallery">
-    <figure class="shot tall rv">
+  <div class="plates">
+    <figure class="plate rv" style="--ar:4/5">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-3.jpg" alt="Marven Gabriel in Lederjacke vor wei&szlig;er Kachelwand" loading="lazy">
-      <figcaption>Editorial &middot; Fashion</figcaption>
+      <figcaption><b>Look 01</b> <span>Editorial &middot; Fashion</span></figcaption>
     </figure>
-    <figure class="shot wide rv" data-d="1">
+    <figure class="plate rv" data-d="1" style="--ar:3/4">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-4.jpg" alt="Marven Gabriel im Scheinwerferlicht auf der B&uuml;hne" loading="lazy">
-      <figcaption>Live &middot; B&uuml;hne</figcaption>
+      <figcaption><b>Look 02</b> <span>Live &middot; B&uuml;hne</span></figcaption>
     </figure>
-    <figure class="shot sq rv" data-d="2">
+    <figure class="plate rv" style="--ar:1/1">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting.jpg" alt="Marven Gabriel bei einer Ausstellung im Halbdunkel" loading="lazy">
-      <figcaption>Backstage &middot; Portrait</figcaption>
+      <figcaption><b>Look 03</b> <span>Backstage &middot; Portrait</span></figcaption>
     </figure>
-    <figure class="shot sq rv">
+    <figure class="plate rv" data-d="1" style="--ar:4/5">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/dance.png" alt="Marven Gabriel beim Tanzen" loading="lazy">
-      <figcaption>Tanz &middot; Moonwalk</figcaption>
+      <figcaption><b>Look 04</b> <span>Tanz &middot; Moonwalk</span></figcaption>
     </figure>
-    <figure class="shot sq rv" data-d="1">
+    <figure class="plate rv" style="--ar:3/4">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-5.jpg" alt="Marven Gabriel auf dem roten Teppich" loading="lazy">
-      <figcaption>Premiere &middot; Red Carpet</figcaption>
+      <figcaption><b>Look 05</b> <span>Premiere &middot; Red Carpet</span></figcaption>
     </figure>
-    <figure class="shot wide rv" data-d="2">
+    <figure class="plate rv" data-d="1" style="--ar:4/5">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marven-shooting-6.jpg" alt="Marven Gabriel mitten in der Choreografie auf der B&uuml;hne" loading="lazy">
-      <figcaption>Show &middot; Performance</figcaption>
+      <figcaption><b>Look 06</b> <span>Show &middot; Performance</span></figcaption>
     </figure>
   </div>
 </section>
 
-<section class="wrap" id="about">
-  <div class="head rv">
-    <div class="eyebrow"><b>03</b><s></s><span>Profil</span></div>
-    <h2>Hinter der Rolle</h2>
+<section class="sheet" id="profil">
+  <div class="rubric rv">
+    <div class="no"><small>Strecke</small>03</div>
+    <h2>Das <i>Portr&auml;t</i></h2>
   </div>
-  <div class="split">
-    <div class="portrait rv">
+  <div class="profile">
+    <figure class="rv">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marvenportrait.jpg"
            alt="Portrait von Marven Gabriel" width="640" height="800" loading="lazy">
-      <span class="lbl">Marven Gabriel &middot; 2026</span>
-    </div>
+      <figcaption>Marven Gabriel &middot; 2026</figcaption>
+    </figure>
     <div class="rv" data-d="1">
-      <p><strong>Marven Gabriel Suarez-Brinkert, geboren 2003 in Las Palmas auf Gran Canaria.</strong> Schauspieler, T&auml;nzer und Performer &ndash; seit 2022 in deutschsprachigen TV- und Serienproduktionen vor der Kamera.</p>
-      <p>Bekannt aus <em>Schattenseite</em>, <em>Die Augenzeugen</em> und dem <em>Tatort</em>. Dazu Rollen in <em>Dr. Ballouz</em>, <em>Die Heiland</em>, <em>Die Pfefferk&ouml;rner</em> und <em>Der Barcelona Krimi</em> &ndash; insgesamt 20 Credits.</p>
-      <p>Der Tanz bleibt in jeder Rolle sp&uuml;rbar: Timing, K&ouml;rpersprache, Pr&auml;senz. Das, was eine Einstellung tr&auml;gt, auch wenn kein Wort f&auml;llt.</p>
-      <div class="tags">
-        <span class="tag">Schauspiel</span><span class="tag">Tanz</span><span class="tag">Performance</span>
-        <span class="tag">TV &amp; Serie</span><span class="tag">Social</span><span class="tag">DE / ES / EN</span>
+      <div class="profile-text">
+        <p><strong>Marven Gabriel Suarez-Brinkert, geboren 2003 in Las Palmas auf Gran Canaria.</strong> Schauspieler, T&auml;nzer und Performer &ndash; seit 2022 in deutschsprachigen TV- und Serienproduktionen vor der Kamera.</p>
+        <p>Bekannt aus <em>Schattenseite</em>, <em>Die Augenzeugen</em> und dem <em>Tatort</em>. Dazu Rollen in <em>Dr. Ballouz</em>, <em>Die Heiland</em>, <em>Die Pfefferk&ouml;rner</em> und <em>Der Barcelona Krimi</em> &ndash; insgesamt 20 Credits.</p>
+        <p>Der Tanz bleibt in jeder Rolle sp&uuml;rbar: Timing, K&ouml;rpersprache, Pr&auml;senz. Das, was eine Einstellung tr&auml;gt, auch wenn kein Wort f&auml;llt.</p>
       </div>
-      <div style="margin-top:var(--s6)">
-        <a class="btn" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener">Profil auf IMDb &rarr;</a>
+      <div class="profile-foot">
+        <div class="tags">
+          <span class="tag">Schauspiel</span><span class="tag">Tanz</span><span class="tag">Performance</span>
+          <span class="tag">TV &amp; Serie</span><span class="tag">Social</span><span class="tag">DE / ES / EN</span>
+        </div>
+        <a class="btn" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span>Profil auf IMDb &rarr;</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="wrap alt" id="vita">
-  <div class="head rv">
-    <div class="eyebrow"><b>04</b><s></s><span>Filmografie</span></div>
-    <h2>Rollen</h2>
+<section class="sheet tint" id="rollen">
+  <div class="rubric rv">
+    <div class="no"><small>Strecke</small>04</div>
+    <h2>Die <i>Filmografie</i></h2>
     <p>Auswahl aus 20 Credits &ndash; deutschsprachige TV- und Serienproduktionen seit 2022.</p>
   </div>
-  <div class="list">
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">01</span><span class="t">Schattenseite</span><span class="m">Miniserie &middot; Flavio &middot; 6 Folgen &middot; 2025</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">02</span><span class="t">Die Augenzeugen</span><span class="m">Serie &middot; Lukas Watzinger &middot; 4 Folgen &middot; 2024&ndash;25</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">03</span><span class="t">Tatort</span><span class="m">Serie &middot; Jan Thomsen &middot; 2023&ndash;25</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">04</span><span class="t">Dr. Ballouz</span><span class="m">Serie &middot; Ronni Pietsch &middot; 2 Folgen &middot; 2025</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">05</span><span class="t">Die Heiland &middot; Wir sind Anwalt</span><span class="m">Serie &middot; Jurek Meyer &middot; 2025</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">06</span><span class="t">WaPo Bodensee</span><span class="m">Serie &middot; Ben Stadler &middot; 2025</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">07</span><span class="t">Die Pfefferk&ouml;rner</span><span class="m">Serie &middot; Yannick &middot; 2024</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">08</span><span class="t">In aller Freundschaft &middot; Die jungen &Auml;rzte</span><span class="m">Serie &middot; Vincent Roth &middot; 2024</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">09</span><span class="t">Der Barcelona Krimi</span><span class="m">Serie &middot; Yussuf &middot; 2022</span></a>
-    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">10</span><span class="t">The Social Experiment</span><span class="m">Film &middot; Adrian &middot; 2022</span></a>
+  <div class="index">
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">01</span><span class="t">Schattenseite</span><span class="dots"></span><span class="m">Miniserie &middot; Flavio &middot; 6 Folgen &middot; 2025</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">02</span><span class="t">Die Augenzeugen</span><span class="dots"></span><span class="m">Serie &middot; Lukas Watzinger &middot; 4 Folgen &middot; 2024&ndash;25</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">03</span><span class="t">Tatort</span><span class="dots"></span><span class="m">Serie &middot; Jan Thomsen &middot; 2023&ndash;25</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">04</span><span class="t">Dr. Ballouz</span><span class="dots"></span><span class="m">Serie &middot; Ronni Pietsch &middot; 2 Folgen &middot; 2025</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">05</span><span class="t">Die Heiland &middot; Wir sind Anwalt</span><span class="dots"></span><span class="m">Serie &middot; Jurek Meyer &middot; 2025</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">06</span><span class="t">WaPo Bodensee</span><span class="dots"></span><span class="m">Serie &middot; Ben Stadler &middot; 2025</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">07</span><span class="t">Die Pfefferk&ouml;rner</span><span class="dots"></span><span class="m">Serie &middot; Yannick &middot; 2024</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">08</span><span class="t">In aller Freundschaft &middot; Die jungen &Auml;rzte</span><span class="dots"></span><span class="m">Serie &middot; Vincent Roth &middot; 2024</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">09</span><span class="t">Der Barcelona Krimi</span><span class="dots"></span><span class="m">Serie &middot; Yussuf &middot; 2022</span></a>
+    <a class="rv" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span class="n">10</span><span class="t">The Social Experiment</span><span class="dots"></span><span class="m">Film &middot; Adrian &middot; 2022</span></a>
   </div>
   <div class="rv" style="margin-top:var(--s6)">
-    <a class="btn" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener">Alle 20 Credits auf IMDb &rarr;</a>
+    <a class="btn" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener"><span>Alle 20 Credits auf IMDb &rarr;</span></a>
   </div>
 </section>
 
-<section class="wrap" id="booking">
-  <div class="head rv">
-    <div class="eyebrow"><b>05</b><s></s><span>Booking</span></div>
-    <h2>Anfrage stellen</h2>
+<section class="sheet" id="anfrage">
+  <div class="rubric rv">
+    <div class="no"><small>Strecke</small>05</div>
+    <h2>Booking &amp; <i>Kontakt</i></h2>
     <p>Casting, Kampagne oder Kollaboration &ndash; kurz beschreiben, worum es geht. Alle Anfragen laufen &uuml;ber das Management.</p>
   </div>
   <div class="deck">
     <div class="rv">
-      <div class="card">
-        <span class="label">Management</span>
+      <div class="entry">
+        <span class="k">Management</span>
         <strong>Emmanuel Whajah</strong>
         <p>Booking &amp; Anfragen f&uuml;r Marven Gabriel</p>
         <a class="link" href="mailto:info@emmanuelwhajah.com">info@emmanuelwhajah.com &rarr;</a>
       </div>
-      <div class="card">
-        <span class="label">Social</span>
+      <div class="entry">
+        <span class="k">Social</span>
         <strong>@marvengabriel</strong>
         <p>253.000 Follower &middot; Instagram &amp; TikTok</p>
         <a class="link" href="https://www.instagram.com/marvengabriel/" target="_blank" rel="noopener">Instagram &rarr;</a><br>
         <a class="link" href="https://www.tiktok.com/@marvengabriel" target="_blank" rel="noopener">TikTok &rarr;</a>
       </div>
-      <div class="card">
-        <span class="label">Filmografie</span>
+      <div class="entry">
+        <span class="k">Filmografie</span>
         <strong>IMDb</strong>
         <p>20 Credits &middot; Schattenseite, Tatort, Die Augenzeugen</p>
         <a class="link" href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener">Profil ansehen &rarr;</a>
       </div>
     </div>
     <form class="rv" data-d="1" id="bookingForm" novalidate>
-      <div class="formhead"><span>Anfrage-Formular</span><span id="formState"><b>&#9679;</b> Bereit</span></div>
+      <div class="formhead"><span>Anfrage-Formular</span><span id="formState"><b>&#9670;</b> Bereit</span></div>
       <div class="row">
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Dein Name" required></div>
         <div class="field"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" placeholder="dein@mail.de" required></div>
@@ -634,14 +726,17 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
 </main>
 
 <footer>
-  <div class="fgrid">
-    <div class="fmark">Marven Gabriel</div>
-    <nav class="fnav" aria-label="Footer">
-      <a href="#work">Work</a><a href="#about">&Uuml;ber</a><a href="#vita">Vita</a><a href="#booking">Booking</a>
-      <a href="https://www.instagram.com/marvengabriel/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@marvengabriel" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener">IMDb</a>
-    </nav>
+  <div class="colophon">
+    <div class="fmark">Marven<i>Gabriel</i></div>
+    <div class="fgrid">
+      <nav class="fnav" aria-label="Footer">
+        <a href="#work">Werk</a><a href="#tafeln">Mode</a><a href="#profil">Profil</a>
+        <a href="#rollen">Filmografie</a><a href="#anfrage">Anfrage</a>
+        <a href="https://www.instagram.com/marvengabriel/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@marvengabriel" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.imdb.com/de/name/nm12308504/" target="_blank" rel="noopener">IMDb</a>
+      </nav>
+    </div>
   </div>
   <div class="fbase">
     <span>&copy; 2026 Marven Gabriel &middot; Schauspieler &middot; T&auml;nzer &middot; Performer</span>
@@ -653,21 +748,19 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Nav */
-  var nav = document.getElementById('nav');
-  addEventListener('scroll', function(){ nav.classList.toggle('stuck', scrollY > 30); }, {passive:true});
-
   /* Mobile-Menü */
-  var burger = document.getElementById('burger'), navlist = document.getElementById('navlist');
+  var bar = document.getElementById('bar'),
+      burger = document.getElementById('burger'),
+      navlist = document.getElementById('navlist');
   function setMenu(open){
-    nav.classList.toggle('open', open);
+    bar.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
   }
-  burger.addEventListener('click', function(){ setMenu(!nav.classList.contains('open')); });
+  burger.addEventListener('click', function(){ setMenu(!bar.classList.contains('open')); });
   navlist.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
   addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
-  matchMedia('(min-width:961px)').addEventListener('change', function(m){ if (m.matches) setMenu(false); });
+  matchMedia('(min-width:1001px)').addEventListener('change', function(m){ if (m.matches) setMenu(false); });
 
   /* Formular */
   var form = document.getElementById('bookingForm'), ok = document.getElementById('ok');
@@ -676,18 +769,18 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);
     if (!form.checkValidity()){ form.reportValidity(); return; }
     ok.classList.add('show');
     form.querySelector('.send').textContent = 'Gesendet ✓';
-    document.getElementById('formState').innerHTML = '<b>●</b> Gesendet';
+    document.getElementById('formState').innerHTML = '<b>◆</b> Gesendet';
   });
 
   if (reduce) return;
 
-  /* Reveal */
+  /* Einblendung beim Scrollen */
   var io = new IntersectionObserver(function(en){
     en.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -60px'});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
 
-  /* Zahlen hochzählen (Startwert steht im HTML → kein leerer Zustand ohne JS) */
+  /* Kennzahlen hochzählen (Startwert steht im HTML → kein leerer Zustand ohne JS) */
   var cio = new IntersectionObserver(function(en){
     en.forEach(function(e){
       if (!e.isIntersecting) return;
