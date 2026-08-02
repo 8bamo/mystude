@@ -8,12 +8,12 @@
 <title>Marven Gabriel &middot; Schauspieler &middot; T&auml;nzer &middot; Performer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    MARVEN GABRIEL — Modemagazin
    Satzbild eines Fashion-Editorials: Didone-Nameplate, Coverlines,
-   Haarlinienraster, versetzte Modestrecke, Ultramarin als zweite
+   Haarlinienraster, versetzte Modestrecke, Altgold als zweite
    Druckfarbe. Papierkorn statt Flat-Design.
    ============================================================ */
 :root{
@@ -30,10 +30,10 @@
   --rule:#d4d1ca;
   --rule-2:#bdb9b0;
 
-  /* Ultramarin — die zweite Druckfarbe */
-  --blue:#1a2ccc;
-  --blue-2:#0f1d99;
-  --blue-wash:#dfe1f7;
+  /* Altgold — die zweite Druckfarbe */
+  --gold:#9c7c2c;
+  --gold-2:#7d611d;
+  --gold-wash:#f0e8d3;
 
   --gut:clamp(20px,5vw,84px);
   --measure:64ch;
@@ -44,12 +44,12 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:Archivo,ui-sans-serif,sans-serif;font-size:17px;line-height:1.62;font-weight:400;
+  font-family:'EB Garamond',Garamond,Georgia,serif;font-size:19.5px;line-height:1.6;font-weight:400;
   overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-::selection{background:var(--blue);color:var(--paper)}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+::selection{background:var(--gold);color:var(--paper)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* Papierkorn — nimmt der Fläche das Digitale */
 body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.3;
@@ -59,7 +59,7 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 /* ---- Typografische Grundformen ---- */
 .didone{font-family:'Bodoni Moda',Didot,'Bodoni MT',serif;font-weight:400;
   font-optical-sizing:auto;letter-spacing:-.005em}
-.smallcaps{font-family:Archivo,sans-serif;font-size:11px;font-weight:500;
+.smallcaps{font-family:'EB Garamond',Garamond,serif;font-size:11px;font-weight:500;
   letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
 .rule{height:1px;background:var(--rule);border:0;margin:0}
 
@@ -73,21 +73,24 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   border-bottom:1px solid var(--rule)}
 .masthead-bar .sig{font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;
   letter-spacing:.02em;white-space:nowrap}
-.masthead-bar .sig i{font-style:italic;color:var(--blue)}
+.masthead-bar .sig i{font-style:italic;color:var(--gold)}
 .masthead-bar nav{display:flex;gap:var(--s6);justify-self:center}
-.masthead-bar nav a{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+.masthead-bar nav a{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink-2);position:relative;padding-bottom:3px;transition:color .3s}
 .masthead-bar nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;
-  background:var(--blue);transition:right .4s cubic-bezier(.22,1,.36,1)}
-.masthead-bar nav a:hover{color:var(--blue)}
+  background:var(--gold);transition:right .4s cubic-bezier(.22,1,.36,1)}
+.masthead-bar nav a:hover{color:var(--gold)}
 .masthead-bar nav a:hover::after{right:0}
 .masthead-bar .end{justify-self:end;display:flex;align-items:center;gap:var(--s4)}
-.masthead-bar .issue{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+.masthead-bar .issue{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
   font-variant-numeric:tabular-nums}
-.masthead-bar .book{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--paper);background:var(--blue);padding:9px var(--s5);
+.masthead-bar .book{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--paper);background:var(--gold);padding:9px var(--s5);
   transition:background .3s}
-.masthead-bar .book:hover{background:var(--blue-2)}
+.masthead-bar .book:hover{background:var(--gold-2)}
+/* Zwischen 1000 und 1200px drängt die Ausgabezeile die Navigation und
+   bricht selbst um — dort weglassen. */
+@media(max-width:1200px){.masthead-bar .issue{display:none}}
 
 /* ============================================================
    TITELSEITE
@@ -95,15 +98,18 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .cover{padding:calc(var(--s10) + var(--s2)) var(--gut) var(--s8);position:relative}
 .cover-meta{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s5);
   border-bottom:1px solid var(--ink);padding-bottom:var(--s3);margin-bottom:var(--s6);flex-wrap:wrap}
-.cover-meta .l{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
-.cover-meta .r{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
+.cover-meta .l{font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.cover-meta .r{font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);
   font-variant-numeric:tabular-nums}
 
 /* Der Titel: zwei Zeilen, zweite kursiv, im Ansatz überlappend */
 .title{font-family:'Bodoni Moda',Didot,serif;font-weight:400;line-height:.82;
   font-size:clamp(58px,15.5vw,236px);letter-spacing:-.025em;margin:0;
   text-transform:uppercase}
-.title .ln{display:block;overflow:hidden}
+/* overflow:hidden maskiert die Zeile für den Aufblender — kappt aber die
+   Schräge der kursiven Glyphen. Clipbox seitlich aufweiten, Versatz
+   per negativem Margin zurücknehmen, damit der Satz an Ort bleibt. */
+.title .ln{display:block;overflow:hidden;padding:0 .08em;margin:0 -.08em}
 .title .ln>span{display:block;transform:translateY(102%);
   animation:lift 1.15s cubic-bezier(.22,1,.36,1) forwards}
 .title .ln:nth-child(2)>span{animation-delay:.13s}
@@ -115,17 +121,17 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   gap:clamp(28px,5vw,80px);align-items:start;margin-top:var(--s7)}
 .cover-body .stand{border-top:1px solid var(--ink);padding-top:var(--s4)}
 .cover-body .role{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2.3vw,29px);
-  line-height:1.25;margin:0 0 var(--s4);color:var(--blue)}
-.cover-body .lede{margin:0;color:var(--ink-2);font-weight:300;font-size:18px;max-width:46ch}
+  line-height:1.25;margin:0 0 var(--s4);color:var(--gold)}
+.cover-body .lede{margin:0;color:var(--ink-2);font-weight:400;font-size:18px;max-width:46ch}
 .cover-body .acts{display:flex;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s6)}
 
 /* Coverlines — die Zeilen, die auf einem Heftcover neben dem Kopf stehen */
 .coverlines{list-style:none;margin:var(--s6) 0 0;padding:0;max-width:44ch}
 .coverlines li{border-top:1px solid var(--rule);padding:var(--s3) 0;
-  font-size:13px;letter-spacing:.03em;color:var(--ink-2);font-weight:300;
+  font-size:13px;letter-spacing:.03em;color:var(--ink-2);font-weight:400;
   display:flex;gap:var(--s3);align-items:baseline}
 .coverlines li:last-child{border-bottom:1px solid var(--rule)}
-.coverlines b{font-family:'Bodoni Moda',serif;font-weight:500;font-size:17px;color:var(--blue);
+.coverlines b{font-family:'Bodoni Moda',serif;font-weight:500;font-size:17px;color:var(--gold);
   flex:none;font-variant-numeric:lining-nums}
 .coverlines i{font-family:'Bodoni Moda',serif;font-style:italic;color:var(--ink)}
 
@@ -136,12 +142,12 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .plate-cover img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;
   border:1px solid var(--rule-2)}
 .plate-cover figcaption{display:flex;gap:var(--s3);align-items:baseline;
-  margin-top:var(--s3);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.plate-cover figcaption b{color:var(--blue);font-weight:600}
+  margin-top:var(--s3);font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.plate-cover figcaption b{color:var(--gold);font-weight:600}
 
 /* Randnotiz — vertikal im Bundsteg */
 .marginal{position:absolute;left:calc(var(--gut) / 3);top:38vh;
-  writing-mode:vertical-rl;font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  writing-mode:vertical-rl;font-size:12px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;
   color:var(--ink-3);pointer-events:none}
 @media(max-width:1200px){.marginal{display:none}}
 
@@ -149,7 +155,7 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
    AUSZEICHNUNGSFORMEN
    ============================================================ */
 .btn{display:inline-flex;align-items:center;gap:var(--s2);min-height:46px;padding:0 var(--s6);
-  border:1px solid var(--ink);font-size:11px;font-weight:500;letter-spacing:.2em;
+  border:1px solid var(--ink);font-size:13px;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;background:transparent;position:relative;overflow:hidden;
   transition:color .35s,border-color .35s}
 .btn>span{position:relative;z-index:1}
@@ -157,8 +163,8 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   transform:translateY(101%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
 .btn:hover{color:var(--paper)}
 .btn:hover::before{transform:none}
-.btn.ink{background:var(--blue);border-color:var(--blue);color:var(--paper)}
-.btn.ink::before{background:var(--blue-2)}
+.btn.ink{background:var(--gold);border-color:var(--gold);color:var(--paper)}
+.btn.ink::before{background:var(--gold-2)}
 
 /* ============================================================
    RUBRIKEN
@@ -173,13 +179,13 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   border-bottom:1px solid var(--ink);padding-bottom:var(--s5);margin-bottom:var(--s8)}
 .rubric .no{display:flex;align-items:baseline;gap:var(--s3);
   font-family:'Bodoni Moda',serif;font-size:clamp(30px,3.4vw,46px);line-height:.9;
-  color:var(--blue);font-variant-numeric:lining-nums}
-.rubric .no small{font-family:Archivo,sans-serif;font-size:10px;font-weight:500;
+  color:var(--gold);font-variant-numeric:lining-nums}
+.rubric .no small{font-family:'EB Garamond',Garamond,serif;font-size:12px;font-weight:600;
   letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 .rubric h2{margin:0;font-family:'Bodoni Moda',serif;font-weight:400;
   font-size:clamp(30px,5.2vw,72px);line-height:.98;letter-spacing:-.025em}
 .rubric h2 i{font-style:italic;font-weight:500}
-.rubric p{grid-column:2;margin:var(--s4) 0 0;color:var(--ink-2);font-weight:300;
+.rubric p{grid-column:2;margin:var(--s4) 0 0;color:var(--ink-2);font-weight:400;
   font-size:16px;max-width:52ch}
 
 /* ---- Fachgebiete ---- */
@@ -188,7 +194,7 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   gap:var(--s3) var(--s6);list-style:none;margin:0 auto;padding:var(--s4) var(--gut);
   max-width:1500px;font-family:'Bodoni Moda',serif;font-size:clamp(15px,1.5vw,20px)}
 .disciplines li{display:flex;align-items:center;gap:var(--s6);font-style:italic}
-.disciplines li::after{content:"";width:3px;height:3px;background:var(--blue);
+.disciplines li::after{content:"";width:3px;height:3px;background:var(--gold);
   transform:rotate(45deg)}
 .disciplines li:last-child::after{display:none}
 
@@ -199,8 +205,8 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .fig:first-child{border-left:0}
 .fig b{display:block;font-family:'Bodoni Moda',serif;font-weight:400;
   font-size:clamp(38px,5vw,66px);line-height:.9;font-variant-numeric:lining-nums}
-.fig span{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--ink-3);margin-top:var(--s3);font-weight:500}
+.fig span{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:var(--s3);font-weight:600}
 
 /* ---- Werkstrecke: Bild und Spalte im Satzspiegel ---- */
 .works{display:grid;gap:var(--s10)}
@@ -211,20 +217,20 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   border:1px solid var(--rule-2);transition:filter .7s}
 .work-media .plate-no{position:absolute;left:0;top:0;transform:translate(-45%,-38%);
   font-family:'Bodoni Moda',serif;font-size:clamp(52px,6.5vw,104px);line-height:.8;
-  color:var(--blue);z-index:2;font-variant-numeric:lining-nums;
+  color:var(--gold);z-index:2;font-variant-numeric:lining-nums;
   text-shadow:0 0 14px var(--paper),0 0 26px var(--paper)}
 .work-copy{grid-column:9 / span 4}
 .work:nth-child(even) .work-copy{grid-column:1 / span 4}
-.work-copy .cat{display:block;font-size:10px;font-weight:600;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--blue);margin-bottom:var(--s3);
-  border-bottom:1px solid var(--blue);padding-bottom:var(--s2)}
+.work-copy .cat{display:block;font-size:12px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:var(--s3);
+  border-bottom:1px solid var(--gold);padding-bottom:var(--s2)}
 .work-copy h3{margin:0;font-family:'Bodoni Moda',serif;font-weight:400;
   font-size:clamp(22px,2.4vw,32px);line-height:1.1;letter-spacing:-.015em}
-.work-copy p{margin:var(--s3) 0 0;color:var(--ink-2);font-weight:300;font-size:16px}
+.work-copy p{margin:var(--s3) 0 0;color:var(--ink-2);font-weight:400;font-size:16px}
 .work-copy .more{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);
-  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
   border-bottom:1px solid var(--ink);padding-bottom:3px;transition:color .3s,border-color .3s,gap .3s}
-.work:hover .work-copy .more{color:var(--blue);border-color:var(--blue);gap:var(--s3)}
+.work:hover .work-copy .more{color:var(--gold);border-color:var(--gold);gap:var(--s3)}
 .work:hover .work-media img{filter:contrast(1.04)}
 
 /* ---- Tafeln: versetzte Bildstrecke mit Bildunterschrift ---- */
@@ -239,8 +245,8 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .plate:hover img{transform:scale(1.012)}
 .plate figcaption{display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:baseline;
   margin-top:var(--s3);padding-top:var(--s2);border-top:1px solid var(--rule);
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.plate figcaption b{color:var(--blue);font-weight:600;font-variant-numeric:tabular-nums}
+  font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.plate figcaption b{color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums}
 
 /* ---- Porträtseite mit Initiale ---- */
 .profile{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);
@@ -249,33 +255,33 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .profile figure img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 20%;
   border:1px solid var(--rule-2)}
 .profile figure figcaption{margin-top:var(--s3);padding-top:var(--s2);
-  border-top:1px solid var(--rule);font-size:11px;letter-spacing:.16em;
+  border-top:1px solid var(--rule);font-size:12.5px;font-weight:500;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-3)}
 /* Einspaltig als Grundfall. Blocksatz vermeidet man bei deutschen
    Komposita auf schmalem Maß — sonst reißen Löcher in die Zeile. */
 .profile-text{column-gap:clamp(28px,3vw,52px)}
 @media(min-width:1500px){.profile-text{column-count:2}}
-.profile-text p{margin:0 0 var(--s4);color:var(--ink-2);font-weight:300;
+.profile-text p{margin:0 0 var(--s4);color:var(--ink-2);font-weight:400;
   font-size:16.5px;line-height:1.72;hyphens:auto;max-width:64ch}
 .profile-text p:first-child{margin-top:0}
 .profile-text p:first-child::first-letter{font-family:'Bodoni Moda',serif;float:left;
-  font-size:4.1em;line-height:.78;padding:.06em .1em 0 0;color:var(--blue);font-weight:400}
+  font-size:4.1em;line-height:.78;padding:.06em .1em 0 0;color:var(--gold);font-weight:400}
 .profile-text p strong{color:var(--ink);font-weight:600}
 .profile-text p em{font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.06em;color:var(--ink)}
 .profile-foot{margin-top:var(--s6);border-top:1px solid var(--ink);padding-top:var(--s4)}
 .tags{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);margin:0 0 var(--s6)}
-.tag{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
+.tag{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
   transition:color .3s}
 .tag::after{content:" ◆";color:var(--rule-2);font-size:8px;vertical-align:2px}
 .tag:last-child::after{display:none}
-.tag:hover{color:var(--blue)}
+.tag:hover{color:var(--gold)}
 
 /* ---- Rollenverzeichnis mit Punktführung ---- */
 .index{border-top:1px solid var(--ink)}
 .index a{display:grid;grid-template-columns:44px minmax(0,auto) 1fr auto;
   gap:var(--s4);align-items:baseline;padding:var(--s5) 0;
   border-bottom:1px solid var(--rule);transition:color .3s}
-.index .n{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;letter-spacing:.1em}
+.index .n{font-size:13px;font-weight:500;color:var(--ink-3);font-variant-numeric:tabular-nums;letter-spacing:.1em}
 .index .t{font-family:'Bodoni Moda',serif;font-size:clamp(19px,2.1vw,27px);
   line-height:1.15;letter-spacing:-.01em;transition:color .3s,font-style .3s}
 /* Punktführung wie im gedruckten Inhaltsverzeichnis. Ein gepunkteter
@@ -284,58 +290,58 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   background-image:radial-gradient(circle,var(--rule-2) 1.1px,transparent 1.2px);
   background-size:6px 3px;background-repeat:repeat-x;background-position:0 center;
   transition:background-image .3s}
-.index .m{font-size:12px;letter-spacing:.06em;color:var(--ink-3);text-align:right;
+.index .m{font-size:14px;letter-spacing:.06em;color:var(--ink-3);text-align:right;
   font-variant-numeric:tabular-nums}
-.index a:hover .t{color:var(--blue);font-style:italic}
+.index a:hover .t{color:var(--gold);font-style:italic}
 .index a:hover .m{color:var(--ink-2)}
-.index a:hover .dots{background-image:radial-gradient(circle,var(--blue) 1.1px,transparent 1.2px)}
+.index a:hover .dots{background-image:radial-gradient(circle,var(--gold) 1.1px,transparent 1.2px)}
 
 /* ---- Anfrage ---- */
 .deck{display:grid;grid-template-columns:minmax(0,.36fr) minmax(0,.64fr);
   gap:clamp(28px,4vw,72px);align-items:start}
 .entry{border-top:1px solid var(--ink);padding:var(--s4) 0 var(--s5)}
 .entry:last-child{border-bottom:1px solid var(--ink)}
-.entry .k{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.entry .k{font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 .entry strong{display:block;font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;
   letter-spacing:-.01em;margin:var(--s2) 0 var(--s1)}
-.entry p{margin:0;color:var(--ink-2);font-size:14px;font-weight:300}
+.entry p{margin:0;color:var(--ink-2);font-size:14px;font-weight:400}
 .entry .link{display:inline-block;margin-top:var(--s3);font-size:12px;letter-spacing:.08em;
-  color:var(--blue);border-bottom:1px solid var(--blue-wash);padding-bottom:2px;
+  color:var(--gold);border-bottom:1px solid var(--gold-wash);padding-bottom:2px;
   transition:border-color .3s}
-.entry .link:hover{border-color:var(--blue)}
+.entry .link:hover{border-color:var(--gold)}
 
 form{display:grid;gap:var(--s6);background:var(--paper-3);
   border:1px solid var(--rule-2);padding:clamp(24px,3.4vw,52px)}
 .formhead{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
   border-bottom:1px solid var(--ink);padding-bottom:var(--s3);
-  font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
-.formhead b{color:var(--blue)}
+  font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.formhead b{color:var(--gold)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6)}
 .field{display:grid;gap:var(--s2)}
-.field label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.field label{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
 input,select,textarea{width:100%;border:0;border-bottom:1px solid var(--rule-2);border-radius:0;
-  background:transparent;color:var(--ink);font:400 16px Archivo,sans-serif;outline:0;
+  background:transparent;color:var(--ink);font:400 17px 'EB Garamond',Garamond,serif;outline:0;
   padding:var(--s2) 0;transition:border-color .3s}
 textarea{min-height:118px;resize:vertical;line-height:1.6}
-input:focus,select:focus,textarea:focus{border-color:var(--blue);border-bottom-width:2px;
+input:focus,select:focus,textarea:focus{border-color:var(--gold);border-bottom-width:2px;
   padding-bottom:calc(var(--s2) - 1px)}
-input::placeholder,textarea::placeholder{color:var(--ink-3);font-weight:300}
+input::placeholder,textarea::placeholder{color:var(--ink-3);font-weight:400}
 select{appearance:none;cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,var(--ink-2) 50%),
     linear-gradient(135deg,var(--ink-2) 50%,transparent 50%);
   background-position:calc(100% - 10px) 15px,calc(100% - 5px) 15px;
   background-size:5px 5px;background-repeat:no-repeat}
 .consent{display:grid;grid-template-columns:18px 1fr;gap:var(--s3);align-items:start;
-  color:var(--ink-2);font-size:13px;font-weight:300;line-height:1.55}
-.consent input{width:16px;height:16px;padding:0;accent-color:var(--blue);border:0}
+  color:var(--ink-2);font-size:13px;font-weight:400;line-height:1.55}
+.consent input{width:16px;height:16px;padding:0;accent-color:var(--gold);border:0}
 .send{justify-self:start;min-height:46px;padding:0 var(--s7);cursor:pointer;
-  background:var(--blue);border:1px solid var(--blue);color:var(--paper);
-  font:500 11px Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--gold);border:1px solid var(--gold);color:var(--paper);
+  font:600 12px 'EB Garamond',Garamond,serif;letter-spacing:.2em;text-transform:uppercase;
   transition:background .3s}
-.send:hover{background:var(--blue-2)}
-.ok{display:none;font-size:14px;font-weight:300;color:var(--ink-2);
-  border-left:2px solid var(--blue);padding:var(--s3) var(--s5);line-height:1.7;
-  background:var(--blue-wash)}
+.send:hover{background:var(--gold-2)}
+.ok{display:none;font-size:14px;font-weight:400;color:var(--ink-2);
+  border-left:2px solid var(--gold);padding:var(--s3) var(--s5);line-height:1.7;
+  background:var(--gold-wash)}
 .ok.show{display:block;animation:fade .5s cubic-bezier(.22,1,.36,1) forwards;opacity:0}
 @keyframes fade{to{opacity:1}}
 
@@ -348,13 +354,13 @@ footer{border-top:1px solid var(--ink);padding:var(--s8) var(--gut) var(--s6);ba
 .fgrid{display:flex;justify-content:space-between;gap:var(--s6);flex-wrap:wrap;
   border-top:1px solid var(--ink);padding-top:var(--s4)}
 .fnav{display:flex;gap:var(--s5);flex-wrap:wrap;
-  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2)}
+  font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2)}
 .fnav a{transition:color .3s}
-.fnav a:hover{color:var(--blue)}
+.fnav a:hover{color:var(--gold)}
 .fbase{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
   max-width:1500px;margin:var(--s6) auto 0;padding-top:var(--s4);border-top:1px solid var(--rule);
-  font-size:11px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
-.fbase a{color:var(--blue)}
+  font-size:12.5px;font-weight:500;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
+.fbase a{color:var(--gold)}
 
 /* ---- Einblendung ---- */
 .rv{opacity:0;transform:translateY(22px);
