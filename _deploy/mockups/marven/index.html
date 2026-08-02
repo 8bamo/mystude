@@ -117,7 +117,9 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   margin-top:clamp(-14px,-1.4vw,-4px)}
 @keyframes lift{to{transform:none}}
 
-.cover-body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+/* Zweite Spalte auf die echte Bildbreite schrumpfen (auto statt fr) —
+   sonst steht das schmale Hochformat verloren in einer breiten Spalte. */
+.cover-body{display:grid;grid-template-columns:minmax(0,1fr) auto;
   gap:clamp(28px,5vw,80px);align-items:start;margin-top:var(--s7)}
 .cover-body .stand{border-top:1px solid var(--ink);padding-top:var(--s4)}
 .cover-body .role{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,2.3vw,29px);
@@ -135,14 +137,19 @@ body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opa
   flex:none;font-variant-numeric:lining-nums}
 .coverlines i{font-family:'Bodoni Moda',serif;font-style:italic;color:var(--ink)}
 
-/* Das Titelbild bricht aus dem Satzspiegel nach rechts aus */
-.plate-cover{position:relative;margin:0}
-/* Das Portrait ist knapp 1:2 hoch — bei zentriertem Beschnitt auf 4:5
-   läge der Kopf außerhalb. Ausschnitt daher ins obere Drittel legen. */
-.plate-cover img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;
-  border:1px solid var(--rule-2)}
+/* Das Titelbild steht als Tafel im Passepartout am rechten Satzrand.
+   Das Portrait ist knapp 1:2 hoch — jeder feste Rahmen müsste es
+   beschneiden, darum kein aspect-ratio: Höhe deckeln, Breite folgt.
+   Der Mat gibt dem schmalen Hochformat den nötigen Halt. */
+.plate-cover{position:relative;margin:0 0 0 auto;width:fit-content;
+  padding:var(--s4) var(--s4) var(--s3);
+  border:1px solid var(--rule-2);background:var(--paper-3)}
+.plate-cover img{width:auto;height:auto;max-width:100%;
+  max-height:clamp(360px,56vh,600px)}
 .plate-cover figcaption{display:flex;gap:var(--s3);align-items:baseline;
-  margin-top:var(--s3);font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  justify-content:space-between;
+  margin-top:var(--s3);padding-top:var(--s2);border-top:1px solid var(--rule);
+  font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .plate-cover figcaption b{color:var(--gold);font-weight:600}
 
 /* Randnotiz — vertikal im Bundsteg */
@@ -407,7 +414,7 @@ footer{border-top:1px solid var(--ink);padding:var(--s8) var(--gut) var(--s6);ba
   .title{font-size:clamp(46px,16vw,120px);line-height:.92}
   .title .ln:nth-child(2){text-align:left;margin-top:0}
   .cover-body{grid-template-columns:1fr;gap:var(--s6)}
-  .plate-cover{order:-1}
+  .plate-cover{order:-1;margin-inline:auto}
   .cover-body .acts .btn{flex:1 1 auto;justify-content:center}
 
   .rubric{grid-template-columns:1fr;gap:var(--s4);align-items:start}
@@ -509,7 +516,7 @@ footer{border-top:1px solid var(--ink);padding:var(--s8) var(--gut) var(--s6);ba
     </div>
     <figure class="plate-cover">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marvenportrait.jpg"
-           alt="Portrait von Marven Gabriel" width="640" height="800" fetchpriority="high">
+           alt="Portrait von Marven Gabriel" width="798" height="1600" fetchpriority="high">
       <figcaption><b>Cover</b> <span>Portrait &middot; 2026</span></figcaption>
     </figure>
   </div>
@@ -634,7 +641,7 @@ footer{border-top:1px solid var(--ink);padding:var(--s8) var(--gut) var(--s6);ba
   <div class="profile">
     <figure class="rv">
       <img src="/wp-content/themes/mystu/mockups/marven/assets/marvenportrait.jpg"
-           alt="Portrait von Marven Gabriel" width="640" height="800" loading="lazy">
+           alt="Portrait von Marven Gabriel" width="798" height="1600" loading="lazy">
       <figcaption>Marven Gabriel &middot; 2026</figcaption>
     </figure>
     <div class="rv" data-d="1">
