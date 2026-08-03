@@ -67,21 +67,39 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
 .burger{display:none}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;min-height:86vh;display:grid;place-items:center;text-align:center;
-  padding:110px 0;overflow:hidden;
-  background:radial-gradient(circle at 50% 34%,#ffffff 0%,var(--paper) 55%,var(--paper2) 100%)}
-.hero-orn{position:absolute;inset:0;pointer-events:none;opacity:.28}
-.hero-inner{position:relative;z-index:2;max-width:820px;padding:0 24px}
-.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,8vw,104px);
-  line-height:.98;letter-spacing:.02em;margin:26px 0 22px;color:var(--ink)}
+.hero{position:relative;min-height:auto;padding:96px 0 104px;overflow:hidden;
+  background:radial-gradient(circle at 30% 34%,#ffffff 0%,var(--paper) 55%,var(--paper2) 100%)}
+.hero-orn{position:absolute;inset:0;pointer-events:none;opacity:.22}
+.hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-txt{text-align:left}
+.hero-txt .rule{justify-content:flex-start}
+.hero-txt .rule::before{display:none}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(42px,5.4vw,74px);
+  line-height:1.02;letter-spacing:.02em;margin:22px 0 22px;color:var(--ink)}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.hero p{font-size:15.5px;line-height:2;color:var(--body);max-width:520px;margin:0 auto 40px}
-.btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero p{font-size:15.5px;line-height:2;color:var(--body);max-width:460px;margin:0 0 38px}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.hero-media{position:relative;padding:18px;border:1px solid var(--line);background:#fff}
+.hero-media img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.hero-badge{position:absolute;left:-1px;bottom:34px;background:var(--ink);color:#fff;
+  padding:14px 22px;text-align:left;z-index:3}
+.hero-badge b{display:block;font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.06em}
+.hero-badge span{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-lt)}
 .btn{display:inline-block;padding:16px 40px;font-size:11px;letter-spacing:.28em;
   text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);transition:.3s}
 .btn:hover{background:var(--gold);color:#fff}
 .btn.solid{background:var(--ink);border-color:var(--ink);color:#fff}
 .btn.solid:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-txt{text-align:center}
+  .hero-txt .rule{justify-content:center}
+  .hero-txt .rule::before{display:block}
+  .hero p{margin-left:auto;margin-right:auto}
+  .btns{justify-content:center}
+  .hero-media{max-width:440px;margin:0 auto}
+}
 
 /* ---------- Marquee ---------- */
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding:16px 0;background:var(--paper)}
@@ -185,6 +203,8 @@ footer .about p{font-size:13px;line-height:2;color:rgba(255,255,255,.8);margin-t
 
 /* ---------- Responsive ---------- */
 @media(max-width:1000px){
+  .menu{display:none}
+  .burger{display:block}
   .grid{grid-template-columns:repeat(2,1fr)}
   .services{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:1fr;gap:40px}
@@ -300,14 +320,23 @@ body.locked{overflow:hidden}
   <svg class="corner c-br"><use href="#orn-corner"/></svg>
 
   <div class="hero-inner">
-    <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
-    <p class="eyebrow" style="margin-top:22px">Kollektion Herbst / Winter</p>
-    <h1>Zeitlose Eleganz<br>in <em>feinstem</em> Leder</h1>
-    <p>Jede Tasche entsteht in über 40 Arbeitsstunden — von Hand gefertigt aus pflanzlich gegerbtem Kalbsleder und mit 24-karätigen Beschlägen veredelt.</p>
-    <div class="btns">
-      <a href="#kollektion" class="btn solid">Kollektion entdecken</a>
-      <a href="#handwerk" class="btn">Unser Handwerk</a>
+    <div class="hero-txt">
+      <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+      <p class="eyebrow" style="margin-top:22px">Kollektion Herbst / Winter</p>
+      <h1>Zeitlose Eleganz<br>in <em>feinstem</em> Leder</h1>
+      <p>Jede Tasche entsteht in über 40 Arbeitsstunden — von Hand gefertigt aus pflanzlich gegerbtem Kalbsleder und mit 24-karätigen Beschlägen veredelt.</p>
+      <div class="btns">
+        <a href="#kollektion" class="btn solid">Kollektion entdecken</a>
+        <a href="#handwerk" class="btn">Unser Handwerk</a>
+      </div>
     </div>
+    <figure class="hero-media">
+      <img src="assets/tasche-aurelia.jpg" alt="Claudia Aurelia — Handtasche aus Kalbsleder in Avorio">
+      <figcaption class="hero-badge">
+        <span>Neu in der Kollektion</span>
+        <b>Claudia Aurelia</b>
+      </figcaption>
+    </figure>
   </div>
 </div>
 
@@ -554,7 +583,7 @@ body.locked{overflow:hidden}
 
 // Produkt-Platzhalter
 const produkte = [
-  {n:'Claudia Aurelia',s:'Kalbsleder · Avorio',p:'2.480 €',tag:'Neu',img:'assets/tasche-aurelia.jpg'},
+  {n:'Claudia Aurelia',s:'Kalbsleder · Avorio',p:'2.480 €',tag:'Neu'},
   {n:'Claudia Serafina',s:'Boxcalf · Cognac',p:'1.960 €',alt:'2.240 €',tag:'Limitiert',dark:true},
   {n:'Claudia Ottavia',s:'Saffiano · Elfenbein',p:'2.150 €'},
   {n:'Claudia Ludovica',s:'Nubuk · Anthrazit',p:'1.740 €',tag:'Nur 12 Stück',dark:true},
