@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELA body — Brazilian Lymphatic Drainage · Dubai</title>
+<meta name="description" content="Brazilian lymphatic drainage, pregnancy massage and post-op recovery in Dubai. By appointment only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#fdfaf7;
+  --sand:#f7efe7;
+  --sand2:#f0e3d8;
+  --nude:#e3cbbb;
+  --clay:#b0836a;
+  --clay-dk:#8d6450;
+  --deep:#3a2b24;
+  --body:#6a564c;
+  --line:rgba(176,131,106,.28);
+  --serif:'Marcellus',Georgia,serif;
+  --sans:'Jost',-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--deep);font-family:var(--sans);font-size:17px;font-weight:400;
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+section[id]{scroll-margin-top:96px}
+@media(max-width:1000px){section[id]{scroll-margin-top:76px}}
+
+/* ---------- Bausteine ---------- */
+.eyebrow{font-family:var(--serif);font-size:17px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
+.leaf{width:26px;height:26px;stroke:var(--clay);fill:none;stroke-width:1.1;margin:0 auto 18px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:.01em;line-height:1.15}
+.btn{display:inline-block;padding:17px 38px;border-radius:40px;font-size:12.5px;letter-spacing:.22em;
+  text-transform:uppercase;transition:.3s;border:1px solid var(--clay);color:var(--clay);text-align:center}
+.btn:hover{background:var(--clay);color:#fff}
+.btn.solid{background:var(--clay);color:#fff}
+.btn.solid:hover{background:var(--deep);border-color:var(--deep)}
+
+/* ---------- Topbar ---------- */
+.topbar{background:var(--deep);color:var(--sand);text-align:center;font-size:12px;
+  letter-spacing:.24em;text-transform:uppercase;padding:10px 14px}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(253,250,247,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
+.brand{font-family:var(--serif);font-size:25px;letter-spacing:.3em;text-transform:uppercase}
+.brand span{color:var(--clay)}
+.menu{display:flex;gap:32px;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.menu a{position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;background:var(--clay);
+  transition:.3s;transform:translateX(-50%)}
+.menu a:hover::after{width:100%}
+.navright{display:flex;align-items:center;gap:18px}
+.lang{display:flex;border:1px solid var(--line);border-radius:40px;overflow:hidden}
+.lang button{background:transparent;border:0;padding:8px 13px;cursor:pointer;font-family:var(--sans);
+  font-size:11px;letter-spacing:.16em;color:var(--body);transition:.25s}
+.lang button.on{background:var(--clay);color:#fff}
+.burger{display:none;width:22px;height:22px;stroke:var(--deep);fill:none;stroke-width:1.3}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:92px 0 100px;
+  background:radial-gradient(circle at 26% 28%,#fff 0%,var(--sand) 52%,var(--sand2) 100%)}
+.hero-in{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(40px,5.2vw,68px);margin:20px 0 22px}
+.hero h1 em{font-style:italic;color:var(--clay)}
+.hero p.lead{font-size:18px;line-height:1.9;color:var(--body);max-width:470px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-media{position:relative;border-radius:230px 230px 20px 20px;overflow:hidden;
+  border:1px solid var(--line);background:#fff;box-shadow:0 26px 60px rgba(120,86,70,.14)}
+.hero-media .ph{width:100%;aspect-ratio:4/5}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+.trust div{font-size:13.5px;color:var(--body)}
+.trust b{display:block;font-family:var(--serif);font-size:26px;color:var(--clay);font-weight:400}
+
+/* ---------- Sections ---------- */
+section{padding:100px 0}
+.head{text-align:center;max-width:660px;margin:0 auto 58px}
+.head h2{font-size:clamp(30px,4.2vw,48px);margin:14px 0 16px}
+.head p{color:var(--body);font-size:17px;line-height:1.9}
+
+/* ---------- Behandlungen ---------- */
+.treat{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  display:flex;flex-direction:column;transition:.35s}
+.tcard:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(120,86,70,.13);border-color:var(--clay)}
+.tcard .ph{width:100%;aspect-ratio:3/2}
+.tcard .in{padding:28px 26px 30px;display:flex;flex-direction:column;gap:12px;flex:1}
+.tcard h3{font-size:25px}
+.tcard p{color:var(--body);font-size:15.5px;line-height:1.85;flex:1}
+.tmeta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.tmeta .dur{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--body)}
+.tmeta .pr{font-family:var(--serif);font-size:21px;color:var(--clay)}
+
+/* ---------- Ablauf ---------- */
+.steps{background:var(--sand);border-block:1px solid var(--line)}
+.stepgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;counter-reset:st}
+.step{text-align:center}
+.step .num{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;border:1px solid var(--clay);
+  display:grid;place-items:center;font-family:var(--serif);font-size:22px;color:var(--clay);background:#fff}
+.step h3{font-size:23px;margin-bottom:10px}
+.step p{color:var(--body);font-size:15.5px;line-height:1.85}
+
+/* ---------- Ueber ---------- */
+.about{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.about .imgbox{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
+.about .imgbox .ph{width:100%;aspect-ratio:4/5}
+.about h2{font-size:clamp(28px,3.8vw,44px);margin:16px 0 22px}
+.about p{color:var(--body);font-size:17px;line-height:1.95;margin-bottom:18px}
+.quals{list-style:none;display:grid;gap:12px;margin:26px 0 32px}
+.quals li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--body)}
+.quals svg{width:19px;height:19px;stroke:var(--clay);fill:none;stroke-width:1.4;flex:none;margin-top:3px}
+
+/* ---------- Stimmen ---------- */
+.voices{background:var(--sand);border-block:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 28px;text-align:center}
+.voice .st{color:var(--clay);letter-spacing:.28em;font-size:13px;margin-bottom:14px}
+.voice p{font-family:var(--serif);font-size:19px;line-height:1.7;margin-bottom:18px}
+.voice cite{font-style:normal;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;margin:0 auto}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:21px;
+  display:flex;justify-content:space-between;gap:20px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--clay);font-size:24px;transition:.25s;line-height:1}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--body);font-size:16px;line-height:1.9;padding-top:14px}
+
+/* ---------- Buchung ---------- */
+.book{background:linear-gradient(180deg,var(--sand) 0%,var(--sand2) 100%);
+  border-block:1px solid var(--line);text-align:center}
+.book h2{font-size:clamp(30px,4.2vw,48px);margin:14px 0 16px}
+.book p{color:var(--body);font-size:17px;max-width:520px;margin:0 auto 34px;line-height:1.9}
+.bookbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hours{display:inline-flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-top:40px;
+  padding-top:26px;border-top:1px solid var(--line);font-size:14.5px;color:var(--body)}
+.hours b{font-family:var(--serif);color:var(--deep);font-weight:400}
+
+/* ---------- Footer ---------- */
+footer{background:var(--deep);color:#fff;padding:72px 0 0}
+footer .brand{color:#fff}
+footer h5{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--nude);margin-bottom:20px}
+footer ul{list-style:none;display:grid;gap:11px;font-size:15px;color:#fff}
+footer ul a:hover{color:var(--nude)}
+footer .about-f p{font-size:15px;line-height:1.95;color:#fff;margin-top:16px;max-width:330px}
+.fgrid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:44px;padding-bottom:50px}
+.fbottom{border-top:1px solid rgba(227,203,187,.3);padding:24px 0;display:flex;
+  justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#fff}
+
+/* ---------- Platzhalter-Grafiken ---------- */
+.ph{background:var(--sand2)}
+
+/* ---------- Passwort-Gate ---------- */
+body.locked{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:999;display:grid;place-items:center;padding:24px;
+  background:radial-gradient(circle at 50% 38%,#fff 0%,var(--sand) 55%,var(--sand2) 100%);
+  transition:opacity .5s,visibility .5s}
+.gate.open{opacity:0;visibility:hidden}
+.gate-box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:56px 40px 46px;
+  max-width:430px;width:100%;text-align:center;box-shadow:0 30px 70px rgba(120,86,70,.14)}
+.gate-logo{font-family:var(--serif);font-size:26px;letter-spacing:.3em;text-transform:uppercase}
+.gate-logo span{color:var(--clay)}
+.gate-sub{font-family:var(--serif);font-size:16px;letter-spacing:.1em;color:var(--clay);margin:12px 0 28px}
+.gate form{display:flex;border:1px solid var(--clay);border-radius:40px;overflow:hidden}
+.gate input{flex:1;border:0;background:transparent;padding:15px 18px;font-family:var(--sans);
+  font-size:14px;letter-spacing:.12em;color:var(--deep);outline:none}
+.gate input::placeholder{color:#a3907f}
+.gate button{background:var(--clay);color:#fff;border:0;padding:15px 26px;cursor:pointer;
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;transition:.3s}
+.gate button:hover{background:var(--deep)}
+.gate-error{min-height:20px;margin-top:14px;font-size:13px;color:#a3453f}
+.gate-box.shake{animation:shake .45s}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .menu{display:none}
+  .burger{display:block}
+  .treat,.stepgrid,.vgrid{grid-template-columns:1fr 1fr}
+  .hero-in,.about{grid-template-columns:1fr;gap:44px}
+  .hero-media{max-width:440px;margin:0 auto}
+  .fgrid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media(max-width:760px){
+  body{font-size:16.5px}
+  section{padding:66px 0}
+  .wrap{padding:0 20px}
+  .head{margin-bottom:38px}
+  .treat,.stepgrid,.vgrid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr;gap:32px;padding-bottom:38px}
+  .fbottom{flex-direction:column;align-items:flex-start;gap:10px}
+  .hero{padding:56px 0 70px}
+  .hero-cta,.bookbtns{flex-direction:column;align-items:stretch}
+  .topbar{letter-spacing:.14em;font-size:11px;line-height:1.7}
+  .nav{height:68px}
+  .brand{font-size:19px;letter-spacing:.22em}
+  .gate form{flex-direction:column;border-radius:22px}
+  .gate input{text-align:center}
+  .gate button{padding:15px;border-top:1px solid var(--nude)}
+  .hours{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="ic-leaf" viewBox="0 0 24 24">
+    <path d="M12 22c0-8 4-13 9-14-1 8-4 12-9 14z"/><path d="M12 22C12 14 8 9 3 8c1 8 4 12 9 14z"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 13l5 5L20 6"/></symbol>
+  <symbol id="ic-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+</defs></svg>
+
+<!-- Passwort-Gate -->
+<div class="gate" id="gate">
+  <div class="gate-box" id="gate-box">
+    <div class="gate-logo">ELA<span>&nbsp;body</span></div>
+    <div class="gate-sub" data-en="Private draft · mystu.de" data-de="Geschützter Entwurf · mystu.de">Private draft · mystu.de</div>
+    <form id="gate-form">
+      <input type="password" id="gate-input" placeholder="Password" autocomplete="off" autofocus>
+      <button type="submit" data-en="Unlock" data-de="Entsperren">Unlock</button>
+    </form>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<div class="topbar" data-en="Dubai · Brazilian Lymphatic Specialist · By appointment only"
+     data-de="Dubai · Brazilian Lymphatic Specialist · Nur nach Termin">Dubai · Brazilian Lymphatic Specialist · By appointment only</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">ELA<span>&nbsp;body</span></a>
+    <nav class="menu">
+      <a href="#treatments" data-en="Treatments" data-de="Behandlungen">Treatments</a>
+      <a href="#process" data-en="How it works" data-de="Ablauf">How it works</a>
+      <a href="#about" data-en="About Ela" data-de="Über Ela">About Ela</a>
+      <a href="#faq" data-en="FAQ" data-de="FAQ">FAQ</a>
+      <a href="#booking" data-en="Booking" data-de="Termin">Booking</a>
+    </nav>
+    <div class="navright">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a href="#" class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22"><use href="#ic-menu"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow" data-en="Brazilian Lymphatic Drainage" data-de="Brasilianische Lymphdrainage">Brazilian Lymphatic Drainage</p>
+      <h1 data-en="Feel <em>lighter</em><br>in your own body" data-de="Fühl dich <em>leichter</em><br>in deinem Körper">Feel <em>lighter</em><br>in your own body</h1>
+      <p class="lead" data-en="Gentle, hands-on lymphatic work for pregnancy, post-surgery recovery and everyday puffiness — in a calm private studio in Dubai."
+         data-de="Sanfte, manuelle Lymphdrainage für Schwangerschaft, Genesung nach Operationen und alltägliche Schwellungen — in einem ruhigen, privaten Studio in Dubai.">Gentle, hands-on lymphatic work for pregnancy, post-surgery recovery and everyday puffiness — in a calm private studio in Dubai.</p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn solid" data-en="Book your session" data-de="Termin anfragen">Book your session</a>
+        <a href="#treatments" class="btn" data-en="See treatments" data-de="Behandlungen ansehen">See treatments</a>
+      </div>
+      <div class="trust">
+        <div><b>8+</b><span data-en="years of practice" data-de="Jahre Erfahrung">years of practice</span></div>
+        <div><b>1.200+</b><span data-en="sessions given" data-de="Behandlungen">sessions given</span></div>
+        <div><b>100%</b><span data-en="private studio" data-de="privates Studio">private studio</span></div>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <svg class="ph" viewBox="0 0 400 500" aria-label="Placeholder">
+        <rect width="400" height="500" fill="#f0e3d8"/>
+        <g fill="none" stroke="#b0836a" stroke-width="1.3" opacity=".55">
+          <circle cx="200" cy="215" r="70"/>
+          <path d="M200 285c-58 0-95 42-95 105h190c0-63-37-105-95-105z"/>
+          <path d="M120 380c50-18 110-18 160 0" stroke-dasharray="6 8"/>
+        </g>
+        <text x="200" y="455" text-anchor="middle" fill="#b9a493" font-family="Jost,sans-serif"
+              font-size="13" letter-spacing="5">PHOTO PLACEHOLDER</text>
+      </svg>
+    </figure>
+  </div>
+</div>
+
+<!-- ============ BEHANDLUNGEN ============ -->
+<section id="treatments">
+  <div class="wrap">
+    <div class="head">
+      <svg class="leaf"><use href="#ic-leaf"/></svg>
+      <h2 data-en="Treatments" data-de="Behandlungen">Treatments</h2>
+      <p data-en="Every session starts with a short consultation, so the pressure and the areas we work on match how your body feels that day."
+         data-de="Jede Sitzung beginnt mit einem kurzen Gespräch — Druck und Zonen richten sich danach, wie sich dein Körper an diesem Tag anfühlt.">Every session starts with a short consultation, so the pressure and the areas we work on match how your body feels that day.</p>
+    </div>
+    <div class="treat" id="treatgrid"></div>
+  </div>
+</section>
+
+<!-- ============ ABLAUF ============ -->
+<section class="steps" id="process">
+  <div class="wrap">
+    <div class="head">
+      <svg class="leaf"><use href="#ic-leaf"/></svg>
+      <h2 data-en="How a session works" data-de="So läuft eine Sitzung ab">How a session works</h2>
+    </div>
+    <div class="stepgrid">
+      <div class="step">
+        <div class="num">1</div>
+        <h3 data-en="Message me" data-de="Schreib mir">Message me</h3>
+        <p data-en="Send a DM with what you would like to work on. If you are post-op, tell me the procedure and the date."
+           data-de="Schreib mir per DM, worum es geht. Nach einer OP: Eingriff und Datum bitte mit angeben.">Send a DM with what you would like to work on. If you are post-op, tell me the procedure and the date.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3 data-en="Your session" data-de="Deine Sitzung">Your session</h3>
+        <p data-en="60 to 90 minutes of manual lymphatic drainage — no machines, no harsh pressure, just slow rhythmic hands-on work."
+           data-de="60 bis 90 Minuten manuelle Lymphdrainage — ohne Geräte, ohne harten Druck, ruhig und rhythmisch von Hand.">60 to 90 minutes of manual lymphatic drainage — no machines, no harsh pressure, just slow rhythmic hands-on work.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3 data-en="Aftercare" data-de="Nachsorge">Aftercare</h3>
+        <p data-en="You leave with simple aftercare notes — hydration, movement and, where useful, a plan for follow-up sessions."
+           data-de="Du bekommst einfache Hinweise für danach — Trinken, Bewegung und, wenn sinnvoll, einen Plan für Folgetermine.">You leave with simple aftercare notes — hydration, movement and, where useful, a plan for follow-up sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UEBER ELA ============ -->
+<section id="about">
+  <div class="wrap about">
+    <figure class="imgbox">
+      <svg class="ph" viewBox="0 0 400 500" aria-label="Placeholder">
+        <rect width="400" height="500" fill="#f0e3d8"/>
+        <g fill="none" stroke="#b0836a" stroke-width="1.3" opacity=".5">
+          <circle cx="200" cy="200" r="62"/>
+          <path d="M200 268c-54 0-88 40-88 100h176c0-60-34-100-88-100z"/>
+        </g>
+        <text x="200" y="450" text-anchor="middle" fill="#b9a493" font-family="Jost,sans-serif"
+              font-size="13" letter-spacing="5">PORTRAIT PLACEHOLDER</text>
+      </svg>
+    </figure>
+    <div>
+      <p class="eyebrow" data-en="About Ela" data-de="Über Ela">About Ela</p>
+      <h2 data-en="Trained in Brazil,<br>practising in Dubai" data-de="In Brasilien ausgebildet,<br>tätig in Dubai">Trained in Brazil,<br>practising in Dubai</h2>
+      <p data-en="I work the way I was taught in Brazil: slowly, with my hands, following the lymphatic pathways instead of forcing them. Most people expect a deep tissue massage and are surprised how light the touch is — and how different they feel afterwards."
+         data-de="Ich arbeite so, wie ich es in Brasilien gelernt habe: langsam, mit den Händen, entlang der Lymphbahnen statt gegen sie. Die meisten erwarten eine kräftige Massage und sind überrascht, wie sanft die Berührung ist — und wie anders sie sich danach fühlen.">I work the way I was taught in Brazil: slowly, with my hands, following the lymphatic pathways instead of forcing them.</p>
+      <p data-en="Pregnancy and post-operative clients are the heart of my practice. Both need patience, clean technique and someone who knows when not to touch an area at all."
+         data-de="Schwangere und Klientinnen nach Operationen sind der Kern meiner Arbeit. Beides braucht Geduld, saubere Technik und das Wissen, wann eine Zone besser unberührt bleibt.">Pregnancy and post-operative clients are the heart of my practice.</p>
+      <ul class="quals">
+        <li><svg><use href="#ic-check"/></svg><span data-en="Certified Brazilian lymphatic drainage technique" data-de="Zertifizierte brasilianische Lymphdrainage-Technik">Certified Brazilian lymphatic drainage technique</span></li>
+        <li><svg><use href="#ic-check"/></svg><span data-en="Specialised in pregnancy and post-operative care" data-de="Spezialisiert auf Schwangerschaft und Nachsorge nach OP">Specialised in pregnancy and post-operative care</span></li>
+        <li><svg><use href="#ic-check"/></svg><span data-en="Private studio, one client at a time" data-de="Privates Studio, immer nur eine Person">Private studio, one client at a time</span></li>
+        <li><svg><use href="#ic-check"/></svg><span data-en="English, German and Portuguese spoken" data-de="Englisch, Deutsch und Portugiesisch">English, German and Portuguese spoken</span></li>
+      </ul>
+      <a href="#booking" class="btn solid" data-en="Book a session" data-de="Termin anfragen">Book a session</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STIMMEN ============ -->
+<section class="voices">
+  <div class="wrap">
+    <div class="head">
+      <svg class="leaf"><use href="#ic-leaf"/></svg>
+      <h2 data-en="Client words" data-de="Stimmen">Client words</h2>
+    </div>
+    <div class="vgrid">
+      <blockquote class="voice">
+        <div class="st">★ ★ ★ ★ ★</div>
+        <p data-en="&ldquo;Third trimester and my legs finally felt like mine again. She knew exactly which positions were safe.&rdquo;"
+           data-de="&bdquo;Drittes Trimester — meine Beine fühlten sich endlich wieder wie meine an. Sie wusste genau, welche Positionen sicher sind.&ldquo;">&ldquo;Third trimester and my legs finally felt like mine again.&rdquo;</p>
+        <cite data-en="Placeholder name · Dubai Marina" data-de="Platzhalter-Name · Dubai Marina">Placeholder name · Dubai Marina</cite>
+      </blockquote>
+      <blockquote class="voice">
+        <div class="st">★ ★ ★ ★ ★</div>
+        <p data-en="&ldquo;Started two weeks after surgery. The swelling went down faster than my surgeon expected.&rdquo;"
+           data-de="&bdquo;Zwei Wochen nach der OP begonnen. Die Schwellung ging schneller zurück, als mein Chirurg erwartet hatte.&ldquo;">&ldquo;Started two weeks after surgery. The swelling went down faster than my surgeon expected.&rdquo;</p>
+        <cite data-en="Placeholder name · Business Bay" data-de="Platzhalter-Name · Business Bay">Placeholder name · Business Bay</cite>
+      </blockquote>
+      <blockquote class="voice">
+        <div class="st">★ ★ ★ ★ ★</div>
+        <p data-en="&ldquo;Calm room, no upselling, no rush. I book a session every month now.&rdquo;"
+           data-de="&bdquo;Ruhiger Raum, kein Verkaufsgespräch, keine Hektik. Ich komme jetzt jeden Monat.&ldquo;">&ldquo;Calm room, no upselling, no rush. I book a session every month now.&rdquo;</p>
+        <cite data-en="Placeholder name · Jumeirah" data-de="Platzhalter-Name · Jumeirah">Placeholder name · Jumeirah</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="head">
+      <svg class="leaf"><use href="#ic-leaf"/></svg>
+      <h2 data-en="Good to know" data-de="Gut zu wissen">Good to know</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary data-en="Does it hurt?" data-de="Tut das weh?">Does it hurt?</summary>
+        <p data-en="No. Lymphatic drainage works just under the skin, so the pressure stays light. If anything feels uncomfortable, say so and I adjust immediately."
+           data-de="Nein. Die Lymphdrainage arbeitet direkt unter der Haut, der Druck bleibt leicht. Sobald sich etwas unangenehm anfühlt, sag Bescheid — ich passe sofort an.">No. Lymphatic drainage works just under the skin, so the pressure stays light.</p>
+      </details>
+      <details>
+        <summary data-en="When can I start after surgery?" data-de="Wann kann ich nach einer OP starten?">When can I start after surgery?</summary>
+        <p data-en="Only once your surgeon clears you — usually a few days to two weeks, depending on the procedure. Please bring or forward that clearance before your first session."
+           data-de="Erst wenn dein Arzt zustimmt — je nach Eingriff meist nach wenigen Tagen bis zwei Wochen. Bitte bring diese Freigabe zur ersten Sitzung mit.">Only once your surgeon clears you — usually a few days to two weeks, depending on the procedure.</p>
+      </details>
+      <details>
+        <summary data-en="Is it safe during pregnancy?" data-de="Ist das in der Schwangerschaft sicher?">Is it safe during pregnancy?</summary>
+        <p data-en="From the second trimester, with a normal pregnancy and your doctor's agreement. Side positioning with support cushions, no pressure on the abdomen."
+           data-de="Ab dem zweiten Trimester, bei unkomplizierter Schwangerschaft und mit Zustimmung deiner Ärztin. Seitenlage mit Stützkissen, kein Druck auf den Bauch.">From the second trimester, with a normal pregnancy and your doctor's agreement.</p>
+      </details>
+      <details>
+        <summary data-en="How many sessions do I need?" data-de="Wie viele Sitzungen brauche ich?">How many sessions do I need?</summary>
+        <p data-en="For general puffiness, many clients come once or twice a month. Post-operative recovery usually means a series of sessions in the first weeks — we plan it together after the first appointment."
+           data-de="Bei allgemeiner Schwellung kommen viele ein- bis zweimal im Monat. Nach einer OP ist meist eine Serie in den ersten Wochen sinnvoll — das planen wir nach dem ersten Termin gemeinsam.">For general puffiness, many clients come once or twice a month.</p>
+      </details>
+      <details>
+        <summary data-en="Where is the studio?" data-de="Wo ist das Studio?">Where is the studio?</summary>
+        <p data-en="A private studio in Dubai — the exact address is shared once your appointment is confirmed. Home visits are possible on request."
+           data-de="Ein privates Studio in Dubai — die genaue Adresse bekommst du mit der Terminbestätigung. Hausbesuche sind auf Anfrage möglich.">A private studio in Dubai — the exact address is shared once your appointment is confirmed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUCHUNG ============ -->
+<section class="book" id="booking">
+  <div class="wrap">
+    <svg class="leaf"><use href="#ic-leaf"/></svg>
+    <h2 data-en="Book your session" data-de="Termin anfragen">Book your session</h2>
+    <p data-en="Appointments are arranged personally — send a message with your preferred day and what you would like to work on."
+       data-de="Termine werden persönlich abgestimmt — schreib mir deinen Wunschtag und worum es gehen soll.">Appointments are arranged personally — send a message with your preferred day and what you would like to work on.</p>
+    <div class="bookbtns">
+      <a href="https://www.instagram.com/ela_body_/" target="_blank" rel="noopener" class="btn solid"
+         data-en="Message on Instagram" data-de="Per Instagram schreiben">Message on Instagram</a>
+      <a href="https://wa.me/971000000000" target="_blank" rel="noopener" class="btn"
+         data-en="WhatsApp (placeholder)" data-de="WhatsApp (Platzhalter)">WhatsApp (placeholder)</a>
+    </div>
+    <div class="hours">
+      <div><b data-en="Mon – Fri" data-de="Mo – Fr">Mon – Fri</b> · 9:00 – 19:00</div>
+      <div><b data-en="Saturday" data-de="Samstag">Saturday</b> · 10:00 – 16:00</div>
+      <div><b data-en="Sunday" data-de="Sonntag">Sunday</b> · <span data-en="closed" data-de="geschlossen">closed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="about-f">
+        <div class="brand">ELA<span>&nbsp;body</span></div>
+        <p data-en="Brazilian lymphatic drainage, pregnancy massage and post-operative recovery in Dubai. All details on this page are placeholders."
+           data-de="Brasilianische Lymphdrainage, Schwangerschaftsmassage und Nachsorge nach Operationen in Dubai. Alle Angaben auf dieser Seite sind Platzhalter.">Brazilian lymphatic drainage, pregnancy massage and post-operative recovery in Dubai.</p>
+      </div>
+      <div>
+        <h5 data-en="Treatments" data-de="Behandlungen">Treatments</h5>
+        <ul>
+          <li><a href="#treatments" data-en="Lymphatic drainage" data-de="Lymphdrainage">Lymphatic drainage</a></li>
+          <li><a href="#treatments" data-en="Pregnancy massage" data-de="Schwangerschaftsmassage">Pregnancy massage</a></li>
+          <li><a href="#treatments" data-en="Post-op recovery" data-de="Nachsorge nach OP">Post-op recovery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-en="Studio" data-de="Studio">Studio</h5>
+        <ul>
+          <li data-en="Dubai, UAE" data-de="Dubai, VAE">Dubai, UAE</li>
+          <li data-en="By appointment only" data-de="Nur nach Termin">By appointment only</li>
+          <li data-en="Address on confirmation" data-de="Adresse bei Bestätigung">Address on confirmation</li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-en="Contact" data-de="Kontakt">Contact</h5>
+        <ul>
+          <li><a href="https://www.instagram.com/ela_body_/" target="_blank" rel="noopener">@ela_body_</a></li>
+          <li>+971 00 000 0000</li>
+          <li>hello@elabody.ae</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span data-en="© 2026 ELA body — mockup, all content is placeholder"
+            data-de="© 2026 ELA body — Mockup, alle Inhalte sind Platzhalter">© 2026 ELA body — mockup, all content is placeholder</span>
+      <span>Webdesign by <a href="https://mystu.de" target="_blank" rel="noopener" style="color:var(--nude)">mystu</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Behandlungen ---------- */
+var shapes = [
+  '<circle cx="150" cy="100" r="46"/><path d="M104 100c30 26 62 26 92 0" stroke-dasharray="6 7"/><path d="M150 54v92"/>',
+  '<path d="M150 46c34 0 58 26 58 58s-26 56-58 56-58-22-58-56 24-58 58-58z"/><circle cx="150" cy="104" r="22"/>',
+  '<path d="M92 132c22-46 44-70 58-70s36 24 58 70" /><path d="M92 132h116" stroke-dasharray="6 7"/><circle cx="150" cy="96" r="14"/>'
+];
+var treatments = [
+  {en:{t:'Brazilian Lymphatic Drainage',d:'The signature session: light rhythmic strokes that move retained fluid and leave the body visibly less swollen and much lighter.',dur:'60 / 90 min'},
+   de:{t:'Brasilianische Lymphdrainage',d:'Die Signature-Behandlung: leichte, rhythmische Griffe, die eingelagerte Flüssigkeit bewegen — der Körper wirkt danach sichtbar entstaut und deutlich leichter.',dur:'60 / 90 Min.'},
+   pr:'AED 450'},
+  {en:{t:'Pregnancy Massage',d:'Side-lying, fully supported work for heavy legs, swollen ankles and a tired lower back. From the second trimester with your doctor’s agreement.',dur:'60 min'},
+   de:{t:'Schwangerschaftsmassage',d:'In Seitenlage, vollständig abgestützt — für schwere Beine, geschwollene Knöchel und einen müden unteren Rücken. Ab dem zweiten Trimester mit ärztlicher Zustimmung.',dur:'60 Min.'},
+   pr:'AED 420'},
+  {en:{t:'Post-Op Recovery',d:'Structured drainage after liposuction, tummy tuck or BBL — always after surgical clearance, usually as a series over the first weeks.',dur:'60 / 90 min'},
+   de:{t:'Nachsorge nach OP',d:'Strukturierte Drainage nach Liposuktion, Bauchdeckenstraffung oder BBL — immer nach ärztlicher Freigabe, meist als Serie über die ersten Wochen.',dur:'60 / 90 Min.'},
+   pr:'AED 500'}
+];
+
+function renderTreatments(lang){
+  document.getElementById('treatgrid').innerHTML = treatments.map(function(t,i){
+    var c = t[lang];
+    return '<article class="tcard">'
+      + '<svg class="ph" viewBox="0 0 300 200" aria-label="Placeholder">'
+      + '<rect width="300" height="200" fill="' + (i%2 ? '#f4e8de' : '#f0e3d8') + '"/>'
+      + '<g fill="none" stroke="#b0836a" stroke-width="1.3" opacity=".5">' + shapes[i%shapes.length] + '</g>'
+      + '<text x="150" y="180" text-anchor="middle" fill="#b9a493" font-family="Jost,sans-serif" '
+      + 'font-size="10" letter-spacing="4">PHOTO PLACEHOLDER</text></svg>'
+      + '<div class="in"><h3>' + c.t + '</h3><p>' + c.d + '</p>'
+      + '<div class="tmeta"><span class="dur">' + c.dur + '</span><span class="pr">' + t.pr + '</span></div>'
+      + '</div></article>';
+  }).join('');
+}
+
+/* ---------- Sprachumschalter ---------- */
+(function(){
+  var KEY = 'ela_lang';
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e){}
+  var initial = saved || ((navigator.language||'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en');
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + lang);
+      if (v !== null) el.innerHTML = v;
+    });
+    var input = document.getElementById('gate-input');
+    if (input) input.placeholder = (lang === 'de' ? 'Passwort' : 'Password');
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem(KEY, lang); } catch(e){}
+    renderTreatments(lang);
+  }
+
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  setLang(initial);
+})();
+
+/* ---------- Passwort-Gate ---------- */
+(function(){
+  var PW = 'elabody', KEY = 'ela_mockup_auth';
+  var gate = document.getElementById('gate'), box = document.getElementById('gate-box'),
+      form = document.getElementById('gate-form'), input = document.getElementById('gate-input'),
+      err = document.getElementById('gate-error');
+  function unlock(instant){
+    if (instant) gate.style.transition = 'none';
+    gate.classList.add('open');
+    document.body.classList.remove('locked');
+    setTimeout(function(){ gate.remove(); }, instant ? 0 : 600);
+  }
+  try { if (localStorage.getItem(KEY) === '1') { unlock(true); return; } } catch(e){}
+  document.body.classList.add('locked');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (input.value.trim().toLowerCase() === PW){
+      try { localStorage.setItem(KEY, '1'); } catch(e){}
+      unlock(false);
+    } else {
+      err.textContent = document.documentElement.lang === 'de'
+        ? 'Falsches Passwort — bitte erneut versuchen.'
+        : 'Wrong password — please try again.';
+      box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+      input.select();
+    }
+  });
+})();
+</script>
+</body>
+</html>
