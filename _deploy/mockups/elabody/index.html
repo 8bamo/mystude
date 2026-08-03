@@ -160,6 +160,7 @@ footer .about-f p{font-size:15px;line-height:1.95;color:#fff;margin-top:16px;max
 /* ---------- Platzhalter-Grafiken ---------- */
 .ph{background:var(--sand2)}
 
+
 /* ---------- Passwort-Gate ---------- */
 body.locked{overflow:hidden}
 .gate{position:fixed;inset:0;z-index:999;display:grid;place-items:center;padding:24px;
@@ -209,6 +210,123 @@ body.locked{overflow:hidden}
   .gate input{text-align:center}
   .gate button{padding:15px;border-top:1px solid var(--nude)}
   .hours{gap:16px}
+}
+
+/* ---------- Kontaktformular ---------- */
+.bookgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start;text-align:left;margin-top:48px}
+.bookinfo h3{font-size:26px;margin-bottom:14px}
+.bookinfo p{margin:0 0 22px;max-width:none}
+.bookinfo .btn{margin-right:10px;margin-bottom:10px}
+.cform{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 30px 30px;
+  box-shadow:0 20px 46px rgba(120,86,70,.10)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:block;margin-bottom:16px}
+.field span{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--body);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;
+  background:var(--cream);padding:13px 15px;font-family:var(--sans);font-size:16px;color:var(--deep);
+  outline:none;transition:border-color .25s,box-shadow .25s}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--clay);
+  box-shadow:0 0 0 3px rgba(176,131,106,.15)}
+.field.err input,.field.err select,.field.err textarea{border-color:#c07a72;box-shadow:0 0 0 3px rgba(192,122,114,.14)}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--body);margin:6px 0 20px}
+.check input{margin-top:4px;accent-color:var(--clay);width:17px;height:17px;flex:none}
+.cform button[type=submit]{width:100%;border:0;cursor:pointer;font-family:var(--sans)}
+.formnote{font-size:13px;color:var(--body);margin-top:14px;text-align:center}
+.formok{display:none;text-align:center;padding:26px 10px}
+.formok.on{display:block;animation:fadeUp .5s ease both}
+.formok .tick{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;border:1px solid var(--clay);
+  display:grid;place-items:center}
+.formok .tick svg{width:24px;height:24px;stroke:var(--clay);fill:none;stroke-width:1.6;
+  stroke-dasharray:32;stroke-dashoffset:32;animation:draw .6s .15s ease forwards}
+.formok h3{font-size:24px;margin-bottom:8px}
+.formok p{color:var(--body);font-size:15.5px;margin:0}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- Animationen ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.22,.7,.3,1),transform .7s cubic-bezier(.22,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.09s}
+.reveal[data-d="2"]{transition-delay:.18s}
+.reveal[data-d="3"]{transition-delay:.27s}
+.hero-in>div>*{animation:fadeUp .8s cubic-bezier(.22,.7,.3,1) both}
+.hero-in>div>*:nth-child(2){animation-delay:.08s}
+.hero-in>div>*:nth-child(3){animation-delay:.16s}
+.hero-in>div>*:nth-child(4){animation-delay:.24s}
+.hero-in>div>*:nth-child(5){animation-delay:.32s}
+.hero-media{animation:fadeUp 1s .1s cubic-bezier(.22,.7,.3,1) both}
+.leaf{transition:transform .6s cubic-bezier(.22,.7,.3,1)}
+.reveal.in .leaf,.head.in .leaf{transform:rotate(-4deg)}
+.btn{transition:background .3s,color .3s,border-color .3s,transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(120,86,70,.16)}
+.step .num{transition:transform .4s cubic-bezier(.22,.7,.3,1),background .3s,color .3s}
+.step:hover .num{transform:translateY(-4px);background:var(--clay);color:#fff}
+.tcard .ph,.hero-media .ph,.about .imgbox .ph{transition:transform .9s cubic-bezier(.22,.7,.3,1)}
+.tcard:hover .ph{transform:scale(1.05)}
+.tcard{overflow:hidden}
+details p{animation:fadeUp .35s ease both}
+.voice{transition:transform .35s,box-shadow .35s}
+.voice:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(120,86,70,.12)}
+.lang button{transition:background .25s,color .25s}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+@media(max-width:900px){
+  .bookgrid{grid-template-columns:1fr;gap:34px}
+  .frow{grid-template-columns:1fr;gap:0}
+  .cform{padding:26px 20px 24px}
+}
+
+/* ---------- Terminkalender (Fake-Calendly) ---------- */
+.cal{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  box-shadow:0 20px 46px rgba(120,86,70,.10);margin-bottom:26px}
+.cal-head{display:flex;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--line);
+  background:var(--sand)}
+.cal-avatar{width:46px;height:46px;border-radius:50%;background:var(--nude);flex:none;
+  display:grid;place-items:center;font-family:var(--serif);font-size:18px;color:#fff}
+.cal-head h3{font-size:20px;line-height:1.25}
+.cal-head span{display:block;font-size:13px;color:var(--body);letter-spacing:.04em}
+.cal-body{display:grid;grid-template-columns:1.25fr 1fr}
+.cal-month{padding:22px 24px;border-right:1px solid var(--line)}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.cal-nav strong{font-family:var(--serif);font-size:19px;font-weight:400}
+.cal-nav button{background:transparent;border:1px solid var(--line);border-radius:50%;
+  width:32px;height:32px;cursor:pointer;color:var(--clay);font-size:15px;line-height:1;transition:.25s}
+.cal-nav button:hover:not(:disabled){background:var(--clay);color:#fff;border-color:var(--clay)}
+.cal-nav button:disabled{opacity:.35;cursor:not-allowed}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-dow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--body);
+  text-align:center;padding-bottom:6px}
+.cal-day{aspect-ratio:1;border:0;background:transparent;border-radius:50%;cursor:pointer;
+  font-family:var(--sans);font-size:14.5px;color:var(--deep);transition:.22s;position:relative}
+.cal-day.free{background:var(--sand);color:var(--clay-dk);font-weight:500}
+.cal-day.free:hover{background:var(--nude);transform:scale(1.08)}
+.cal-day.off{color:#c3b3a8;cursor:not-allowed}
+.cal-day.sel{background:var(--clay);color:#fff;transform:scale(1.06)}
+.cal-day.empty{visibility:hidden}
+.cal-legend{margin-top:16px;font-size:12.5px;color:var(--body);display:flex;align-items:center;gap:8px}
+.cal-legend i{width:11px;height:11px;border-radius:50%;background:var(--sand);
+  border:1px solid var(--nude);display:inline-block}
+.cal-slots{padding:22px 24px;display:flex;flex-direction:column}
+.cal-slots h4{font-size:16px;letter-spacing:.02em;margin-bottom:4px}
+.cal-slots .sub{font-size:13px;color:var(--body);margin-bottom:16px}
+.slotlist{display:grid;gap:9px;align-content:start;max-height:290px;overflow:auto;padding-right:4px}
+.slot{border:1px solid var(--line);border-radius:12px;background:var(--cream);padding:12px;
+  cursor:pointer;font-family:var(--sans);font-size:15px;color:var(--clay-dk);
+  letter-spacing:.06em;transition:.22s;animation:fadeUp .35s ease both}
+.slot:hover{border-color:var(--clay);background:#fff;transform:translateX(3px)}
+.slot.sel{background:var(--clay);border-color:var(--clay);color:#fff}
+.cal-empty{font-size:14px;color:var(--body);line-height:1.7;padding:10px 0}
+.cal-pick{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:14px;color:var(--body)}
+.cal-pick b{font-family:var(--serif);font-weight:400;color:var(--deep);font-size:16px}
+@media(max-width:900px){
+  .cal-body{grid-template-columns:1fr}
+  .cal-month{border-right:0;border-bottom:1px solid var(--line)}
+  .slotlist{max-height:none;grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -440,16 +558,88 @@ body.locked{overflow:hidden}
     <h2 data-en="Book your session" data-de="Termin anfragen">Book your session</h2>
     <p data-en="Appointments are arranged personally — send a message with your preferred day and what you would like to work on."
        data-de="Termine werden persönlich abgestimmt — schreib mir deinen Wunschtag und worum es gehen soll.">Appointments are arranged personally — send a message with your preferred day and what you would like to work on.</p>
-    <div class="bookbtns">
-      <a href="https://www.instagram.com/ela_body_/" target="_blank" rel="noopener" class="btn solid"
-         data-en="Message on Instagram" data-de="Per Instagram schreiben">Message on Instagram</a>
-      <a href="https://wa.me/971000000000" target="_blank" rel="noopener" class="btn"
-         data-en="WhatsApp (placeholder)" data-de="WhatsApp (Platzhalter)">WhatsApp (placeholder)</a>
-    </div>
-    <div class="hours">
-      <div><b data-en="Mon – Fri" data-de="Mo – Fr">Mon – Fri</b> · 9:00 – 19:00</div>
-      <div><b data-en="Saturday" data-de="Samstag">Saturday</b> · 10:00 – 16:00</div>
-      <div><b data-en="Sunday" data-de="Sonntag">Sunday</b> · <span data-en="closed" data-de="geschlossen">closed</span></div>
+    <div class="bookgrid">
+      <div class="bookinfo reveal">
+        <h3 data-en="Prefer a quick message?" data-de="Lieber kurz schreiben?">Prefer a quick message?</h3>
+        <p data-en="Instagram DM is the fastest way to reach me. If you would rather write everything down, use the form — I answer within 24 hours."
+           data-de="Am schnellsten erreichst du mich per Instagram-DM. Wenn du lieber alles in Ruhe aufschreibst, nimm das Formular — ich antworte innerhalb von 24 Stunden.">Instagram DM is the fastest way to reach me.</p>
+        <div class="bookbtns">
+          <a href="https://www.instagram.com/ela_body_/" target="_blank" rel="noopener" class="btn solid"
+             data-en="Message on Instagram" data-de="Per Instagram schreiben">Message on Instagram</a>
+          <a href="https://wa.me/971000000000" target="_blank" rel="noopener" class="btn"
+             data-en="WhatsApp (placeholder)" data-de="WhatsApp (Platzhalter)">WhatsApp (placeholder)</a>
+        </div>
+        <div class="hours">
+          <div><b data-en="Mon – Fri" data-de="Mo – Fr">Mon – Fri</b> · 9:00 – 19:00</div>
+          <div><b data-en="Saturday" data-de="Samstag">Saturday</b> · 10:00 – 16:00</div>
+          <div><b data-en="Sunday" data-de="Sonntag">Sunday</b> · <span data-en="closed" data-de="geschlossen">closed</span></div>
+        </div>
+      </div>
+
+      <div>
+      <div class="cal reveal" data-d="1">
+        <div class="cal-head">
+          <div class="cal-avatar">E</div>
+          <div>
+            <h3 data-en="Lymphatic session with Ela" data-de="Lymphdrainage bei Ela">Lymphatic session with Ela</h3>
+            <span data-en="60 – 90 min · Private studio, Dubai · GST (GMT+4)"
+                  data-de="60 – 90 Min. · Privates Studio, Dubai · GST (GMT+4)">60 – 90 min · Private studio, Dubai · GST (GMT+4)</span>
+          </div>
+        </div>
+        <div class="cal-body">
+          <div class="cal-month">
+            <div class="cal-nav">
+              <button type="button" id="cal-prev" aria-label="Previous month">&#8249;</button>
+              <strong id="cal-title"></strong>
+              <button type="button" id="cal-next" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+            <div class="cal-legend"><i></i><span data-en="Available days"
+              data-de="Freie Tage">Available days</span></div>
+          </div>
+          <div class="cal-slots">
+            <h4 id="cal-daylabel" data-en="Pick a day" data-de="Tag wählen">Pick a day</h4>
+            <div class="sub" id="cal-sub" data-en="Times shown in Dubai time."
+                 data-de="Zeiten in Dubai-Zeit.">Times shown in Dubai time.</div>
+            <div class="slotlist" id="cal-slotlist"></div>
+            <div class="cal-pick" id="cal-pick" hidden></div>
+          </div>
+        </div>
+      </div>
+      <div class="cform reveal" data-d="1">
+        <form id="bookform" novalidate>
+          <div class="frow">
+            <label class="field"><span data-en="Name" data-de="Name">Name</span>
+              <input type="text" name="name" required></label>
+            <label class="field"><span data-en="Phone / WhatsApp" data-de="Telefon / WhatsApp">Phone / WhatsApp</span>
+              <input type="tel" name="phone" required></label>
+          </div>
+          <label class="field"><span data-en="Email" data-de="E-Mail">Email</span>
+            <input type="email" name="email" required></label>
+          <div class="frow">
+            <label class="field"><span data-en="Treatment" data-de="Behandlung">Treatment</span>
+              <select name="treatment" id="f-treatment"></select></label>
+            <label class="field"><span data-en="Preferred date" data-de="Wunschtermin">Preferred date</span>
+              <input type="date" name="date" id="f-date"></label>
+          </div>
+          <label class="field"><span data-en="Your message" data-de="Deine Nachricht">Your message</span>
+            <textarea name="message" data-ph-en="Post-op? Please add the procedure and the date of your surgery."
+              data-ph-de="Nach einer OP? Bitte Eingriff und OP-Datum mit angeben."></textarea></label>
+          <label class="check"><input type="checkbox" name="consent" required>
+            <span data-en="I agree that my details may be used to contact me about this request."
+                  data-de="Ich bin einverstanden, dass meine Angaben zur Kontaktaufnahme zu dieser Anfrage genutzt werden.">I agree that my details may be used to contact me about this request.</span></label>
+          <button type="submit" class="btn solid" data-en="Send request" data-de="Anfrage senden">Send request</button>
+          <p class="formnote" data-en="Mockup — nothing is actually sent."
+             data-de="Mockup — es wird nichts wirklich versendet.">Mockup — nothing is actually sent.</p>
+        </form>
+        <div class="formok" id="formok">
+          <div class="tick"><svg viewBox="0 0 24 24"><path d="M4 13l5 5L20 6"/></svg></div>
+          <h3 data-en="Thank you!" data-de="Danke!">Thank you!</h3>
+          <p data-en="Your request has been noted. I usually reply within 24 hours."
+             data-de="Deine Anfrage ist notiert. Ich melde mich in der Regel innerhalb von 24 Stunden.">Your request has been noted. I usually reply within 24 hours.</p>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </section>
@@ -530,6 +720,63 @@ function renderTreatments(lang){
   }).join('');
 }
 
+
+/* ---------- Formular ---------- */
+var TREATMENT_OPTIONS = {
+  en: ['Brazilian Lymphatic Drainage', 'Pregnancy Massage', 'Post-Op Recovery', 'Not sure yet'],
+  de: ['Brasilianische Lymphdrainage', 'Schwangerschaftsmassage', 'Nachsorge nach OP', 'Noch unentschieden']
+};
+function fillForm(lang){
+  var sel = document.getElementById('f-treatment');
+  if (sel){
+    var i = sel.selectedIndex < 0 ? 0 : sel.selectedIndex;
+    sel.innerHTML = TREATMENT_OPTIONS[lang].map(function(o){ return '<option>' + o + '</option>'; }).join('');
+    sel.selectedIndex = i;
+  }
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){
+    el.placeholder = el.getAttribute('data-ph-' + lang) || '';
+  });
+}
+(function(){
+  var form = document.getElementById('bookform');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = false;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var f = el.closest('.field') || el.closest('.check');
+      var ok = el.type === 'checkbox' ? el.checked : el.value.trim() !== '';
+      if (el.type === 'email' && ok) ok = /.+@.+\..+/.test(el.value);
+      if (f) f.classList.toggle('err', !ok);
+      if (!ok && !bad){ bad = true; el.focus(); }
+    });
+    if (bad) return;
+    form.style.display = 'none';
+    document.getElementById('formok').classList.add('on');
+  });
+  form.addEventListener('input', function(e){
+    var f = e.target.closest('.field') || e.target.closest('.check');
+    if (f) f.classList.remove('err');
+  });
+})();
+
+/* ---------- Sanfte Einblendungen ---------- */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sel = '.head, .tcard, .step, .voice, .about .imgbox, .about > div > *, .faq details, .bookinfo, .cform, .fgrid > *';
+  document.querySelectorAll(sel).forEach(function(el, i){
+    if (el.closest('.hero')) return;
+    el.classList.add('reveal');
+    if (!el.hasAttribute('data-d')) el.setAttribute('data-d', String(i % 4));
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
 /* ---------- Sprachumschalter ---------- */
 (function(){
   var KEY = 'ela_lang';
@@ -550,12 +797,143 @@ function renderTreatments(lang){
     });
     try { localStorage.setItem(KEY, lang); } catch(e){}
     renderTreatments(lang);
+    fillForm(lang);
+    if (window.__calRefresh) window.__calRefresh();
   }
 
   document.querySelectorAll('.lang button').forEach(function(b){
     b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
   });
   setLang(initial);
+})();
+
+/* ---------- Terminkalender (Demo-Daten) ---------- */
+(function(){
+  var grid = document.getElementById('cal-grid');
+  if (!grid) return;
+  var title = document.getElementById('cal-title'),
+      list = document.getElementById('cal-slotlist'),
+      dayLabel = document.getElementById('cal-daylabel'),
+      pick = document.getElementById('cal-pick'),
+      prev = document.getElementById('cal-prev'),
+      next = document.getElementById('cal-next');
+
+  var today = new Date(); today.setHours(0,0,0,0);
+  var view = new Date(today.getFullYear(), today.getMonth(), 1);
+  var minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  var selDay = null, selSlot = null;
+
+  var SLOTS = ['09:00','10:30','12:00','14:00','15:30','17:00','18:30'];
+
+  function lang(){ return document.documentElement.lang === 'de' ? 'de' : 'en'; }
+  function locale(){ return lang() === 'de' ? 'de-DE' : 'en-GB'; }
+
+  // Deterministische Pseudo-Verfuegbarkeit, damit sie beim Neurendern stabil bleibt
+  function seeded(d){
+    var n = d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate();
+    return ((n * 9301 + 49297) % 233280) / 233280;
+  }
+  function isFree(d){
+    if (d < today) return false;
+    if (d.getDay() === 0) return false;               // Sonntag geschlossen
+    return seeded(d) > 0.38;
+  }
+  function slotsFor(d){
+    var max = d.getDay() === 6 ? 4 : SLOTS.length;    // Samstag kuerzer
+    return SLOTS.slice(0, max).filter(function(t, i){
+      return seeded(new Date(d.getFullYear(), d.getMonth(), d.getDate() + i * 3)) > 0.34;
+    });
+  }
+
+  function renderMonth(){
+    var y = view.getFullYear(), m = view.getMonth();
+    title.textContent = view.toLocaleDateString(locale(), {month:'long', year:'numeric'});
+    prev.disabled = (y === minMonth.getFullYear() && m === minMonth.getMonth());
+
+    var dows = lang() === 'de' ? ['Mo','Di','Mi','Do','Fr','Sa','So']
+                               : ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    var html = dows.map(function(d){ return '<div class="cal-dow">' + d + '</div>'; }).join('');
+
+    var first = new Date(y, m, 1);
+    var lead = (first.getDay() + 6) % 7;             // Woche startet montags
+    for (var i = 0; i < lead; i++) html += '<button class="cal-day empty" disabled></button>';
+
+    var days = new Date(y, m + 1, 0).getDate();
+    for (var d = 1; d <= days; d++){
+      var date = new Date(y, m, d);
+      var free = isFree(date) && slotsFor(date).length > 0;
+      var cls = 'cal-day ' + (free ? 'free' : 'off');
+      if (selDay && date.getTime() === selDay.getTime()) cls += ' sel';
+      html += '<button type="button" class="' + cls + '" data-d="' + d + '"'
+            + (free ? '' : ' disabled') + '>' + d + '</button>';
+    }
+    grid.innerHTML = html;
+
+    grid.querySelectorAll('.cal-day.free, .cal-day.sel').forEach(function(b){
+      b.addEventListener('click', function(){
+        selDay = new Date(view.getFullYear(), view.getMonth(), parseInt(b.dataset.d, 10));
+        selSlot = null;
+        renderMonth(); renderSlots();
+      });
+    });
+  }
+
+  function renderSlots(){
+    if (!selDay){
+      dayLabel.textContent = lang() === 'de' ? 'Tag wählen' : 'Pick a day';
+      list.innerHTML = '<div class="cal-empty">' + (lang() === 'de'
+        ? 'Wähle links einen hervorgehobenen Tag, um freie Zeiten zu sehen.'
+        : 'Select a highlighted day on the left to see open times.') + '</div>';
+      pick.hidden = true;
+      return;
+    }
+    dayLabel.textContent = selDay.toLocaleDateString(locale(),
+      {weekday:'long', day:'numeric', month:'long'});
+    var slots = slotsFor(selDay);
+    list.innerHTML = slots.map(function(t, i){
+      return '<button type="button" class="slot' + (selSlot === t ? ' sel' : '')
+        + '" style="animation-delay:' + (i * 40) + 'ms" data-t="' + t + '">' + t + '</button>';
+    }).join('');
+    list.querySelectorAll('.slot').forEach(function(b){
+      b.addEventListener('click', function(){
+        selSlot = b.dataset.t;
+        renderSlots();
+        var f = document.getElementById('f-date');
+        if (f){
+          var mm = String(selDay.getMonth() + 1).padStart(2, '0');
+          var dd = String(selDay.getDate()).padStart(2, '0');
+          f.value = selDay.getFullYear() + '-' + mm + '-' + dd;
+        }
+        var msg = document.querySelector('#bookform [name=message]');
+        if (msg){
+          var line = (lang() === 'de' ? 'Wunschtermin: ' : 'Preferred slot: ')
+            + selDay.toLocaleDateString(locale(), {day:'numeric', month:'long'}) + ', ' + selSlot;
+          msg.value = msg.value.replace(/^(Wunschtermin|Preferred slot): .*(\n\n)?/, '');
+          msg.value = line + (msg.value ? '\n\n' + msg.value : '');
+        }
+      });
+    });
+    if (selSlot){
+      pick.hidden = false;
+      pick.innerHTML = (lang() === 'de' ? 'Ausgewählt: <b>' : 'Selected: <b>')
+        + selDay.toLocaleDateString(locale(), {day:'numeric', month:'long'}) + ', ' + selSlot
+        + '</b><br>' + (lang() === 'de'
+          ? 'Bitte unten noch das Formular absenden.'
+          : 'Please send the form below to confirm.');
+    } else {
+      pick.hidden = true;
+    }
+  }
+
+  prev.addEventListener('click', function(){
+    view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderMonth();
+  });
+  next.addEventListener('click', function(){
+    view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderMonth();
+  });
+
+  window.__calRefresh = function(){ renderMonth(); renderSlots(); };
+  renderMonth(); renderSlots();
 })();
 
 /* ---------- Passwort-Gate ---------- */
