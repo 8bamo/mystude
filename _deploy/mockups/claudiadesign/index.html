@@ -10,13 +10,17 @@
 <style>
 :root{
   --white:#ffffff;
-  --paper:#faf8f4;
-  --paper2:#f2eee6;
-  --ink:#15120c;
-  --body:#4a443a;
+  --paper:#fdf8f6;
+  --paper2:#f7ece9;
+  --ink:#1c1418;
+  --body:#5a4c4e;
   --gold:#a8823a;
   --gold-lt:#c8a45c;
   --gold-pale:#e8dcc0;
+  --rose:#c98f92;
+  --rose-lt:#e7c9c8;
+  --blush:#fbf4f2;
+  --blush2:#f6e9e6;
   --line:rgba(168,130,58,.30);
   --serif:'Cormorant Garamond',Garamond,'Times New Roman',serif;
   --sans:'Jost',-apple-system,'Segoe UI',sans-serif;
@@ -255,6 +259,64 @@ body.locked{overflow:hidden}
 .dark-band .imgbox{background:transparent;border-color:rgba(200,164,92,.4)}
 .dark-band .btn{border-color:var(--gold-lt);color:var(--gold-lt)}
 .dark-band .btn:hover{background:var(--gold-lt);color:var(--ink)}
+
+/* ---------- Feminine Politur ---------- */
+.hero{background:radial-gradient(circle at 28% 30%,#fff 0%,var(--blush) 48%,var(--blush2) 100%)}
+.hero h1{font-weight:300}
+.hero h1 em{color:var(--rose)}
+.hero-media{border-radius:220px 220px 18px 18px;padding:16px;
+  box-shadow:0 26px 60px rgba(120,74,80,.13)}
+.hero-media img{border-radius:210px 210px 10px 10px}
+.hero-badge{border-radius:40px;left:50%;transform:translateX(-50%);bottom:-22px;
+  padding:14px 30px;text-align:center;white-space:nowrap;background:#fff;color:var(--ink);
+  border:1px solid var(--rose-lt);box-shadow:0 10px 26px rgba(120,74,80,.12)}
+.hero-badge span{color:var(--rose)}
+.eyebrow{font-family:var(--serif);font-style:italic;text-transform:none;font-size:16px;
+  letter-spacing:.18em;color:var(--rose);font-weight:400}
+.rule{color:var(--rose)}
+.rule::before,.rule::after{background:linear-gradient(90deg,transparent,var(--rose-lt),transparent)}
+.cat,.card,.quote,.svc,.hero-media,.split .imgbox{border-radius:18px}
+.cat,.card{overflow:hidden}
+.card:hover{border-color:var(--rose);box-shadow:0 20px 44px rgba(120,74,80,.14)}
+.cat:hover{border-color:var(--rose)}
+.card h3{font-weight:400}
+.card .sub{font-family:var(--serif);font-style:italic;text-transform:none;font-size:14px;letter-spacing:.06em}
+.price{color:var(--rose)}
+.tag{border-radius:40px;background:var(--rose);color:#fff;padding:7px 15px}
+.tag.dark{background:#fff;color:var(--rose);border-color:var(--rose-lt)}
+.quick{background:var(--rose);border-radius:0}
+.btn{border-radius:40px}
+.btn.solid{background:var(--rose);border-color:var(--rose)}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+.btn:not(.solid){border-color:var(--rose);color:var(--rose)}
+.btn:not(.solid):hover{background:var(--rose);color:#fff}
+.marquee{background:var(--blush)}
+.marquee-track{color:var(--rose)}
+.light{background:var(--blush)}
+.quote p{font-size:20px}
+.quote .qm,.quote cite,.stars{color:var(--rose)}
+.facts b{color:var(--rose)}
+.services{background:var(--rose-lt)}
+.svc svg{stroke:var(--rose)}
+.news{background:linear-gradient(180deg,var(--blush) 0%,var(--blush2) 100%);border-color:var(--rose-lt)}
+.news form{border-color:var(--rose);border-radius:40px;overflow:hidden}
+.news button{background:var(--rose)}
+.news button:hover{background:var(--ink)}
+.bag b{background:var(--rose)}
+.dark-band .btn{border-color:var(--rose-lt);color:var(--rose-lt)}
+.dark-band .btn:hover{background:var(--rose-lt);color:var(--ink)}
+.dark-band .facts b,.dark-band .eyebrow{color:var(--rose-lt)}
+.gate-logo span{color:var(--rose)}
+.gate-sub{font-family:var(--serif);font-style:italic;text-transform:none;font-size:15px;letter-spacing:.1em;color:var(--rose)}
+.gate form{border-color:var(--rose);border-radius:40px;overflow:hidden}
+.gate button{background:var(--rose)}
+.gate button:hover{background:var(--ink)}
+.gate-box{border-radius:22px;border-color:var(--rose-lt)}
+footer h5{color:var(--rose-lt)}
+.grid{gap:30px}
+@media(max-width:900px){
+  .hero-badge{position:static;transform:none;display:inline-block;margin-top:18px}
+}
 </style>
 </head>
 <body>
@@ -423,7 +485,7 @@ body.locked{overflow:hidden}
     </div>
     <div class="grid" id="produkte"></div>
     <div style="text-align:center;margin-top:56px">
-      <a href="#" class="btn">Alle 45 Taschen ansehen</a>
+      <a href="#" class="btn">Alle 48 Taschen ansehen</a>
     </div>
   </div>
 </section>
@@ -603,13 +665,29 @@ const produkte = [
   {n:'Claudia Vittoria',s:'Boxcalf · Nero',p:'3.420 €',tag:'Neu'},
   {n:'Claudia Celeste',s:'Saffiano · Gold',p:'2.310 €'},
   {n:'Claudia Rosalba',s:'Nubuk · Bordeaux',p:'1.880 €',alt:'2.100 €',tag:'Archiv',dark:true},
+  {n:'Claudia Fioretta',s:'Nappa · Rosé',p:'1.620 €',tag:'Neu'},
+  {n:'Claudia Marisa',s:'Kalbsleder · Puder',p:'2.040 €'},
+  {n:'Claudia Giuliana',s:'Boxcalf · Champagner',p:'2.760 €',tag:'Limitiert',dark:true},
+  {n:'Claudia Perla',s:'Nappa · Perlweiß',p:'1.490 €'},
 ];
 
 const shapes = [
-  '<rect x="120" y="230" width="260" height="190" rx="10"/><path d="M170 230v-28a80 80 0 01160 0v28"/><path d="M120 285h260"/><circle cx="250" cy="330" r="14"/>',
-  '<rect x="105" y="255" width="290" height="150" rx="8"/><path d="M105 255l145-55 145 55"/><path d="M105 310h290"/><circle cx="250" cy="310" r="11"/>',
-  '<rect x="130" y="240" width="240" height="200" rx="24"/><path d="M155 240c0-45 40-70 95-70s95 25 95 70"/><path d="M130 320h240"/>',
+  // Kelly / Top-Handle
+  '<rect x="120" y="230" width="260" height="190" rx="12"/><path d="M170 230v-28a80 80 0 01160 0v28"/><path d="M120 285h260"/><circle cx="250" cy="330" r="14"/>',
+  // Clutch mit Überschlag
+  '<rect x="105" y="255" width="290" height="150" rx="14"/><path d="M105 255l145-55 145 55"/><path d="M105 310h290"/><circle cx="250" cy="310" r="11"/>',
+  // Bucket Bag
+  '<path d="M150 250h200l-26 200H176z"/><path d="M175 250c0-42 34-64 75-64s75 22 75 64"/><path d="M150 300h200" stroke-dasharray="7 7"/>',
+  // Tote
   '<path d="M130 250h240l-24 195H154z"/><path d="M180 250v-26a70 70 0 01140 0v26"/><circle cx="250" cy="345" r="15"/>',
+  // Baguette / Schultertasche
+  '<rect x="115" y="285" width="270" height="120" rx="56"/><path d="M150 285c0-40 45-62 100-62s100 22 100 62"/><path d="M115 330h270"/>',
+  // Halbmond / Hobo
+  '<path d="M120 280c0 100 58 165 130 165s130-65 130-165z"/><path d="M150 280c0-46 45-72 100-72s100 26 100 72"/><circle cx="250" cy="350" r="12"/>',
+  // Mini-Bag mit Kette
+  '<rect x="165" y="290" width="170" height="130" rx="16"/><path d="M165 335h170"/><path d="M180 290c0-52 30-80 70-80s70 28 70 80" stroke-dasharray="9 8"/><circle cx="250" cy="358" r="10"/>',
+  // Kuvert / Envelope
+  '<rect x="110" y="270" width="280" height="140" rx="12"/><path d="M110 270l140 78 140-78"/><circle cx="250" cy="380" r="9"/>',
 ];
 
 document.getElementById('produkte').innerHTML = produkte.map((p,i)=>`
