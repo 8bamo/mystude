@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLAUDIA DESIGN — Feine Lederwaren &amp; Taschen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;
+  --ink:#141414;
+  --paper:#f7f5f1;
+  --white:#ffffff;
+  --gold:#c8a45c;
+  --gold-lt:#e6cf9a;
+  --gold-dk:#8c6f34;
+  --line:rgba(200,164,92,.35);
+  --serif:'Cormorant Garamond',Garamond,'Times New Roman',serif;
+  --sans:'Jost',-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--paper);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+/* ---------- Zierelemente ---------- */
+.rule{display:flex;align-items:center;gap:18px;justify-content:center;color:var(--gold)}
+.rule::before,.rule::after{content:"";height:1px;flex:1;max-width:180px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.rule svg{width:26px;height:26px;opacity:.9}
+.eyebrow{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:400}
+.corner{position:absolute;width:46px;height:46px;stroke:var(--gold);fill:none;stroke-width:1;opacity:.75}
+.c-tl{top:14px;left:14px}
+.c-tr{top:14px;right:14px;transform:scaleX(-1)}
+.c-bl{bottom:14px;left:14px;transform:scaleY(-1)}
+.c-br{bottom:14px;right:14px;transform:scale(-1)}
+
+/* ---------- Topbar ---------- */
+.topbar{background:var(--gold);color:#1a1408;text-align:center;font-size:11px;
+  letter-spacing:.3em;text-transform:uppercase;padding:9px 12px}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,164,92,.22)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:86px;gap:24px}
+.brand{font-family:var(--serif);font-size:26px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--paper);white-space:nowrap}
+.brand span{color:var(--gold)}
+.menu{display:flex;gap:34px;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.menu a{position:relative;padding:6px 0;color:rgba(255,255,255,.92);transition:color .25s}
+.menu a::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;
+  background:var(--gold);transition:.3s;transform:translateX(-50%)}
+.menu a:hover{color:var(--gold-lt)}
+.menu a:hover::after{width:100%}
+.icons{display:flex;gap:20px;align-items:center}
+.icons svg{width:19px;height:19px;stroke:var(--paper);fill:none;stroke-width:1.2;transition:stroke .25s}
+.icons a:hover svg{stroke:var(--gold)}
+.bag{position:relative}
+.bag b{position:absolute;top:-6px;right:-8px;background:var(--gold);color:#141005;
+  font-size:9px;font-weight:500;width:15px;height:15px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--sans)}
+.burger{display:none}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;
+  padding:110px 0;overflow:hidden;
+  background:radial-gradient(circle at 50% 38%,#1d1d1d 0%,#0a0a0a 62%)}
+.hero-orn{position:absolute;inset:0;pointer-events:none;opacity:.16}
+.hero-inner{position:relative;z-index:2;max-width:820px;padding:0 24px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,8vw,104px);
+  line-height:.98;letter-spacing:.02em;margin:26px 0 22px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:15px;line-height:2;color:rgba(255,255,255,.88);max-width:520px;margin:0 auto 40px}
+.btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:16px 40px;font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);
+  transition:.3s;position:relative;overflow:hidden}
+.btn:hover{background:var(--gold);color:#100c04}
+.btn.solid{background:var(--gold);color:#100c04}
+.btn.solid:hover{background:transparent;color:var(--gold)}
+
+/* ---------- Marquee ---------- */
+.marquee{border-block:1px solid rgba(200,164,92,.22);overflow:hidden;padding:16px 0;background:#0d0d0d}
+.marquee-track{display:flex;gap:60px;white-space:nowrap;animation:slide 34s linear infinite;
+  font-family:var(--serif);font-size:15px;letter-spacing:.34em;text-transform:uppercase;
+  color:rgba(200,164,92,.7)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.head{text-align:center;margin-bottom:64px}
+.head h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.6vw,54px);
+  margin:18px 0 14px;letter-spacing:.03em}
+.head p{color:rgba(255,255,255,.8);font-size:14px;max-width:520px;margin:0 auto;line-height:1.9}
+
+/* ---------- Kategorien ---------- */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cat{position:relative;aspect-ratio:3/4;overflow:hidden;background:#131313;
+  border:1px solid rgba(200,164,92,.18)}
+.cat .ph{width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.cat:hover .ph{transform:scale(1.06)}
+.cat figcaption{position:absolute;inset:auto 0 0 0;padding:30px 24px;
+  background:linear-gradient(to top,rgba(8,8,8,.92),transparent);text-align:center}
+.cat figcaption h3{font-family:var(--serif);font-size:26px;font-weight:300;letter-spacing:.16em;
+  text-transform:uppercase}
+.cat figcaption span{font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-top:8px}
+
+/* ---------- Produkte ---------- */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.card{position:relative;background:#101010;border:1px solid rgba(200,164,92,.16);
+  transition:border-color .35s,transform .35s}
+.card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.card .media{position:relative;aspect-ratio:4/5;overflow:hidden;background:#151515}
+.card .media .ph{transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.card:hover .media .ph{transform:scale(1.07)}
+.tag{position:absolute;top:14px;left:14px;z-index:3;background:var(--gold);color:#120d04;
+  font-size:9px;letter-spacing:.24em;text-transform:uppercase;padding:6px 12px}
+.tag.dark{background:#0a0a0a;color:var(--gold);border:1px solid var(--gold)}
+.card .body{padding:22px 20px 26px;text-align:center}
+.card h3{font-family:var(--serif);font-size:21px;font-weight:400;letter-spacing:.05em}
+.card .sub{font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin:8px 0 14px}
+.price{font-family:var(--serif);font-size:19px;color:var(--gold);letter-spacing:.08em}
+.price s{color:rgba(247,245,241,.32);font-size:15px;margin-right:10px}
+.quick{position:absolute;left:0;right:0;bottom:0;padding:14px;background:rgba(200,164,92,.94);
+  color:#120d04;text-align:center;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  transform:translateY(100%);transition:transform .35s;z-index:3}
+.card:hover .quick{transform:translateY(0)}
+
+/* ---------- Split / Handwerk ---------- */
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.split .imgbox{position:relative;border:1px solid var(--line);padding:16px}
+.split .txt h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,4vw,48px);
+  margin:18px 0 24px;line-height:1.15}
+.split .txt p{color:#fff;font-weight:400;line-height:2.05;font-size:15px;margin-bottom:20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:36px 0 40px;
+  border-top:1px solid rgba(200,164,92,.22);border-bottom:1px solid rgba(200,164,92,.22);padding:26px 0}
+.facts b{font-family:var(--serif);display:block;font-size:34px;font-weight:400;color:var(--gold)}
+.facts span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+
+/* ---------- Hell-Sektion ---------- */
+.light{background:var(--paper);color:var(--ink)}
+.light .head p{color:rgba(20,20,20,.6)}
+.light .rule::before,.light .rule::after{background:linear-gradient(90deg,transparent,var(--gold-dk),transparent)}
+.light .rule{color:var(--gold-dk)}
+.light .eyebrow{color:var(--gold-dk)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.quote{position:relative;background:var(--white);padding:52px 34px 40px;text-align:center;
+  border:1px solid rgba(140,111,52,.25)}
+.quote .qm{font-family:var(--serif);font-size:60px;color:var(--gold-dk);line-height:.6;opacity:.5}
+.quote p{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.75;margin:20px 0 24px}
+.quote cite{font-style:normal;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-dk)}
+.stars{color:var(--gold-dk);letter-spacing:.3em;font-size:12px;margin-bottom:14px}
+
+/* ---------- Service ---------- */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(200,164,92,.22)}
+.svc{background:var(--black);padding:46px 26px;text-align:center}
+.svc svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1;margin:0 auto 20px}
+.svc h4{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:.1em;margin-bottom:10px}
+.svc p{font-size:13px;color:rgba(255,255,255,.82);line-height:1.9}
+
+/* ---------- Newsletter ---------- */
+.news{position:relative;text-align:center;background:
+  linear-gradient(rgba(10,10,10,.86),rgba(10,10,10,.86)),#1a1a1a;padding:120px 0}
+.news form{display:flex;gap:0;max-width:520px;margin:36px auto 16px;border:1px solid var(--gold)}
+.news input{flex:1;background:transparent;border:0;padding:17px 20px;color:var(--paper);
+  font-family:var(--sans);font-size:13px;letter-spacing:.1em;outline:none}
+.news input::placeholder{color:rgba(255,255,255,.6)}
+.news button{background:var(--gold);color:#120d04;border:0;padding:17px 32px;cursor:pointer;
+  font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;transition:.3s}
+.news button:hover{background:var(--gold-lt)}
+.news small{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.08em}
+
+/* ---------- Footer ---------- */
+footer{background:#070707;border-top:1px solid rgba(200,164,92,.22);padding:80px 0 0}
+.fgrid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:48px;padding-bottom:56px}
+footer h5{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+footer ul{list-style:none;display:grid;gap:12px;font-size:13px;color:rgba(255,255,255,.8)}
+footer ul a:hover{color:var(--gold-lt)}
+footer .about p{font-size:13px;line-height:2;color:rgba(255,255,255,.78);margin-top:18px;max-width:320px}
+.fbottom{border-top:1px solid rgba(200,164,92,.18);padding:26px 0;display:flex;
+  justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;
+  letter-spacing:.14em;color:rgba(255,255,255,.62)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr;gap:40px}
+  .quotes{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .menu{display:none}
+  .burger{display:block}
+  .cats{grid-template-columns:1fr}
+  section{padding:76px 0}
+  .nav{height:70px}
+  .brand{font-size:19px;letter-spacing:.24em}
+}
+</style>
+</head>
+<body>
+
+<!-- wiederverwendbare Zier-Symbole -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="orn-diamond" viewBox="0 0 24 24">
+      <path d="M12 2l3.2 6.8L22 12l-6.8 3.2L12 22l-3.2-6.8L2 12l6.8-3.2z" fill="currentColor" opacity=".85"/>
+    </symbol>
+    <symbol id="orn-corner" viewBox="0 0 48 48">
+      <path d="M1 47V13C1 6.4 6.4 1 13 1h34"/>
+      <path d="M9 47V15c0-3.3 2.7-6 6-6h32"/>
+      <circle cx="15" cy="15" r="2.5"/>
+    </symbol>
+    <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></symbol>
+    <symbol id="ic-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+    <symbol id="ic-bag" viewBox="0 0 24 24"><path d="M4 7h16l-1.3 14H5.3z"/><path d="M8.5 7V5.5a3.5 3.5 0 017 0V7"/></symbol>
+    <symbol id="ic-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">Weltweiter Versand · Handgefertigt in Italien · 30 Tage Rückgaberecht</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Claudia<span>&nbsp;·&nbsp;</span>Design</a>
+    <nav class="menu">
+      <a href="#kollektion">Kollektion</a>
+      <a href="#neu">Neuheiten</a>
+      <a href="#handwerk">Handwerk</a>
+      <a href="#service">Service</a>
+      <a href="#kontakt">Boutique</a>
+    </nav>
+    <div class="icons">
+      <a href="#" aria-label="Suche"><svg><use href="#ic-search"/></svg></a>
+      <a href="#" aria-label="Konto"><svg><use href="#ic-user"/></svg></a>
+      <a href="#" class="bag" aria-label="Warenkorb"><svg><use href="#ic-bag"/></svg><b>2</b></a>
+      <a href="#" class="burger" aria-label="Menü"><svg><use href="#ic-menu"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <svg class="hero-orn" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#c8a45c" stroke-width=".8">
+      <circle cx="600" cy="380" r="250"/><circle cx="600" cy="380" r="310"/>
+      <circle cx="600" cy="380" r="180" stroke-dasharray="3 9"/>
+      <path d="M600 60 L740 380 600 700 460 380Z"/>
+      <path d="M290 380h620M600 70v620" stroke-dasharray="2 12"/>
+    </g>
+  </svg>
+  <svg class="corner c-tl"><use href="#orn-corner"/></svg>
+  <svg class="corner c-tr"><use href="#orn-corner"/></svg>
+  <svg class="corner c-bl"><use href="#orn-corner"/></svg>
+  <svg class="corner c-br"><use href="#orn-corner"/></svg>
+
+  <div class="hero-inner">
+    <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+    <p class="eyebrow" style="margin-top:22px">Kollektion Herbst / Winter</p>
+    <h1>Zeitlose Eleganz<br>in <em>feinstem</em> Leder</h1>
+    <p>Jede Tasche entsteht in über 40 Arbeitsstunden — von Hand gefertigt aus pflanzlich gegerbtem Kalbsleder und mit 24-karätigen Beschlägen veredelt.</p>
+    <div class="btns">
+      <a href="#kollektion" class="btn solid">Kollektion entdecken</a>
+      <a href="#handwerk" class="btn">Unser Handwerk</a>
+    </div>
+  </div>
+</div>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Handgefertigt</span><span>◆</span><span>Pflanzlich gegerbt</span><span>◆</span>
+    <span>Lebenslange Reparatur</span><span>◆</span><span>Limitierte Auflagen</span><span>◆</span>
+    <span>Handgefertigt</span><span>◆</span><span>Pflanzlich gegerbt</span><span>◆</span>
+    <span>Lebenslange Reparatur</span><span>◆</span><span>Limitierte Auflagen</span><span>◆</span>
+  </div>
+</div>
+
+<!-- ============ KATEGORIEN ============ -->
+<section id="kollektion">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+      <h2>Die Kollektionen</h2>
+      <p>Drei Linien, ein Anspruch: Materialien, die mit den Jahren schöner werden.</p>
+    </div>
+    <div class="cats">
+      <figure class="cat">
+        <svg class="ph" viewBox="0 0 600 800" aria-label="Platzhalter Handtaschen">
+          <rect width="600" height="800" fill="#181818"/>
+          <g fill="none" stroke="#c8a45c" stroke-width="1.4" opacity=".55">
+            <rect x="160" y="300" width="280" height="210" rx="10"/>
+            <path d="M215 300v-30a85 85 0 01170 0v30"/>
+            <path d="M160 355h280"/><circle cx="300" cy="410" r="16"/>
+          </g>
+          <text x="300" y="620" text-anchor="middle" fill="#5a5a5a" font-family="Jost,sans-serif"
+                font-size="16" letter-spacing="6">BILD-PLATZHALTER</text>
+        </svg>
+        <figcaption><h3>Handtaschen</h3><span>24 Modelle</span></figcaption>
+      </figure>
+      <figure class="cat">
+        <svg class="ph" viewBox="0 0 600 800" aria-label="Platzhalter Clutches">
+          <rect width="600" height="800" fill="#151515"/>
+          <g fill="none" stroke="#c8a45c" stroke-width="1.4" opacity=".55">
+            <rect x="150" y="340" width="300" height="150" rx="8"/>
+            <path d="M150 400h300"/><circle cx="300" cy="400" r="12"/>
+            <path d="M150 340l150-60 150 60"/>
+          </g>
+          <text x="300" y="620" text-anchor="middle" fill="#5a5a5a" font-family="Jost,sans-serif"
+                font-size="16" letter-spacing="6">BILD-PLATZHALTER</text>
+        </svg>
+        <figcaption><h3>Clutches</h3><span>12 Modelle</span></figcaption>
+      </figure>
+      <figure class="cat">
+        <svg class="ph" viewBox="0 0 600 800" aria-label="Platzhalter Reisegepäck">
+          <rect width="600" height="800" fill="#181818"/>
+          <g fill="none" stroke="#c8a45c" stroke-width="1.4" opacity=".55">
+            <rect x="130" y="330" width="340" height="200" rx="16"/>
+            <path d="M240 330v-24h120v24"/><path d="M130 430h340"/>
+            <circle cx="300" cy="430" r="18"/>
+          </g>
+          <text x="300" y="620" text-anchor="middle" fill="#5a5a5a" font-family="Jost,sans-serif"
+                font-size="16" letter-spacing="6">BILD-PLATZHALTER</text>
+        </svg>
+        <figcaption><h3>Reisegepäck</h3><span>9 Modelle</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUKTE ============ -->
+<section id="neu" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+      <h2>Neu eingetroffen</h2>
+      <p>Limitiert auf je 50 Stück — mit nummeriertem Echtheitszertifikat.</p>
+    </div>
+    <div class="grid" id="produkte"></div>
+    <div style="text-align:center;margin-top:56px">
+      <a href="#" class="btn">Alle 45 Taschen ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HANDWERK ============ -->
+<section id="handwerk" style="background:#0d0d0d;border-block:1px solid rgba(200,164,92,.18)">
+  <div class="wrap split">
+    <div class="imgbox">
+      <svg class="ph" viewBox="0 0 800 900" aria-label="Platzhalter Atelier">
+        <rect width="800" height="900" fill="#171717"/>
+        <g fill="none" stroke="#c8a45c" stroke-width="1.2" opacity=".45">
+          <circle cx="400" cy="400" r="150"/><circle cx="400" cy="400" r="200" stroke-dasharray="4 10"/>
+          <path d="M400 250v300M250 400h300"/>
+        </g>
+        <text x="400" y="700" text-anchor="middle" fill="#5a5a5a" font-family="Jost,sans-serif"
+              font-size="18" letter-spacing="7">ATELIER-PLATZHALTER</text>
+      </svg>
+    </div>
+    <div class="txt">
+      <p class="eyebrow">Seit 1932</p>
+      <h2>Vier Generationen<br>am selben Zuschneidetisch.</h2>
+      <p>In unserem Atelier in Florenz arbeiten zwölf Sattlermeister an höchstens acht Taschen pro Woche. Jede Naht wird im Sattlerstich von Hand gesetzt — die einzige Naht, die sich nicht auftrennt, wenn ein Faden reißt.</p>
+      <p>Das Leder stammt aus einer Gerberei im Arnotal, die noch mit Eichenrinde und Zeit arbeitet: sechs Monate in der Grube statt drei Tage im Chromfass.</p>
+      <div class="facts">
+        <div><b>1932</b><span>Gegründet</span></div>
+        <div><b>40h</b><span>pro Tasche</span></div>
+        <div><b>∞</b><span>Reparatur</span></div>
+      </div>
+      <a href="#" class="btn">Das Atelier besuchen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STIMMEN (hell) ============ -->
+<section class="light">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+      <h2>Was unsere Kundinnen sagen</h2>
+      <p>Über 1.800 Bewertungen mit einem Durchschnitt von 4,9 von 5 Sternen.</p>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <div class="qm">&ldquo;</div>
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>Nach drei Jahren täglichem Gebrauch sieht sie schöner aus als am ersten Tag. Genau das war versprochen.</p>
+        <cite>— Platzhalter Name, Wien</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <div class="qm">&ldquo;</div>
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>Der Griff war nach einem Umzug beschädigt. Vier Wochen später kam sie zurück — kostenlos, wie neu.</p>
+        <cite>— Platzhalter Name, Zürich</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <div class="qm">&ldquo;</div>
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>Die Beratung in der Boutique war das Gegenteil von Verkauf. Man hat mir von einem Modell abgeraten.</p>
+        <cite>— Platzhalter Name, Hamburg</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE ============ -->
+<section id="service" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="head">
+      <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+      <h2>Claudia-Design-Service</h2>
+    </div>
+  </div>
+  <div class="services">
+    <div class="svc">
+      <svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+      <h4>Versand &amp; Retoure</h4><p>Weltweit versichert und kostenfrei — inklusive 30 Tagen Rückgaberecht.</p>
+    </div>
+    <div class="svc">
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.6L21 8.6l-4.5 4.4 1.1 6.2L12 16.3 6.4 19.2l1.1-6.2L3 8.6l6.4-1z"/></svg>
+      <h4>Monogrammierung</h4><p>Initialen in Blindprägung oder Blattgold, direkt im Atelier gesetzt.</p>
+    </div>
+    <div class="svc">
+      <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5 5 0 00-7 0L12 6.3l-1.7-1.7a5 5 0 10-7 7L12 20.5l8.8-8.9a5 5 0 000-7z"/></svg>
+      <h4>Lebenslange Pflege</h4><p>Reinigung, Nachfärben und Reparatur — solange die Tasche existiert.</p>
+    </div>
+    <div class="svc">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+      <h4>Private Termine</h4><p>Persönliche Beratung in der Boutique — auch außerhalb der Öffnungszeiten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<div class="news" id="kontakt" style="position:relative">
+  <svg class="corner c-tl"><use href="#orn-corner"/></svg>
+  <svg class="corner c-tr"><use href="#orn-corner"/></svg>
+  <svg class="corner c-bl"><use href="#orn-corner"/></svg>
+  <svg class="corner c-br"><use href="#orn-corner"/></svg>
+  <div class="wrap">
+    <div class="rule"><svg><use href="#orn-diamond"/></svg></div>
+    <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(30px,4.4vw,50px);margin:22px 0 14px">
+      Der Claudia-Design-Kreis</h2>
+    <p style="color:rgba(255,255,255,.88);font-size:14px;max-width:480px;margin:0 auto;line-height:1.9">
+      Limitierte Auflagen sind meist vor der Veröffentlichung vergeben. Der Newsletter ist der einzige Weg, vorher davon zu erfahren.</p>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Willkommen ◆';">
+      <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+      <button type="submit">Eintragen</button>
+    </form>
+    <small>Kein Spam. Etwa ein Brief im Monat. Jederzeit abbestellbar.</small>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="about">
+        <div class="brand" style="font-size:22px">Claudia<span>&nbsp;·&nbsp;</span>Design</div>
+        <p>Claudia Design — feine Lederwaren aus Florenz. Gegründet 1932, geführt in vierter Generation. Alle Angaben auf dieser Seite sind Platzhalter.</p>
+      </div>
+      <div><h5>Kollektion</h5><ul>
+        <li><a href="#">Handtaschen</a></li><li><a href="#">Clutches</a></li>
+        <li><a href="#">Reisegepäck</a></li><li><a href="#">Kleinlederwaren</a></li>
+      </ul></div>
+      <div><h5>Service</h5><ul>
+        <li><a href="#">Versand &amp; Retoure</a></li><li><a href="#">Reparatur</a></li>
+        <li><a href="#">Monogrammierung</a></li><li><a href="#">Pflegehinweise</a></li>
+      </ul></div>
+      <div><h5>Boutique</h5><ul>
+        <li>Platzhalterstraße 1</li><li>70173 Stuttgart</li>
+        <li><a href="#">+49 000 000000</a></li><li><a href="#">hallo@claudiadesign.de</a></li>
+      </ul></div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Claudia Design — Mockup, alle Inhalte sind Platzhalter</span>
+      <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Produkt-Platzhalter
+const produkte = [
+  {n:'Claudia Aurelia',s:'Kalbsleder · Nero',p:'2.480 €',tag:'Neu'},
+  {n:'Claudia Serafina',s:'Boxcalf · Cognac',p:'1.960 €',alt:'2.240 €',tag:'Limitiert',dark:true},
+  {n:'Claudia Ottavia',s:'Saffiano · Elfenbein',p:'2.150 €'},
+  {n:'Claudia Ludovica',s:'Nubuk · Anthrazit',p:'1.740 €',tag:'Nur 12 Stück',dark:true},
+  {n:'Claudia Bianca',s:'Kalbsleder · Creme',p:'2.890 €'},
+  {n:'Claudia Vittoria',s:'Boxcalf · Nero',p:'3.420 €',tag:'Neu'},
+  {n:'Claudia Celeste',s:'Saffiano · Gold',p:'2.310 €'},
+  {n:'Claudia Rosalba',s:'Nubuk · Bordeaux',p:'1.880 €',alt:'2.100 €',tag:'Archiv',dark:true},
+];
+
+const shapes = [
+  '<rect x="120" y="230" width="260" height="190" rx="10"/><path d="M170 230v-28a80 80 0 01160 0v28"/><path d="M120 285h260"/><circle cx="250" cy="330" r="14"/>',
+  '<rect x="105" y="255" width="290" height="150" rx="8"/><path d="M105 255l145-55 145 55"/><path d="M105 310h290"/><circle cx="250" cy="310" r="11"/>',
+  '<rect x="130" y="240" width="240" height="200" rx="24"/><path d="M155 240c0-45 40-70 95-70s95 25 95 70"/><path d="M130 320h240"/>',
+  '<path d="M130 250h240l-24 195H154z"/><path d="M180 250v-26a70 70 0 01140 0v26"/><circle cx="250" cy="345" r="15"/>',
+];
+
+document.getElementById('produkte').innerHTML = produkte.map((p,i)=>`
+  <article class="card">
+    <div class="media">
+      ${p.tag?`<span class="tag${p.dark?' dark':''}">${p.tag}</span>`:''}
+      <svg class="ph" viewBox="0 0 500 625" aria-label="Produkt-Platzhalter">
+        <rect width="500" height="625" fill="${i%2?'#141414':'#181818'}"/>
+        <g fill="none" stroke="#c8a45c" stroke-width="1.5" opacity=".5">${shapes[i%shapes.length]}</g>
+        <text x="250" y="530" text-anchor="middle" fill="#565656" font-family="Jost,sans-serif"
+              font-size="13" letter-spacing="5">PRODUKTBILD</text>
+      </svg>
+      <div class="quick">In den Warenkorb</div>
+    </div>
+    <div class="body">
+      <h3>${p.n}</h3>
+      <div class="sub">${p.s}</div>
+      <div class="price">${p.alt?`<s>${p.alt}</s>`:''}${p.p}</div>
+    </div>
+  </article>`).join('');
+</script>
+</body>
+</html>
