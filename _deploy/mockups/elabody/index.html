@@ -74,7 +74,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(253,250,247,.94);
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero-media{position:relative;border-radius:230px 230px 20px 20px;overflow:hidden;
   border:1px solid var(--line);background:#fff;box-shadow:0 26px 60px rgba(120,86,70,.14)}
-.hero-media .ph{width:100%;aspect-ratio:4/5}
+.hero-media img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
 .trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
 .trust div{font-size:13.5px;color:var(--body)}
 .trust b{display:block;font-family:var(--serif);font-size:26px;color:var(--clay);font-weight:400}
@@ -328,6 +328,52 @@ details p{animation:fadeUp .35s ease both}
   .cal-month{border-right:0;border-bottom:1px solid var(--line)}
   .slotlist{max-height:none;grid-template-columns:1fr 1fr}
 }
+
+/* ---------- Mobile-Navigation ---------- */
+.burger{background:none;border:0;padding:0;cursor:pointer}
+.mnav{position:fixed;inset:0;z-index:70;background:rgba(58,43,36,.35);opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s}
+.mnav.on{opacity:1;visibility:visible}
+.mnav-panel{position:absolute;top:0;right:0;width:min(84vw,340px);height:100%;background:var(--cream);
+  padding:26px 26px 34px;display:flex;flex-direction:column;gap:6px;
+  transform:translateX(100%);transition:transform .38s cubic-bezier(.22,.7,.3,1);
+  box-shadow:-20px 0 50px rgba(120,86,70,.18)}
+.mnav.on .mnav-panel{transform:none}
+.mnav-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.mnav-close{background:none;border:1px solid var(--line);border-radius:50%;width:36px;height:36px;
+  cursor:pointer;color:var(--clay);font-size:20px;line-height:1}
+.mnav a{font-family:var(--serif);font-size:23px;padding:13px 0;border-bottom:1px solid var(--line)}
+.mnav a:last-of-type{border-bottom:0}
+.mnav .btn{margin-top:20px}
+.mnav .mlang{display:flex;gap:8px;margin-top:auto;padding-top:22px}
+.mnav .mlang button{flex:1;border:1px solid var(--line);border-radius:40px;background:transparent;
+  padding:11px;cursor:pointer;font-family:var(--sans);font-size:12px;letter-spacing:.16em;color:var(--body)}
+.mnav .mlang button.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+body.navopen{overflow:hidden}
+@media(min-width:1001px){.mnav{display:none}}
+
+/* ---------- Mobile-Feinschliff ---------- */
+@media(max-width:760px){
+  .cal-head{padding:18px 18px;gap:12px}
+  .cal-head h3{font-size:18px}
+  .cal-head span{font-size:12px}
+  .cal-month,.cal-slots{padding:18px 16px}
+  .cal-grid{gap:3px}
+  .cal-day{font-size:14px}
+  .slot{padding:13px 10px}
+  .trust{gap:18px}
+  .trust b{font-size:23px}
+  .quals li{font-size:15px}
+  summary{font-size:19px}
+  .voice p{font-size:18px}
+  .tcard .in{padding:22px 20px 24px}
+  .tcard h3{font-size:22px}
+}
+@media(max-width:400px){
+  .cal-slots{padding:16px 12px}
+  .slotlist{grid-template-columns:1fr}
+  .cal-avatar{width:40px;height:40px;font-size:16px}
+}
 </style>
 </head>
 <body>
@@ -353,6 +399,27 @@ details p{animation:fadeUp .35s ease both}
   </div>
 </div>
 
+
+<!-- Mobile-Navigation -->
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav-panel">
+    <div class="mnav-top">
+      <span class="brand">ELA<span>&nbsp;body</span></span>
+      <button type="button" class="mnav-close" id="mnav-close" aria-label="Close">&times;</button>
+    </div>
+    <a href="#treatments" data-en="Treatments" data-de="Behandlungen">Treatments</a>
+    <a href="#process" data-en="How it works" data-de="Ablauf">How it works</a>
+    <a href="#about" data-en="About Ela" data-de="Über Ela">About Ela</a>
+    <a href="#faq" data-en="FAQ" data-de="FAQ">FAQ</a>
+    <a href="#booking" data-en="Booking" data-de="Termin">Booking</a>
+    <a href="#booking" class="btn solid" data-en="Book your session" data-de="Termin anfragen">Book your session</a>
+    <div class="mlang">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+  </div>
+</div>
+
 <div class="topbar" data-en="Dubai · Brazilian Lymphatic Specialist · By appointment only"
      data-de="Dubai · Brazilian Lymphatic Specialist · Nur nach Termin">Dubai · Brazilian Lymphatic Specialist · By appointment only</div>
 
@@ -371,7 +438,7 @@ details p{animation:fadeUp .35s ease both}
         <button type="button" data-lang="en" class="on">EN</button>
         <button type="button" data-lang="de">DE</button>
       </div>
-      <a href="#" class="burger" aria-label="Menu"><svg viewBox="0 0 24 24" width="22" height="22"><use href="#ic-menu"/></svg></a>
+      <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="22" height="22"><use href="#ic-menu"/></svg></button>
     </div>
   </div>
 </header>
@@ -395,16 +462,8 @@ details p{animation:fadeUp .35s ease both}
       </div>
     </div>
     <figure class="hero-media">
-      <svg class="ph" viewBox="0 0 400 500" aria-label="Placeholder">
-        <rect width="400" height="500" fill="#f0e3d8"/>
-        <g fill="none" stroke="#b0836a" stroke-width="1.3" opacity=".55">
-          <circle cx="200" cy="215" r="70"/>
-          <path d="M200 285c-58 0-95 42-95 105h190c0-63-37-105-95-105z"/>
-          <path d="M120 380c50-18 110-18 160 0" stroke-dasharray="6 8"/>
-        </g>
-        <text x="200" y="455" text-anchor="middle" fill="#b9a493" font-family="Jost,sans-serif"
-              font-size="13" letter-spacing="5">PHOTO PLACEHOLDER</text>
-      </svg>
+      <img src="assets/ela-portrait.jpg" width="900" height="1125"
+           alt="Ela, Brazilian lymphatic drainage specialist in Dubai">
     </figure>
   </div>
 </div>
@@ -463,7 +522,7 @@ details p{animation:fadeUp .35s ease both}
           <path d="M200 268c-54 0-88 40-88 100h176c0-60-34-100-88-100z"/>
         </g>
         <text x="200" y="450" text-anchor="middle" fill="#b9a493" font-family="Jost,sans-serif"
-              font-size="13" letter-spacing="5">PORTRAIT PLACEHOLDER</text>
+              font-size="13" letter-spacing="5">STUDIO PLACEHOLDER</text>
       </svg>
     </figure>
     <div>
@@ -763,6 +822,7 @@ function fillForm(lang){
 /* ---------- Sanfte Einblendungen ---------- */
 (function(){
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
   var sel = '.head, .tcard, .step, .voice, .about .imgbox, .about > div > *, .faq details, .bookinfo, .cform, .fgrid > *';
   document.querySelectorAll(sel).forEach(function(el, i){
     if (el.closest('.hero')) return;
@@ -792,7 +852,7 @@ function fillForm(lang){
     });
     var input = document.getElementById('gate-input');
     if (input) input.placeholder = (lang === 'de' ? 'Passwort' : 'Password');
-    document.querySelectorAll('.lang button').forEach(function(b){
+    document.querySelectorAll('.lang button, .mlang button').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-lang') === lang);
     });
     try { localStorage.setItem(KEY, lang); } catch(e){}
@@ -801,10 +861,35 @@ function fillForm(lang){
     if (window.__calRefresh) window.__calRefresh();
   }
 
-  document.querySelectorAll('.lang button').forEach(function(b){
+  document.querySelectorAll('.lang button, .mlang button').forEach(function(b){
     b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
   });
   setLang(initial);
+})();
+
+
+/* ---------- Mobile-Navigation ---------- */
+(function(){
+  var burger = document.getElementById('burger'), nav = document.getElementById('mnav');
+  if (!burger || !nav) return;
+  function open(){
+    nav.hidden = false;
+    requestAnimationFrame(function(){ nav.classList.add('on'); });
+    document.body.classList.add('navopen');
+    burger.setAttribute('aria-expanded', 'true');
+  }
+  function close(){
+    nav.classList.remove('on');
+    document.body.classList.remove('navopen');
+    burger.setAttribute('aria-expanded', 'false');
+    setTimeout(function(){ if (!nav.classList.contains('on')) nav.hidden = true; }, 380);
+  }
+  burger.addEventListener('click', open);
+  document.getElementById('mnav-close').addEventListener('click', close);
+  nav.addEventListener('click', function(e){ if (e.target === nav) close(); });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && nav.classList.contains('on')) close(); });
+  window.addEventListener('resize', function(){ if (innerWidth > 1000 && nav.classList.contains('on')) close(); });
 })();
 
 /* ---------- Terminkalender (Demo-Daten) ---------- */
