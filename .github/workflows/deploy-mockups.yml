@@ -9,6 +9,7 @@ on:
       - "mockup-anwalt.html"
       - "mockup-fahrschule.html"
       - "mockup-zahnarzt.html"
+      - "_deploy/**"
       - ".github/workflows/deploy-mockups.yml"
   workflow_dispatch: {}
 
@@ -52,3 +53,18 @@ jobs:
               "$f" \
               "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_BASE_PATH }}/$f"
           done
+
+      # WordPress theme (mystu.de). Separate target path from the mockups above,
+      # since the WP install's wp-content/themes/mystu/ generally does NOT live
+      # under DEPLOY_BASE_PATH. Requires the repo variable DEPLOY_WP_THEME_PATH
+      # to be set to that theme's absolute path on the server (e.g.
+      # /var/www/vhosts/mystu.de/httpdocs/wp-content/themes/mystu). Skips
+      # cleanly if that variable isn't configured yet, so this addition can't
+      # break the existing mockup deploys.
+      - name: Rsync mystu WordPress theme
+        if: hashFiles('_deploy/**') != '' && vars.DEPLOY_WP_THEME_PATH != ''
+        run: |
+          rsync -rtv --exclude ".git" \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            _deploy/ \
+            "${{ vars.DEPLOY_USER }}@${{ vars.DEPLOY_HOST }}:${{ vars.DEPLOY_WP_THEME_PATH }}/"
