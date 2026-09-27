@@ -564,7 +564,11 @@ function mystu_enqueue() {
     );
 
     wp_register_script('mystu-tailwind', 'https://cdn.tailwindcss.com?plugins=forms', [], null, false);
-    wp_add_inline_script('mystu-tailwind', "tailwind.config = { theme: { extend: { colors: { sand: '#eef1f0', cream: '#ffffff', ink: '#1a211e', muted: '#606562', coral: '#cc2e39', honey: '#4e4e4e', mint: '#cccfcd' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Playfair Display', 'Georgia', 'serif'], cta: ['Montserrat', 'Inter', 'sans-serif'], mono: ['Roboto Mono', 'monospace'] }, boxShadow: { soft: 'none', strong: 'none' } } } };", 'before');
+    // Must run AFTER the CDN script defines window.tailwind — 'before' throws
+    // "tailwind is not defined" and silently skips the custom config, so every
+    // page using this script falls back to Tailwind's default palette instead
+    // of sand/cream/ink/coral/honey/mint and the custom font families.
+    wp_add_inline_script('mystu-tailwind', "tailwind.config = { theme: { extend: { colors: { sand: '#eef1f0', cream: '#ffffff', ink: '#1a211e', muted: '#606562', coral: '#cc2e39', honey: '#4e4e4e', mint: '#cccfcd' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Playfair Display', 'Georgia', 'serif'], cta: ['Montserrat', 'Inter', 'sans-serif'], mono: ['Roboto Mono', 'monospace'] }, boxShadow: { soft: 'none', strong: 'none' } } } };", 'after');
     wp_enqueue_script('mystu-tailwind');
 
     wp_enqueue_style('mystu-main', MYSTU_URI . '/assets/css/main.css', ['mystu-fonts'], MYSTU_VERSION);
